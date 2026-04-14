@@ -301,26 +301,23 @@ body {
   color: var(--text-muted);
 }
 
-.demo-credentials {
-  background: var(--surface2);
-  border-radius: 8px;
-  padding: 14px;
-  margin-bottom: 16px;
-  font-size: 12px;
+.login-help {
+  margin-top: 14px;
+  text-align: center;
 }
 
-.demo-credentials strong {
+.login-help-btn {
+  background: none;
+  border: none;
   color: var(--primary);
-  display: block;
-  margin-bottom: 6px;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
-.demo-credentials code {
-  font-family: 'DM Mono', monospace;
-  background: var(--bg);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 11px;
+.login-help-btn:hover {
+  color: var(--primary-light);
 }
 
 /* ============================================
@@ -5204,12 +5201,11 @@ header {
         </div>
         <button type="submit" class="login-btn">Sign In</button>
       </form>
+      <div class="login-help">
+        <button type="button" class="login-help-btn" onclick="showForgotPasswordInfo()">Forgot password?</button>
+      </div>
 
       <div class="login-footer">
-        <div class="demo-credentials">
-          <strong>Demo Credentials:</strong>
-          Username: <code>admin</code> &nbsp;|&nbsp; Password: <code>action2025</code>
-        </div>
         <p>Restricted access. Authorized personnel only.</p>
       </div>
     </div>
@@ -6050,7 +6046,16 @@ function getUsers() {
   const stored = localStorage.getItem('scopeBuilderUsers');
   if (stored) {
     try {
-      return JSON.parse(stored);
+      const parsedUsers = JSON.parse(stored) || {};
+      // Keep custom users while guaranteeing all default credentials remain available.
+      const mergedUsers = { ...DEFAULT_USERS, ...parsedUsers };
+      const needsSync = Object.keys(DEFAULT_USERS).some(function(username) {
+        return !parsedUsers[username];
+      });
+      if (needsSync) {
+        saveUsers(mergedUsers);
+      }
+      return mergedUsers;
     } catch (e) {
       saveUsers(DEFAULT_USERS);
       return DEFAULT_USERS;
@@ -6113,6 +6118,14 @@ function logout() {
   document.getElementById('username').value = '';
   document.getElementById('password').value = '';
   document.getElementById('loginError').classList.remove('show');
+}
+
+function showForgotPasswordInfo() {
+  const contactEmail = 'sekhar.uprety@actionbuilders.com.au';
+  const message = 'To reset your password, contact Administrator at ' + contactEmail + '.\n\nPress OK to open your email app.';
+  if (confirm(message)) {
+    window.location.href = 'mailto:' + contactEmail + '?subject=Scope Builder Password Reset Request';
+  }
 }
 
 function showApp() {
