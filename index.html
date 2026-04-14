@@ -6938,11 +6938,32 @@ function saveDefaultExclusionsNotes() {
 // ====================================================
 function getProjects() {
   const stored = localStorage.getItem('scopeBuilderProjects');
-  return stored ? JSON.parse(stored) : [];
+  if (!stored) return [];
+  try {
+    const parsed = JSON.parse(stored);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (e) {
+    console.error('Failed to parse saved projects:', e);
+    // Keep corrupted payload for recovery/debug, then reset working storage.
+    localStorage.setItem('scopeBuilderProjects_corrupt_backup', stored);
+    localStorage.removeItem('scopeBuilderProjects');
+    return [];
+  }
 }
 
 function saveProjects(projects) {
-  localStorage.setItem('scopeBuilderProjects', JSON.stringify(projects));
+  try {
+    localStorage.setItem('scopeBuilderProjects', JSON.stringify(projects));
+    return true;
+  } catch (e) {
+    console.error('Failed to save projects:', e);
+    if (e && (e.name === 'QuotaExceededError' || e.code === 22)) {
+      showToast('Cannot save: device storage is full. Remove some photos or old projects and try again.', 'error');
+    } else {
+      showToast('Could not save project data. Please try again.', 'error');
+    }
+    return false;
+  }
 }
 
 function getVal(id) {
@@ -7019,7 +7040,8 @@ function saveCurrentProject() {
     projects.push(projectData);
   }
   
-  saveProjects(projects);
+  const ok = saveProjects(projects);
+  if (!ok) return;
   renderProjectsList();
   
   // Unlock phases if saving from Phase 1 with items
@@ -7041,7 +7063,7 @@ function loadProject(projectId) {
   console.log('Loading project:', projectId, project);
   
   currentProjectId = projectId;
-  setProjectFields(project.fields);
+  setProjectFields(project.fields || {});
   
   selectedCC = new Set(project.selectedCC || []);
   itemSelections = project.itemSelections || {};
@@ -7253,12 +7275,13 @@ function renderProjectsList() {
   }
   
   projects.slice().reverse().forEach(p => {
+    const fields = p.fields || {};
     const isActive = p.id === currentProjectId;
     const date = p.updatedAt ? new Date(p.updatedAt).toLocaleDateString('en-AU') : '';
     html += `
       <div class="project-item ${isActive ? 'active' : ''}">
-        <div class="project-item-name">${p.fields.name || 'Untitled Project'}</div>
-        <div class="project-item-client">${p.fields.client || 'No client'}</div>
+        <div class="project-item-name">${fields.name || 'Untitled Project'}</div>
+        <div class="project-item-client">${fields.client || 'No client'}</div>
         <div class="project-item-date">${date}</div>
         <div class="project-item-actions">
           <button class="btn-edit-project" onclick="loadProject('${p.id}')">Load</button>
@@ -14524,8 +14547,9 @@ function renderDashboardProjects() {
   `;
   
   projects.slice().reverse().forEach(p => {
-    const name = p.fields.name || 'Untitled Project';
-    const client = p.fields.client || '';
+    const fields = p.fields || {};
+    const name = fields.name || 'Untitled Project';
+    const client = fields.client || '';
     const date = p.updatedAt ? new Date(p.updatedAt).toLocaleDateString('en-AU') : '';
     
     // Get phase status from localStorage
