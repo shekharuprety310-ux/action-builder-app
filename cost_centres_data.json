@@ -1,0 +1,7064 @@
+{
+  "Appliances": {
+    "items": [
+      {
+        "name": "Delivery fees",
+        "type": "Fee",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply and deliver Oven",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": "Kitchen"
+      },
+      {
+        "name": "Supply and deliver Cooktop",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": "Kitchen"
+      },
+      {
+        "name": "Supply and deliver Rangehood",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": "Kitchen"
+      },
+      {
+        "name": "Supply and deliver Dishwasher",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": "Kitchen"
+      },
+      {
+        "name": "Supply and deliver Fridge",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": "Kitchen"
+      },
+      {
+        "name": "Supply and deliver W/Machine",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": "Laundry"
+      },
+      {
+        "name": "Supply and deliver Dryer",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": "Laundry"
+      },
+      {
+        "name": "Supply and deliver Microwave",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": "Kitchen"
+      },
+      {
+        "name": "Supply and deliver BBQ",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": "Alfresco"
+      },
+      {
+        "name": "Supply and deliver Other",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      }
+    ],
+    "categories": {
+      "PROJECT BUDGET LINK": [
+        {
+          "name": "Delivery fees",
+          "type": "Fee",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply and deliver Oven",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": "Kitchen"
+        },
+        {
+          "name": "Supply and deliver Cooktop",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": "Kitchen"
+        },
+        {
+          "name": "Supply and deliver Rangehood",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": "Kitchen"
+        },
+        {
+          "name": "Supply and deliver Dishwasher",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": "Kitchen"
+        },
+        {
+          "name": "Supply and deliver Fridge",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": "Kitchen"
+        },
+        {
+          "name": "Supply and deliver W/Machine",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": "Laundry"
+        },
+        {
+          "name": "Supply and deliver Dryer",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": "Laundry"
+        },
+        {
+          "name": "Supply and deliver Microwave",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": "Kitchen"
+        },
+        {
+          "name": "Supply and deliver BBQ",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": "Alfresco"
+        },
+        {
+          "name": "Supply and deliver Other",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Balust": {
+    "items": [
+      {
+        "name": "Supply and install Glass Balustrade",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply and install Glass Stair Balustrade",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply and install Metal Balustrade",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply and install Metal Stair Balustrade",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply and install Aluminium Balustrade",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply and install Aluminium Stair Balustrade",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply and install Stainless Steel Balustrade",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply and install Stainless Steel Stair Balustrade",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      }
+    ],
+    "categories": {
+      "PROJECT BUDGET LINK": [
+        {
+          "name": "Supply and install Glass Balustrade",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply and install Glass Stair Balustrade",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply and install Metal Balustrade",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply and install Metal Stair Balustrade",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply and install Aluminium Balustrade",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply and install Aluminium Stair Balustrade",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply and install Stainless Steel Balustrade",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply and install Stainless Steel Stair Balustrade",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        }
+      ]
+    }
+  },
+  "BricksBlocks": {
+    "items": [
+      {
+        "name": "Brick levy",
+        "type": "Fee",
+        "category": "ACCESSORIES",
+        "room": null
+      },
+      {
+        "name": "Delivery Fees",
+        "type": "Fee",
+        "category": "ACCESSORIES",
+        "room": null
+      },
+      {
+        "name": "Delivery of Bricklaying Sand",
+        "type": "Fee",
+        "category": "ACCESSORIES",
+        "room": null
+      },
+      {
+        "name": "Supply of Bricklaying Sand",
+        "type": "Product",
+        "category": "ACCESSORIES",
+        "room": null
+      },
+      {
+        "name": "Supply of Dampcourse",
+        "type": "Product",
+        "category": "ACCESSORIES",
+        "room": null
+      },
+      {
+        "name": "Supply of Brick Ties",
+        "type": "Product",
+        "category": "ACCESSORIES",
+        "room": null
+      },
+      {
+        "name": "Supply of Brick Vents",
+        "type": "Product",
+        "category": "ACCESSORIES",
+        "room": null
+      },
+      {
+        "name": "Supply of Bags of Cement",
+        "type": "Product",
+        "category": "ACCESSORIES",
+        "room": null
+      },
+      {
+        "name": "Supply of Brick Accessory",
+        "type": "Product",
+        "category": "ACCESSORIES",
+        "room": null
+      },
+      {
+        "name": "Supply of Brick Cleaner",
+        "type": "Product",
+        "category": "ACCESSORIES",
+        "room": null
+      },
+      {
+        "name": "Supply of Galvanised angled brick lintel",
+        "type": "Product",
+        "category": "BRICK LINTELS",
+        "room": null
+      },
+      {
+        "name": "Supply of Galvanised flat brick lintel",
+        "type": "Product",
+        "category": "BRICK LINTELS",
+        "room": null
+      },
+      {
+        "name": "Supply of Galvanised T-Bar brick lintel",
+        "type": "Product",
+        "category": "BRICK LINTELS",
+        "room": null
+      },
+      {
+        "name": "Supply of Austral Common bricks",
+        "type": "Product",
+        "category": "BRICKS",
+        "room": null
+      },
+      {
+        "name": "Supply of Austral Render bricks",
+        "type": "Product",
+        "category": "BRICKS",
+        "room": null
+      },
+      {
+        "name": "Supply of Austral bricks - Access Range",
+        "type": "Product",
+        "category": "BRICKS",
+        "room": null
+      },
+      {
+        "name": "Supply of Austral bricks - Homestead Range",
+        "type": "Product",
+        "category": "BRICKS",
+        "room": null
+      },
+      {
+        "name": "Supply of Austral bricks - Yarra Range",
+        "type": "Product",
+        "category": "BRICKS",
+        "room": null
+      },
+      {
+        "name": "Supply of Austral bricks - Coach House Range",
+        "type": "Product",
+        "category": "BRICKS",
+        "room": null
+      },
+      {
+        "name": "Supply of Austral bricks - Daniel Robertson Range",
+        "type": "Product",
+        "category": "BRICKS",
+        "room": null
+      },
+      {
+        "name": "Supply of Austral bricks - All Other",
+        "type": "Product",
+        "category": "BRICKS",
+        "room": null
+      },
+      {
+        "name": "Supply of Island B&P bricks -",
+        "type": "Product",
+        "category": "BRICKS",
+        "room": null
+      },
+      {
+        "name": "Supply of 200 series blocks",
+        "type": "Product",
+        "category": "BLOCKS",
+        "room": null
+      },
+      {
+        "name": "Supply of 300 series blocks",
+        "type": "Product",
+        "category": "BLOCKS",
+        "room": null
+      },
+      {
+        "name": "Lay standard face bricks",
+        "type": "Service",
+        "category": "BRICKLAYING",
+        "room": null
+      },
+      {
+        "name": "Lay 100 & 150 series blocks",
+        "type": "Service",
+        "category": "BRICKLAYING",
+        "room": null
+      },
+      {
+        "name": "Lay 200 series blocks",
+        "type": "Service",
+        "category": "BRICKLAYING",
+        "room": null
+      },
+      {
+        "name": "Lay 240 series blocks",
+        "type": "Service",
+        "category": "BRICKLAYING",
+        "room": null
+      },
+      {
+        "name": "Lay 300 series blocks",
+        "type": "Service",
+        "category": "BRICKLAYING",
+        "room": null
+      },
+      {
+        "name": "Cut rate - new home",
+        "type": "Service",
+        "category": "BRICKLAYING",
+        "room": null
+      },
+      {
+        "name": "Cut rate - small ext/reno",
+        "type": "Service",
+        "category": "BRICKLAYING",
+        "room": null
+      },
+      {
+        "name": "Cut rate - large ext /reno",
+        "type": "Service",
+        "category": "BRICKLAYING",
+        "room": null
+      },
+      {
+        "name": "Cut rate - blocks - base cuts",
+        "type": "Service",
+        "category": "BRICKLAYING",
+        "room": null
+      },
+      {
+        "name": "Carting rate - brick elevator",
+        "type": "Service",
+        "category": "BRICKLAYING",
+        "room": null
+      },
+      {
+        "name": "Carting rate - manual",
+        "type": "Service",
+        "category": "BRICKLAYING",
+        "room": null
+      },
+      {
+        "name": "Construct Brick Piers",
+        "type": "Service",
+        "category": "BRICKLAYING",
+        "room": null
+      },
+      {
+        "name": "Lay sill bricks",
+        "type": "Service",
+        "category": "BRICKLAYING",
+        "room": null
+      },
+      {
+        "name": "Hourly rate - bricky",
+        "type": "Service",
+        "category": "BRICKLAYING",
+        "room": null
+      },
+      {
+        "name": "Hourly rate - labourer",
+        "type": "Service",
+        "category": "BRICKLAYING",
+        "room": null
+      },
+      {
+        "name": "Generator hire",
+        "type": "Service",
+        "category": "BRICKLAYING",
+        "room": null
+      },
+      {
+        "name": "Lay open fire & chimney",
+        "type": "Service",
+        "category": "BRICKLAYING",
+        "room": null
+      }
+    ],
+    "categories": {
+      "ACCESSORIES": [
+        {
+          "name": "Brick levy",
+          "type": "Fee",
+          "category": "ACCESSORIES",
+          "room": null
+        },
+        {
+          "name": "Delivery Fees",
+          "type": "Fee",
+          "category": "ACCESSORIES",
+          "room": null
+        },
+        {
+          "name": "Delivery of Bricklaying Sand",
+          "type": "Fee",
+          "category": "ACCESSORIES",
+          "room": null
+        },
+        {
+          "name": "Supply of Bricklaying Sand",
+          "type": "Product",
+          "category": "ACCESSORIES",
+          "room": null
+        },
+        {
+          "name": "Supply of Dampcourse",
+          "type": "Product",
+          "category": "ACCESSORIES",
+          "room": null
+        },
+        {
+          "name": "Supply of Brick Ties",
+          "type": "Product",
+          "category": "ACCESSORIES",
+          "room": null
+        },
+        {
+          "name": "Supply of Brick Vents",
+          "type": "Product",
+          "category": "ACCESSORIES",
+          "room": null
+        },
+        {
+          "name": "Supply of Bags of Cement",
+          "type": "Product",
+          "category": "ACCESSORIES",
+          "room": null
+        },
+        {
+          "name": "Supply of Brick Accessory",
+          "type": "Product",
+          "category": "ACCESSORIES",
+          "room": null
+        },
+        {
+          "name": "Supply of Brick Cleaner",
+          "type": "Product",
+          "category": "ACCESSORIES",
+          "room": null
+        }
+      ],
+      "BRICK LINTELS": [
+        {
+          "name": "Supply of Galvanised angled brick lintel",
+          "type": "Product",
+          "category": "BRICK LINTELS",
+          "room": null
+        },
+        {
+          "name": "Supply of Galvanised flat brick lintel",
+          "type": "Product",
+          "category": "BRICK LINTELS",
+          "room": null
+        },
+        {
+          "name": "Supply of Galvanised T-Bar brick lintel",
+          "type": "Product",
+          "category": "BRICK LINTELS",
+          "room": null
+        }
+      ],
+      "BRICKS": [
+        {
+          "name": "Supply of Austral Common bricks",
+          "type": "Product",
+          "category": "BRICKS",
+          "room": null
+        },
+        {
+          "name": "Supply of Austral Render bricks",
+          "type": "Product",
+          "category": "BRICKS",
+          "room": null
+        },
+        {
+          "name": "Supply of Austral bricks - Access Range",
+          "type": "Product",
+          "category": "BRICKS",
+          "room": null
+        },
+        {
+          "name": "Supply of Austral bricks - Homestead Range",
+          "type": "Product",
+          "category": "BRICKS",
+          "room": null
+        },
+        {
+          "name": "Supply of Austral bricks - Yarra Range",
+          "type": "Product",
+          "category": "BRICKS",
+          "room": null
+        },
+        {
+          "name": "Supply of Austral bricks - Coach House Range",
+          "type": "Product",
+          "category": "BRICKS",
+          "room": null
+        },
+        {
+          "name": "Supply of Austral bricks - Daniel Robertson Range",
+          "type": "Product",
+          "category": "BRICKS",
+          "room": null
+        },
+        {
+          "name": "Supply of Austral bricks - All Other",
+          "type": "Product",
+          "category": "BRICKS",
+          "room": null
+        },
+        {
+          "name": "Supply of Island B&P bricks -",
+          "type": "Product",
+          "category": "BRICKS",
+          "room": null
+        }
+      ],
+      "BLOCKS": [
+        {
+          "name": "Supply of 200 series blocks",
+          "type": "Product",
+          "category": "BLOCKS",
+          "room": null
+        },
+        {
+          "name": "Supply of 300 series blocks",
+          "type": "Product",
+          "category": "BLOCKS",
+          "room": null
+        }
+      ],
+      "BRICKLAYING": [
+        {
+          "name": "Lay standard face bricks",
+          "type": "Service",
+          "category": "BRICKLAYING",
+          "room": null
+        },
+        {
+          "name": "Lay 100 & 150 series blocks",
+          "type": "Service",
+          "category": "BRICKLAYING",
+          "room": null
+        },
+        {
+          "name": "Lay 200 series blocks",
+          "type": "Service",
+          "category": "BRICKLAYING",
+          "room": null
+        },
+        {
+          "name": "Lay 240 series blocks",
+          "type": "Service",
+          "category": "BRICKLAYING",
+          "room": null
+        },
+        {
+          "name": "Lay 300 series blocks",
+          "type": "Service",
+          "category": "BRICKLAYING",
+          "room": null
+        },
+        {
+          "name": "Cut rate - new home",
+          "type": "Service",
+          "category": "BRICKLAYING",
+          "room": null
+        },
+        {
+          "name": "Cut rate - small ext/reno",
+          "type": "Service",
+          "category": "BRICKLAYING",
+          "room": null
+        },
+        {
+          "name": "Cut rate - large ext /reno",
+          "type": "Service",
+          "category": "BRICKLAYING",
+          "room": null
+        },
+        {
+          "name": "Cut rate - blocks - base cuts",
+          "type": "Service",
+          "category": "BRICKLAYING",
+          "room": null
+        },
+        {
+          "name": "Carting rate - brick elevator",
+          "type": "Service",
+          "category": "BRICKLAYING",
+          "room": null
+        },
+        {
+          "name": "Carting rate - manual",
+          "type": "Service",
+          "category": "BRICKLAYING",
+          "room": null
+        },
+        {
+          "name": "Construct Brick Piers",
+          "type": "Service",
+          "category": "BRICKLAYING",
+          "room": null
+        },
+        {
+          "name": "Lay sill bricks",
+          "type": "Service",
+          "category": "BRICKLAYING",
+          "room": null
+        },
+        {
+          "name": "Hourly rate - bricky",
+          "type": "Service",
+          "category": "BRICKLAYING",
+          "room": null
+        },
+        {
+          "name": "Hourly rate - labourer",
+          "type": "Service",
+          "category": "BRICKLAYING",
+          "room": null
+        },
+        {
+          "name": "Generator hire",
+          "type": "Service",
+          "category": "BRICKLAYING",
+          "room": null
+        },
+        {
+          "name": "Lay open fire & chimney",
+          "type": "Service",
+          "category": "BRICKLAYING",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Carpentry": {
+    "items": [
+      {
+        "name": "Demolition and preparation works",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Install timber floor frame",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Install sheet flooring",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Install timber wall framing",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Install timber roof frame",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Install soffit framing, soffits & vents",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Install windows & external glass doors",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Install wall wrap & tape",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Batten exterior walls for cladding",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Install external cladding (non-metal)",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Complete internal fit out",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Install internal timber features",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Install internal timber flooring",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Complete internal bathroom fit out",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Install Sub-floor door",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Install timber deck frame",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Install decking",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Install external screening",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Construct & install timber balustrade",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Construct external timber stairs",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Prepare site",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Secure site",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      }
+    ],
+    "categories": {
+      "PROJECT BUDGET LINK": [
+        {
+          "name": "Demolition and preparation works",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Install timber floor frame",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Install sheet flooring",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Install timber wall framing",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Install timber roof frame",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Install soffit framing, soffits & vents",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Install windows & external glass doors",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Install wall wrap & tape",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Batten exterior walls for cladding",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Install external cladding (non-metal)",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Complete internal fit out",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Install internal timber features",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Install internal timber flooring",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Complete internal bathroom fit out",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Install Sub-floor door",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Install timber deck frame",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Install decking",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Install external screening",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Construct & install timber balustrade",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Construct external timber stairs",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Prepare site",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Secure site",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Caulking": {
+    "items": [
+      {
+        "name": "Internal Caulking & Sealing",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "External Caulking & Sealing",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      }
+    ],
+    "categories": {
+      "PROJECT BUDGET LINK": [
+        {
+          "name": "Internal Caulking & Sealing",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "External Caulking & Sealing",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Cladding": {
+    "items": [
+      {
+        "name": "Delivery fees",
+        "type": "Fee",
+        "category": "DELIVERY FEES",
+        "room": null
+      },
+      {
+        "name": "Supply Axon Cladding",
+        "type": "Product",
+        "category": "JAMES HARDIE - AXON",
+        "room": null
+      },
+      {
+        "name": "Supply Sealant/Adhesive",
+        "type": "Product",
+        "category": "JAMES HARDIE - AXON",
+        "room": null
+      },
+      {
+        "name": "Supply Foam Backing Tape",
+        "type": "Product",
+        "category": "JAMES HARDIE - AXON",
+        "room": null
+      },
+      {
+        "name": "Supply Axent Trim",
+        "type": "Product",
+        "category": "JAMES HARDIE - AXON",
+        "room": null
+      },
+      {
+        "name": "Supply Recessed Flashing",
+        "type": "Product",
+        "category": "JAMES HARDIE - AXON",
+        "room": null
+      },
+      {
+        "name": "Supply Recessed Base Trim Flashing",
+        "type": "Product",
+        "category": "JAMES HARDIE - AXON",
+        "room": null
+      },
+      {
+        "name": "Supply Recessed Base Trim Joiner",
+        "type": "Product",
+        "category": "JAMES HARDIE - AXON",
+        "room": null
+      },
+      {
+        "name": "Supply Horizontal H Flashing",
+        "type": "Product",
+        "category": "JAMES HARDIE - AXON",
+        "room": null
+      },
+      {
+        "name": "Supply Horizontal H Jointer",
+        "type": "Product",
+        "category": "JAMES HARDIE - AXON",
+        "room": null
+      },
+      {
+        "name": "Supply External Corner",
+        "type": "Product",
+        "category": "JAMES HARDIE - AXON",
+        "room": null
+      },
+      {
+        "name": "Supply Internal Corner",
+        "type": "Product",
+        "category": "JAMES HARDIE - AXON",
+        "room": null
+      },
+      {
+        "name": "Supply Cavity Vent Strip",
+        "type": "Product",
+        "category": "JAMES HARDIE - AXON",
+        "room": null
+      },
+      {
+        "name": "Supply Gun Nails",
+        "type": "Product",
+        "category": "JAMES HARDIE - AXON",
+        "room": null
+      },
+      {
+        "name": "Supply Bullet Head Nails",
+        "type": "Product",
+        "category": "JAMES HARDIE - AXON",
+        "room": null
+      },
+      {
+        "name": "Supply Fibre Cement Nails",
+        "type": "Product",
+        "category": "JAMES HARDIE - AXON",
+        "room": null
+      },
+      {
+        "name": "Supply Easylap Cladding",
+        "type": "Product",
+        "category": "JAMES HARDIE - EASYLAP",
+        "room": null
+      },
+      {
+        "name": "Supply Stria Boards",
+        "type": "Product",
+        "category": "JAMES HARDIE - STRIA",
+        "room": null
+      },
+      {
+        "name": "Supply Castellated Wall Battens",
+        "type": "Product",
+        "category": "JAMES HARDIE - STRIA",
+        "room": null
+      },
+      {
+        "name": "Supply External Corner Trim",
+        "type": "Product",
+        "category": "JAMES HARDIE - STRIA",
+        "room": null
+      },
+      {
+        "name": "Supply Internal Corner Trim",
+        "type": "Product",
+        "category": "JAMES HARDIE - STRIA",
+        "room": null
+      },
+      {
+        "name": "Supply Vertical Flashing Stop",
+        "type": "Product",
+        "category": "JAMES HARDIE - STRIA",
+        "room": null
+      },
+      {
+        "name": "Supply Edge Base Trims",
+        "type": "Product",
+        "category": "JAMES HARDIE - STRIA",
+        "room": null
+      },
+      {
+        "name": "Supply Oblique Cladding",
+        "type": "Product",
+        "category": "JAMES HARDIE - OBLIQUE",
+        "room": null
+      },
+      {
+        "name": "Hardie Edge Base Trims",
+        "type": "Product",
+        "category": "JAMES HARDIE - OBLIQUE",
+        "room": null
+      },
+      {
+        "name": "Supply Fine Texture Cladding",
+        "type": "Product",
+        "category": "JAMES HARDIE - FINE TEXTURE",
+        "room": null
+      },
+      {
+        "name": "Supply Linea Weatherboards",
+        "type": "Product",
+        "category": "JAMES HARDIE - LINEA",
+        "room": null
+      },
+      {
+        "name": "Linea Aluminium External Box Corner 3600mm",
+        "type": "Product",
+        "category": "JAMES HARDIE - LINEA",
+        "room": null
+      },
+      {
+        "name": "Supply Corner Soaker Trim",
+        "type": "Product",
+        "category": "JAMES HARDIE - LINEA",
+        "room": null
+      },
+      {
+        "name": "Supply Box Corner Z Flashing",
+        "type": "Product",
+        "category": "JAMES HARDIE - LINEA",
+        "room": null
+      },
+      {
+        "name": "Supply Universal Window Adaptor",
+        "type": "Product",
+        "category": "JAMES HARDIE - LINEA",
+        "room": null
+      },
+      {
+        "name": "Supply Starter Strip",
+        "type": "Product",
+        "category": "JAMES HARDIE - LINEA",
+        "room": null
+      },
+      {
+        "name": "Supply Matrix Cladding",
+        "type": "Product",
+        "category": "JAMES HARDIE - MATRIX",
+        "room": null
+      },
+      {
+        "name": "Supply AccuStrip Fa\u00e7ade SYS Backing",
+        "type": "Product",
+        "category": "JAMES HARDIE - MATRIX",
+        "room": null
+      },
+      {
+        "name": "Supply Brushed Concrete Cladding",
+        "type": "Product",
+        "category": "JAMES HARDIE - BRUSHED CONCRETE",
+        "room": null
+      },
+      {
+        "name": "Supply External Timber Cladding",
+        "type": "Product",
+        "category": "FEATURE TIMBER CLADDING",
+        "room": null
+      },
+      {
+        "name": "Include Pre-oil 1 coat 360^ - Intergrain Clear",
+        "type": "Product",
+        "category": "FEATURE TIMBER CLADDING",
+        "room": null
+      },
+      {
+        "name": "Supply Timber Weatherboards",
+        "type": "Product",
+        "category": "TIMBER WEATHERBOARDS",
+        "room": null
+      },
+      {
+        "name": "Supply Territory Cladding",
+        "type": "Product",
+        "category": "CEMINTEL CLADDING",
+        "room": null
+      },
+      {
+        "name": "Supply Cement Sheet for Eaves",
+        "type": "Product",
+        "category": "EAVES",
+        "room": null
+      },
+      {
+        "name": "Supply Cement Sheet for Undercrofts",
+        "type": "Product",
+        "category": "EAVES",
+        "room": null
+      },
+      {
+        "name": "Supply Cement Sheet for Alfrescos",
+        "type": "Product",
+        "category": "EAVES",
+        "room": null
+      },
+      {
+        "name": "Supply Timber Fascia",
+        "type": "Product",
+        "category": "EAVES",
+        "room": null
+      },
+      {
+        "name": "Supply Quad",
+        "type": "Product",
+        "category": "EAVES",
+        "room": null
+      },
+      {
+        "name": "Supply Eave sheet joining strips",
+        "type": "Product",
+        "category": "EAVES",
+        "room": null
+      },
+      {
+        "name": "Supply Eave sheet corner mould",
+        "type": "Product",
+        "category": "EAVES",
+        "room": null
+      },
+      {
+        "name": "Supply Vents for Eave sheets",
+        "type": "Product",
+        "category": "EAVES",
+        "room": null
+      },
+      {
+        "name": "Supply Eave sheet nails",
+        "type": "Product",
+        "category": "EAVES",
+        "room": null
+      }
+    ],
+    "categories": {
+      "DELIVERY FEES": [
+        {
+          "name": "Delivery fees",
+          "type": "Fee",
+          "category": "DELIVERY FEES",
+          "room": null
+        }
+      ],
+      "JAMES HARDIE - AXON": [
+        {
+          "name": "Supply Axon Cladding",
+          "type": "Product",
+          "category": "JAMES HARDIE - AXON",
+          "room": null
+        },
+        {
+          "name": "Supply Sealant/Adhesive",
+          "type": "Product",
+          "category": "JAMES HARDIE - AXON",
+          "room": null
+        },
+        {
+          "name": "Supply Foam Backing Tape",
+          "type": "Product",
+          "category": "JAMES HARDIE - AXON",
+          "room": null
+        },
+        {
+          "name": "Supply Axent Trim",
+          "type": "Product",
+          "category": "JAMES HARDIE - AXON",
+          "room": null
+        },
+        {
+          "name": "Supply Recessed Flashing",
+          "type": "Product",
+          "category": "JAMES HARDIE - AXON",
+          "room": null
+        },
+        {
+          "name": "Supply Recessed Base Trim Flashing",
+          "type": "Product",
+          "category": "JAMES HARDIE - AXON",
+          "room": null
+        },
+        {
+          "name": "Supply Recessed Base Trim Joiner",
+          "type": "Product",
+          "category": "JAMES HARDIE - AXON",
+          "room": null
+        },
+        {
+          "name": "Supply Horizontal H Flashing",
+          "type": "Product",
+          "category": "JAMES HARDIE - AXON",
+          "room": null
+        },
+        {
+          "name": "Supply Horizontal H Jointer",
+          "type": "Product",
+          "category": "JAMES HARDIE - AXON",
+          "room": null
+        },
+        {
+          "name": "Supply External Corner",
+          "type": "Product",
+          "category": "JAMES HARDIE - AXON",
+          "room": null
+        },
+        {
+          "name": "Supply Internal Corner",
+          "type": "Product",
+          "category": "JAMES HARDIE - AXON",
+          "room": null
+        },
+        {
+          "name": "Supply Cavity Vent Strip",
+          "type": "Product",
+          "category": "JAMES HARDIE - AXON",
+          "room": null
+        },
+        {
+          "name": "Supply Gun Nails",
+          "type": "Product",
+          "category": "JAMES HARDIE - AXON",
+          "room": null
+        },
+        {
+          "name": "Supply Bullet Head Nails",
+          "type": "Product",
+          "category": "JAMES HARDIE - AXON",
+          "room": null
+        },
+        {
+          "name": "Supply Fibre Cement Nails",
+          "type": "Product",
+          "category": "JAMES HARDIE - AXON",
+          "room": null
+        }
+      ],
+      "JAMES HARDIE - EASYLAP": [
+        {
+          "name": "Supply Easylap Cladding",
+          "type": "Product",
+          "category": "JAMES HARDIE - EASYLAP",
+          "room": null
+        }
+      ],
+      "JAMES HARDIE - STRIA": [
+        {
+          "name": "Supply Stria Boards",
+          "type": "Product",
+          "category": "JAMES HARDIE - STRIA",
+          "room": null
+        },
+        {
+          "name": "Supply Castellated Wall Battens",
+          "type": "Product",
+          "category": "JAMES HARDIE - STRIA",
+          "room": null
+        },
+        {
+          "name": "Supply External Corner Trim",
+          "type": "Product",
+          "category": "JAMES HARDIE - STRIA",
+          "room": null
+        },
+        {
+          "name": "Supply Internal Corner Trim",
+          "type": "Product",
+          "category": "JAMES HARDIE - STRIA",
+          "room": null
+        },
+        {
+          "name": "Supply Vertical Flashing Stop",
+          "type": "Product",
+          "category": "JAMES HARDIE - STRIA",
+          "room": null
+        },
+        {
+          "name": "Supply Edge Base Trims",
+          "type": "Product",
+          "category": "JAMES HARDIE - STRIA",
+          "room": null
+        }
+      ],
+      "JAMES HARDIE - OBLIQUE": [
+        {
+          "name": "Supply Oblique Cladding",
+          "type": "Product",
+          "category": "JAMES HARDIE - OBLIQUE",
+          "room": null
+        },
+        {
+          "name": "Hardie Edge Base Trims",
+          "type": "Product",
+          "category": "JAMES HARDIE - OBLIQUE",
+          "room": null
+        }
+      ],
+      "JAMES HARDIE - FINE TEXTURE": [
+        {
+          "name": "Supply Fine Texture Cladding",
+          "type": "Product",
+          "category": "JAMES HARDIE - FINE TEXTURE",
+          "room": null
+        }
+      ],
+      "JAMES HARDIE - LINEA": [
+        {
+          "name": "Supply Linea Weatherboards",
+          "type": "Product",
+          "category": "JAMES HARDIE - LINEA",
+          "room": null
+        },
+        {
+          "name": "Linea Aluminium External Box Corner 3600mm",
+          "type": "Product",
+          "category": "JAMES HARDIE - LINEA",
+          "room": null
+        },
+        {
+          "name": "Supply Corner Soaker Trim",
+          "type": "Product",
+          "category": "JAMES HARDIE - LINEA",
+          "room": null
+        },
+        {
+          "name": "Supply Box Corner Z Flashing",
+          "type": "Product",
+          "category": "JAMES HARDIE - LINEA",
+          "room": null
+        },
+        {
+          "name": "Supply Universal Window Adaptor",
+          "type": "Product",
+          "category": "JAMES HARDIE - LINEA",
+          "room": null
+        },
+        {
+          "name": "Supply Starter Strip",
+          "type": "Product",
+          "category": "JAMES HARDIE - LINEA",
+          "room": null
+        }
+      ],
+      "JAMES HARDIE - MATRIX": [
+        {
+          "name": "Supply Matrix Cladding",
+          "type": "Product",
+          "category": "JAMES HARDIE - MATRIX",
+          "room": null
+        },
+        {
+          "name": "Supply AccuStrip Fa\u00e7ade SYS Backing",
+          "type": "Product",
+          "category": "JAMES HARDIE - MATRIX",
+          "room": null
+        }
+      ],
+      "JAMES HARDIE - BRUSHED CONCRETE": [
+        {
+          "name": "Supply Brushed Concrete Cladding",
+          "type": "Product",
+          "category": "JAMES HARDIE - BRUSHED CONCRETE",
+          "room": null
+        }
+      ],
+      "FEATURE TIMBER CLADDING": [
+        {
+          "name": "Supply External Timber Cladding",
+          "type": "Product",
+          "category": "FEATURE TIMBER CLADDING",
+          "room": null
+        },
+        {
+          "name": "Include Pre-oil 1 coat 360^ - Intergrain Clear",
+          "type": "Product",
+          "category": "FEATURE TIMBER CLADDING",
+          "room": null
+        }
+      ],
+      "TIMBER WEATHERBOARDS": [
+        {
+          "name": "Supply Timber Weatherboards",
+          "type": "Product",
+          "category": "TIMBER WEATHERBOARDS",
+          "room": null
+        }
+      ],
+      "CEMINTEL CLADDING": [
+        {
+          "name": "Supply Territory Cladding",
+          "type": "Product",
+          "category": "CEMINTEL CLADDING",
+          "room": null
+        }
+      ],
+      "EAVES": [
+        {
+          "name": "Supply Cement Sheet for Eaves",
+          "type": "Product",
+          "category": "EAVES",
+          "room": null
+        },
+        {
+          "name": "Supply Cement Sheet for Undercrofts",
+          "type": "Product",
+          "category": "EAVES",
+          "room": null
+        },
+        {
+          "name": "Supply Cement Sheet for Alfrescos",
+          "type": "Product",
+          "category": "EAVES",
+          "room": null
+        },
+        {
+          "name": "Supply Timber Fascia",
+          "type": "Product",
+          "category": "EAVES",
+          "room": null
+        },
+        {
+          "name": "Supply Quad",
+          "type": "Product",
+          "category": "EAVES",
+          "room": null
+        },
+        {
+          "name": "Supply Eave sheet joining strips",
+          "type": "Product",
+          "category": "EAVES",
+          "room": null
+        },
+        {
+          "name": "Supply Eave sheet corner mould",
+          "type": "Product",
+          "category": "EAVES",
+          "room": null
+        },
+        {
+          "name": "Supply Vents for Eave sheets",
+          "type": "Product",
+          "category": "EAVES",
+          "room": null
+        },
+        {
+          "name": "Supply Eave sheet nails",
+          "type": "Product",
+          "category": "EAVES",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Cladding - Metal": {
+    "items": [
+      {
+        "name": "Installation of metal cladding",
+        "type": "Service",
+        "category": "INSTALLATION",
+        "room": null
+      },
+      {
+        "name": "Supply and install metal cladding",
+        "type": "Service",
+        "category": "INSTALLATION",
+        "room": null
+      },
+      {
+        "name": "Supply metal cladding",
+        "type": "Product",
+        "category": "STRUCTUUR",
+        "room": null
+      },
+      {
+        "name": "Supply metal cladding clips",
+        "type": "Product",
+        "category": "COLORBOND",
+        "room": null
+      },
+      {
+        "name": "Supply metal cladding starter strip",
+        "type": "Product",
+        "category": "COLORBOND",
+        "room": null
+      }
+    ],
+    "categories": {
+      "INSTALLATION": [
+        {
+          "name": "Installation of metal cladding",
+          "type": "Service",
+          "category": "INSTALLATION",
+          "room": null
+        },
+        {
+          "name": "Supply and install metal cladding",
+          "type": "Service",
+          "category": "INSTALLATION",
+          "room": null
+        }
+      ],
+      "STRUCTUUR": [
+        {
+          "name": "Supply metal cladding",
+          "type": "Product",
+          "category": "STRUCTUUR",
+          "room": null
+        }
+      ],
+      "COLORBOND": [
+        {
+          "name": "Supply metal cladding clips",
+          "type": "Product",
+          "category": "COLORBOND",
+          "room": null
+        },
+        {
+          "name": "Supply metal cladding starter strip",
+          "type": "Product",
+          "category": "COLORBOND",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Cleaning": {
+    "items": [
+      {
+        "name": "Cleaning services",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      }
+    ],
+    "categories": {
+      "PROJECT BUDGET LINK": [
+        {
+          "name": "Cleaning services",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Concreting - All": {
+    "items": [
+      {
+        "name": "Deliver Steel Reinforcement",
+        "type": "Fee",
+        "category": "PIER HOLES (not inc decks)",
+        "room": null
+      },
+      {
+        "name": "Supply reinforcing bar - Pier Holes",
+        "type": "Product",
+        "category": "PIER HOLES (not inc decks)",
+        "room": null
+      },
+      {
+        "name": "Supply Concrete",
+        "type": "Product",
+        "category": "PIER HOLES (not inc decks)",
+        "room": null
+      },
+      {
+        "name": "Hire of Concrete Pump",
+        "type": "Service",
+        "category": "PIER HOLES (not inc decks)",
+        "room": null
+      },
+      {
+        "name": "Place concrete (labour only)",
+        "type": "Service",
+        "category": "PIER HOLES (not inc decks)",
+        "room": null
+      },
+      {
+        "name": "Supply cast in plates - Pier Holes",
+        "type": "Product",
+        "category": "PIER HOLES (not inc decks)",
+        "room": null
+      },
+      {
+        "name": "Supply reinforcing bar - Strip Footings",
+        "type": "Product",
+        "category": "STRIP FOOTINGS",
+        "room": null
+      },
+      {
+        "name": "Supply Trench Mesh",
+        "type": "Product",
+        "category": "STRIP FOOTINGS",
+        "room": null
+      },
+      {
+        "name": "Supply Bogar Spacers",
+        "type": "Product",
+        "category": "STRIP FOOTINGS",
+        "room": null
+      },
+      {
+        "name": "Supply Tie Wire",
+        "type": "Product",
+        "category": "STRIP FOOTINGS",
+        "room": null
+      },
+      {
+        "name": "Supply Trench Mesh Supports",
+        "type": "Product",
+        "category": "STRIP FOOTINGS",
+        "room": null
+      },
+      {
+        "name": "Place concrete (labour)",
+        "type": "Service",
+        "category": "STRIP FOOTINGS",
+        "room": null
+      },
+      {
+        "name": "Supply reinforcing bar - RW Strip Footings",
+        "type": "Product",
+        "category": "RETAINING WALL STRIP FOOTINGS",
+        "room": null
+      },
+      {
+        "name": "Supply reinforcing bar - RW Core Filling",
+        "type": "Product",
+        "category": "CORE FILLING",
+        "room": null
+      },
+      {
+        "name": "Deliver Sand",
+        "type": "Fee",
+        "category": "CONCRETE SLABS",
+        "room": null
+      },
+      {
+        "name": "Deliver FCR",
+        "type": "Fee",
+        "category": "CONCRETE SLABS",
+        "room": null
+      },
+      {
+        "name": "Supply reinforcing bar - Slab",
+        "type": "Product",
+        "category": "CONCRETE SLABS",
+        "room": null
+      },
+      {
+        "name": "Supply slab mesh",
+        "type": "Product",
+        "category": "CONCRETE SLABS",
+        "room": null
+      },
+      {
+        "name": "Supply Bar Chairs 50/65",
+        "type": "Product",
+        "category": "CONCRETE SLABS",
+        "room": null
+      },
+      {
+        "name": "Prepare steel & place concrete (labour)",
+        "type": "Service",
+        "category": "CONCRETE SLABS",
+        "room": null
+      },
+      {
+        "name": "Supply FCR - Slab",
+        "type": "Product",
+        "category": "CONCRETE SLABS",
+        "room": null
+      },
+      {
+        "name": "Supply Bedding Sand",
+        "type": "Product",
+        "category": "CONCRETE SLABS",
+        "room": null
+      },
+      {
+        "name": "Supply Polythylene film",
+        "type": "Product",
+        "category": "CONCRETE SLABS",
+        "room": null
+      },
+      {
+        "name": "Supply Duct Tape",
+        "type": "Product",
+        "category": "CONCRETE SLABS",
+        "room": null
+      },
+      {
+        "name": "Supply Bondek - Slab",
+        "type": "Product",
+        "category": "CONCRETE SLABS",
+        "room": null
+      },
+      {
+        "name": "Supply Slab insulation",
+        "type": "Product",
+        "category": "CONCRETE SLABS",
+        "room": null
+      },
+      {
+        "name": "Supply reinforcing bar - Driveway/Paths",
+        "type": "Product",
+        "category": "DRIVEWAY/PATHS",
+        "room": null
+      },
+      {
+        "name": "Supply driveway/path mesh",
+        "type": "Product",
+        "category": "DRIVEWAY/PATHS",
+        "room": null
+      },
+      {
+        "name": "Supply FCR - Driveway/Paths",
+        "type": "Product",
+        "category": "DRIVEWAY/PATHS",
+        "room": null
+      },
+      {
+        "name": "Concrete - standard",
+        "type": "Product",
+        "category": "DRIVEWAY/PATHS",
+        "room": null
+      },
+      {
+        "name": "Concrete - exposed agg with oxide",
+        "type": "Product",
+        "category": "DRIVEWAY/PATHS",
+        "room": null
+      },
+      {
+        "name": "Exposed Aggregate Driveway/Path",
+        "type": "Service",
+        "category": "DRIVEWAY/PATHS",
+        "room": null
+      },
+      {
+        "name": "Place concrete kerbing",
+        "type": "Service",
+        "category": "DRIVEWAY/PATHS",
+        "room": null
+      },
+      {
+        "name": "Prepare & Pour Driveway Crossover",
+        "type": "Service",
+        "category": "DRIVEWAY/PATHS",
+        "room": null
+      },
+      {
+        "name": "Acid Wash finished concrete",
+        "type": "Service",
+        "category": "DRIVEWAY/PATHS",
+        "room": null
+      },
+      {
+        "name": "Relief cuts with saw to Driveway/Path",
+        "type": "Service",
+        "category": "DRIVEWAY/PATHS",
+        "room": null
+      },
+      {
+        "name": "Supply reinforcing bar - Deck Piers",
+        "type": "Product",
+        "category": "DECK PIERS",
+        "room": null
+      },
+      {
+        "name": "Supply cast in plates - Deck Piers",
+        "type": "Product",
+        "category": "DECK PIERS",
+        "room": null
+      },
+      {
+        "name": "Supply reinforcing bar - Concrete Stairs",
+        "type": "Product",
+        "category": "CONCRETE STAIRS",
+        "room": null
+      },
+      {
+        "name": "Hire Concrete Pump",
+        "type": "Service",
+        "category": "CONCRETE STAIRS",
+        "room": null
+      }
+    ],
+    "categories": {
+      "PIER HOLES (not inc decks)": [
+        {
+          "name": "Deliver Steel Reinforcement",
+          "type": "Fee",
+          "category": "PIER HOLES (not inc decks)",
+          "room": null
+        },
+        {
+          "name": "Supply reinforcing bar - Pier Holes",
+          "type": "Product",
+          "category": "PIER HOLES (not inc decks)",
+          "room": null
+        },
+        {
+          "name": "Supply Concrete",
+          "type": "Product",
+          "category": "PIER HOLES (not inc decks)",
+          "room": null
+        },
+        {
+          "name": "Hire of Concrete Pump",
+          "type": "Service",
+          "category": "PIER HOLES (not inc decks)",
+          "room": null
+        },
+        {
+          "name": "Place concrete (labour only)",
+          "type": "Service",
+          "category": "PIER HOLES (not inc decks)",
+          "room": null
+        },
+        {
+          "name": "Supply cast in plates - Pier Holes",
+          "type": "Product",
+          "category": "PIER HOLES (not inc decks)",
+          "room": null
+        }
+      ],
+      "STRIP FOOTINGS": [
+        {
+          "name": "Supply reinforcing bar - Strip Footings",
+          "type": "Product",
+          "category": "STRIP FOOTINGS",
+          "room": null
+        },
+        {
+          "name": "Supply Trench Mesh",
+          "type": "Product",
+          "category": "STRIP FOOTINGS",
+          "room": null
+        },
+        {
+          "name": "Supply Bogar Spacers",
+          "type": "Product",
+          "category": "STRIP FOOTINGS",
+          "room": null
+        },
+        {
+          "name": "Supply Tie Wire",
+          "type": "Product",
+          "category": "STRIP FOOTINGS",
+          "room": null
+        },
+        {
+          "name": "Supply Trench Mesh Supports",
+          "type": "Product",
+          "category": "STRIP FOOTINGS",
+          "room": null
+        },
+        {
+          "name": "Place concrete (labour)",
+          "type": "Service",
+          "category": "STRIP FOOTINGS",
+          "room": null
+        }
+      ],
+      "RETAINING WALL STRIP FOOTINGS": [
+        {
+          "name": "Supply reinforcing bar - RW Strip Footings",
+          "type": "Product",
+          "category": "RETAINING WALL STRIP FOOTINGS",
+          "room": null
+        }
+      ],
+      "CORE FILLING": [
+        {
+          "name": "Supply reinforcing bar - RW Core Filling",
+          "type": "Product",
+          "category": "CORE FILLING",
+          "room": null
+        }
+      ],
+      "CONCRETE SLABS": [
+        {
+          "name": "Deliver Sand",
+          "type": "Fee",
+          "category": "CONCRETE SLABS",
+          "room": null
+        },
+        {
+          "name": "Deliver FCR",
+          "type": "Fee",
+          "category": "CONCRETE SLABS",
+          "room": null
+        },
+        {
+          "name": "Supply reinforcing bar - Slab",
+          "type": "Product",
+          "category": "CONCRETE SLABS",
+          "room": null
+        },
+        {
+          "name": "Supply slab mesh",
+          "type": "Product",
+          "category": "CONCRETE SLABS",
+          "room": null
+        },
+        {
+          "name": "Supply Bar Chairs 50/65",
+          "type": "Product",
+          "category": "CONCRETE SLABS",
+          "room": null
+        },
+        {
+          "name": "Prepare steel & place concrete (labour)",
+          "type": "Service",
+          "category": "CONCRETE SLABS",
+          "room": null
+        },
+        {
+          "name": "Supply FCR - Slab",
+          "type": "Product",
+          "category": "CONCRETE SLABS",
+          "room": null
+        },
+        {
+          "name": "Supply Bedding Sand",
+          "type": "Product",
+          "category": "CONCRETE SLABS",
+          "room": null
+        },
+        {
+          "name": "Supply Polythylene film",
+          "type": "Product",
+          "category": "CONCRETE SLABS",
+          "room": null
+        },
+        {
+          "name": "Supply Duct Tape",
+          "type": "Product",
+          "category": "CONCRETE SLABS",
+          "room": null
+        },
+        {
+          "name": "Supply Bondek - Slab",
+          "type": "Product",
+          "category": "CONCRETE SLABS",
+          "room": null
+        },
+        {
+          "name": "Supply Slab insulation",
+          "type": "Product",
+          "category": "CONCRETE SLABS",
+          "room": null
+        }
+      ],
+      "DRIVEWAY/PATHS": [
+        {
+          "name": "Supply reinforcing bar - Driveway/Paths",
+          "type": "Product",
+          "category": "DRIVEWAY/PATHS",
+          "room": null
+        },
+        {
+          "name": "Supply driveway/path mesh",
+          "type": "Product",
+          "category": "DRIVEWAY/PATHS",
+          "room": null
+        },
+        {
+          "name": "Supply FCR - Driveway/Paths",
+          "type": "Product",
+          "category": "DRIVEWAY/PATHS",
+          "room": null
+        },
+        {
+          "name": "Concrete - standard",
+          "type": "Product",
+          "category": "DRIVEWAY/PATHS",
+          "room": null
+        },
+        {
+          "name": "Concrete - exposed agg with oxide",
+          "type": "Product",
+          "category": "DRIVEWAY/PATHS",
+          "room": null
+        },
+        {
+          "name": "Exposed Aggregate Driveway/Path",
+          "type": "Service",
+          "category": "DRIVEWAY/PATHS",
+          "room": null
+        },
+        {
+          "name": "Place concrete kerbing",
+          "type": "Service",
+          "category": "DRIVEWAY/PATHS",
+          "room": null
+        },
+        {
+          "name": "Prepare & Pour Driveway Crossover",
+          "type": "Service",
+          "category": "DRIVEWAY/PATHS",
+          "room": null
+        },
+        {
+          "name": "Acid Wash finished concrete",
+          "type": "Service",
+          "category": "DRIVEWAY/PATHS",
+          "room": null
+        },
+        {
+          "name": "Relief cuts with saw to Driveway/Path",
+          "type": "Service",
+          "category": "DRIVEWAY/PATHS",
+          "room": null
+        }
+      ],
+      "DECK PIERS": [
+        {
+          "name": "Supply reinforcing bar - Deck Piers",
+          "type": "Product",
+          "category": "DECK PIERS",
+          "room": null
+        },
+        {
+          "name": "Supply cast in plates - Deck Piers",
+          "type": "Product",
+          "category": "DECK PIERS",
+          "room": null
+        }
+      ],
+      "CONCRETE STAIRS": [
+        {
+          "name": "Supply reinforcing bar - Concrete Stairs",
+          "type": "Product",
+          "category": "CONCRETE STAIRS",
+          "room": null
+        },
+        {
+          "name": "Hire Concrete Pump",
+          "type": "Service",
+          "category": "CONCRETE STAIRS",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Decks": {
+    "items": [
+      {
+        "name": "Delivery fees",
+        "type": "Fee",
+        "category": "DELIVERIES",
+        "room": null
+      },
+      {
+        "name": "Supply metal strap bracing and/or accessories",
+        "type": "Product",
+        "category": "BRACING",
+        "room": null
+      },
+      {
+        "name": "Supply Treated Pine Decking",
+        "type": "Product",
+        "category": "TIMBER DECKING/SCREENING",
+        "room": null
+      },
+      {
+        "name": "Supply Treated Pine Screening",
+        "type": "Product",
+        "category": "TIMBER DECKING/SCREENING",
+        "room": null
+      },
+      {
+        "name": "Supply Hardwood Decking",
+        "type": "Product",
+        "category": "TIMBER DECKING/SCREENING",
+        "room": null
+      },
+      {
+        "name": "Supply Composite Decking",
+        "type": "Product",
+        "category": "TIMBER DECKING/SCREENING",
+        "room": null
+      },
+      {
+        "name": "Supply Composite Screening",
+        "type": "Product",
+        "category": "TIMBER DECKING/SCREENING",
+        "room": null
+      },
+      {
+        "name": "Pre-oil 1 coat 360^ - Intergrain Clear",
+        "type": "Product",
+        "category": "TIMBER DECKING/SCREENING",
+        "room": null
+      },
+      {
+        "name": "Supply Treated Pine Framing - Bearers",
+        "type": "Product",
+        "category": "TREATED PINE FRAMING - FINELINE",
+        "room": null
+      },
+      {
+        "name": "Supply Treated Pine Framing - Joists",
+        "type": "Product",
+        "category": "TREATED PINE FRAMING - FINELINE",
+        "room": null
+      },
+      {
+        "name": "Supply Treated Pine Framing",
+        "type": "Product",
+        "category": "TREATED PINE FRAMING - FINELINE",
+        "room": null
+      },
+      {
+        "name": "Supply Pre-Primed Treated Pine Framing",
+        "type": "Product",
+        "category": "TREATED PINE FRAMING - PRE-PRIMED",
+        "room": null
+      },
+      {
+        "name": "Supply decking screws",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply framing nails",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply bugle (batten) screws",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply KlevaKlips",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply dynabolts",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply anchor screws",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply post supports",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply joist hangers",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply bolts & nuts",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply washers",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      }
+    ],
+    "categories": {
+      "DELIVERIES": [
+        {
+          "name": "Delivery fees",
+          "type": "Fee",
+          "category": "DELIVERIES",
+          "room": null
+        }
+      ],
+      "BRACING": [
+        {
+          "name": "Supply metal strap bracing and/or accessories",
+          "type": "Product",
+          "category": "BRACING",
+          "room": null
+        }
+      ],
+      "TIMBER DECKING/SCREENING": [
+        {
+          "name": "Supply Treated Pine Decking",
+          "type": "Product",
+          "category": "TIMBER DECKING/SCREENING",
+          "room": null
+        },
+        {
+          "name": "Supply Treated Pine Screening",
+          "type": "Product",
+          "category": "TIMBER DECKING/SCREENING",
+          "room": null
+        },
+        {
+          "name": "Supply Hardwood Decking",
+          "type": "Product",
+          "category": "TIMBER DECKING/SCREENING",
+          "room": null
+        },
+        {
+          "name": "Supply Composite Decking",
+          "type": "Product",
+          "category": "TIMBER DECKING/SCREENING",
+          "room": null
+        },
+        {
+          "name": "Supply Composite Screening",
+          "type": "Product",
+          "category": "TIMBER DECKING/SCREENING",
+          "room": null
+        },
+        {
+          "name": "Pre-oil 1 coat 360^ - Intergrain Clear",
+          "type": "Product",
+          "category": "TIMBER DECKING/SCREENING",
+          "room": null
+        }
+      ],
+      "TREATED PINE FRAMING - FINELINE": [
+        {
+          "name": "Supply Treated Pine Framing - Bearers",
+          "type": "Product",
+          "category": "TREATED PINE FRAMING - FINELINE",
+          "room": null
+        },
+        {
+          "name": "Supply Treated Pine Framing - Joists",
+          "type": "Product",
+          "category": "TREATED PINE FRAMING - FINELINE",
+          "room": null
+        },
+        {
+          "name": "Supply Treated Pine Framing",
+          "type": "Product",
+          "category": "TREATED PINE FRAMING - FINELINE",
+          "room": null
+        }
+      ],
+      "TREATED PINE FRAMING - PRE-PRIMED": [
+        {
+          "name": "Supply Pre-Primed Treated Pine Framing",
+          "type": "Product",
+          "category": "TREATED PINE FRAMING - PRE-PRIMED",
+          "room": null
+        }
+      ],
+      "FIXINGS": [
+        {
+          "name": "Supply decking screws",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply framing nails",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply bugle (batten) screws",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply KlevaKlips",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply dynabolts",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply anchor screws",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply post supports",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply joist hangers",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply bolts & nuts",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply washers",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Demo": {
+    "items": [
+      {
+        "name": "Demo company - all inclusive price",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Waste Disposal Costs",
+        "type": "Fee",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Bin Hire and Disposal Fees",
+        "type": "Fee",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Tip Fees",
+        "type": "Fee",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Labour for demo",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Remove and disposal labour",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      }
+    ],
+    "categories": {
+      "PROJECT BUDGET LINK": [
+        {
+          "name": "Demo company - all inclusive price",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Waste Disposal Costs",
+          "type": "Fee",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Bin Hire and Disposal Fees",
+          "type": "Fee",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Tip Fees",
+          "type": "Fee",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Labour for demo",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Remove and disposal labour",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Electrical": {
+    "items": [
+      {
+        "name": "Supply and install Lights",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Install Lights only",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install dimmer",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install movement sensor",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install light switch",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install smoke detector",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install hot water connection",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install oven circuit and connection",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install rangehood power and ducting",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install extraction fan",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install light/heater/fan combo",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install TV wiring",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install Data point",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install NBN conduit",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Install sweep fan",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install power for AWTS",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install power for external pump",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install floor box",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Electrical work - hourly rate",
+        "type": "Service",
+        "category": "NEW WORK",
+        "room": null
+      },
+      {
+        "name": "Decommission fee",
+        "type": "Service",
+        "category": "RENOVATION WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install GPO",
+        "type": "Service",
+        "category": "RENOVATION WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install Air Conditioning",
+        "type": "Service",
+        "category": "HEATING/COOLING",
+        "room": null
+      },
+      {
+        "name": "Supply and install Ducted zoning",
+        "type": "Service",
+        "category": "HEATING/COOLING",
+        "room": null
+      },
+      {
+        "name": "Supply and install Underfloor heating",
+        "type": "Service",
+        "category": "HEATING/COOLING",
+        "room": null
+      }
+    ],
+    "categories": {
+      "NEW WORK": [
+        {
+          "name": "Supply and install Lights",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Install Lights only",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install dimmer",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install movement sensor",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install light switch",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install smoke detector",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install hot water connection",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install oven circuit and connection",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install rangehood power and ducting",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install extraction fan",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install light/heater/fan combo",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install TV wiring",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install Data point",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install NBN conduit",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Install sweep fan",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install power for AWTS",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install power for external pump",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install floor box",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        },
+        {
+          "name": "Electrical work - hourly rate",
+          "type": "Service",
+          "category": "NEW WORK",
+          "room": null
+        }
+      ],
+      "RENOVATION WORK": [
+        {
+          "name": "Decommission fee",
+          "type": "Service",
+          "category": "RENOVATION WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install GPO",
+          "type": "Service",
+          "category": "RENOVATION WORK",
+          "room": null
+        }
+      ],
+      "HEATING/COOLING": [
+        {
+          "name": "Supply and install Air Conditioning",
+          "type": "Service",
+          "category": "HEATING/COOLING",
+          "room": null
+        },
+        {
+          "name": "Supply and install Ducted zoning",
+          "type": "Service",
+          "category": "HEATING/COOLING",
+          "room": null
+        },
+        {
+          "name": "Supply and install Underfloor heating",
+          "type": "Service",
+          "category": "HEATING/COOLING",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Electrical Fittings": {
+    "items": [
+      {
+        "name": "Supply of LED Downlights",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply of Pendant Light",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply of Wall Light",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply of External Light",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply of Sensor Light",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply of LED Batten Light",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply of Ceiling Fan",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply of Feature Light",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      }
+    ],
+    "categories": {
+      "PROJECT BUDGET LINK": [
+        {
+          "name": "Supply of LED Downlights",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply of Pendant Light",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply of Wall Light",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply of External Light",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply of Sensor Light",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply of LED Batten Light",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply of Ceiling Fan",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply of Feature Light",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Electrical Mains": {
+    "items": [
+      {
+        "name": "Supply & install slab earth bond",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply & install 32amp circuit",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply & install switchboard",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply & install mains",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      }
+    ],
+    "categories": {
+      "PROJECT BUDGET LINK": [
+        {
+          "name": "Supply & install slab earth bond",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply & install 32amp circuit",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply & install switchboard",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply & install mains",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Excavation": {
+    "items": [
+      {
+        "name": "Bulk Excavaton & Disposal",
+        "type": "Service",
+        "category": "(rates from MKH - 19/9/24)",
+        "room": null
+      },
+      {
+        "name": "Spread and compact FCR",
+        "type": "Service",
+        "category": "(rates from MKH - 19/9/24)",
+        "room": null
+      },
+      {
+        "name": "Supply and install 7m bluemetal",
+        "type": "Service",
+        "category": "(rates from MKH - 19/9/24)",
+        "room": null
+      },
+      {
+        "name": "Pier holes",
+        "type": "Service",
+        "category": "(rates from MKH - 19/9/24)",
+        "room": null
+      },
+      {
+        "name": "Service Trench - 600mm deep",
+        "type": "Service",
+        "category": "(rates from MKH - 19/9/24)",
+        "room": null
+      },
+      {
+        "name": "Service Trench - 450mm deep",
+        "type": "Service",
+        "category": "(rates from MKH - 19/9/24)",
+        "room": null
+      },
+      {
+        "name": "Initial site scrape",
+        "type": "Service",
+        "category": "(rates from MKH - 19/9/24)",
+        "room": null
+      },
+      {
+        "name": "Construct temporary access",
+        "type": "Service",
+        "category": "(rates from MKH - 19/9/24)",
+        "room": null
+      },
+      {
+        "name": "Final site grounds clean up & make good",
+        "type": "Service",
+        "category": "(rates from MKH - 19/9/24)",
+        "room": null
+      },
+      {
+        "name": "Float fee - delivery & take away",
+        "type": "Service",
+        "category": "(rates from MKH - 19/9/24)",
+        "room": null
+      }
+    ],
+    "categories": {
+      "(rates from MKH - 19/9/24)": [
+        {
+          "name": "Bulk Excavaton & Disposal",
+          "type": "Service",
+          "category": "(rates from MKH - 19/9/24)",
+          "room": null
+        },
+        {
+          "name": "Spread and compact FCR",
+          "type": "Service",
+          "category": "(rates from MKH - 19/9/24)",
+          "room": null
+        },
+        {
+          "name": "Supply and install 7m bluemetal",
+          "type": "Service",
+          "category": "(rates from MKH - 19/9/24)",
+          "room": null
+        },
+        {
+          "name": "Pier holes",
+          "type": "Service",
+          "category": "(rates from MKH - 19/9/24)",
+          "room": null
+        },
+        {
+          "name": "Service Trench - 600mm deep",
+          "type": "Service",
+          "category": "(rates from MKH - 19/9/24)",
+          "room": null
+        },
+        {
+          "name": "Service Trench - 450mm deep",
+          "type": "Service",
+          "category": "(rates from MKH - 19/9/24)",
+          "room": null
+        },
+        {
+          "name": "Initial site scrape",
+          "type": "Service",
+          "category": "(rates from MKH - 19/9/24)",
+          "room": null
+        },
+        {
+          "name": "Construct temporary access",
+          "type": "Service",
+          "category": "(rates from MKH - 19/9/24)",
+          "room": null
+        },
+        {
+          "name": "Final site grounds clean up & make good",
+          "type": "Service",
+          "category": "(rates from MKH - 19/9/24)",
+          "room": null
+        },
+        {
+          "name": "Float fee - delivery & take away",
+          "type": "Service",
+          "category": "(rates from MKH - 19/9/24)",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Fencing": {
+    "items": [
+      {
+        "name": "Supply & install double gates",
+        "type": "Product",
+        "category": "GATES",
+        "room": null
+      },
+      {
+        "name": "Supply & install single gate",
+        "type": "Product",
+        "category": "GATES",
+        "room": null
+      },
+      {
+        "name": "Supply & install fencing",
+        "type": "Product",
+        "category": "1.2M HIGH FENCING",
+        "room": null
+      },
+      {
+        "name": "Supply & install screening",
+        "type": "Product",
+        "category": "1.2M HIGH FENCING",
+        "room": null
+      }
+    ],
+    "categories": {
+      "GATES": [
+        {
+          "name": "Supply & install double gates",
+          "type": "Product",
+          "category": "GATES",
+          "room": null
+        },
+        {
+          "name": "Supply & install single gate",
+          "type": "Product",
+          "category": "GATES",
+          "room": null
+        }
+      ],
+      "1.2M HIGH FENCING": [
+        {
+          "name": "Supply & install fencing",
+          "type": "Product",
+          "category": "1.2M HIGH FENCING",
+          "room": null
+        },
+        {
+          "name": "Supply & install screening",
+          "type": "Product",
+          "category": "1.2M HIGH FENCING",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Fitout": {
+    "items": [
+      {
+        "name": "Delivery fees",
+        "type": "Fee",
+        "category": "DELIVERIES",
+        "room": null
+      },
+      {
+        "name": "Supply internal hinged door - 720mm",
+        "type": "Product",
+        "category": "INTERNAL DOORS",
+        "room": null
+      },
+      {
+        "name": "Supply internal hinged door - 820mm",
+        "type": "Product",
+        "category": "INTERNAL DOORS",
+        "room": null
+      },
+      {
+        "name": "Supply internal hinged door - 870mm",
+        "type": "Product",
+        "category": "INTERNAL DOORS",
+        "room": null
+      },
+      {
+        "name": "Supply internal hinged door - Non-standard",
+        "type": "Product",
+        "category": "INTERNAL DOORS",
+        "room": null
+      },
+      {
+        "name": "Supply internal door",
+        "type": "Product",
+        "category": "INTERNAL DOORS",
+        "room": null
+      },
+      {
+        "name": "Supply internal door jamb",
+        "type": "Product",
+        "category": "INTERNAL DOORS",
+        "room": null
+      },
+      {
+        "name": "Supply internal door handle",
+        "type": "Product",
+        "category": "INTERNAL DOORS",
+        "room": null
+      },
+      {
+        "name": "Supply cavity slider lockset",
+        "type": "Product",
+        "category": "INTERNAL DOORS",
+        "room": null
+      },
+      {
+        "name": "Supply internal door hinges",
+        "type": "Product",
+        "category": "INTERNAL DOORS",
+        "room": null
+      },
+      {
+        "name": "Supply internal door stop",
+        "type": "Product",
+        "category": "INTERNAL DOORS",
+        "room": null
+      },
+      {
+        "name": "Supply door catches - robes",
+        "type": "Product",
+        "category": "INTERNAL DOORS",
+        "room": null
+      },
+      {
+        "name": "Supply internal barn door",
+        "type": "Product",
+        "category": "INTERNAL DOORS",
+        "room": null
+      },
+      {
+        "name": "Supply External Door",
+        "type": "Product",
+        "category": "EXTERNAL DOORS",
+        "room": null
+      },
+      {
+        "name": "Supply External Timber Door Frame",
+        "type": "Product",
+        "category": "EXTERNAL DOORS",
+        "room": null
+      },
+      {
+        "name": "Supply External Door Handle/Lock",
+        "type": "Product",
+        "category": "EXTERNAL DOORS",
+        "room": null
+      },
+      {
+        "name": "Supply External Door Hinges",
+        "type": "Product",
+        "category": "EXTERNAL DOORS",
+        "room": null
+      },
+      {
+        "name": "Supply Weather seals for doors",
+        "type": "Product",
+        "category": "EXTERNAL DOORS",
+        "room": null
+      },
+      {
+        "name": "Supply Skirtings",
+        "type": "Product",
+        "category": "MOULDINGS",
+        "room": null
+      },
+      {
+        "name": "Supply Architraves - MDF",
+        "type": "Product",
+        "category": "MOULDINGS",
+        "room": null
+      },
+      {
+        "name": "Supply Architraves - Pine",
+        "type": "Product",
+        "category": "MOULDINGS",
+        "room": null
+      },
+      {
+        "name": "Supply Architraves - Hardwood",
+        "type": "Product",
+        "category": "MOULDINGS",
+        "room": null
+      },
+      {
+        "name": "Supply Skirtings - MDF",
+        "type": "Product",
+        "category": "MOULDINGS",
+        "room": null
+      },
+      {
+        "name": "Supply Skirtings - Pine",
+        "type": "Product",
+        "category": "MOULDINGS",
+        "room": null
+      },
+      {
+        "name": "Supply Skirtings - Hardwood",
+        "type": "Product",
+        "category": "MOULDINGS",
+        "room": null
+      },
+      {
+        "name": "Supply Fixing nails",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply PVA Glue",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply Feature Timber",
+        "type": "Product",
+        "category": "MISCELLEANEOUS",
+        "room": null
+      },
+      {
+        "name": "Supply Feature Shelves",
+        "type": "Product",
+        "category": "MISCELLEANEOUS",
+        "room": null
+      },
+      {
+        "name": "Supply ceiling access frame",
+        "type": "Product",
+        "category": "MISCELLEANEOUS",
+        "room": null
+      },
+      {
+        "name": "Supply ceiling access panel",
+        "type": "Product",
+        "category": "MISCELLEANEOUS",
+        "room": null
+      },
+      {
+        "name": "Supply Pet Door",
+        "type": "Product",
+        "category": "MISCELLEANEOUS",
+        "room": null
+      }
+    ],
+    "categories": {
+      "DELIVERIES": [
+        {
+          "name": "Delivery fees",
+          "type": "Fee",
+          "category": "DELIVERIES",
+          "room": null
+        }
+      ],
+      "INTERNAL DOORS": [
+        {
+          "name": "Supply internal hinged door - 720mm",
+          "type": "Product",
+          "category": "INTERNAL DOORS",
+          "room": null
+        },
+        {
+          "name": "Supply internal hinged door - 820mm",
+          "type": "Product",
+          "category": "INTERNAL DOORS",
+          "room": null
+        },
+        {
+          "name": "Supply internal hinged door - 870mm",
+          "type": "Product",
+          "category": "INTERNAL DOORS",
+          "room": null
+        },
+        {
+          "name": "Supply internal hinged door - Non-standard",
+          "type": "Product",
+          "category": "INTERNAL DOORS",
+          "room": null
+        },
+        {
+          "name": "Supply internal door",
+          "type": "Product",
+          "category": "INTERNAL DOORS",
+          "room": null
+        },
+        {
+          "name": "Supply internal door jamb",
+          "type": "Product",
+          "category": "INTERNAL DOORS",
+          "room": null
+        },
+        {
+          "name": "Supply internal door handle",
+          "type": "Product",
+          "category": "INTERNAL DOORS",
+          "room": null
+        },
+        {
+          "name": "Supply cavity slider lockset",
+          "type": "Product",
+          "category": "INTERNAL DOORS",
+          "room": null
+        },
+        {
+          "name": "Supply internal door hinges",
+          "type": "Product",
+          "category": "INTERNAL DOORS",
+          "room": null
+        },
+        {
+          "name": "Supply internal door stop",
+          "type": "Product",
+          "category": "INTERNAL DOORS",
+          "room": null
+        },
+        {
+          "name": "Supply door catches - robes",
+          "type": "Product",
+          "category": "INTERNAL DOORS",
+          "room": null
+        },
+        {
+          "name": "Supply internal barn door",
+          "type": "Product",
+          "category": "INTERNAL DOORS",
+          "room": null
+        }
+      ],
+      "EXTERNAL DOORS": [
+        {
+          "name": "Supply External Door",
+          "type": "Product",
+          "category": "EXTERNAL DOORS",
+          "room": null
+        },
+        {
+          "name": "Supply External Timber Door Frame",
+          "type": "Product",
+          "category": "EXTERNAL DOORS",
+          "room": null
+        },
+        {
+          "name": "Supply External Door Handle/Lock",
+          "type": "Product",
+          "category": "EXTERNAL DOORS",
+          "room": null
+        },
+        {
+          "name": "Supply External Door Hinges",
+          "type": "Product",
+          "category": "EXTERNAL DOORS",
+          "room": null
+        },
+        {
+          "name": "Supply Weather seals for doors",
+          "type": "Product",
+          "category": "EXTERNAL DOORS",
+          "room": null
+        }
+      ],
+      "MOULDINGS": [
+        {
+          "name": "Supply Skirtings",
+          "type": "Product",
+          "category": "MOULDINGS",
+          "room": null
+        },
+        {
+          "name": "Supply Architraves - MDF",
+          "type": "Product",
+          "category": "MOULDINGS",
+          "room": null
+        },
+        {
+          "name": "Supply Architraves - Pine",
+          "type": "Product",
+          "category": "MOULDINGS",
+          "room": null
+        },
+        {
+          "name": "Supply Architraves - Hardwood",
+          "type": "Product",
+          "category": "MOULDINGS",
+          "room": null
+        },
+        {
+          "name": "Supply Skirtings - MDF",
+          "type": "Product",
+          "category": "MOULDINGS",
+          "room": null
+        },
+        {
+          "name": "Supply Skirtings - Pine",
+          "type": "Product",
+          "category": "MOULDINGS",
+          "room": null
+        },
+        {
+          "name": "Supply Skirtings - Hardwood",
+          "type": "Product",
+          "category": "MOULDINGS",
+          "room": null
+        }
+      ],
+      "FIXINGS": [
+        {
+          "name": "Supply Fixing nails",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply PVA Glue",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        }
+      ],
+      "MISCELLEANEOUS": [
+        {
+          "name": "Supply Feature Timber",
+          "type": "Product",
+          "category": "MISCELLEANEOUS",
+          "room": null
+        },
+        {
+          "name": "Supply Feature Shelves",
+          "type": "Product",
+          "category": "MISCELLEANEOUS",
+          "room": null
+        },
+        {
+          "name": "Supply ceiling access frame",
+          "type": "Product",
+          "category": "MISCELLEANEOUS",
+          "room": null
+        },
+        {
+          "name": "Supply ceiling access panel",
+          "type": "Product",
+          "category": "MISCELLEANEOUS",
+          "room": null
+        },
+        {
+          "name": "Supply Pet Door",
+          "type": "Product",
+          "category": "MISCELLEANEOUS",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Flashings": {
+    "items": [
+      {
+        "name": "Delivery fees for > 3.0m lengths",
+        "type": "Fee",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply window flashings",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply door flashings",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply roof flashings",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      }
+    ],
+    "categories": {
+      "PROJECT BUDGET LINK": [
+        {
+          "name": "Delivery fees for > 3.0m lengths",
+          "type": "Fee",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply window flashings",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply door flashings",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply roof flashings",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Floor Covering": {
+    "items": [
+      {
+        "name": "Supply and lay carpet & underlay",
+        "type": "Product",
+        "category": "Carpet",
+        "room": null
+      },
+      {
+        "name": "Supply & lay laminate overlay flooring",
+        "type": "Product",
+        "category": "Laminate Overlay",
+        "room": null
+      },
+      {
+        "name": "Supply & lay hybrid overlay flooring",
+        "type": "Product",
+        "category": "Hybrid Overlay",
+        "room": null
+      },
+      {
+        "name": "Supply & lay engineered timber overlay flooring",
+        "type": "Product",
+        "category": "Engineered Timber Overlay (does not req sanding & sealing)",
+        "room": null
+      },
+      {
+        "name": "Supply & lay solid timber flooring",
+        "type": "Product",
+        "category": "Solid Timber Flooring (req sanding & sealing)",
+        "room": null
+      },
+      {
+        "name": "Sand & finish new solid timber flooring",
+        "type": "Product",
+        "category": "Floor Sanding",
+        "room": null
+      },
+      {
+        "name": "Sand & finish old solid timber flooring",
+        "type": "Product",
+        "category": "Floor Sanding",
+        "room": null
+      },
+      {
+        "name": "Sand & finish  reallyold solid timber flooring",
+        "type": "Product",
+        "category": "Floor Sanding",
+        "room": null
+      },
+      {
+        "name": "Supply and lay loose laid vinyl",
+        "type": "Product",
+        "category": "Vinyl",
+        "room": null
+      },
+      {
+        "name": "Supply and lay vinyl planks",
+        "type": "Product",
+        "category": "Vinyl",
+        "room": null
+      },
+      {
+        "name": "Diamond grind & mechanical polish of concrete floor",
+        "type": "Product",
+        "category": "Polished Concrete",
+        "room": null
+      }
+    ],
+    "categories": {
+      "Carpet": [
+        {
+          "name": "Supply and lay carpet & underlay",
+          "type": "Product",
+          "category": "Carpet",
+          "room": null
+        }
+      ],
+      "Laminate Overlay": [
+        {
+          "name": "Supply & lay laminate overlay flooring",
+          "type": "Product",
+          "category": "Laminate Overlay",
+          "room": null
+        }
+      ],
+      "Hybrid Overlay": [
+        {
+          "name": "Supply & lay hybrid overlay flooring",
+          "type": "Product",
+          "category": "Hybrid Overlay",
+          "room": null
+        }
+      ],
+      "Engineered Timber Overlay (does not req sanding & sealing)": [
+        {
+          "name": "Supply & lay engineered timber overlay flooring",
+          "type": "Product",
+          "category": "Engineered Timber Overlay (does not req sanding & sealing)",
+          "room": null
+        }
+      ],
+      "Solid Timber Flooring (req sanding & sealing)": [
+        {
+          "name": "Supply & lay solid timber flooring",
+          "type": "Product",
+          "category": "Solid Timber Flooring (req sanding & sealing)",
+          "room": null
+        }
+      ],
+      "Floor Sanding": [
+        {
+          "name": "Sand & finish new solid timber flooring",
+          "type": "Product",
+          "category": "Floor Sanding",
+          "room": null
+        },
+        {
+          "name": "Sand & finish old solid timber flooring",
+          "type": "Product",
+          "category": "Floor Sanding",
+          "room": null
+        },
+        {
+          "name": "Sand & finish  reallyold solid timber flooring",
+          "type": "Product",
+          "category": "Floor Sanding",
+          "room": null
+        }
+      ],
+      "Vinyl": [
+        {
+          "name": "Supply and lay loose laid vinyl",
+          "type": "Product",
+          "category": "Vinyl",
+          "room": null
+        },
+        {
+          "name": "Supply and lay vinyl planks",
+          "type": "Product",
+          "category": "Vinyl",
+          "room": null
+        }
+      ],
+      "Polished Concrete": [
+        {
+          "name": "Diamond grind & mechanical polish of concrete floor",
+          "type": "Product",
+          "category": "Polished Concrete",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Floor Framing": {
+    "items": [
+      {
+        "name": "Delivery fees",
+        "type": "Fee",
+        "category": "DELIVERIES",
+        "room": null
+      },
+      {
+        "name": "Supply Sheet Flooring",
+        "type": "Product",
+        "category": "FLOORING",
+        "room": null
+      },
+      {
+        "name": "Supply Flooring Adhesive",
+        "type": "Product",
+        "category": "FLOORING",
+        "room": null
+      },
+      {
+        "name": "Supply metal strap bracing and/or accessories",
+        "type": "Product",
+        "category": "BRACING",
+        "room": null
+      },
+      {
+        "name": "Supply Pine Framing",
+        "type": "Product",
+        "category": "FRAMING PINE",
+        "room": null
+      },
+      {
+        "name": "Supply Treated Pine Framing",
+        "type": "Product",
+        "category": "FRAMING TREATED PINE",
+        "room": null
+      },
+      {
+        "name": "Supply LVL Framing",
+        "type": "Product",
+        "category": "FRAMING ENGINEERED",
+        "room": null
+      },
+      {
+        "name": "Supply F17 Hardwood Framing",
+        "type": "Product",
+        "category": "FRAMING HARDWOOD",
+        "room": null
+      },
+      {
+        "name": "Supply Earthwool Encapsulated Underfloor Batt",
+        "type": "Product",
+        "category": "INSULATION",
+        "room": null
+      },
+      {
+        "name": "Supply Underfloor Strapping for Batts",
+        "type": "Product",
+        "category": "INSULATION",
+        "room": null
+      },
+      {
+        "name": "Supply Underfloor Insulation",
+        "type": "Product",
+        "category": "INSULATION",
+        "room": null
+      },
+      {
+        "name": "Supply Framing Nails",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply bugle (batten) screws",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply Window Packers",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply dynabolts",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply anchor screws",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply joist hangers",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply bolts & nuts",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply washers",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      }
+    ],
+    "categories": {
+      "DELIVERIES": [
+        {
+          "name": "Delivery fees",
+          "type": "Fee",
+          "category": "DELIVERIES",
+          "room": null
+        }
+      ],
+      "FLOORING": [
+        {
+          "name": "Supply Sheet Flooring",
+          "type": "Product",
+          "category": "FLOORING",
+          "room": null
+        },
+        {
+          "name": "Supply Flooring Adhesive",
+          "type": "Product",
+          "category": "FLOORING",
+          "room": null
+        }
+      ],
+      "BRACING": [
+        {
+          "name": "Supply metal strap bracing and/or accessories",
+          "type": "Product",
+          "category": "BRACING",
+          "room": null
+        }
+      ],
+      "FRAMING PINE": [
+        {
+          "name": "Supply Pine Framing",
+          "type": "Product",
+          "category": "FRAMING PINE",
+          "room": null
+        }
+      ],
+      "FRAMING TREATED PINE": [
+        {
+          "name": "Supply Treated Pine Framing",
+          "type": "Product",
+          "category": "FRAMING TREATED PINE",
+          "room": null
+        }
+      ],
+      "FRAMING ENGINEERED": [
+        {
+          "name": "Supply LVL Framing",
+          "type": "Product",
+          "category": "FRAMING ENGINEERED",
+          "room": null
+        }
+      ],
+      "FRAMING HARDWOOD": [
+        {
+          "name": "Supply F17 Hardwood Framing",
+          "type": "Product",
+          "category": "FRAMING HARDWOOD",
+          "room": null
+        }
+      ],
+      "INSULATION": [
+        {
+          "name": "Supply Earthwool Encapsulated Underfloor Batt",
+          "type": "Product",
+          "category": "INSULATION",
+          "room": null
+        },
+        {
+          "name": "Supply Underfloor Strapping for Batts",
+          "type": "Product",
+          "category": "INSULATION",
+          "room": null
+        },
+        {
+          "name": "Supply Underfloor Insulation",
+          "type": "Product",
+          "category": "INSULATION",
+          "room": null
+        }
+      ],
+      "FIXINGS": [
+        {
+          "name": "Supply Framing Nails",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply bugle (batten) screws",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply Window Packers",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply dynabolts",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply anchor screws",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply joist hangers",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply bolts & nuts",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply washers",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Garage": {
+    "items": [
+      {
+        "name": "Supply and fit roller door",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply and fit panel lift door",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply and fit tilt-a-door",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      }
+    ],
+    "categories": {
+      "PROJECT BUDGET LINK": [
+        {
+          "name": "Supply and fit roller door",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply and fit panel lift door",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply and fit tilt-a-door",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Glazing": {
+    "items": [
+      {
+        "name": "Supply & install shower screen",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      }
+    ],
+    "categories": {
+      "PROJECT BUDGET LINK": [
+        {
+          "name": "Supply & install shower screen",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Joinery": {
+    "items": [
+      {
+        "name": "Supply & install Kitchen joinery",
+        "type": "Product",
+        "category": "EVERYDAY PRODUCTS RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply & install Pantry joinery",
+        "type": "Product",
+        "category": "EVERYDAY PRODUCTS RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply & install Laundry joinery",
+        "type": "Product",
+        "category": "EVERYDAY PRODUCTS RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply & install Built in Robe",
+        "type": "Product",
+        "category": "EVERYDAY PRODUCTS RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply & install Walk in Robe",
+        "type": "Product",
+        "category": "EVERYDAY PRODUCTS RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply & install Vanity cabinet",
+        "type": "Product",
+        "category": "EVERYDAY PRODUCTS RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply & install Linen cupboard",
+        "type": "Product",
+        "category": "EVERYDAY PRODUCTS RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply & install Day Bed",
+        "type": "Product",
+        "category": "EVERYDAY PRODUCTS RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply & install Wall Unit",
+        "type": "Product",
+        "category": "EVERYDAY PRODUCTS RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply & install Joinery (other)",
+        "type": "Product",
+        "category": "EVERYDAY PRODUCTS RANGE",
+        "room": null
+      }
+    ],
+    "categories": {
+      "EVERYDAY PRODUCTS RANGE": [
+        {
+          "name": "Supply & install Kitchen joinery",
+          "type": "Product",
+          "category": "EVERYDAY PRODUCTS RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply & install Pantry joinery",
+          "type": "Product",
+          "category": "EVERYDAY PRODUCTS RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply & install Laundry joinery",
+          "type": "Product",
+          "category": "EVERYDAY PRODUCTS RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply & install Built in Robe",
+          "type": "Product",
+          "category": "EVERYDAY PRODUCTS RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply & install Walk in Robe",
+          "type": "Product",
+          "category": "EVERYDAY PRODUCTS RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply & install Vanity cabinet",
+          "type": "Product",
+          "category": "EVERYDAY PRODUCTS RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply & install Linen cupboard",
+          "type": "Product",
+          "category": "EVERYDAY PRODUCTS RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply & install Day Bed",
+          "type": "Product",
+          "category": "EVERYDAY PRODUCTS RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply & install Wall Unit",
+          "type": "Product",
+          "category": "EVERYDAY PRODUCTS RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply & install Joinery (other)",
+          "type": "Product",
+          "category": "EVERYDAY PRODUCTS RANGE",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Joinery - Int Stairs": {
+    "items": [
+      {
+        "name": "Supply & install Customwood Stairs",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply & install Tas Oak Stairs",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      }
+    ],
+    "categories": {
+      "PROJECT BUDGET LINK": [
+        {
+          "name": "Supply & install Customwood Stairs",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply & install Tas Oak Stairs",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Landscape": {
+    "items": [
+      {
+        "name": "Delivery fees",
+        "type": "Fee",
+        "category": "DELIVERIES",
+        "room": null
+      },
+      {
+        "name": "Supply FCR wetmix",
+        "type": "Product",
+        "category": "MATERIALS",
+        "room": "#N/A"
+      },
+      {
+        "name": "Supply White Pebbles",
+        "type": "Product",
+        "category": "MATERIALS",
+        "room": "#N/A"
+      },
+      {
+        "name": "Supply Limestone",
+        "type": "Product",
+        "category": "MATERIALS",
+        "room": "#N/A"
+      },
+      {
+        "name": "Supply Blue Metal Aggregrate",
+        "type": "Product",
+        "category": "MATERIALS",
+        "room": "#N/A"
+      },
+      {
+        "name": "Supply Ground Cover",
+        "type": "Product",
+        "category": "MATERIALS",
+        "room": "#N/A"
+      },
+      {
+        "name": "Supply Sand",
+        "type": "Product",
+        "category": "MATERIALS",
+        "room": "#N/A"
+      },
+      {
+        "name": "Supply Soil",
+        "type": "Product",
+        "category": "MATERIALS",
+        "room": "#N/A"
+      },
+      {
+        "name": "Supply Steel Dropper (star picket)",
+        "type": "Product",
+        "category": "MATERIALS",
+        "room": "#N/A"
+      },
+      {
+        "name": "Supply & Deliver Freestone Rockface Retaining Wall Block",
+        "type": "Product",
+        "category": "LANDSCAPING BLOCKS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Freestone Rockface Capping Block",
+        "type": "Product",
+        "category": "LANDSCAPING BLOCKS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Freestone Rockface Corner Block",
+        "type": "Product",
+        "category": "LANDSCAPING BLOCKS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Freestone Rockface Stop End",
+        "type": "Product",
+        "category": "LANDSCAPING BLOCKS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Garden Retaining Wall Block",
+        "type": "Product",
+        "category": "LANDSCAPING BLOCKS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Freestone Eco Retaining Wall",
+        "type": "Product",
+        "category": "LANDSCAPING BLOCKS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Freestone Eco Ret Wall Corner",
+        "type": "Product",
+        "category": "LANDSCAPING BLOCKS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Square Edge Eco Cap Smooth",
+        "type": "Product",
+        "category": "LANDSCAPING BLOCKS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Bullnose Capping",
+        "type": "Product",
+        "category": "LANDSCAPING BLOCKS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Eco Freestone RW - Exposed",
+        "type": "Product",
+        "category": "LANDSCAPING BLOCKS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Eco Freestone RW Corner Exposed",
+        "type": "Product",
+        "category": "LANDSCAPING BLOCKS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Square Edge Eco Cap Exposed",
+        "type": "Product",
+        "category": "LANDSCAPING BLOCKS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Kerb Unit",
+        "type": "Product",
+        "category": "LANDSCAPING BLOCKS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Edgestone Garden Edging",
+        "type": "Product",
+        "category": "LANDSCAPING BLOCKS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Classic Stone Paver",
+        "type": "Product",
+        "category": "PAVERS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Classic Stone Exposed Aggregate Paver",
+        "type": "Product",
+        "category": "PAVERS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Classic Stone Refined Finish Paver",
+        "type": "Product",
+        "category": "PAVERS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Plazastone Paver",
+        "type": "Product",
+        "category": "PAVERS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Civic Stone Paver",
+        "type": "Product",
+        "category": "PAVERS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Drivestone Paver",
+        "type": "Product",
+        "category": "PAVERS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Drivestone Exposed Aggregate Paver",
+        "type": "Product",
+        "category": "PAVERS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Drivestone Refined Finish Paver",
+        "type": "Product",
+        "category": "PAVERS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Interlock 80 Natural Paver",
+        "type": "Product",
+        "category": "PAVERS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Premium Grass 40",
+        "type": "Product",
+        "category": "ARTIFICIAL GRASS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Premium Grass 41",
+        "type": "Product",
+        "category": "ARTIFICIAL GRASS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Grass S/A Joining Tape",
+        "type": "Product",
+        "category": "ARTIFICIAL GRASS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Kiln Dried Sand",
+        "type": "Product",
+        "category": "ARTIFICIAL GRASS",
+        "room": null
+      },
+      {
+        "name": "Supply & Deliver Grass Fixing Pegs",
+        "type": "Product",
+        "category": "ARTIFICIAL GRASS",
+        "room": null
+      }
+    ],
+    "categories": {
+      "DELIVERIES": [
+        {
+          "name": "Delivery fees",
+          "type": "Fee",
+          "category": "DELIVERIES",
+          "room": null
+        }
+      ],
+      "MATERIALS": [
+        {
+          "name": "Supply FCR wetmix",
+          "type": "Product",
+          "category": "MATERIALS",
+          "room": "#N/A"
+        },
+        {
+          "name": "Supply White Pebbles",
+          "type": "Product",
+          "category": "MATERIALS",
+          "room": "#N/A"
+        },
+        {
+          "name": "Supply Limestone",
+          "type": "Product",
+          "category": "MATERIALS",
+          "room": "#N/A"
+        },
+        {
+          "name": "Supply Blue Metal Aggregrate",
+          "type": "Product",
+          "category": "MATERIALS",
+          "room": "#N/A"
+        },
+        {
+          "name": "Supply Ground Cover",
+          "type": "Product",
+          "category": "MATERIALS",
+          "room": "#N/A"
+        },
+        {
+          "name": "Supply Sand",
+          "type": "Product",
+          "category": "MATERIALS",
+          "room": "#N/A"
+        },
+        {
+          "name": "Supply Soil",
+          "type": "Product",
+          "category": "MATERIALS",
+          "room": "#N/A"
+        },
+        {
+          "name": "Supply Steel Dropper (star picket)",
+          "type": "Product",
+          "category": "MATERIALS",
+          "room": "#N/A"
+        }
+      ],
+      "LANDSCAPING BLOCKS": [
+        {
+          "name": "Supply & Deliver Freestone Rockface Retaining Wall Block",
+          "type": "Product",
+          "category": "LANDSCAPING BLOCKS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Freestone Rockface Capping Block",
+          "type": "Product",
+          "category": "LANDSCAPING BLOCKS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Freestone Rockface Corner Block",
+          "type": "Product",
+          "category": "LANDSCAPING BLOCKS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Freestone Rockface Stop End",
+          "type": "Product",
+          "category": "LANDSCAPING BLOCKS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Garden Retaining Wall Block",
+          "type": "Product",
+          "category": "LANDSCAPING BLOCKS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Freestone Eco Retaining Wall",
+          "type": "Product",
+          "category": "LANDSCAPING BLOCKS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Freestone Eco Ret Wall Corner",
+          "type": "Product",
+          "category": "LANDSCAPING BLOCKS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Square Edge Eco Cap Smooth",
+          "type": "Product",
+          "category": "LANDSCAPING BLOCKS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Bullnose Capping",
+          "type": "Product",
+          "category": "LANDSCAPING BLOCKS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Eco Freestone RW - Exposed",
+          "type": "Product",
+          "category": "LANDSCAPING BLOCKS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Eco Freestone RW Corner Exposed",
+          "type": "Product",
+          "category": "LANDSCAPING BLOCKS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Square Edge Eco Cap Exposed",
+          "type": "Product",
+          "category": "LANDSCAPING BLOCKS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Kerb Unit",
+          "type": "Product",
+          "category": "LANDSCAPING BLOCKS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Edgestone Garden Edging",
+          "type": "Product",
+          "category": "LANDSCAPING BLOCKS",
+          "room": null
+        }
+      ],
+      "PAVERS": [
+        {
+          "name": "Supply & Deliver Classic Stone Paver",
+          "type": "Product",
+          "category": "PAVERS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Classic Stone Exposed Aggregate Paver",
+          "type": "Product",
+          "category": "PAVERS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Classic Stone Refined Finish Paver",
+          "type": "Product",
+          "category": "PAVERS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Plazastone Paver",
+          "type": "Product",
+          "category": "PAVERS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Civic Stone Paver",
+          "type": "Product",
+          "category": "PAVERS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Drivestone Paver",
+          "type": "Product",
+          "category": "PAVERS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Drivestone Exposed Aggregate Paver",
+          "type": "Product",
+          "category": "PAVERS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Drivestone Refined Finish Paver",
+          "type": "Product",
+          "category": "PAVERS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Interlock 80 Natural Paver",
+          "type": "Product",
+          "category": "PAVERS",
+          "room": null
+        }
+      ],
+      "ARTIFICIAL GRASS": [
+        {
+          "name": "Supply & Deliver Premium Grass 40",
+          "type": "Product",
+          "category": "ARTIFICIAL GRASS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Premium Grass 41",
+          "type": "Product",
+          "category": "ARTIFICIAL GRASS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Grass S/A Joining Tape",
+          "type": "Product",
+          "category": "ARTIFICIAL GRASS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Kiln Dried Sand",
+          "type": "Product",
+          "category": "ARTIFICIAL GRASS",
+          "room": null
+        },
+        {
+          "name": "Supply & Deliver Grass Fixing Pegs",
+          "type": "Product",
+          "category": "ARTIFICIAL GRASS",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Paint & Render": {
+    "items": [
+      {
+        "name": "General house painting",
+        "type": "Product",
+        "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+        "room": null
+      },
+      {
+        "name": "Robe & cupboard doors",
+        "type": "Product",
+        "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+        "room": null
+      },
+      {
+        "name": "Alfresco & porch ceilings",
+        "type": "Product",
+        "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+        "room": null
+      },
+      {
+        "name": "Exterior cladding",
+        "type": "Product",
+        "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+        "room": null
+      },
+      {
+        "name": "Rendering",
+        "type": "Product",
+        "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+        "room": null
+      },
+      {
+        "name": "Large exterior doors",
+        "type": "Product",
+        "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+        "room": null
+      },
+      {
+        "name": "Stairwells",
+        "type": "Product",
+        "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+        "room": null
+      },
+      {
+        "name": "Structural steel painting",
+        "type": "Product",
+        "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+        "room": null
+      },
+      {
+        "name": "Steel lintels - standard house",
+        "type": "Product",
+        "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+        "room": null
+      },
+      {
+        "name": "Steel work with acrylic paint",
+        "type": "Product",
+        "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+        "room": null
+      },
+      {
+        "name": "Hourly rate",
+        "type": "Product",
+        "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+        "room": null
+      },
+      {
+        "name": "Decking",
+        "type": "Product",
+        "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+        "room": null
+      },
+      {
+        "name": "Internal feature wall painting",
+        "type": "Product",
+        "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+        "room": null
+      },
+      {
+        "name": "Micro Cement",
+        "type": "Product",
+        "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+        "room": null
+      },
+      {
+        "name": "Internal Paint",
+        "type": "Product",
+        "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+        "room": null
+      },
+      {
+        "name": "External Paint",
+        "type": "Product",
+        "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+        "room": null
+      }
+    ],
+    "categories": {
+      "Updated 19/8/24 (m2 rate is calculated on floor area only)": [
+        {
+          "name": "General house painting",
+          "type": "Product",
+          "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+          "room": null
+        },
+        {
+          "name": "Robe & cupboard doors",
+          "type": "Product",
+          "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+          "room": null
+        },
+        {
+          "name": "Alfresco & porch ceilings",
+          "type": "Product",
+          "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+          "room": null
+        },
+        {
+          "name": "Exterior cladding",
+          "type": "Product",
+          "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+          "room": null
+        },
+        {
+          "name": "Rendering",
+          "type": "Product",
+          "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+          "room": null
+        },
+        {
+          "name": "Large exterior doors",
+          "type": "Product",
+          "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+          "room": null
+        },
+        {
+          "name": "Stairwells",
+          "type": "Product",
+          "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+          "room": null
+        },
+        {
+          "name": "Structural steel painting",
+          "type": "Product",
+          "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+          "room": null
+        },
+        {
+          "name": "Steel lintels - standard house",
+          "type": "Product",
+          "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+          "room": null
+        },
+        {
+          "name": "Steel work with acrylic paint",
+          "type": "Product",
+          "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+          "room": null
+        },
+        {
+          "name": "Hourly rate",
+          "type": "Product",
+          "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+          "room": null
+        },
+        {
+          "name": "Decking",
+          "type": "Product",
+          "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+          "room": null
+        },
+        {
+          "name": "Internal feature wall painting",
+          "type": "Product",
+          "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+          "room": null
+        },
+        {
+          "name": "Micro Cement",
+          "type": "Product",
+          "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+          "room": null
+        },
+        {
+          "name": "Internal Paint",
+          "type": "Product",
+          "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+          "room": null
+        },
+        {
+          "name": "External Paint",
+          "type": "Product",
+          "category": "Updated 19/8/24 (m2 rate is calculated on floor area only)",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Plastering": {
+    "items": [
+      {
+        "name": "Supply, install & prepare plaster sheeting - 10mm",
+        "type": "Service",
+        "category": "NEW BUILD WORK",
+        "room": null
+      },
+      {
+        "name": "Supply, install & prepare plaster sheeting - 10mm - GET QUOTED",
+        "type": "Service",
+        "category": "NEW BUILD WORK",
+        "room": null
+      },
+      {
+        "name": "Supply, install & prepare plaster sheeting - 10mm - Raked ceilings",
+        "type": "Service",
+        "category": "NEW BUILD WORK",
+        "room": null
+      },
+      {
+        "name": "Supply, install & prepare plaster sheeting - 13mm sheet",
+        "type": "Service",
+        "category": "NEW BUILD WORK",
+        "room": null
+      },
+      {
+        "name": "Supply, install & prepare plaster sheeting - 13mm Fyrchek",
+        "type": "Service",
+        "category": "NEW BUILD WORK",
+        "room": null
+      },
+      {
+        "name": "Supply, install & prepare plaster sheeting - 16mm Fyrchek",
+        "type": "Service",
+        "category": "NEW BUILD WORK",
+        "room": null
+      },
+      {
+        "name": "Complete square set plastering",
+        "type": "Service",
+        "category": "NEW BUILD WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install higher level R rated insulation",
+        "type": "Service",
+        "category": "NEW BUILD WORK",
+        "room": null
+      },
+      {
+        "name": "Plaster delivery - Difficullt access",
+        "type": "Service",
+        "category": "NEW BUILD WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install suspended ceiling - timber joist",
+        "type": "Service",
+        "category": "NEW BUILD WORK",
+        "room": null
+      },
+      {
+        "name": "Supply and install suspended ceiling - concrete",
+        "type": "Service",
+        "category": "NEW BUILD WORK",
+        "room": null
+      },
+      {
+        "name": "Renovation room - Supply, install & prepare plaster sheeting - 10mm",
+        "type": "Service",
+        "category": "RENOVATION WORK",
+        "room": null
+      },
+      {
+        "name": "Bathroom renovation - Supply, install & prepare wet area plaster sheeting - 10mm",
+        "type": "Service",
+        "category": "RENOVATION WORK",
+        "room": null
+      },
+      {
+        "name": "Renovation room - Supply, install & prepare standard cove cornice",
+        "type": "Service",
+        "category": "RENOVATION WORK",
+        "room": null
+      },
+      {
+        "name": "Plaster patching",
+        "type": "Service",
+        "category": "RENOVATION WORK",
+        "room": null
+      },
+      {
+        "name": "Plastering - hourly rate work",
+        "type": "Service",
+        "category": "RENOVATION WORK",
+        "room": null
+      }
+    ],
+    "categories": {
+      "NEW BUILD WORK": [
+        {
+          "name": "Supply, install & prepare plaster sheeting - 10mm",
+          "type": "Service",
+          "category": "NEW BUILD WORK",
+          "room": null
+        },
+        {
+          "name": "Supply, install & prepare plaster sheeting - 10mm - GET QUOTED",
+          "type": "Service",
+          "category": "NEW BUILD WORK",
+          "room": null
+        },
+        {
+          "name": "Supply, install & prepare plaster sheeting - 10mm - Raked ceilings",
+          "type": "Service",
+          "category": "NEW BUILD WORK",
+          "room": null
+        },
+        {
+          "name": "Supply, install & prepare plaster sheeting - 13mm sheet",
+          "type": "Service",
+          "category": "NEW BUILD WORK",
+          "room": null
+        },
+        {
+          "name": "Supply, install & prepare plaster sheeting - 13mm Fyrchek",
+          "type": "Service",
+          "category": "NEW BUILD WORK",
+          "room": null
+        },
+        {
+          "name": "Supply, install & prepare plaster sheeting - 16mm Fyrchek",
+          "type": "Service",
+          "category": "NEW BUILD WORK",
+          "room": null
+        },
+        {
+          "name": "Complete square set plastering",
+          "type": "Service",
+          "category": "NEW BUILD WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install higher level R rated insulation",
+          "type": "Service",
+          "category": "NEW BUILD WORK",
+          "room": null
+        },
+        {
+          "name": "Plaster delivery - Difficullt access",
+          "type": "Service",
+          "category": "NEW BUILD WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install suspended ceiling - timber joist",
+          "type": "Service",
+          "category": "NEW BUILD WORK",
+          "room": null
+        },
+        {
+          "name": "Supply and install suspended ceiling - concrete",
+          "type": "Service",
+          "category": "NEW BUILD WORK",
+          "room": null
+        }
+      ],
+      "RENOVATION WORK": [
+        {
+          "name": "Renovation room - Supply, install & prepare plaster sheeting - 10mm",
+          "type": "Service",
+          "category": "RENOVATION WORK",
+          "room": null
+        },
+        {
+          "name": "Bathroom renovation - Supply, install & prepare wet area plaster sheeting - 10mm",
+          "type": "Service",
+          "category": "RENOVATION WORK",
+          "room": null
+        },
+        {
+          "name": "Renovation room - Supply, install & prepare standard cove cornice",
+          "type": "Service",
+          "category": "RENOVATION WORK",
+          "room": null
+        },
+        {
+          "name": "Plaster patching",
+          "type": "Service",
+          "category": "RENOVATION WORK",
+          "room": null
+        },
+        {
+          "name": "Plastering - hourly rate work",
+          "type": "Service",
+          "category": "RENOVATION WORK",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Plumbing": {
+    "items": [
+      {
+        "name": "Supply and install Sewer Drainage",
+        "type": "Service",
+        "category": "DRAINAGE",
+        "room": null
+      },
+      {
+        "name": "Supply and install Stormwater Drainage",
+        "type": "Service",
+        "category": "DRAINAGE",
+        "room": null
+      },
+      {
+        "name": "Install Detention Tank",
+        "type": "Product",
+        "category": "DRAINAGE",
+        "room": null
+      },
+      {
+        "name": "Undertake Core Drilling",
+        "type": "Product",
+        "category": "DRAINAGE",
+        "room": null
+      },
+      {
+        "name": "Supply and install Mains water pipe",
+        "type": "Product",
+        "category": "PLUMBING",
+        "room": null
+      },
+      {
+        "name": "Install Plumbing and Sanitary Item",
+        "type": "Product",
+        "category": "PLUMBING",
+        "room": null
+      },
+      {
+        "name": "Supply and install internal Stop Tap",
+        "type": "Product",
+        "category": "PLUMBING",
+        "room": null
+      },
+      {
+        "name": "Supply and install Garden Tap",
+        "type": "Product",
+        "category": "PLUMBING",
+        "room": null
+      },
+      {
+        "name": "Room Renovation",
+        "type": "Product",
+        "category": "ALL INCLUSIVE RATES",
+        "room": null
+      },
+      {
+        "name": "Install Gas Connection",
+        "type": "Product",
+        "category": "GAS",
+        "room": null
+      },
+      {
+        "name": "Install Gas Appliance/Fitting",
+        "type": "Product",
+        "category": "GAS",
+        "room": null
+      }
+    ],
+    "categories": {
+      "DRAINAGE": [
+        {
+          "name": "Supply and install Sewer Drainage",
+          "type": "Service",
+          "category": "DRAINAGE",
+          "room": null
+        },
+        {
+          "name": "Supply and install Stormwater Drainage",
+          "type": "Service",
+          "category": "DRAINAGE",
+          "room": null
+        },
+        {
+          "name": "Install Detention Tank",
+          "type": "Product",
+          "category": "DRAINAGE",
+          "room": null
+        },
+        {
+          "name": "Undertake Core Drilling",
+          "type": "Product",
+          "category": "DRAINAGE",
+          "room": null
+        }
+      ],
+      "PLUMBING": [
+        {
+          "name": "Supply and install Mains water pipe",
+          "type": "Product",
+          "category": "PLUMBING",
+          "room": null
+        },
+        {
+          "name": "Install Plumbing and Sanitary Item",
+          "type": "Product",
+          "category": "PLUMBING",
+          "room": null
+        },
+        {
+          "name": "Supply and install internal Stop Tap",
+          "type": "Product",
+          "category": "PLUMBING",
+          "room": null
+        },
+        {
+          "name": "Supply and install Garden Tap",
+          "type": "Product",
+          "category": "PLUMBING",
+          "room": null
+        }
+      ],
+      "ALL INCLUSIVE RATES": [
+        {
+          "name": "Room Renovation",
+          "type": "Product",
+          "category": "ALL INCLUSIVE RATES",
+          "room": null
+        }
+      ],
+      "GAS": [
+        {
+          "name": "Install Gas Connection",
+          "type": "Product",
+          "category": "GAS",
+          "room": null
+        },
+        {
+          "name": "Install Gas Appliance/Fitting",
+          "type": "Product",
+          "category": "GAS",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Plumb Fit": {
+    "items": [
+      {
+        "name": "Supply Electric Hot Water Cylinder",
+        "type": "Product",
+        "category": "HOT WATER UNITS",
+        "room": null
+      },
+      {
+        "name": "Supply Heat Pump Hot Water Unit",
+        "type": "Product",
+        "category": "HOT WATER UNITS",
+        "room": null
+      },
+      {
+        "name": "Supply Gas Hot Water Unit",
+        "type": "Product",
+        "category": "HOT WATER UNITS",
+        "room": null
+      },
+      {
+        "name": "Supply Kitchen Sink",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Kitchen Mixer",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Pantry Sink",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Pantry Mixer",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Laundry Trough Unit",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Laundry Sink",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Laundry Mixer",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Vanity complete",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Basin Mixer",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Plug & Waste",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Bath",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Bath Mixer",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Bath Spout",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Bath Mixer & Spout combo",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Shower Rail Combo",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Shower mixer",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Toilet suite",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Toilet roll holder",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Towel Rail",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Towel Ring",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Robe Hook",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Mirror",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Mirror Cabinet",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Floor waste",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Stop Taps",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Delivery fees",
+        "type": "Product",
+        "category": "EVERYDAY RANGE",
+        "room": null
+      },
+      {
+        "name": "Supply Zipp Tap",
+        "type": "Product",
+        "category": "PREMIUM RANGE",
+        "room": null
+      }
+    ],
+    "categories": {
+      "HOT WATER UNITS": [
+        {
+          "name": "Supply Electric Hot Water Cylinder",
+          "type": "Product",
+          "category": "HOT WATER UNITS",
+          "room": null
+        },
+        {
+          "name": "Supply Heat Pump Hot Water Unit",
+          "type": "Product",
+          "category": "HOT WATER UNITS",
+          "room": null
+        },
+        {
+          "name": "Supply Gas Hot Water Unit",
+          "type": "Product",
+          "category": "HOT WATER UNITS",
+          "room": null
+        }
+      ],
+      "EVERYDAY RANGE": [
+        {
+          "name": "Supply Kitchen Sink",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Kitchen Mixer",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Pantry Sink",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Pantry Mixer",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Laundry Trough Unit",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Laundry Sink",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Laundry Mixer",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Vanity complete",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Basin Mixer",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Plug & Waste",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Bath",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Bath Mixer",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Bath Spout",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Bath Mixer & Spout combo",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Shower Rail Combo",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Shower mixer",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Toilet suite",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Toilet roll holder",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Towel Rail",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Towel Ring",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Robe Hook",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Mirror",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Mirror Cabinet",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Floor waste",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Supply Stop Taps",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        },
+        {
+          "name": "Delivery fees",
+          "type": "Product",
+          "category": "EVERYDAY RANGE",
+          "room": null
+        }
+      ],
+      "PREMIUM RANGE": [
+        {
+          "name": "Supply Zipp Tap",
+          "type": "Product",
+          "category": "PREMIUM RANGE",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Roofing": {
+    "items": [
+      {
+        "name": "Supply & install new standard roof, fascia & gutter",
+        "type": "Service",
+        "category": "Roof new homes - fascia, gutter & sheet",
+        "room": null
+      },
+      {
+        "name": "Supply & install new architectural roof, fascia & gutter",
+        "type": "Service",
+        "category": "Roof new homes - fascia, gutter & sheet",
+        "room": null
+      },
+      {
+        "name": "Supply & install parpet flashings",
+        "type": "Service",
+        "category": "Roof new homes - fascia, gutter & sheet",
+        "room": null
+      },
+      {
+        "name": "Supply & install metal rainheads",
+        "type": "Service",
+        "category": "Roof new homes - fascia, gutter & sheet",
+        "room": null
+      },
+      {
+        "name": "Supply & install metal box gutters",
+        "type": "Service",
+        "category": "Roof new homes - fascia, gutter & sheet",
+        "room": null
+      },
+      {
+        "name": "Supply & install ventilation battens",
+        "type": "Service",
+        "category": "Roof new homes - fascia, gutter & sheet",
+        "room": null
+      },
+      {
+        "name": "Supply & install metal gutter & valley guard",
+        "type": "Service",
+        "category": "Roof new homes - fascia, gutter & sheet",
+        "room": null
+      },
+      {
+        "name": "Supply & install safety guard rails",
+        "type": "Service",
+        "category": "Roof new homes - fascia, gutter & sheet",
+        "room": null
+      },
+      {
+        "name": "Hourly rate",
+        "type": "Service",
+        "category": "Roof new homes - fascia, gutter & sheet",
+        "room": null
+      },
+      {
+        "name": "Remove & dispose of roof tiles",
+        "type": "Service",
+        "category": "Re-roof homes - fascia, gutter & sheet",
+        "room": null
+      },
+      {
+        "name": "Remove & dispose of old roofing",
+        "type": "Service",
+        "category": "Re-roof homes - fascia, gutter & sheet",
+        "room": null
+      },
+      {
+        "name": "Supply & install new metal fascia",
+        "type": "Service",
+        "category": "Re-roof homes - fascia, gutter & sheet",
+        "room": null
+      },
+      {
+        "name": "Supply & install new metal gutter",
+        "type": "Service",
+        "category": "Re-roof homes - fascia, gutter & sheet",
+        "room": null
+      },
+      {
+        "name": "Supply & install new metal cap fascia",
+        "type": "Service",
+        "category": "Re-roof homes - fascia, gutter & sheet",
+        "room": null
+      },
+      {
+        "name": "Supply & install new metal barge flashings",
+        "type": "Service",
+        "category": "Re-roof homes - fascia, gutter & sheet",
+        "room": null
+      },
+      {
+        "name": "Remove fchimeny and patch",
+        "type": "Service",
+        "category": "Re-roof homes - fascia, gutter & sheet",
+        "room": null
+      },
+      {
+        "name": "Supply & install skylight",
+        "type": "Service",
+        "category": "Skylights",
+        "room": null
+      },
+      {
+        "name": "Install skylight (supplied by builder)",
+        "type": "Service",
+        "category": "Skylights",
+        "room": null
+      },
+      {
+        "name": "Supply skylight flashings",
+        "type": "Service",
+        "category": "Skylights",
+        "room": null
+      }
+    ],
+    "categories": {
+      "Roof new homes - fascia, gutter & sheet": [
+        {
+          "name": "Supply & install new standard roof, fascia & gutter",
+          "type": "Service",
+          "category": "Roof new homes - fascia, gutter & sheet",
+          "room": null
+        },
+        {
+          "name": "Supply & install new architectural roof, fascia & gutter",
+          "type": "Service",
+          "category": "Roof new homes - fascia, gutter & sheet",
+          "room": null
+        },
+        {
+          "name": "Supply & install parpet flashings",
+          "type": "Service",
+          "category": "Roof new homes - fascia, gutter & sheet",
+          "room": null
+        },
+        {
+          "name": "Supply & install metal rainheads",
+          "type": "Service",
+          "category": "Roof new homes - fascia, gutter & sheet",
+          "room": null
+        },
+        {
+          "name": "Supply & install metal box gutters",
+          "type": "Service",
+          "category": "Roof new homes - fascia, gutter & sheet",
+          "room": null
+        },
+        {
+          "name": "Supply & install ventilation battens",
+          "type": "Service",
+          "category": "Roof new homes - fascia, gutter & sheet",
+          "room": null
+        },
+        {
+          "name": "Supply & install metal gutter & valley guard",
+          "type": "Service",
+          "category": "Roof new homes - fascia, gutter & sheet",
+          "room": null
+        },
+        {
+          "name": "Supply & install safety guard rails",
+          "type": "Service",
+          "category": "Roof new homes - fascia, gutter & sheet",
+          "room": null
+        },
+        {
+          "name": "Hourly rate",
+          "type": "Service",
+          "category": "Roof new homes - fascia, gutter & sheet",
+          "room": null
+        }
+      ],
+      "Re-roof homes - fascia, gutter & sheet": [
+        {
+          "name": "Remove & dispose of roof tiles",
+          "type": "Service",
+          "category": "Re-roof homes - fascia, gutter & sheet",
+          "room": null
+        },
+        {
+          "name": "Remove & dispose of old roofing",
+          "type": "Service",
+          "category": "Re-roof homes - fascia, gutter & sheet",
+          "room": null
+        },
+        {
+          "name": "Supply & install new metal fascia",
+          "type": "Service",
+          "category": "Re-roof homes - fascia, gutter & sheet",
+          "room": null
+        },
+        {
+          "name": "Supply & install new metal gutter",
+          "type": "Service",
+          "category": "Re-roof homes - fascia, gutter & sheet",
+          "room": null
+        },
+        {
+          "name": "Supply & install new metal cap fascia",
+          "type": "Service",
+          "category": "Re-roof homes - fascia, gutter & sheet",
+          "room": null
+        },
+        {
+          "name": "Supply & install new metal barge flashings",
+          "type": "Service",
+          "category": "Re-roof homes - fascia, gutter & sheet",
+          "room": null
+        },
+        {
+          "name": "Remove fchimeny and patch",
+          "type": "Service",
+          "category": "Re-roof homes - fascia, gutter & sheet",
+          "room": null
+        }
+      ],
+      "Skylights": [
+        {
+          "name": "Supply & install skylight",
+          "type": "Service",
+          "category": "Skylights",
+          "room": null
+        },
+        {
+          "name": "Install skylight (supplied by builder)",
+          "type": "Service",
+          "category": "Skylights",
+          "room": null
+        },
+        {
+          "name": "Supply skylight flashings",
+          "type": "Service",
+          "category": "Skylights",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Roof Frame": {
+    "items": [
+      {
+        "name": "Delivery fees",
+        "type": "Product",
+        "category": "DELIVERIES",
+        "room": null
+      },
+      {
+        "name": "Supply Pine Framing",
+        "type": "Product",
+        "category": "FRAMING PINE",
+        "room": null
+      },
+      {
+        "name": "Supply Pine Roof Trusses",
+        "type": "Product",
+        "category": "FRAMING PINE",
+        "room": null
+      },
+      {
+        "name": "Supply Treated Pine Framing",
+        "type": "Product",
+        "category": "FRAMING TREATED PINE",
+        "room": null
+      },
+      {
+        "name": "Supply LVL Framing",
+        "type": "Product",
+        "category": "FRAMING ENGINEERED",
+        "room": null
+      },
+      {
+        "name": "Supply F17 Hardwood Framing",
+        "type": "Product",
+        "category": "FRAMING HARDWOOD",
+        "room": null
+      },
+      {
+        "name": "Supply brace ply",
+        "type": "Product",
+        "category": "BRACING",
+        "room": null
+      },
+      {
+        "name": "Supply metal strap bracing and/or accessories",
+        "type": "Product",
+        "category": "BRACING",
+        "room": null
+      },
+      {
+        "name": "Supply Wall Ventilation Battens",
+        "type": "Product",
+        "category": "VENTILATION BATTENS",
+        "room": null
+      },
+      {
+        "name": "Paslode Framing Nails",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply bugle (batten) screws",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply joist hangers",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply bolts & nuts",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply washers",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      }
+    ],
+    "categories": {
+      "DELIVERIES": [
+        {
+          "name": "Delivery fees",
+          "type": "Product",
+          "category": "DELIVERIES",
+          "room": null
+        }
+      ],
+      "FRAMING PINE": [
+        {
+          "name": "Supply Pine Framing",
+          "type": "Product",
+          "category": "FRAMING PINE",
+          "room": null
+        },
+        {
+          "name": "Supply Pine Roof Trusses",
+          "type": "Product",
+          "category": "FRAMING PINE",
+          "room": null
+        }
+      ],
+      "FRAMING TREATED PINE": [
+        {
+          "name": "Supply Treated Pine Framing",
+          "type": "Product",
+          "category": "FRAMING TREATED PINE",
+          "room": null
+        }
+      ],
+      "FRAMING ENGINEERED": [
+        {
+          "name": "Supply LVL Framing",
+          "type": "Product",
+          "category": "FRAMING ENGINEERED",
+          "room": null
+        }
+      ],
+      "FRAMING HARDWOOD": [
+        {
+          "name": "Supply F17 Hardwood Framing",
+          "type": "Product",
+          "category": "FRAMING HARDWOOD",
+          "room": null
+        }
+      ],
+      "BRACING": [
+        {
+          "name": "Supply brace ply",
+          "type": "Product",
+          "category": "BRACING",
+          "room": null
+        },
+        {
+          "name": "Supply metal strap bracing and/or accessories",
+          "type": "Product",
+          "category": "BRACING",
+          "room": null
+        }
+      ],
+      "VENTILATION BATTENS": [
+        {
+          "name": "Supply Wall Ventilation Battens",
+          "type": "Product",
+          "category": "VENTILATION BATTENS",
+          "room": null
+        }
+      ],
+      "FIXINGS": [
+        {
+          "name": "Paslode Framing Nails",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply bugle (batten) screws",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply joist hangers",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply bolts & nuts",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply washers",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Steel & Welding": {
+    "items": [
+      {
+        "name": "Delivery Fees",
+        "type": "Fee",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply PFC",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply steel posts",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Site Welder",
+        "type": "Service",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      }
+    ],
+    "categories": {
+      "PROJECT BUDGET LINK": [
+        {
+          "name": "Delivery Fees",
+          "type": "Fee",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply PFC",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply steel posts",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Site Welder",
+          "type": "Service",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Tiling - All": {
+    "items": [
+      {
+        "name": "Take off & layout plan fee",
+        "type": "Product",
+        "category": "TILES & ACCESSORIES",
+        "room": null
+      },
+      {
+        "name": "Delivery fees",
+        "type": "Product",
+        "category": "TILES & ACCESSORIES",
+        "room": null
+      },
+      {
+        "name": "Supply Floor & Skirting Tiles",
+        "type": "Product",
+        "category": "TILES & ACCESSORIES",
+        "room": null
+      },
+      {
+        "name": "Supply Wall Tiles",
+        "type": "Product",
+        "category": "TILES & ACCESSORIES",
+        "room": null
+      },
+      {
+        "name": "Supply Splashback Tiles",
+        "type": "Product",
+        "category": "TILES & ACCESSORIES",
+        "room": null
+      },
+      {
+        "name": "Supply Feature Tiles",
+        "type": "Product",
+        "category": "TILES & ACCESSORIES",
+        "room": null
+      },
+      {
+        "name": "Supply Tile Trim",
+        "type": "Product",
+        "category": "TILES & ACCESSORIES",
+        "room": null
+      },
+      {
+        "name": "Lay tiles",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Tile into wall recess",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Tile into window reveal",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Bath hob tiling",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Screed to shower floor",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Floor screeding inc materials",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Install tile trim",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Lay specialty tiles",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Mitre cut tiles & epoxy finish",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Internal stairs tiling",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "External stairs tiling",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Epoxy grout - inc materials",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Epoxy grout - ex materials",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Silicone work",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Tile trim - 3m",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Tile trim - 1m",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Tile glue",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Grout (5kg bag)",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Silicone",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Pre-mixed glue (15L)",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Labour charge - labourer",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Labour charge - tiler",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      },
+      {
+        "name": "Travel (over 35m from city)",
+        "type": "Service",
+        "category": "TILING",
+        "room": null
+      }
+    ],
+    "categories": {
+      "TILES & ACCESSORIES": [
+        {
+          "name": "Take off & layout plan fee",
+          "type": "Product",
+          "category": "TILES & ACCESSORIES",
+          "room": null
+        },
+        {
+          "name": "Delivery fees",
+          "type": "Product",
+          "category": "TILES & ACCESSORIES",
+          "room": null
+        },
+        {
+          "name": "Supply Floor & Skirting Tiles",
+          "type": "Product",
+          "category": "TILES & ACCESSORIES",
+          "room": null
+        },
+        {
+          "name": "Supply Wall Tiles",
+          "type": "Product",
+          "category": "TILES & ACCESSORIES",
+          "room": null
+        },
+        {
+          "name": "Supply Splashback Tiles",
+          "type": "Product",
+          "category": "TILES & ACCESSORIES",
+          "room": null
+        },
+        {
+          "name": "Supply Feature Tiles",
+          "type": "Product",
+          "category": "TILES & ACCESSORIES",
+          "room": null
+        },
+        {
+          "name": "Supply Tile Trim",
+          "type": "Product",
+          "category": "TILES & ACCESSORIES",
+          "room": null
+        }
+      ],
+      "TILING": [
+        {
+          "name": "Lay tiles",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Tile into wall recess",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Tile into window reveal",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Bath hob tiling",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Screed to shower floor",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Floor screeding inc materials",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Install tile trim",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Lay specialty tiles",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Mitre cut tiles & epoxy finish",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Internal stairs tiling",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "External stairs tiling",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Epoxy grout - inc materials",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Epoxy grout - ex materials",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Silicone work",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Tile trim - 3m",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Tile trim - 1m",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Tile glue",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Grout (5kg bag)",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Silicone",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Pre-mixed glue (15L)",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Labour charge - labourer",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Labour charge - tiler",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        },
+        {
+          "name": "Travel (over 35m from city)",
+          "type": "Service",
+          "category": "TILING",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Wall Frames": {
+    "items": [
+      {
+        "name": "Delivery fees",
+        "type": "Product",
+        "category": "DELIVERIES",
+        "room": null
+      },
+      {
+        "name": "Supply Pine Framing",
+        "type": "Product",
+        "category": "FRAMING PINE",
+        "room": null
+      },
+      {
+        "name": "Supply Treated Pine Framing",
+        "type": "Product",
+        "category": "FRAMING TREATED PINE",
+        "room": null
+      },
+      {
+        "name": "Supply LVL Framing",
+        "type": "Product",
+        "category": "FRAMING ENGINEERED",
+        "room": null
+      },
+      {
+        "name": "Supply F17 Hardwood Framing",
+        "type": "Product",
+        "category": "FRAMING HARDWOOD",
+        "room": null
+      },
+      {
+        "name": "Supply Wall Wrap",
+        "type": "Product",
+        "category": "WALL WRAP",
+        "room": null
+      },
+      {
+        "name": "Supply Wall Wrap Tape",
+        "type": "Product",
+        "category": "WALL WRAP",
+        "room": null
+      },
+      {
+        "name": "Supply Wall Wrap Fixings",
+        "type": "Product",
+        "category": "WALL WRAP",
+        "room": null
+      },
+      {
+        "name": "Supply wall insulation - XPS",
+        "type": "Product",
+        "category": "WALL INSULATION",
+        "room": null
+      },
+      {
+        "name": "Supply wall insulation - Batts",
+        "type": "Product",
+        "category": "WALL INSULATION",
+        "room": null
+      },
+      {
+        "name": "Supply brace ply",
+        "type": "Product",
+        "category": "BRACING",
+        "room": null
+      },
+      {
+        "name": "Supply metal strap bracing and/or accessories",
+        "type": "Product",
+        "category": "BRACING",
+        "room": null
+      },
+      {
+        "name": "Fixings",
+        "type": "Product",
+        "category": "BRACING",
+        "room": null
+      },
+      {
+        "name": "Supply Timber Cavity Slider Frame",
+        "type": "Product",
+        "category": "CAVITY SLIDERS",
+        "room": null
+      },
+      {
+        "name": "Supply Wall Ventilation Battens",
+        "type": "Product",
+        "category": "VENTILATION BATTENS",
+        "room": null
+      },
+      {
+        "name": "Supply Framing Nails",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply Coil Nails",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply bugle (batten) screws",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply Window Packers",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply dynabolts",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply anchor screws",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply joist hangers",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply bolts & nuts",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      },
+      {
+        "name": "Supply washers",
+        "type": "Product",
+        "category": "FIXINGS",
+        "room": null
+      }
+    ],
+    "categories": {
+      "DELIVERIES": [
+        {
+          "name": "Delivery fees",
+          "type": "Product",
+          "category": "DELIVERIES",
+          "room": null
+        }
+      ],
+      "FRAMING PINE": [
+        {
+          "name": "Supply Pine Framing",
+          "type": "Product",
+          "category": "FRAMING PINE",
+          "room": null
+        }
+      ],
+      "FRAMING TREATED PINE": [
+        {
+          "name": "Supply Treated Pine Framing",
+          "type": "Product",
+          "category": "FRAMING TREATED PINE",
+          "room": null
+        }
+      ],
+      "FRAMING ENGINEERED": [
+        {
+          "name": "Supply LVL Framing",
+          "type": "Product",
+          "category": "FRAMING ENGINEERED",
+          "room": null
+        }
+      ],
+      "FRAMING HARDWOOD": [
+        {
+          "name": "Supply F17 Hardwood Framing",
+          "type": "Product",
+          "category": "FRAMING HARDWOOD",
+          "room": null
+        }
+      ],
+      "WALL WRAP": [
+        {
+          "name": "Supply Wall Wrap",
+          "type": "Product",
+          "category": "WALL WRAP",
+          "room": null
+        },
+        {
+          "name": "Supply Wall Wrap Tape",
+          "type": "Product",
+          "category": "WALL WRAP",
+          "room": null
+        },
+        {
+          "name": "Supply Wall Wrap Fixings",
+          "type": "Product",
+          "category": "WALL WRAP",
+          "room": null
+        }
+      ],
+      "WALL INSULATION": [
+        {
+          "name": "Supply wall insulation - XPS",
+          "type": "Product",
+          "category": "WALL INSULATION",
+          "room": null
+        },
+        {
+          "name": "Supply wall insulation - Batts",
+          "type": "Product",
+          "category": "WALL INSULATION",
+          "room": null
+        }
+      ],
+      "BRACING": [
+        {
+          "name": "Supply brace ply",
+          "type": "Product",
+          "category": "BRACING",
+          "room": null
+        },
+        {
+          "name": "Supply metal strap bracing and/or accessories",
+          "type": "Product",
+          "category": "BRACING",
+          "room": null
+        },
+        {
+          "name": "Fixings",
+          "type": "Product",
+          "category": "BRACING",
+          "room": null
+        }
+      ],
+      "CAVITY SLIDERS": [
+        {
+          "name": "Supply Timber Cavity Slider Frame",
+          "type": "Product",
+          "category": "CAVITY SLIDERS",
+          "room": null
+        }
+      ],
+      "VENTILATION BATTENS": [
+        {
+          "name": "Supply Wall Ventilation Battens",
+          "type": "Product",
+          "category": "VENTILATION BATTENS",
+          "room": null
+        }
+      ],
+      "FIXINGS": [
+        {
+          "name": "Supply Framing Nails",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply Coil Nails",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply bugle (batten) screws",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply Window Packers",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply dynabolts",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply anchor screws",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply joist hangers",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply bolts & nuts",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        },
+        {
+          "name": "Supply washers",
+          "type": "Product",
+          "category": "FIXINGS",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Windows": {
+    "items": [
+      {
+        "name": "Supply and deliver Aluminium frame windows",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply and deliver Timber frame windows",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply and deliver PVC frame windows",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Supply, deliver and install PVC Frame Windows",
+        "type": "Product",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      },
+      {
+        "name": "Window frame colour",
+        "type": "Spec",
+        "category": "PROJECT BUDGET LINK",
+        "room": null
+      }
+    ],
+    "categories": {
+      "PROJECT BUDGET LINK": [
+        {
+          "name": "Supply and deliver Aluminium frame windows",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply and deliver Timber frame windows",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply and deliver PVC frame windows",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Supply, deliver and install PVC Frame Windows",
+          "type": "Product",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        },
+        {
+          "name": "Window frame colour",
+          "type": "Spec",
+          "category": "PROJECT BUDGET LINK",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Waterproof": {
+    "items": [
+      {
+        "name": "Apply internal waterproofing",
+        "type": "Product",
+        "category": "Sealed Solutions at July 24",
+        "room": null
+      },
+      {
+        "name": "Apply external waterproofing",
+        "type": "Product",
+        "category": "Sealed Solutions at July 24",
+        "room": null
+      }
+    ],
+    "categories": {
+      "Sealed Solutions at July 24": [
+        {
+          "name": "Apply internal waterproofing",
+          "type": "Product",
+          "category": "Sealed Solutions at July 24",
+          "room": null
+        },
+        {
+          "name": "Apply external waterproofing",
+          "type": "Product",
+          "category": "Sealed Solutions at July 24",
+          "room": null
+        }
+      ]
+    }
+  },
+  "Water Tanks": {
+    "items": [
+      {
+        "name": "Delivery fees",
+        "type": "Product",
+        "category": "DELIVERY FEES",
+        "room": null
+      },
+      {
+        "name": "Supply Aquaplate water tank",
+        "type": "Product",
+        "category": "DELIVERY FEES",
+        "room": null
+      },
+      {
+        "name": "Supply Stainless Steel 304 water tank",
+        "type": "Product",
+        "category": "DELIVERY FEES",
+        "room": null
+      },
+      {
+        "name": "Supply Galvanised water tank",
+        "type": "Product",
+        "category": "DELIVERY FEES",
+        "room": null
+      }
+    ],
+    "categories": {
+      "DELIVERY FEES": [
+        {
+          "name": "Delivery fees",
+          "type": "Product",
+          "category": "DELIVERY FEES",
+          "room": null
+        },
+        {
+          "name": "Supply Aquaplate water tank",
+          "type": "Product",
+          "category": "DELIVERY FEES",
+          "room": null
+        },
+        {
+          "name": "Supply Stainless Steel 304 water tank",
+          "type": "Product",
+          "category": "DELIVERY FEES",
+          "room": null
+        },
+        {
+          "name": "Supply Galvanised water tank",
+          "type": "Product",
+          "category": "DELIVERY FEES",
+          "room": null
+        }
+      ]
+    }
+  }
+}
