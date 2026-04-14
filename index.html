@@ -488,22 +488,25 @@ body {
   text-align: center;
 }
 
-.app-container.scope-phase-readonly .step input:not([type="hidden"]),
+/* Allow item search while viewing scope (managers / staff) */
+.app-container.scope-phase-readonly .step input:not([type="hidden"]):not(#itemSearch),
 .app-container.scope-phase-readonly .step select,
 .app-container.scope-phase-readonly .step textarea {
   pointer-events: none;
   opacity: 0.92;
 }
 
+/* Block editing the cost-centre grid and line items; allow sidebar / category navigation for detail view */
 .app-container.scope-phase-readonly .step .cc-card,
-.app-container.scope-phase-readonly .step .items-cc-item,
-.app-container.scope-phase-readonly .step .cc-item,
 .app-container.scope-phase-readonly .step .item-check,
-.app-container.scope-phase-readonly .step .item-name,
-.app-container.scope-phase-readonly .step .category-btn {
+.app-container.scope-phase-readonly .step .item-name {
   pointer-events: none;
   cursor: default;
   opacity: 0.95;
+}
+
+.exclusions-modal-viewonly .exclusions-modal-edit-only {
+  display: none !important;
 }
 
 header {
@@ -5336,7 +5339,7 @@ header {
   </header>
   <div id="scopeReadonlyBanner" class="role-access-banner" style="display:none;">
     <span>👁️ View only:</span>
-    <span>Only an <strong>Administrator</strong> can edit the scope. Managers can work in <strong>Cost &amp; Budget</strong> after the scope is finalized.</span>
+    <span>Only an <strong>Administrator</strong> can edit the scope. You can open each cost centre, use search and category filters, and open <strong>Exclusions / Notes</strong> to review full detail. Use <strong>Cost &amp; Budget</strong> after the scope is finalized.</span>
   </div>
   <div class="progress-bar" id="progressBar" style="display: none;"><div class="progress-fill" id="progressFill" style="width: 25%;"></div></div>
 
@@ -5927,7 +5930,7 @@ header {
       <button class="scope-modal-close" onclick="closeExclusionsModal()">×</button>
     </div>
     <div style="padding: 24px; overflow-y: auto; max-height: 65vh;">
-      <div style="margin-bottom: 20px; padding: 12px; background: var(--surface2); border-radius: 8px;">
+      <div class="exclusions-modal-edit-only" style="margin-bottom: 20px; padding: 12px; background: var(--surface2); border-radius: 8px;">
         <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase;">Templates</div>
         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
           <button onclick="loadDefaultTemplates()" style="background: var(--primary); border: none; border-radius: 6px; padding: 8px 12px; font-size: 12px; color: white; cursor: pointer;">📥 Load Defaults</button>
@@ -5946,12 +5949,12 @@ header {
       <div style="margin-bottom: 20px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
           <div style="font-size: 12px; font-weight: 600; color: var(--danger); text-transform: uppercase;">Exclusions</div>
-          <div style="display: flex; gap: 6px;">
+          <div class="exclusions-modal-edit-only" style="display: flex; gap: 6px;">
             <button onclick="addExclusionItem()" style="background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 4px 8px; font-size: 11px; color: var(--text); cursor: pointer;">+ Add</button>
             <button onclick="toggleExclusionDefaultsMenu()" style="background: var(--surface3); border: 1px solid var(--primary); border-radius: 4px; padding: 4px 8px; font-size: 11px; color: var(--primary); cursor: pointer;">▼ Add Default</button>
           </div>
         </div>
-        <div id="exclusionDefaultsMenu" style="display: none; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 12px; max-height: 150px; overflow-y: auto;">
+        <div id="exclusionDefaultsMenu" class="exclusions-modal-edit-only" style="display: none; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 12px; max-height: 150px; overflow-y: auto;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
             <div style="font-size: 11px; color: var(--text-muted);">Click to add individual defaults:</div>
             <button onclick="addAllDefaultExclusions(); document.getElementById('exclusionDefaultsMenu').style.display = 'none';" style="background: var(--primary); border: none; border-radius: 4px; padding: 4px 8px; font-size: 10px; color: white; cursor: pointer;">+ Add All</button>
@@ -5965,12 +5968,12 @@ header {
       <div style="margin-bottom: 20px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
           <div style="font-size: 12px; font-weight: 600; color: var(--accent-light); text-transform: uppercase;">Notes</div>
-          <div style="display: flex; gap: 6px;">
+          <div class="exclusions-modal-edit-only" style="display: flex; gap: 6px;">
             <button onclick="addNoteItem()" style="background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 4px 8px; font-size: 11px; color: var(--text); cursor: pointer;">+ Add</button>
             <button onclick="toggleNoteDefaultsMenu()" style="background: var(--surface3); border: 1px solid var(--accent-light); border-radius: 4px; padding: 4px 8px; font-size: 11px; color: var(--accent-light); cursor: pointer;">▼ Add Default</button>
           </div>
         </div>
-        <div id="noteDefaultsMenu" style="display: none; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 12px; max-height: 150px; overflow-y: auto;">
+        <div id="noteDefaultsMenu" class="exclusions-modal-edit-only" style="display: none; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 12px; max-height: 150px; overflow-y: auto;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
             <div style="font-size: 11px; color: var(--text-muted);">Click to add individual defaults:</div>
             <button onclick="addAllDefaultNotes(); document.getElementById('noteDefaultsMenu').style.display = 'none';" style="background: var(--accent-light); border: none; border-radius: 4px; padding: 4px 8px; font-size: 10px; color: white; cursor: pointer;">+ Add All</button>
@@ -5982,8 +5985,8 @@ header {
       </div>
     </div>
     <div style="padding: 16px 24px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 12px;">
-      <button class="btn btn-secondary" onclick="closeExclusionsModal()">Cancel</button>
-      <button class="btn btn-primary" onclick="saveExclusionsAndNotes()">Save</button>
+      <button type="button" class="btn btn-secondary" onclick="closeExclusionsModal()">Close</button>
+      <button type="button" class="btn btn-primary exclusions-modal-edit-only" onclick="saveExclusionsAndNotes()">Save</button>
     </div>
   </div>
 </div>
@@ -7172,6 +7175,10 @@ function loadProject(projectId) {
 }
 
 function deleteProject(projectId) {
+  if (currentUserRole !== 'admin') {
+    showToast('Only an Administrator can delete projects.', 'error');
+    return;
+  }
   if (!confirm('Are you sure you want to delete this project?')) return;
   
   let projects = getProjects();
@@ -7335,6 +7342,7 @@ function renderProjectsList() {
   }
   
   const projects = getProjects();
+  const canDeleteProjects = currentUserRole === 'admin';
   
   let html = '<button class="btn-new-project" onclick="createNewProject()">+ New Project</button>';
   
@@ -7354,7 +7362,7 @@ function renderProjectsList() {
         <div class="project-item-date">${date}</div>
         <div class="project-item-actions">
           <button class="btn-edit-project" onclick="loadProject('${p.id}')">Load</button>
-          <button class="btn-delete-project" onclick="deleteProject('${p.id}')">Delete</button>
+          ${canDeleteProjects ? `<button class="btn-delete-project" onclick="deleteProject('${p.id}')">Delete</button>` : ''}
         </div>
       </div>
     `;
@@ -14594,6 +14602,7 @@ function renderDashboardProjects() {
   if (!grid) return;
   
   const projects = getProjects();
+  const canDeleteProjects = currentUserRole === 'admin';
   
   if (projects.length === 0) {
     grid.innerHTML = `
@@ -14648,7 +14657,7 @@ function renderDashboardProjects() {
         </div>
         <div class="project-card-actions">
           <button class="btn-open-project" onclick="openProjectFromDashboard('${p.id}')">Open Project</button>
-          <button class="btn-delete-project-dash" onclick="deleteProjectFromDashboard('${p.id}')">🗑</button>
+          ${canDeleteProjects ? `<button class="btn-delete-project-dash" onclick="deleteProjectFromDashboard('${p.id}')">🗑</button>` : ''}
         </div>
       </div>
     `;
@@ -14752,6 +14761,10 @@ function createProjectFromDashboard() {
 }
 
 function deleteProjectFromDashboard(projectId) {
+  if (currentUserRole !== 'admin') {
+    showToast('Only an Administrator can delete projects.', 'error');
+    return;
+  }
   if (!confirm('Delete this project? This cannot be undone.')) return;
   deleteProject(projectId);
   renderDashboardProjects();
@@ -15580,7 +15593,11 @@ function loadCC(ccName) {
   
   var ccData = COST_CENTRES[ccName];
   if (titleEl) titleEl.textContent = ccName;
-  if (subEl) subEl.textContent = ccData.items.length + ' items available — tick to include';
+  if (subEl) {
+    subEl.textContent = isScopeReadOnly()
+      ? ccData.items.length + ' items — browse categories & search; open Exclusions / Notes for full detail (view only)'
+      : ccData.items.length + ' items available — tick to include';
+  }
   if (searchEl) searchEl.value = '';
 
   console.log('About to call buildCategoryFilters');
@@ -15597,22 +15614,26 @@ function loadCC(ccName) {
     const notes = ccNotes[ccName] || [];
     const photos = ccSectionPhotos[ccName] || [];
     const safeCCName = ccName.replace(/'/g, "\\'");
+    const ro = isScopeReadOnly();
+    const photoActions = ro ? '' : `
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <button type="button" onclick="openCCPhotoCamera('${safeCCName}')" style="background:var(--accent);border:none;border-radius:4px;padding:5px 8px;font-size:10px;color:#fff;cursor:pointer;">📷 Camera</button>
+            <button type="button" onclick="openCCPhotoGallery('${safeCCName}')" style="background:var(--surface3);border:1px solid var(--border);border-radius:4px;padding:5px 8px;font-size:10px;color:var(--text);cursor:pointer;">🖼️ Gallery</button>
+          </div>`;
+    const photoRemove = (idx) => ro ? '' : `<button type="button" onclick="removeCCPhoto('${safeCCName}', ${idx})" style="position:absolute;top:-6px;right:-6px;background:var(--danger);border:none;border-radius:50%;width:18px;height:18px;color:#fff;font-size:11px;line-height:18px;cursor:pointer;">×</button>`;
     
     let html = `
       <div style="margin-bottom: 12px; padding: 10px; background: rgba(26,58,92,0.1); border-left: 3px solid var(--primary); border-radius: 4px;">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
           <div style="font-size:10px;font-weight:600;color:var(--primary);text-transform:uppercase;">Cost Centre Photos (${photos.length})</div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap;">
-            <button onclick="openCCPhotoCamera('${safeCCName}')" style="background:var(--accent);border:none;border-radius:4px;padding:5px 8px;font-size:10px;color:#fff;cursor:pointer;">📷 Camera</button>
-            <button onclick="openCCPhotoGallery('${safeCCName}')" style="background:var(--surface3);border:1px solid var(--border);border-radius:4px;padding:5px 8px;font-size:10px;color:var(--text);cursor:pointer;">🖼️ Gallery</button>
-          </div>
+          ${photoActions}
         </div>
         ${photos.length > 0 ? `
           <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
             ${photos.map((src, idx) => `
               <div style="position:relative;">
                 <img src="${src}" alt="Cost centre photo" style="width:74px;height:74px;object-fit:cover;border-radius:6px;border:1px solid var(--border);">
-                <button onclick="removeCCPhoto('${safeCCName}', ${idx})" style="position:absolute;top:-6px;right:-6px;background:var(--danger);border:none;border-radius:50%;width:18px;height:18px;color:#fff;font-size:11px;line-height:18px;cursor:pointer;">×</button>
+                ${photoRemove(idx)}
               </div>
             `).join('')}
           </div>
@@ -15643,7 +15664,11 @@ function loadCC(ccName) {
       }
       excNotesContainer.innerHTML = html;
     } else {
-      html += '<div style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">No exclusions or notes added yet. Click "📝 Exclusions / Notes" to add.</div>';
+      html += '<div style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">' +
+        (isScopeReadOnly()
+          ? 'No exclusions or notes for this cost centre. Use "📝 Exclusions / Notes" to review other centres.'
+          : 'No exclusions or notes added yet. Click "📝 Exclusions / Notes" to add.') +
+        '</div>';
       excNotesContainer.innerHTML = html;
     }
   }
@@ -15675,7 +15700,6 @@ function buildCategoryFilters(ccData) {
 }
 
 function setCategory(category) {
-  if (isScopeReadOnly()) return;
   activeCategory = category;
   const ccData = COST_CENTRES[activeCCName];
   buildCategoryFilters(ccData);
@@ -17730,11 +17754,19 @@ function closeAddCustomItem() {
 // EXCLUSIONS AND NOTES FUNCTIONS
 // ====================================================
 
+function syncExclusionModalReadOnly() {
+  const modal = document.getElementById('exclusionsModal');
+  if (!modal || !modal.classList.contains('exclusions-modal-viewonly')) return;
+  modal.querySelectorAll('.exclusion-input, .note-input').forEach(function(el) {
+    el.readOnly = true;
+    el.setAttribute('readonly', 'readonly');
+  });
+  modal.querySelectorAll('#exclusionsList button, #notesList button').forEach(function(el) {
+    el.style.display = 'none';
+  });
+}
+
 function openExclusionsModal() {
-  if (isScopeReadOnly()) {
-    showToast('Scope is view-only for your role.', 'info');
-    return;
-  }
   const modal = document.getElementById('exclusionsModal');
   const select = document.getElementById('exclusionCCSelect');
   
@@ -17748,13 +17780,26 @@ function openExclusionsModal() {
   if (activeCCName && selectedCC.has(activeCCName)) {
     select.value = activeCCName;
     loadExclusionsForCC(activeCCName);
+  } else {
+    document.getElementById('exclusionsList').innerHTML = '';
+    document.getElementById('notesList').innerHTML = '';
   }
   
+  const title = modal.querySelector('.scope-modal-title');
+  if (isScopeReadOnly()) {
+    modal.classList.add('exclusions-modal-viewonly');
+    if (title) title.textContent = '📋 Exclusions & Notes (view only)';
+  } else {
+    modal.classList.remove('exclusions-modal-viewonly');
+    if (title) title.textContent = '📝 Add Exclusions & Notes';
+  }
+  syncExclusionModalReadOnly();
   modal.classList.add('show');
 }
 
 function closeExclusionsModal() {
-  document.getElementById('exclusionsModal').classList.remove('show');
+  const modal = document.getElementById('exclusionsModal');
+  modal.classList.remove('show', 'exclusions-modal-viewonly');
 }
 
 function loadExclusionsForCC(ccName) {
@@ -17774,6 +17819,7 @@ function loadExclusionsForCC(ccName) {
   notes.forEach((note, idx) => {
     addNoteInput(note, idx);
   });
+  syncExclusionModalReadOnly();
 }
 
 function addExclusionItem(value = '') {
