@@ -475,6 +475,37 @@ body {
 }
 
 /* Header - Clean and Simple */
+.role-access-banner {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 16px;
+  font-size: 12px;
+  color: #0a0f1a;
+  background: linear-gradient(90deg, rgba(212, 168, 83, 0.35), rgba(26, 58, 92, 0.35));
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.app-container.scope-phase-readonly .step input:not([type="hidden"]),
+.app-container.scope-phase-readonly .step select,
+.app-container.scope-phase-readonly .step textarea {
+  pointer-events: none;
+  opacity: 0.92;
+}
+
+.app-container.scope-phase-readonly .step .cc-card,
+.app-container.scope-phase-readonly .step .items-cc-item,
+.app-container.scope-phase-readonly .step .cc-item,
+.app-container.scope-phase-readonly .step .item-check,
+.app-container.scope-phase-readonly .step .item-name,
+.app-container.scope-phase-readonly .step .category-btn {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.95;
+}
+
 header {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
@@ -5303,6 +5334,10 @@ header {
       <button class="logout-btn" onclick="logout()">Logout</button>
     </div>
   </header>
+  <div id="scopeReadonlyBanner" class="role-access-banner" style="display:none;">
+    <span>👁️ View only:</span>
+    <span>Only an <strong>Administrator</strong> can edit the scope. Managers can work in <strong>Cost &amp; Budget</strong> after the scope is finalized.</span>
+  </div>
   <div class="progress-bar" id="progressBar" style="display: none;"><div class="progress-fill" id="progressFill" style="width: 25%;"></div></div>
 
   <div class="app">
@@ -5753,7 +5788,7 @@ header {
                 <button class="btn btn-secondary" onclick="generateScopePDFFromReview()">📄 Generate Scope Document</button>
                 <button class="btn btn-secondary" onclick="saveCurrentProject()">💾 Save</button>
                 <button class="btn btn-secondary" onclick="goToStep(3)">← Edit Items</button>
-                <button class="btn btn-primary" onclick="finalizeScopeAndProceed()">✅ Proceed to Cost & Budgeting →</button>
+                <button type="button" class="btn btn-primary" id="btnFinalizeScopeProceed" onclick="finalizeScopeAndProceed()">✅ Proceed to Cost & Budgeting →</button>
               </div>
             </div>
           </div>
@@ -6240,6 +6275,7 @@ function showScopeBuilderInterface() {
   // Ensure the main container is visible
   const mainEl = document.querySelector('.main');
   if (mainEl) mainEl.style.display = 'flex';
+  syncRoleAccessUI();
 }
 
 function openSettings() {
@@ -6825,6 +6861,7 @@ let currentPhase = 1; // 1, 2, or 3
 let phaseLocked = true; // Phase 2 and 3 locked until scope is saved
 let scopeSaved = false; // Track if scope has been saved
 let scopeVersion = 0; // Increment when scope changes to notify pricing
+let scopeLockedByAdmin = false; // Set when an Administrator finalizes the scope (stored per project)
 
 // Exclusions and Notes for each cost centre
 let ccExclusions = {}; // { "Appliances": ["exclusion 1", "exclusion 2"] }
@@ -6936,6 +6973,30 @@ function saveDefaultExclusionsNotes() {
 // ====================================================
 // PROJECT MANAGEMENT
 // ====================================================
+function isScopeReadOnly() {
+  return currentUserRole !== 'admin' && currentPhase === 1;
+}
+
+function isBudgetEditable() {
+  return currentUserRole === 'admin' || currentUserRole === 'manager';
+}
+
+function syncRoleAccessUI() {
+  const app = document.getElementById('appContainer');
+  if (app) {
+    app.classList.toggle('scope-phase-readonly', isScopeReadOnly());
+    app.classList.toggle('budget-phase-readonly', (currentPhase === 2 || currentPhase === 3) && !isBudgetEditable());
+  }
+  const banner = document.getElementById('scopeReadonlyBanner');
+  if (banner) {
+    banner.style.display = isScopeReadOnly() ? 'flex' : 'none';
+  }
+  const proceedBtn = document.getElementById('btnFinalizeScopeProceed');
+  if (proceedBtn) {
+    proceedBtn.style.display = currentUserRole === 'admin' ? '' : 'none';
+  }
+}
+
 function getProjects() {
   const stored = localStorage.getItem('scopeBuilderProjects');
   if (!stored) return [];
@@ -7010,7 +7071,15 @@ function setProjectFields(proj) {
   setVal('projStructDrawings', proj.structDrawings || '');
 }
 
-function saveCurrentProject() {
+function saveCurrentProject(options) {
+  const silent = options && options.silent;
+  if (currentUserRole !== 'admin' && currentPhase === 1 && currentProjectId) {
+    if (!silent) {
+      showToast('Scope is view-only for your role. Administrators edit the scope; use Cost & Budget after the scope is finalized.', 'info');
+    }
+    return;
+  }
+
   const projects = getProjects();
   const projectData = {
     id: currentProjectId || Date.now().toString(),
@@ -7025,6 +7094,7 @@ function saveCurrentProject() {
     currentPhase: currentPhase,
     phaseLocked: phaseLocked,
     scopeVersion: scopeVersion,
+    scopeLockedByAdmin: scopeLockedByAdmin,
     updatedAt: new Date().toISOString()
   };
   
@@ -7044,10 +7114,7 @@ function saveCurrentProject() {
   if (!ok) return;
   renderProjectsList();
   
-  // Unlock phases if saving from Phase 1 with items
-  if (currentPhase === 1 && countTotalItems() > 0) {
-    unlockPhases();
-  } else {
+  if (!silent) {
     showToast('Project saved successfully', 'success');
   }
 }
@@ -7078,6 +7145,7 @@ function loadProject(projectId) {
   phaseLocked = project.phaseLocked !== undefined ? project.phaseLocked : true;
   scopeVersion = project.scopeVersion || 0;
   scopeSaved = !phaseLocked;
+  scopeLockedByAdmin = project.scopeLockedByAdmin === true;
   
   console.log('Selected CC:', selectedCC);
   console.log('Item selections:', itemSelections);
@@ -7137,6 +7205,7 @@ function createNewProject() {
   phaseLocked = true;
   scopeSaved = false;
   scopeVersion = 0;
+  scopeLockedByAdmin = false;
   
   // Clear all form fields
   const fields = ['projClient', 'projClientAddress', 'projName', 'projLocation', 
@@ -14620,11 +14689,13 @@ function createProjectFromDashboard() {
   itemPricing = {};
   ccExclusions = {};
   ccNotes = {};
+  ccSectionPhotos = {};
   activeCCName = null;
   currentPhase = 1;
   phaseLocked = true;
   scopeSaved = false;
   scopeVersion = 0;
+  scopeLockedByAdmin = false;
   currentStep = 1;
   
   // Set project fields
@@ -14677,6 +14748,7 @@ function createProjectFromDashboard() {
   currentPhase = 1;
   updatePhaseTabs();
   syncProjectsSidebarForViewport();
+  syncRoleAccessUI();
 }
 
 function deleteProjectFromDashboard(projectId) {
@@ -14714,12 +14786,6 @@ function switchPhase(phase) {
     return;
   }
   
-  // Role-based access control
-  // Manager can access Phase 1 (scope) but cannot modify after Phase 2 is unlocked
-  if (currentUserRole === 'manager' && phase === 1 && !phaseLocked) {
-    // Manager can view but not modify scope - allow view
-  }
-  
   // Phase 2: Check if scope has items
   if (phase === 2) {
     const totalItems = countTotalItems();
@@ -14755,6 +14821,7 @@ function switchPhase(phase) {
   
   // Update header label
   updateHeaderLabel();
+  syncRoleAccessUI();
 }
 
 function updatePhaseTabs() {
@@ -14852,8 +14919,11 @@ function showCostSection() {
       roleAccessText.textContent = '👑 Admin: Full Access';
       roleAccessText.style.color = 'var(--primary)';
     } else if (currentUserRole === 'manager') {
-      roleAccessText.textContent = '👔 Manager: Cost & Budget Only';
+      roleAccessText.textContent = '👔 Manager: Full control — Cost & Budget';
       roleAccessText.style.color = 'var(--info)';
+    } else if (currentUserRole === 'staff') {
+      roleAccessText.textContent = '👷 Staff: View only (Cost & Budget locked)';
+      roleAccessText.style.color = 'var(--text-muted)';
     }
   }
 }
@@ -14892,11 +14962,14 @@ function updateHeaderLabel() {
   }
 }
 
-// Unlock phases after scope is saved
+// Unlock phases after an Administrator finalizes the scope
 function unlockPhases() {
   phaseLocked = false;
   scopeSaved = true;
   scopeVersion++;
+  if (currentUserRole === 'admin') {
+    scopeLockedByAdmin = true;
+  }
   updatePhaseTabs();
   
   // Re-enable click handlers for phase tabs
@@ -14909,6 +14982,7 @@ function unlockPhases() {
   }
   
   showToast('Scope saved! Cost & Budgeting is now unlocked.', 'success');
+  saveCurrentProject({ silent: true });
 }
 
 // Check for scope changes and notify user
@@ -15083,6 +15157,10 @@ function updatePhase2Total() {
 }
 
 function finalizePricing() {
+  if (!isBudgetEditable()) {
+    showToast('You do not have permission to finalize pricing.', 'error');
+    return;
+  }
   // Check if all items have pricing
   let unpriced = 0;
   [...selectedCC].forEach(ccName => {
@@ -15189,6 +15267,10 @@ function buildFinalReview() {
 }
 
 function finalizeProject() {
+  if (!isBudgetEditable()) {
+    showToast('You do not have permission to finalize this project.', 'error');
+    return;
+  }
   // Set project as finalised in localStorage
   if (currentProjectId) {
     localStorage.setItem('quoteFinalised_' + currentProjectId, 'true');
@@ -15293,6 +15375,7 @@ function goToStep(n) {
         setTimeout(updateCostControl, 100);
       }
     }
+    syncRoleAccessUI();
   } catch(e) {
     console.error('goToStep error:', e);
   }
@@ -15356,19 +15439,19 @@ function goToStep4() {
 
 // Finalize scope in Phase 1 and proceed to Phase 2
 function finalizeScopeAndProceed() {
+  if (currentUserRole !== 'admin') {
+    showToast('Only an Administrator can finalize the scope and unlock Cost & Budgeting.', 'error');
+    return;
+  }
   const total = countTotalItems();
   if (total === 0) {
     showToast('Please select at least one item before proceeding', 'error');
     return;
   }
   
-  // Save the project first
-  saveCurrentProject();
-  
-  // Unlock phases
+  saveCurrentProject({ silent: true });
   unlockPhases();
   
-  // Move to Phase 2
   setTimeout(() => {
     switchPhase(2);
   }, 500);
@@ -15402,6 +15485,10 @@ function buildCCGrid() {
 }
 
 function toggleCC(name) {
+  if (isScopeReadOnly()) {
+    showToast('Scope is view-only for your role.', 'info');
+    return;
+  }
   if (selectedCC.has(name)) {
     selectedCC.delete(name);
   } else {
@@ -15411,11 +15498,19 @@ function toggleCC(name) {
 }
 
 function selectAllCC() {
+  if (isScopeReadOnly()) {
+    showToast('Scope is view-only for your role.', 'info');
+    return;
+  }
   Object.keys(COST_CENTRES).forEach(k => selectedCC.add(k));
   buildCCGrid();
 }
 
 function clearAllCC() {
+  if (isScopeReadOnly()) {
+    showToast('Scope is view-only for your role.', 'info');
+    return;
+  }
   selectedCC.clear();
   buildCCGrid();
 }
@@ -15580,6 +15675,7 @@ function buildCategoryFilters(ccData) {
 }
 
 function setCategory(category) {
+  if (isScopeReadOnly()) return;
   activeCategory = category;
   const ccData = COST_CENTRES[activeCCName];
   buildCategoryFilters(ccData);
@@ -15663,6 +15759,10 @@ function filterItems() {
 }
 
 function toggleItem(ccName, idx) {
+  if (isScopeReadOnly()) {
+    showToast('Scope is view-only for your role.', 'info');
+    return;
+  }
   if (!itemSelections[ccName]) itemSelections[ccName] = {};
   if (!itemSelections[ccName][idx]) itemSelections[ccName][idx] = { checked: false, qty: '1', notes: '' };
   itemSelections[ccName][idx].checked = !itemSelections[ccName][idx].checked;
@@ -15673,18 +15773,24 @@ function toggleItem(ccName, idx) {
 }
 
 function updateItemQty(ccName, idx, val) {
+  if (isScopeReadOnly()) return;
   if (!itemSelections[ccName]) itemSelections[ccName] = {};
   if (!itemSelections[ccName][idx]) itemSelections[ccName][idx] = { checked: false, qty: '1', notes: '' };
   itemSelections[ccName][idx].qty = val;
 }
 
 function updateItemNotes(ccName, idx, val) {
+  if (isScopeReadOnly()) return;
   if (!itemSelections[ccName]) itemSelections[ccName] = {};
   if (!itemSelections[ccName][idx]) itemSelections[ccName][idx] = { checked: false, qty: '1', notes: '' };
   itemSelections[ccName][idx].notes = val;
 }
 
 function selectAllItems() {
+  if (isScopeReadOnly()) {
+    showToast('Scope is view-only for your role.', 'info');
+    return;
+  }
   if (!activeCCName) return;
   COST_CENTRES[activeCCName].items.forEach((_, idx) => {
     if (!itemSelections[activeCCName]) itemSelections[activeCCName] = {};
@@ -15698,6 +15804,10 @@ function selectAllItems() {
 }
 
 function clearAllItems() {
+  if (isScopeReadOnly()) {
+    showToast('Scope is view-only for your role.', 'info');
+    return;
+  }
   if (!activeCCName) return;
   if (itemSelections[activeCCName]) {
     Object.keys(itemSelections[activeCCName]).forEach(k => {
@@ -15852,6 +15962,10 @@ let photoCaptureContext = { type: 'project', ccName: null };
 let capturedPhotoData = null;
 
 function openProjectPhotoCamera() {
+  if (currentUserRole !== 'admin' && currentPhase === 1) {
+    showToast('Only an Administrator can change project photos from the scope.', 'info');
+    return;
+  }
   photoCaptureContext = { type: 'project', ccName: null };
   openCamera();
 }
@@ -15873,11 +15987,19 @@ function openActiveCCPhotoGallery() {
 }
 
 function openCCPhotoCamera(ccName) {
+  if (isScopeReadOnly()) {
+    showToast('Scope is view-only for your role.', 'info');
+    return;
+  }
   photoCaptureContext = { type: 'cc', ccName };
   openCamera();
 }
 
 function openCCPhotoGallery(ccName) {
+  if (isScopeReadOnly()) {
+    showToast('Scope is view-only for your role.', 'info');
+    return;
+  }
   photoCaptureContext = { type: 'cc', ccName };
   document.getElementById('galleryInput').click();
 }
@@ -15898,6 +16020,10 @@ function saveCapturedPhotoToContext(dataUrl) {
 }
 
 function removeCCPhoto(ccName, idx) {
+  if (isScopeReadOnly()) {
+    showToast('Scope is view-only for your role.', 'info');
+    return;
+  }
   if (!ccSectionPhotos[ccName]) return;
   ccSectionPhotos[ccName].splice(idx, 1);
   if (ccSectionPhotos[ccName].length === 0) delete ccSectionPhotos[ccName];
@@ -16351,6 +16477,10 @@ function addPriceButtonsToItems(ccName) {
 
 // Remove a single price from an item
 function removeSinglePrice(ccName, idx, priceIdx) {
+  if (!isBudgetEditable()) {
+    showToast('Only Administrators and Managers can edit pricing.', 'info');
+    return;
+  }
   if (!itemPricing[ccName] || !itemPricing[ccName][idx]) return;
   const prices = itemPricing[ccName][idx];
   if (Array.isArray(prices)) {
@@ -16370,6 +16500,10 @@ function removeSinglePrice(ccName, idx, priceIdx) {
 }
 
 function openPriceModal(ccName, idx) {
+  if (!isBudgetEditable()) {
+    showToast('Only Administrators and Managers can edit pricing.', 'info');
+    return;
+  }
   priceModal_ccName = ccName;
   priceModal_idx = idx;
   
@@ -16970,6 +17104,10 @@ function clearItemPrice() {
 }
 
 function confirmPriceSelection() {
+  if (!isBudgetEditable()) {
+    showToast('Only Administrators and Managers can edit pricing.', 'info');
+    return;
+  }
   if (!priceModal_ccName || priceModal_idx === null) return;
   if (!itemPricing[priceModal_ccName]) itemPricing[priceModal_ccName] = {};
 
@@ -17593,6 +17731,10 @@ function closeAddCustomItem() {
 // ====================================================
 
 function openExclusionsModal() {
+  if (isScopeReadOnly()) {
+    showToast('Scope is view-only for your role.', 'info');
+    return;
+  }
   const modal = document.getElementById('exclusionsModal');
   const select = document.getElementById('exclusionCCSelect');
   
@@ -17675,6 +17817,10 @@ function addNoteInput(value = '', idx = null) {
 }
 
 function saveExclusionsAndNotes() {
+  if (isScopeReadOnly()) {
+    showToast('Scope is view-only for your role.', 'info');
+    return;
+  }
   const ccName = document.getElementById('exclusionCCSelect').value;
   if (!ccName) {
     showToast('Please select a cost centre', 'error');
@@ -17777,6 +17923,10 @@ function addAllDefaultNotes() {
 
 // Toggle exclusion defaults dropdown menu
 function toggleExclusionDefaultsMenu() {
+  if (isScopeReadOnly()) {
+    showToast('Scope is view-only for your role.', 'info');
+    return;
+  }
   const menu = document.getElementById('exclusionDefaultsMenu');
   const list = document.getElementById('exclusionDefaultsList');
   
@@ -17831,6 +17981,10 @@ function toggleExclusionDefaultsMenu() {
 
 // Toggle note defaults dropdown menu
 function toggleNoteDefaultsMenu() {
+  if (isScopeReadOnly()) {
+    showToast('Scope is view-only for your role.', 'info');
+    return;
+  }
   const menu = document.getElementById('noteDefaultsMenu');
   const list = document.getElementById('noteDefaultsList');
   
@@ -17903,6 +18057,10 @@ function saveManagedDefaults() {
 }
 
 function openCustomItemModal() {
+  if (isScopeReadOnly()) {
+    showToast('Scope is view-only for your role.', 'info');
+    return;
+  }
   if (!activeCCName) {
     showToast('Please select a cost centre first', 'warning');
     return;
@@ -17916,6 +18074,10 @@ function openCustomItemModal() {
 }
 
 function saveCustomItem() {
+  if (isScopeReadOnly()) {
+    showToast('Scope is view-only for your role.', 'info');
+    return;
+  }
   const name = document.getElementById('customItemName').value.trim();
   const type = document.getElementById('customItemType').value;
   const category = document.getElementById('customItemCategory').value.trim() || 'Custom';
