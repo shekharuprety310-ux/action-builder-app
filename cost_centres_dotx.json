@@ -1,0 +1,4247 @@
+{
+  "cost_centres": {
+    "Appliances": {
+      "items": [
+        {
+          "name": "Supply and delivery of Oven",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of Cooktop",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of Rangehood",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of Dishwasher",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of Fridge",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of Washing Machine",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of Dryer",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Balustrade": {
+      "items": [
+        {
+          "name": "Supply and install glass balustrade",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install glass balustrade – raked",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install metal balustrade",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install metal balustrade – raked",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install timber balustrade",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install timber balustrade – raked",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install steel balustrade",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install steel balustrade - raked",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Brick & Blockwork": {
+      "items": [
+        {
+          "name": "RETAINING WALLS",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of 200mm blocks",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of 300mm blocks",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of N12 reinforcing bar as H=<1.2m",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of N16 reinforcing bar as H=>1.2m",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of sand",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of cement",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Block laying",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Block cutting",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Block carting",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "BASE BRICKS",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of common bricks",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of face bricks",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of sill bricks",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of sand",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of cement",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of brick lintels",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of brick accessories – ties, vents etc",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Brick laying",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Brick pier construction",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Brick sill laying",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Brick cutting",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Brick carting",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "FACE BRICKS",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of common bricks",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of face bricks",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of sill bricks",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of sand",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of cement",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of brick lintels",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of brick accessories – ties, vents etc",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Brick laying",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Brick pier construction",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Brick sill laying",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Brick cutting",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Brick carting",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "RENDER BRICKS",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of common bricks",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of render bricks",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of sill bricks",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of sand",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of cement",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of brick lintels",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of brick accessories – ties, vents etc",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Brick laying",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Brick sill laying",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Brick cutting",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Brick carting",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Building Materials – Cladding & Eaves": {
+      "items": [
+        {
+          "name": "CEMENT SHEET CLADDINGS",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of James Hardie AXON cladding, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of James Hardie FINE TEXTURE cladding, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of James Hardie EASYLAP cladding, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of James Hardie OBLIQUE cladding, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of James Hardie STRIA cladding, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of James Hardie LINEA cladding, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of James Hardie BRUSHED CONCRETE cladding, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "TIMBER LOOK CLADDINGS",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of hardwood cladding, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of composite cladding, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "EAVES",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of cement sheet and fixings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of joining strips",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of quad moulding",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of hardwood timber and fixings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of eave vents",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of timber fascia board",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "OVERHANGS",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of cement sheet and fixings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of joining strips",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of quad moulding",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of hardwood timber and fixings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Building Materials – Decks & Screening": {
+      "items": [
+        {
+          "name": "DECKING",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of deck framing – treated pine",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of deck framing fixings and accessories – joist hangers, bolts, joist tape etc..",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of strap bracing for deck framing",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of decking – Composite",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of decking – Hardwood",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of decking – Treated Pine",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of decking fixings – screws, nails, concealed, kleva-klips etc",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of James Hardie SCYON External Secura flooring, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of klevaklips and fixings or equivalent to install a concealed fixings system)",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "SCREENING",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of screening framing – treated pine",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of screening framing fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of screening – Composite",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of screening – Hardwood",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of screening – Treated Pine",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of screening – Aluminium battens",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of screening fixings – screws, nails, concealed, kleva-klips etc",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Building Materials – Fit Out": {
+      "items": [
+        {
+          "name": "Supply and delivery of Internal doors and jambs",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of External doors and jambs",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of Cavity sliding door frames",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of Barn door sliding kits",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of Skirtings and architraves",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of Door furniture, hardware, stops and weather seals if required",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of Ceiling Access panels",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of General fixings and trims",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of Feature front entrance door – including handles/locks etc",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of Internal feature timber",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Building Materials – Roof Frame": {
+      "items": [
+        {
+          "name": "Supply and delivery of roof trusses",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of timber roof framing",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of timber framing for eaves, soffits, overhangs",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of timber valley boards",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of roof framing fixings – including nails, screws, strapping etc",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of framing and plywood underlay for box gutters",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of parapet wall framing",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of parapet wall cladding (inside box gutter – eg: cement sheet)",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of skylight framing",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of bracing, strapping, and tie-downs",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of roof battens including intermediates",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of timber fascia board",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of infill framework for between steel rafters",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of blocking for garage door ceiling",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Building Materials – Wall Frames": {
+      "items": [
+        {
+          "name": "Supply and delivery of timber wall framing",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of timber wall framing fixings – including nails, screws, bolts, connectors etc",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of wall bracing and fixings – ply sheeting and metal strap bracing",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of timber lintels",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of vapour permeable wall wrap & tape",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of castellated wall battens",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of cladding battens",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of framing and flooring for blocking/solid fixing points for handrails, towel rails, shower screens, TV’s etc…",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of extra noggins and sheeting for compliance with Livable Housing Design Standards",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of XPS in wall insulation",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of in wall insulation batts",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Carpentry": {
+      "items": [
+        {
+          "name": "Demolition and site preparation works",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Securing of site during construction as required",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install timber floor framing – Inc: bearers, joists, tie downs, dropped floors etc",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install timber wall framing - Inc: tie downs, blocking, cavity sliders, lintels, and bracing",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install timber roof framing Inc: roof trusses, framing, roof battens, box gutters, and bracing",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install soffit framing, soffits & ventsInc: framing, sheeting, joiners and cutting in air vents",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install windows & external glass doors – including installation of external flashings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install wall wrap & tape - including wrapping and taping for weathertight seals",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Batten exterior walls for cladding, including timber wall battens set out to suit claddings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install external cladding - including window/door stops, cladding accessories, flashings, cladding and fixings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Complete internal fit out - including doors, handles, stops, skirtings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Complete internal bathroom fit outs – Including towel rails, t/r holders, vanity units",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install timber deck frame - including bearers and joists",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install decking - decking and fixings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install external screening including screening and fixings fitted to steel frame",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install frame and access door",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install cladding battens to the garage door",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install blocking/noggins/sheeting to comply with Livable Housing Design standards",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Caulking & Sealing": {
+      "items": [
+        {
+          "name": "Supply and place premium quality sealants to wet area internal junctions",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and place premium quality sealants to external cladding interfaces",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Cleaning": {
+      "items": [
+        {
+          "name": "Internal clean and sanitisation of all internal surfaces to a “ready to move in” standard prior to PC",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Internal and external clean of all windows and glazing including tracks",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "External presentation clean of all grounds and surrounds",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Concreting": {
+      "items": [
+        {
+          "name": "PIER HOLES",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of steel reinforcement",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of concrete accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of cast in plates",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and place steel reinforcement",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of concrete",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply of concrete pump and operator",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Finish concrete to required heights",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Position and place cast in plates",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "FOOTINGS",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of steel reinforcement",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of concrete accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install boxing for footings and/or block outs as required",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and place steel reinforcement",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of concrete",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply of concrete pump and operator",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Finish concrete to required heights",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "SLABS",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of Bondek and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of Bondek edgeform",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of slab insulation",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of steel reinforcement",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of concrete accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of polyethylene film and deck",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of FCR",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of bedding sand",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install boxing for slab as required",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Installation of Bondek",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Place and compact FCR and sand",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Installation of insulation and poly film",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and place steel reinforcement",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply of concrete pump and operator",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of concrete",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Place concrete to required heights and finish",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "DRIVEWAY & KERBING",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of Bondek and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of steel reinforcement",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of concrete accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of FCR",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Installation of Bondek",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install boxing for driveway as required",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Place and compact Sub-base and FCR",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and place steel reinforcement",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply of concrete pump and operator",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of concrete",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Place concrete to required heights and finish",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Form kerbing edge",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "CROSS OVER",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Construct new cross over in accordance with Civil Plans",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "EXT STAIRS",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Marked as concrete stairs on plan – but no engineering plans – these will be required",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "COREFILLING",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply concrete pump & operator",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of concrete",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "NOTE: multiple pours may be required for corefilling",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Demolition – labour & waste disposal": {
+      "items": [
+        {
+          "name": "Labour for demolition and disposal of",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Bin hire and disposal fees",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Labour for careful demolition and stacking/storing of",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Cut existing concrete floor and remove and dispose of waste",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Cut and shape existing concrete floor and remove and dispose of waste",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Cut existing brickwork and stack and store bricks",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Cut existing brickwork and remove and dispose of waste",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Clean removed bricks to prepare for re-use",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Electrical": {
+      "items": [
+        {
+          "name": "Supply and install downlights as marked",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install hanging pendant light",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install Double GPO’s",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install single GPO’s",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install External double GPO’",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install light switches",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install dimmers",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install movement sensors",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install external lighting",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install 3 in 1 bathroom heaters including ducting to air",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install extraction fan",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install power feed for HWC",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install strip lighting",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install NBN from street to home",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install data point",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install interconnected smoke alarms",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install TV connection points",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install power for AWTS or external pump",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install oven & cooktop",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install rangehood including ducting to air",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install oven/cooktop isolation wiring & switch",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install client supplied lighting",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install CCTV/Security system",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install electrical automation system",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Electrical Mains": {
+      "items": [
+        {
+          "name": "Authority coordination",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install single phase, meter panel & strip earth",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install 25mm single phase meter including conduit – 20m",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install meter box as marked",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install solar panels and inverter – system to suit household",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Electrical Fittings": {
+      "items": [
+        {
+          "name": "Supply of feature lighting",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply of ceiling fan",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Excavation": {
+      "items": [
+        {
+          "name": "Bulk cut and spoil disposal – including concrete paths",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Footing excavations including pier holes and spoil disposal",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Pier holes excavation and spoil disposal",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Service trenches for plumbing and electrical and spoil disposal",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Base and backfilling of service trenches – including Supply and delivery of gravels",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Batter shaping",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Backfilling of retaining walls – including Supply and delivery of gravel & placement of geotextile fabric",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Controlled fill – supply, place and compact",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "FCR – place and compact for slab preparation",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Bedding sand – place on FCR for concreters to compact",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Driveway & access shaping",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Driveway sub-base – supply and compact",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and compaction of all controlled fill",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Form table/spoon drain at top of retaining wall",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Form hardstand base for rainwater tank",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Final clean, scrape of site to tidy and level",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Fencing": {
+      "items": [
+        {
+          "name": "Supply and install fencing – Colorbond",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install fencing – Treated Pine Pickets",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install fencing – Treated Pine Lapped",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install fencing – Screening style fence",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install gate/s to match fencing styles",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Flashings": {
+      "items": [
+        {
+          "name": "Supply and delivery of window and door flashings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of deck and balcony flashings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of other specialist flashings that are not associated with roofing work",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Flooring & Floor Coverings": {
+      "items": [
+        {
+          "name": "Supply and lay carpet and underlay to",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and lay laminate overlay flooring and underlay to",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and lay hybrid overlay flooring and underlay to",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and lay engineered timber overlay flooring to",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and lay 8mm solid timber flooring to",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and lay 12mm solid timber flooring to",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare, sand and finish new solid timber flooring to",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare, sand and finish existing good condition solid timber flooring to",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare, sand and finish existing poor condition solid timber flooring to",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and lay loose laid vinyl to",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and lay vinyl planks to",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Diamond grind and mechanically polish concrete floor to",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "–Matt, Satin or Gloss finish",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Garage Doors": {
+      "items": [
+        {
+          "name": "Supply and install roller garage door",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Colorbond (standard profile in standard colours)",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install sectional garage door",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Colorbond steel (flat or ribbed steel panels in standard colours)",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Woodgrain finish (steel or aluminium panels with timber-look texture finish)",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Patterned/Architectural panels (horizontal line, cassette, flush, or feature panel design)",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Timber batten-clad (applied timber look battens for an architectural façade)",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install tilt-a-door garage door",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Colorbond steel (flat or ribbed steel panel in standard colours)",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Woodgrain finish (timber look steel panel)",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Patterned/Architectural panels (custom panel layouts or pressed designs)",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Timber batten-clad (applied timber look battens for an architectural façade)",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install garage door motor",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply of 2 x garage remotes",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "NOTE: Timber batten and feature finishes may affect door weight, motor selection, wind rating, and maintenance requirements.",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Glazing": {
+      "items": [
+        {
+          "name": "Supply and install cutom shower screens to… – semi-frameless",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install custom shower screens to…– frameless",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install stabilising bar to…",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install pivotec door to suit to…",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install sliding door to suit to…",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install custom sized mirror to… - frameless",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install custom sized mirror to… - framed",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Heating / Cooling (non-electric)": {
+      "items": [
+        {
+          "name": "NOTE: consultation with Heating/Cooling specialists to review the plans and suggest options in this category initially before provided pricing options.",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install wood heater, flue kit and proprietary hearth",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install hydronic heating",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install gas heater",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Joinery": {
+      "items": [
+        {
+          "name": "Supply and install kitchen joinery",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install pantry joinery",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install laundry joinery",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install bathroom joinery",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install ensuite joinery",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install walk in robe joinery",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install built in robe joinery",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install storage cupboard joinery",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install day bed/day seat joinery",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install wall unit joinery",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install feature timber",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install external joinery",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "ITEM LISTS TO COPY/PASTE UNDER EACH OF THE ABOVE",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Carcases: 16mm white melamine",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Shelves: 16mm white melamine",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Doors and panels: Laminate",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Doors and panels: Thermolaminated",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Doors and panels: 2-pac painted",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Doors and panels: Timber veneer",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Doors and panels: Solid timber",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Doors and panels: Decorative/Patterned",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Doors and panels: 16mm white melamine",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Doors and panels: Mirror finish",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Benchtops: Laminate",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Benchtops: Timber",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Benchtops: Acrylic",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Benchtops: Natural or Engineered Stone",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Splashbacks: Acrylic",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Splashbacks: Natural or Engineered Stone",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Splashbacks: Glass",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Splashbacks: Polymer panel",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Hardware: Soft close doors and drawers",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Hardware: Handles",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Accessory: Integrated bin",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Accessory: Integrated Fridge panel",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Accessory: Integrated Dishwasher panel",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Accessory: LED lighting",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Accessory: Sliding door track",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Accessory: Bifold door track",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Joinery – Internal Stairs": {
+      "items": [
+        {
+          "name": "Supply and install custom wood stairs",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install custom wood stairs with hardwood stringers",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install hardwood stairs",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install hardwood treads to steel framed stairs",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install hardwood balustrade and or feature timber screening",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install handrail",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Landscaping": {
+      "items": [
+        {
+          "name": "Install landscaping block wall",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install landscaping timber sleeper wall",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and placement of top soil",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and placement of stone/rock or similar",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and placement of woodchips/ground mulch or similar",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and placement of sands/gravels or similar",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install steel droppers",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and placement of grass seed",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and placement of instant or synthetic turf",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install landscape irrigation system",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Metal Wall & Roof Cladding": {
+      "items": [
+        {
+          "name": "Supply and installation of",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Structuur STANDING SEAM, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Structuur SNAPLOCK, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Structuur NAILSTRIP, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Structuur INTERLOCKING PANEL, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Structuur KT45, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Lysaht IMPERIAL (Standing Seam), fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Lysaht ENSEAM (Nailstrip), fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Lysaht SNAPSEAM (Nailstrip), fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Lysaht DOMINION, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Lysaht CUSTOM ORB, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Structuur STANDING SEAM, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Structuur SNAPLOCK, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Structuur NAILSTRIP, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Structuur INTERLOCKING PANEL, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Structuur KT45, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Lysaht IMPERIAL (Standing Seam), fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Lysaht ENSEAM (Nailstrip), fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Lysaht SNAPSEAM (Nailstrip), fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Lysaht DOMINION, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Lysaht CUSTOM ORB, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Installation only of",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Structuur STANDING SEAM, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Structuur SNAPLOCK, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Structuur NAILSTRIP, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Structuur INTERLOCKING PANEL, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Structuur KT45, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Lysaht IMPERIAL (Standing Seam), fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Lysaht ENSEAM (Nailstrip), fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Lysaht SNAPSEAM (Nailstrip), fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Lysaht DOMINION, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Lysaht CUSTOM ORB, fixings and accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Painting & Rendering": {
+      "items": [
+        {
+          "name": "Painting - Internal",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Ceiling height =",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint walls",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint feature walls",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint ceilings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint wet areas",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint ceilings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint stairwell",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint raked ceilings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint window reveals, architraves and skirtings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint doors and door jambs",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and coat timber features",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Painting – External",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint/coat external doors",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint eaves",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint external ceilings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint downpipes",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint timber cladding",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint cement sheet cladding",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint sub-floor door and frame",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint brickwork",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint roof",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint fascia and/or gutters",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and coat decking",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint/coat screening",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and paint steel beams/posts/columns",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Painting – specialised",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Apply corrosion protection to steel compliant with AS",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Rendering",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Apply render finish to brick/block walls",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Apply render finish to external window reveals and sills",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Apply render finish to Masterwall or similar polystyrene product",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Apply render finish to blueboard or similar cement sheet product",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Micro cement",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Apply micro cement finish to",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Wall paper",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install wall paper",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install wall paper supplied by owner",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Plastering & Insulation": {
+      "items": [
+        {
+          "name": "Plastering - internal:",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply, install and prepare plaster sheeting and all required accessories to walls",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply, install and prepare plaster sheeting and all required accessories to ceilings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply, install and prepare plaster sheeting and all required accessories to raked ceilings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply, install and prepare plaster sheeting and all required accessories to wet areas using WR board",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply, install and prepare plaster sheeting and all required accessories to window reveals",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply, install and prepare plaster sheeting and all required accessories to door reveals",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply, install and prepare plaster sheeting and all required accessories to stair well",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply, install and prepare plaster sheeting and all required accessories to curved walls",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply, install and prepare plaster sheeting and all required accessories to skylight cavities",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply, install and prepare plaster sheeting and all required accessories to bulkheads",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply, install and prepare plaster cornice and all required accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply, install and prepare plaster sheeting and all required accessories to recessed blinds",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install furring channel and or clips system for suspended and/or feature ceilings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install solid plaster finish to",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Prepare and complete plaster patching to… – including supply of all required accessories",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Plastering – external:",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply, install and prepare plaster sheeting to alfresco/deck area",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply, install and prepare plaster sheeting to eaves",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Insulation:",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install ceiling insulation",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install external wall insulation",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install internal wall insulation",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Plumbing & Drainage": {
+      "items": [
+        {
+          "name": "Water",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Provide temporary water supply for use for the duration of project",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install external taps to house x 3",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Disconnect existing fittings as required to allow for safe demolition work",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Rough in water pipes through house",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Fit off all newly supplied fixtures",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install dishwasher",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install HWC",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install stop taps for fridge/dishwasher/washing machine",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install a pressure limiting valve for incoming water line if required",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install in wall cistern",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install bidet",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install an RPZ valve",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Complete concrete cutting to chase new water lines in floor",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Complete brick cutting to chase new water lines in wall",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install filler to brick walls to hold new water pipes in place suitably",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install new concrete to floor to hold new water pipes in place suitably",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Coordinate all required plumbing inspections by authorities",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Stormwater",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Connect all stormwater to existing connection points on site",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install and connect rain water tank",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install downpipes",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply, place and connect ag pipes behind block walls",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install stormwater pits",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install grated drain for driveway in conjunction with concreters",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install grated drains or similar to deck/outdoor area",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install stormwater pump system and all required fittings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Camera existing drains system to assess current condition and locations",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Complete core drilling as required and remove waste",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Installation and connection of detention tank",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Installation and connection of Firefighting tank",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Excavate for drains – including removal and disposal of spoil, supply and placement of gravels and backfilling",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install swivel joints to pipework (depends on soil classification)",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Coordinate all required plumbing inspections by authorities",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Sewer",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Connect all sewer to existing connection points on site",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and fit new ORG to comply with code",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Move existing ORG to comply with code",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Rough in house drainage pipework",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Complete core drilling as required and remove waste",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install AWTS system",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install Septic system",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Complete concrete cutting to chase new drains in floor",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Complete brick cutting to chase new drains in wall",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install filler to brick walls to hold new pipes in place suitably",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install new concrete to floor to hold new drains in place suitably",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install swivel joints to pipework (depends on soil classification)",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install sewer vent pipework",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Camera existing drains system to assess current condition and locations",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Excavate for drains – including removal and disposal of spoil, supply and placement of gravels and backfilling",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Coordinate all required plumbing inspections by authorities",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Gas",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install a gas connection to the property to suit gas bottle supply",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install a gas connection to the property to suit a natural gas supply",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install supplied gas appliances",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install bayonet fittings for new gas appliance",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Coordinate all required gas supply inspections by authorities",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Plumbing & Sanitary Fittings": {
+      "items": [
+        {
+          "name": "Supply and delivery of fittings & fixtures for bathroom",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of fittings & fixtures for ensuite",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of fittings & fixtures for kitchen",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of fittings & fixtures for laundry",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of fittings & fixtures for outdoor area",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "ITEM LISTS TO COPY/PASTE UNDER EACH OF THE ABOVE",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Toilet",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Toilet Roll Holder",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Shower mixer",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Shower head",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Vanity unit",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Vanity basin",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Vanity plug & waste",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Vanity tapware",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Wall cabinet",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Bath",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Bath plug & waste",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Bath tapware",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Towel Rails",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Robe Hooks",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Wall Mirror",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Shower floor waste",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Sink",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Sink mixer",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Dishwasher taps",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Fridge taps",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Laundry trough unit",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Washing Machine taps",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Preliminary Costs": {
+      "items": [
+        {
+          "name": "Existing property insurance (renovation only)",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Site establishment – Land Surveyor to mark out exact position of house and heights",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supervision & Remarking as required throughout stages of project",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Over $1.5m project insurance",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Dilapidation/Existing condition property report",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Structural engineering fees",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Underground asset location services",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Roofing": {
+      "items": [
+        {
+          "name": "Supply and install metal roofing iron",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install metal gutters",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install metal fascia",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install all metal flashing required to compliment and weatherproof roof work",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install ventilation/drainage battens",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install Vapour Permeable Wrap",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install box gutters and overlap flashings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install rainheads",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install box gutter sumps",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install valley gutters",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Cut all pops for downpipes",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install skylights and all required flashings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install cap flashings to all parapet walls with 5^ fall back into box gutter",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install chimney flashings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install, then remove safety guard rails for duration of roof work",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Delivery, setup, hire and removal costs for scaffolding (if supplied by roofer)",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Remove and dispose of existing roofing iron and flashings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Remove and dispose of existing roof tiles",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Remove and dispose of existing roof gutter and fascia",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Provide Form 80 on completion of roofing work",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Site Costs": {
+      "items": [
+        {
+          "name": "Temporary fencing – including delivery, setup, hire and removal fees",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Scaffolding & Props – includes delivery, setup, hire and removal fees",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Site signage – safety signage to be installed at entry and around site",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Crane Hire – required for steel lifts, roof framing and roofing, plaster",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Traffic Management – required for steel lifts and concrete pumps",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Waste disposal – includes bin hire and disposal fees throughout project for trade waste",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Erosion and sediment control – setup on lower boundary for duration of project, includes setup, maintain and remove on completion",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Temporary downpipe socks to direct water off roof away from build during construction",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Site toilet – included delivery, setup, hire, cleaning and removal fees",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Tiger tails",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Equipment hire",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Steel & Welding": {
+      "items": [
+        {
+          "name": "Corrosion protection to all steel members to comply with AS",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install steel columns",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install steel lintels",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install steel beams",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install ring beams",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install steel plates",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "NOTE: Cast in plates supplied and placed by Action Builders",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install SHS rails and posts to support timber screening/balustrade",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install all cleats, plates and connections",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply of crane/lifting equipment",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Delivery and unloading on site ready to install",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install steel framed stairs (internal or external)",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "EZI-pier system",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Tiling – All Inclusive": {
+      "items": [
+        {
+          "name": "Supply and install tiles to bathroom",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install tiles to ensuite",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install tiles to kitchen",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install tiles to laundry",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install tiles to deck",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install tiles to exterior",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "ITEM LISTS TO COPY/PASTE UNDER EACH OF THE ABOVE",
+          "type": "Subheading",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of floor tiles",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of wall tiles",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of feature tiles",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Cut and lay tiles to skirtings",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Cut and lay tiles to shower base tiles",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Cut and lay tiles to shower ledge",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Cut and lay tiles to shower niche",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Cut and lay tiles to bath hob",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Cut and lay tiles to stairs",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Cut and lay tiles to window reveal",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Cut and lay tiles to door reveal",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install screed to floor to create falls",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install screed over under tile heating",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Install screed to other areas to level/plumb before tiling",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and install tile trim",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and place standard grout to tiles",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and place epoxy grout to tiles",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and place grout and sealant to tiles so they are ready for use",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and place epoxy grout and sealant to tiles to they are ready for use",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Trade Labouring": {
+      "items": [
+        {
+          "name": "x",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Water Tanks": {
+      "items": [
+        {
+          "name": "Supply and delivery of rainwater tank",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of fire fighting water tank & signage",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of detention tank",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and delivery of all fixtures to suit tank",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Waterproofing": {
+      "items": [
+        {
+          "name": "Apply internal waterproofing to bathroom to comply with NCC",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Apply internal waterproofing to ensuite to comply with NCC",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Apply internal waterproofing to laundry to comply with NCC",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Apply internal waterproofing to WC to comply with NCC",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Apply external waterproofing to deck",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Apply external waterproofing to rear of block wall",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Apply external waterproofing to face of block wall",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    },
+    "Windows & Glazed Doors": {
+      "items": [
+        {
+          "name": "Supply and deliver aluminium framed glazed doors and windows",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and deliver thermally broken aluminium framed glazed doors and windows",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and deliver timber framed glazed doors and windows",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Supply and deliver PVC framed glazed doors and windows",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        },
+        {
+          "name": "Site glazing where required",
+          "type": "Service",
+          "category": "General",
+          "room": null
+        }
+      ],
+      "categories": [
+        "General"
+      ]
+    }
+  },
+  "default_exclusions": [
+    {
+      "label": "rock breaking that requires special equi",
+      "text": "rock breaking that requires special equipment use over and above typical bucket excavation"
+    },
+    {
+      "label": "any fees incurred with Tas Networks, Tas",
+      "text": "any fees incurred with Tas Networks, Tas Gas, Tas Water, NBN, Aurora or similar"
+    },
+    {
+      "label": "any design fees (architect, designer, en",
+      "text": "any design fees (architect, designer, engineer, hydraulic or similar)"
+    },
+    {
+      "label": "any council fees incurred",
+      "text": "any council fees incurred"
+    },
+    {
+      "label": "any building surveyor or specialist cons",
+      "text": "any building surveyor or specialist consultant fees unless listed in scope"
+    },
+    {
+      "label": "any extra material and/or labour costs d",
+      "text": "any extra material and/or labour costs due to heights differing to those indicated on plans provided"
+    },
+    {
+      "label": "upgrading of existing plumbing and or dr",
+      "text": "upgrading of existing plumbing and or drainage – it is assumed that we can connect to existing plumbing"
+    },
+    {
+      "label": "upgrading of existing electrical wiring",
+      "text": "upgrading of existing electrical wiring – it is assumed that we can connect to existing"
+    },
+    {
+      "label": "supply and/or installation of blinds",
+      "text": "supply and/or installation of blinds"
+    },
+    {
+      "label": "supply and/or installation of letterbox",
+      "text": "supply and/or installation of letterbox"
+    },
+    {
+      "label": "supply and/or installation of clotheslin",
+      "text": "supply and/or installation of clothesline"
+    },
+    {
+      "label": "supply and/or completion of any landscap",
+      "text": "supply and/or completion of any landscaping"
+    },
+    {
+      "label": "supply and delivery of NBN to the house",
+      "text": "supply and delivery of NBN to the house"
+    },
+    {
+      "label": "supply and/or installation of any applia",
+      "text": "supply and/or installation of any appliances not listed in this scope"
+    },
+    {
+      "label": "NOTE: any items not listed in this scope",
+      "text": "NOTE: any items not listed in this scope are considered exclusions"
+    }
+  ],
+  "default_notes": [
+    "REQUIRED DOCUMENTS/FORMS:",
+    "Copy of the most recent full set of plans",
+    "Structural plans",
+    "Civil plans",
+    "Hydraulic plans",
+    "Mechanical plans",
+    "Electrical plans",
+    "Joinery plans",
+    "Form 6’s for work adjacent to boundaries",
+    "Plumbing permit",
+    "Building permit",
+    "Certificate of Likely Compliance"
+  ],
+  "meta": {
+    "source": "project files/New Project - Draft Scope of Work v1.dotx",
+    "cost_centre_count": 40,
+    "scope_items_markers": 40
+  }
+}

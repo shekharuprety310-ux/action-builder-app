@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
 <script src="price_data.js"></script>
+<script src="cost_centres_dotx.js"></script>
 <style>
 :root {
   --bg: #0a0f1a;
@@ -5197,6 +5198,93 @@ header {
     padding: 20px 16px;
   }
 }
+
+/* Rooms dropdown */
+.rooms-dd {
+  position: relative;
+}
+.rooms-dd-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: var(--surface2);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 12px;
+  color: var(--text);
+  cursor: pointer;
+}
+.rooms-dd-btn:hover {
+  box-shadow: var(--hover-glow);
+  border-color: rgba(212, 168, 83, 0.35);
+}
+.rooms-dd-btn .muted {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+.rooms-dd-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 8px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px;
+  z-index: 50;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+  max-height: 260px;
+  overflow: auto;
+  display: none;
+}
+.rooms-dd-menu.open {
+  display: block;
+}
+.rooms-dd-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.rooms-dd-item:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(212, 168, 83, 0.2);
+}
+.rooms-dd-item .label {
+  font-size: 13px;
+  color: var(--text);
+}
+.rooms-dd-item .tick {
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent; /* empty box when not selected */
+  font-weight: 900;
+  font-size: 12px;
+  flex-shrink: 0;
+  background: var(--surface2);
+}
+.rooms-dd-item.is-checked .tick {
+  border-color: #22c55e;
+  background: #22c55e;
+  color: #ffffff; /* show tick only when selected */
+}
+.rooms-dd.is-disabled {
+  opacity: 0.55;
+  pointer-events: none;
+  filter: grayscale(0.2);
+}
 </style>
 </head>
 <body>
@@ -5364,6 +5452,16 @@ header {
           <div class="project-form">
             <div class="form-title">New Project Scope</div>
             <div class="form-subtitle">Enter the project details before selecting cost centres and items.</div>
+            <div class="form-row" style="grid-column: 1 / -1;">
+              <div class="field">
+                <label for="projDataset">Scope catalogue &amp; default templates</label>
+                <select id="projDataset" onchange="onProjDatasetChange()" style="width: 100%; background: var(--surface2); border: 1.5px solid var(--border); border-radius: 8px; padding: 12px; color: var(--text); font-size: 14px;">
+                  <option value="legacy">Legacy — original in-app cost centres &amp; items</option>
+                  <option value="dotx">New — Draft Scope of Work (Word template)</option>
+                </select>
+                <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px; line-height: 1.45;">Uses the matching cost centres, scope lines (including subheadings), and template exclusions/notes. Changing this after you have started selections will clear scope selections for this project.</div>
+              </div>
+            </div>
             <div class="form-grid">
               <div class="form-row" style="background: var(--surface2); padding: 20px; border-radius: 12px; margin-bottom: 20px;">
                 <div class="field" style="flex: 1;">
@@ -5674,6 +5772,21 @@ header {
               <div class="field" style="margin-bottom: 16px;">
                 <label>Design Characteristics</label>
                 <input type="text" id="projDesignChar" placeholder="e.g. Contemporary residential, open plan living, sustainable materials">
+              </div>
+              <div class="field" style="margin-bottom: 16px;">
+                <label>Project Rooms</label>
+                <div id="projRooms" class="rooms-dd">
+                  <button type="button" id="projRoomsBtn" class="rooms-dd-btn" onclick="toggleRoomsDropdown()">
+                    <span id="projRoomsBtnText">Select rooms…</span>
+                    <span class="muted">▾</span>
+                  </button>
+                  <div id="projRoomsMenu" class="rooms-dd-menu"></div>
+                </div>
+                <div style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap;">
+                  <button type="button" class="btn-ghost" onclick="selectAllProjectRooms()">Select all rooms</button>
+                  <button type="button" class="btn-ghost" onclick="clearProjectRooms()">Clear rooms</button>
+                </div>
+                <div id="projRoomsSummary" style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">No rooms selected. You can still assign rooms item-by-item later.</div>
               </div>
               <div class="form-row">
                 <div class="field">
@@ -5999,6 +6112,13 @@ header {
       <button class="scope-modal-close" onclick="closeManageDefaultsModal()">×</button>
     </div>
     <div style="padding: 24px; overflow-y: auto; max-height: 60vh;">
+      <div style="margin-bottom: 16px;">
+        <label style="font-size: 11px; color: var(--text-muted); display: block; margin-bottom: 6px;">Which catalogue defaults to edit</label>
+        <select id="manageDefaultsDataset" onchange="onManageDefaultsDatasetChange()" style="width: 100%; background: var(--surface2); border: 1.5px solid var(--border); border-radius: 8px; padding: 10px; color: var(--text); font-size: 13px;">
+          <option value="legacy">Legacy catalogue</option>
+          <option value="dotx">New Draft Scope of Work (SOW template)</option>
+        </select>
+      </div>
       <div style="margin-bottom: 20px;">
         <div style="font-size: 12px; font-weight: 600; color: var(--danger); text-transform: uppercase; margin-bottom: 8px;">Default Exclusions</div>
         <textarea id="manageDefaultExclusions" style="width: 100%; height: 150px; background: var(--surface2); border: 1.5px solid var(--border); border-radius: 8px; padding: 12px; color: var(--text); font-size: 13px; resize: vertical;"></textarea>
@@ -6187,6 +6307,7 @@ function showApp() {
   renderProjectsList();
   loadCustomProducts();
   loadDefaultExclusionsNotes();
+  populateProjectRoomsOptions();
   syncProjectsSidebarForViewport();
   
   // Show scope builder interface
@@ -6858,6 +6979,7 @@ let activeCCName = null;
 let activeCategory = null;
 let itemSelections = {};
 let currentProjectId = null;
+let suppressProjDatasetChange = false;
 
 // Phase system - 1: Scope Builder, 2: Cost & Budgeting, 3: Review & Finalise
 let currentPhase = 1; // 1, 2, or 3
@@ -6922,8 +7044,9 @@ function getDefaultExclusionLabel(item) {
   return normaliseDefaultExclusion(item).label;
 }
 
-function serialiseDefaultExclusionsForEditor() {
-  return defaultExclusions.map(item => getDefaultExclusionText(item)).join('\n');
+function serialiseDefaultExclusionsForEditor(which) {
+  const list = which === 'dotx' ? defaultExclusionsDotx : defaultExclusions;
+  return list.map(item => getDefaultExclusionText(item)).join('\n');
 }
 
 function getDefaultExclusionTexts() {
@@ -6945,6 +7068,33 @@ let defaultNotes = [
   "Certificate of Likely Compliance"
 ];
 
+let defaultExclusionsDotx = [];
+let defaultNotesDotx = [];
+const DOTX_EXCLUSIONS_VERSION = '2026-04-15-dotx-1';
+const DOTX_NOTES_VERSION = '2026-04-15-dotx-1';
+
+function initDotxDefaultsFromBuiltin() {
+  if (typeof DOTX_DEFAULT_EXCLUSIONS === 'undefined') {
+    defaultExclusionsDotx = [];
+    return;
+  }
+  defaultExclusionsDotx = DOTX_DEFAULT_EXCLUSIONS.map(normaliseDefaultExclusion).filter(item => item.text);
+}
+
+function initDotxNotesFromBuiltin() {
+  defaultNotesDotx = (typeof DOTX_DEFAULT_NOTES !== 'undefined' && Array.isArray(DOTX_DEFAULT_NOTES))
+    ? [...DOTX_DEFAULT_NOTES]
+    : [];
+}
+
+function getActiveDefaultExclusions() {
+  return getProjectDataset() === 'dotx' ? defaultExclusionsDotx : defaultExclusions;
+}
+
+function getActiveDefaultNotes() {
+  return getProjectDataset() === 'dotx' ? defaultNotesDotx : defaultNotes;
+}
+
 // Load defaults from localStorage or use built-in defaults
 function loadDefaultExclusionsNotes() {
   const storedExcVersion = localStorage.getItem('defaultExclusionsVersion');
@@ -6963,6 +7113,38 @@ function loadDefaultExclusionsNotes() {
   } else {
     localStorage.setItem('defaultNotes', JSON.stringify(defaultNotes));
   }
+
+  initDotxDefaultsFromBuiltin();
+  initDotxNotesFromBuiltin();
+  const storedDotxExcVer = localStorage.getItem('defaultExclusionsDotxVersion');
+  const storedDotxExc = localStorage.getItem('defaultExclusionsDotx');
+  if (storedDotxExc && storedDotxExcVer === DOTX_EXCLUSIONS_VERSION) {
+    try {
+      defaultExclusionsDotx = JSON.parse(storedDotxExc).map(normaliseDefaultExclusion).filter(item => item.text);
+    } catch (e) {
+      console.warn('Resetting dotx default exclusions');
+    }
+  }
+  if (!defaultExclusionsDotx.length) {
+    initDotxDefaultsFromBuiltin();
+    localStorage.setItem('defaultExclusionsDotx', JSON.stringify(defaultExclusionsDotx));
+    localStorage.setItem('defaultExclusionsDotxVersion', DOTX_EXCLUSIONS_VERSION);
+  }
+
+  const storedDotxNotesVer = localStorage.getItem('defaultNotesDotxVersion');
+  const storedDotxNotes = localStorage.getItem('defaultNotesDotx');
+  if (storedDotxNotes && storedDotxNotesVer === DOTX_NOTES_VERSION) {
+    try {
+      defaultNotesDotx = JSON.parse(storedDotxNotes);
+    } catch (e) {
+      console.warn('Resetting dotx default notes');
+    }
+  }
+  if (!defaultNotesDotx.length) {
+    initDotxNotesFromBuiltin();
+    localStorage.setItem('defaultNotesDotx', JSON.stringify(defaultNotesDotx));
+    localStorage.setItem('defaultNotesDotxVersion', DOTX_NOTES_VERSION);
+  }
 }
 
 // Save custom defaults to localStorage
@@ -6970,6 +7152,10 @@ function saveDefaultExclusionsNotes() {
   localStorage.setItem('defaultExclusions', JSON.stringify(defaultExclusions));
   localStorage.setItem('defaultExclusionsVersion', DEFAULT_EXCLUSIONS_VERSION);
   localStorage.setItem('defaultNotes', JSON.stringify(defaultNotes));
+  localStorage.setItem('defaultExclusionsDotx', JSON.stringify(defaultExclusionsDotx));
+  localStorage.setItem('defaultExclusionsDotxVersion', DOTX_EXCLUSIONS_VERSION);
+  localStorage.setItem('defaultNotesDotx', JSON.stringify(defaultNotesDotx));
+  localStorage.setItem('defaultNotesDotxVersion', DOTX_NOTES_VERSION);
   showToast('Default templates saved!', 'success');
 }
 
@@ -6998,6 +7184,54 @@ function syncRoleAccessUI() {
   if (proceedBtn) {
     proceedBtn.style.display = currentUserRole === 'admin' ? '' : 'none';
   }
+  const dsEl = document.getElementById('projDataset');
+  if (dsEl) {
+    dsEl.disabled = currentUserRole !== 'admin';
+  }
+  const roomsEl = document.getElementById('projRooms');
+  if (roomsEl) {
+    roomsEl.classList.toggle('is-disabled', isScopeReadOnly());
+  }
+}
+
+function clearScopeSelectionsForDatasetChange() {
+  selectedCC = new Set();
+  itemSelections = {};
+  itemPricing = {};
+  ccExclusions = {};
+  ccNotes = {};
+  ccSectionPhotos = {};
+  activeCCName = null;
+  activeCategory = null;
+  scopeVersion = (scopeVersion || 0) + 1;
+}
+
+function onProjDatasetChange() {
+  if (suppressProjDatasetChange) return;
+  if (currentUserRole !== 'admin') return;
+  const hadWork =
+    selectedCC.size > 0 ||
+    countTotalItems() > 0 ||
+    Object.keys(ccExclusions).some(k => (ccExclusions[k] || []).length) ||
+    Object.keys(ccNotes).some(k => (ccNotes[k] || []).length);
+  if (hadWork && !confirm('Switching the scope catalogue will clear cost centre selections, priced items, and exclusions/notes for this project. Continue?')) {
+    const prev = (getProjects().find(p => p.id === currentProjectId) || {}).fields || {};
+    const ds = prev.dataset || 'legacy';
+    suppressProjDatasetChange = true;
+    const el = document.getElementById('projDataset');
+    if (el) el.value = ds === 'dotx' ? 'dotx' : 'legacy';
+    suppressProjDatasetChange = false;
+    return;
+  }
+  clearScopeSelectionsForDatasetChange();
+  buildCCGrid();
+  updateCCCount();
+  buildSidebarList();
+  const itemsBody = document.getElementById('itemsBody');
+  if (itemsBody) itemsBody.innerHTML = '';
+  updateExclusionsNotesDisplay();
+  saveCurrentProject({ silent: true });
+  showToast('Scope catalogue updated. Selections were cleared so lists match the new catalogue.', 'info');
 }
 
 function getProjects() {
@@ -7040,6 +7274,216 @@ function setVal(id, value) {
   if (el) el.value = value;
 }
 
+const PROJECT_ROOM_OPTIONS = [
+  'Alfresco', 'Bathroom', 'Bedroom 1', 'Bedroom 2', 'Bedroom 3', 'Bedroom 4', 'Bedroom 5',
+  'Deck 1', 'Deck 2', 'Dining Room', 'Driveway', 'Ensuite', 'Ensuite 2', 'Entry',
+  'External Work', 'Family Room', 'Foyer', 'Garage', 'House Exterior', 'Internal Stairs',
+  'Kids Bedroom', 'Kitchen', 'Kitchenette', 'Landing', 'Laundry', 'Living Room',
+  'Lounge Room', 'Pantry', 'Porch', 'Powder Room', 'Rumpus Room', 'Store Room',
+  'Study', 'Study Nook', 'Throughout', 'Toy Room', 'Walk In Robe'
+];
+
+function getProjectRooms() {
+  const container = document.getElementById('projRooms');
+  if (!container) return [];
+  return Array.from(container.querySelectorAll('input[name="projRoomsCheck"]:checked')).map(i => i.value);
+}
+
+function setProjectRooms(rooms) {
+  const container = document.getElementById('projRooms');
+  if (!container) return;
+  const selected = new Set(Array.isArray(rooms) ? rooms : []);
+  Array.from(container.querySelectorAll('input[name="projRoomsCheck"]')).forEach(cb => {
+    cb.checked = selected.has(cb.value);
+    cb.closest('.room-chip')?.classList.toggle('is-checked', cb.checked);
+  });
+  updateRoomsSelectionSummary();
+}
+
+function populateProjectRoomsOptions() {
+  const container = document.getElementById('projRooms');
+  if (!container) return;
+  const menu = document.getElementById('projRoomsMenu');
+  if (!menu) return;
+  if (menu.querySelector('input[name="projRoomsCheck"]')) return;
+  menu.innerHTML = '';
+
+  PROJECT_ROOM_OPTIONS.forEach(room => {
+    const row = document.createElement('div');
+    row.className = 'rooms-dd-item';
+    row.innerHTML = `
+      <span class="label">${room}</span>
+      <input type="checkbox" name="projRoomsCheck" value="${room.replace(/"/g, '&quot;')}" style="display:none;">
+      <span class="tick">✓</span>
+    `;
+    row.addEventListener('click', () => {
+      if (isScopeReadOnly()) return;
+      const cb = row.querySelector('input[name=\"projRoomsCheck\"]');
+      cb.checked = !cb.checked;
+      row.classList.toggle('is-checked', cb.checked);
+      updateRoomsSelectionSummary();
+    });
+    menu.appendChild(row);
+  });
+
+  // Close dropdown on outside click (attach once)
+  if (!window.__roomsDropdownListenerAdded) {
+    window.__roomsDropdownListenerAdded = true;
+    document.addEventListener('click', (e) => {
+      const root = document.getElementById('projRooms');
+      if (!root) return;
+      if (root.contains(e.target)) return;
+      closeRoomsDropdown();
+    });
+  }
+  updateRoomsSelectionSummary();
+}
+
+function updateRoomsSelectionSummary() {
+  const out = document.getElementById('projRoomsSummary');
+  if (!out) return;
+  const rooms = getProjectRooms();
+  const container = document.getElementById('projRooms');
+  if (container) {
+    const menu = document.getElementById('projRoomsMenu');
+    if (menu) {
+      Array.from(menu.querySelectorAll('.rooms-dd-item')).forEach(row => {
+        const cb = row.querySelector('input[name="projRoomsCheck"]');
+        row.classList.toggle('is-checked', !!cb?.checked);
+      });
+    }
+  }
+  out.textContent = rooms.length
+    ? `${rooms.length} room${rooms.length === 1 ? '' : 's'} selected: ${rooms.join(', ')}`
+    : 'No rooms selected. You can still assign rooms item-by-item later.';
+
+  const btnText = document.getElementById('projRoomsBtnText');
+  if (btnText) {
+    btnText.textContent = rooms.length ? `${rooms.length} room${rooms.length === 1 ? '' : 's'} selected` : 'Select rooms…';
+  }
+}
+
+function selectAllProjectRooms() {
+  if (isScopeReadOnly()) return;
+  const container = document.getElementById('projRooms');
+  if (!container) return;
+  const menu = document.getElementById('projRoomsMenu');
+  if (!menu) return;
+  Array.from(menu.querySelectorAll('.rooms-dd-item')).forEach(row => {
+    const cb = row.querySelector('input[name="projRoomsCheck"]');
+    cb.checked = true;
+    row.classList.add('is-checked');
+  });
+  updateRoomsSelectionSummary();
+}
+
+function clearProjectRooms() {
+  if (isScopeReadOnly()) return;
+  const container = document.getElementById('projRooms');
+  if (!container) return;
+  const menu = document.getElementById('projRoomsMenu');
+  if (!menu) return;
+  Array.from(menu.querySelectorAll('.rooms-dd-item')).forEach(row => {
+    const cb = row.querySelector('input[name="projRoomsCheck"]');
+    cb.checked = false;
+    row.classList.remove('is-checked');
+  });
+  updateRoomsSelectionSummary();
+}
+
+function toggleRoomsDropdown() {
+  if (isScopeReadOnly()) return;
+  const menu = document.getElementById('projRoomsMenu');
+  if (!menu) return;
+  menu.classList.toggle('open');
+}
+
+function closeRoomsDropdown() {
+  const menu = document.getElementById('projRoomsMenu');
+  if (!menu) return;
+  menu.classList.remove('open');
+}
+
+function toggleItemRoomsMenu(ccName, selKey) {
+  if (isScopeReadOnly()) return;
+  const id = 'itemRoomsMenu_' + String(selKey).replace(/[^a-z0-9_]/gi, '_');
+  const menu = document.getElementById(id);
+  if (!menu) return;
+  // close others
+  document.querySelectorAll('.rooms-dd-menu.open').forEach(m => {
+    if (m !== menu) m.classList.remove('open');
+  });
+  menu.classList.toggle('open');
+  updateItemRoomsMenuLabel(ccName, selKey);
+}
+
+function updateItemRoomsMenuLabel(ccName, selKey) {
+  const key = String(selKey);
+  const menuId = 'itemRoomsMenu_' + key.replace(/[^a-z0-9_]/gi, '_');
+  const menu = document.getElementById(menuId);
+  if (!menu) return;
+  // sync checked classes
+  menu.querySelectorAll('.rooms-dd-item').forEach(row => {
+    const label = row.querySelector('.label')?.textContent || '';
+    const checked = getItemRoomsArray(ccName, key).includes(label);
+    row.classList.toggle('is-checked', checked);
+  });
+  // update button text
+  const btn = menu.parentElement?.querySelector('button');
+  if (btn) {
+    const span = btn.querySelector('span');
+    if (span) span.textContent = getItemRoom(ccName, key) || 'Rooms…';
+  }
+}
+
+function normaliseSelectionEntry(key, entry) {
+  if (!entry || typeof entry !== 'object') return null;
+  const baseIdx = (entry.baseIdx !== undefined && entry.baseIdx !== null) ? parseInt(entry.baseIdx, 10) : parseInt(key, 10);
+  if (isNaN(baseIdx)) return null;
+  const rooms = Array.isArray(entry.rooms)
+    ? entry.rooms.filter(Boolean)
+    : (entry.room ? [entry.room] : []);
+  return {
+    baseIdx,
+    checked: entry.checked === true,
+    qty: entry.qty || '1',
+    notes: entry.notes || '',
+    room: entry.room || '',
+    rooms,
+  };
+}
+
+function iterSelectionsForCC(ccName) {
+  const sel = itemSelections[ccName] || {};
+  return Object.entries(sel)
+    .map(([k, v]) => ({ key: k, entry: normaliseSelectionEntry(k, v) }))
+    .filter(x => x.entry);
+}
+
+function getItemRoom(ccName, selKeyOrIdx) {
+  const key = String(selKeyOrIdx);
+  const itemSelRaw = itemSelections[ccName] && itemSelections[ccName][key];
+  const norm = normaliseSelectionEntry(key, itemSelRaw);
+  if (norm && norm.rooms && norm.rooms.length) return norm.rooms.join(', ');
+  if (norm && norm.room) return norm.room;
+  const ccData = getCostCentres()[ccName];
+  const idx = norm ? norm.baseIdx : parseInt(key, 10);
+  const item = ccData && ccData.items[idx];
+  return (item && item.room) ? item.room : '';
+}
+
+function getItemRoomsArray(ccName, selKeyOrIdx) {
+  const key = String(selKeyOrIdx);
+  const itemSelRaw = itemSelections[ccName] && itemSelections[ccName][key];
+  const norm = normaliseSelectionEntry(key, itemSelRaw);
+  if (norm && norm.rooms && norm.rooms.length) return norm.rooms;
+  if (norm && norm.room) return [norm.room];
+  const ccData = getCostCentres()[ccName];
+  const idx = norm ? norm.baseIdx : parseInt(key, 10);
+  const item = ccData && ccData.items[idx];
+  return (item && item.room) ? [item.room] : [];
+}
+
 function getProjectFields() {
   return {
     client: getVal('projClient'),
@@ -7054,11 +7498,14 @@ function getProjectFields() {
     num: getVal('projNum'),
     notes: getVal('projNotes'),
     archDrawings: getVal('projArchDrawings'),
-    structDrawings: getVal('projStructDrawings')
+    structDrawings: getVal('projStructDrawings'),
+    rooms: getProjectRooms(),
+    dataset: getVal('projDataset') || 'legacy'
   };
 }
 
 function setProjectFields(proj) {
+  populateProjectRoomsOptions();
   setVal('projClient', proj.client || '');
   setVal('projClientAddress', proj.clientAddress || '');
   setVal('projName', proj.name || '');
@@ -7072,6 +7519,14 @@ function setProjectFields(proj) {
   setVal('projNotes', proj.notes || '');
   setVal('projArchDrawings', proj.archDrawings || '');
   setVal('projStructDrawings', proj.structDrawings || '');
+  setProjectRooms(proj.rooms || []);
+  const ds = proj.dataset || 'legacy';
+  const dsEl = document.getElementById('projDataset');
+  if (dsEl) {
+    suppressProjDatasetChange = true;
+    dsEl.value = ds === 'dotx' ? 'dotx' : 'legacy';
+    suppressProjDatasetChange = false;
+  }
 }
 
 function saveCurrentProject(options) {
@@ -7134,13 +7589,31 @@ function loadProject(projectId) {
   
   currentProjectId = projectId;
   setProjectFields(project.fields || {});
-  
-  selectedCC = new Set(project.selectedCC || []);
-  itemSelections = project.itemSelections || {};
-  itemPricing = project.itemPricing || {};
-  ccExclusions = project.ccExclusions || {};
-  ccNotes = project.ccNotes || {};
-  ccSectionPhotos = project.ccSectionPhotos || {};
+
+  const _catLoad = getCostCentres();
+  const _validCC = new Set(Object.keys(_catLoad));
+  selectedCC = new Set((project.selectedCC || []).filter(cc => _validCC.has(cc)));
+
+  itemSelections = {};
+  Object.entries(project.itemSelections || {}).forEach(([k, v]) => {
+    if (_validCC.has(k)) itemSelections[k] = v;
+  });
+  itemPricing = {};
+  Object.entries(project.itemPricing || {}).forEach(([k, v]) => {
+    if (_validCC.has(k)) itemPricing[k] = v;
+  });
+  ccExclusions = {};
+  Object.entries(project.ccExclusions || {}).forEach(([k, v]) => {
+    if (_validCC.has(k)) ccExclusions[k] = v;
+  });
+  ccNotes = {};
+  Object.entries(project.ccNotes || {}).forEach(([k, v]) => {
+    if (_validCC.has(k)) ccNotes[k] = v;
+  });
+  ccSectionPhotos = {};
+  Object.entries(project.ccSectionPhotos || {}).forEach(([k, v]) => {
+    if (_validCC.has(k)) ccSectionPhotos[k] = v;
+  });
   projectPhotoData = project.projectPhotoData || null;
   
   // Restore phase state
@@ -7222,6 +7695,13 @@ function createNewProject() {
     const el = document.getElementById(id);
     if (el) el.value = '';
   });
+  clearProjectRooms();
+  const dsEl = document.getElementById('projDataset');
+  if (dsEl) {
+    suppressProjDatasetChange = true;
+    dsEl.value = 'legacy';
+    suppressProjDatasetChange = false;
+  }
   
   // Rebuild cost centre grid for step 2
   buildCCGrid();
@@ -7388,7 +7868,7 @@ function syncProjectsSidebarForViewport() {
 // ====================================================
 // DATA — Full cost centres with sub-categories
 // ====================================================
-const COST_CENTRES = {
+const LEGACY_COST_CENTRES = {
   "Appliances": {
     "items": [
       {
@@ -14574,6 +15054,21 @@ const COST_CENTRES = {
     ]
   }
 };
+
+function getProjectDataset() {
+  const el = document.getElementById('projDataset');
+  if (el && el.value) return el.value;
+  return 'legacy';
+}
+
+function getCostCentres() {
+  return getProjectDataset() === 'dotx' ? DOTX_COST_CENTRES : LEGACY_COST_CENTRES;
+}
+
+function isItemSubheading(item) {
+  return item && String(item.type || '').toLowerCase() === 'subheading';
+}
+
 // ====================================================
 // AUTH CHECK ON PAGE LOAD
 // ====================================================
@@ -14722,6 +15217,14 @@ function createProjectFromDashboard() {
     const el = document.getElementById(id);
     if (el) el.value = '';
   });
+  populateProjectRoomsOptions();
+  clearProjectRooms();
+  const dsElNew = document.getElementById('projDataset');
+  if (dsElNew) {
+    suppressProjDatasetChange = true;
+    dsElNew.value = 'legacy';
+    suppressProjDatasetChange = false;
+  }
   
   buildCCGrid();
   updateCCCount();
@@ -15077,7 +15580,7 @@ function loadCostCCItems(ccName) {
   }
   
   const checkedItems = Object.entries(ccSel).filter(([, v]) => v.checked);
-  const ccData = COST_CENTRES[ccName];
+  const ccData = getCostCentres()[ccName];
   
   if (checkedItems.length === 0) {
     grid.innerHTML = '<div class="empty-state"><div>No items selected in this cost centre</div></div>';
@@ -15088,6 +15591,7 @@ function loadCostCCItems(ccName) {
   
   checkedItems.forEach(([idx, v]) => {
     const item = ccData.items[parseInt(idx)];
+    if (!item || isItemSubheading(item)) return;
     const pricing = itemPricing[ccName] && itemPricing[ccName][idx];
     const hasPrice = pricing && pricing.length > 0;
     
@@ -15124,7 +15628,7 @@ function loadCostCCItems(ccName) {
       <div style="display: flex; justify-content: space-between; align-items: flex-start;">
         <div>
           <div style="font-size: 14px; font-weight: 600; color: var(--text);">${item.name}</div>
-          <div style="font-size: 11px; color: var(--text-muted);">${item.type || 'Service'} ${item.room ? '· ' + item.room : ''}</div>
+          <div style="font-size: 11px; color: var(--text-muted);">${item.type || 'Service'} ${getItemRoom(ccName, idx) ? '· ' + getItemRoom(ccName, idx) : ''}</div>
         </div>
         <div style="text-align: right;">
           <div style="font-size: 12px; color: var(--text-muted);">Qty: ${v.qty || 1}</div>
@@ -15147,10 +15651,14 @@ function updatePhase2Total() {
   [...selectedCC].forEach(ccName => {
     const ccSel = itemSelections[ccName];
     if (!ccSel) return;
+    const ccData = getCostCentres()[ccName];
+    if (!ccData) return;
     
     const checkedItems = Object.entries(ccSel).filter(([, v]) => v.checked);
     
     checkedItems.forEach(([idx, v]) => {
+      const item = ccData.items[parseInt(idx)];
+      if (isItemSubheading(item)) return;
       const qty = parseInt(v.qty) || 1;
       const pricing = itemPricing[ccName] && itemPricing[ccName][idx];
       
@@ -15479,10 +15987,10 @@ function buildCCGrid() {
     console.error('ccGrid element not found!');
     return;
   }
-  console.log('Building CC grid, COST_CENTRES keys:', Object.keys(COST_CENTRES).length);
+  console.log('Building CC grid, getCostCentres() keys:', Object.keys(getCostCentres()).length);
   grid.innerHTML = '';
-  Object.keys(COST_CENTRES).forEach(ccName => {
-    const ccData = COST_CENTRES[ccName];
+  Object.keys(getCostCentres()).forEach(ccName => {
+    const ccData = getCostCentres()[ccName];
     const card = document.createElement('div');
     card.className = 'cc-card' + (selectedCC.has(ccName) ? ' selected' : '');
     card.dataset.cc = ccName;
@@ -15515,7 +16023,7 @@ function selectAllCC() {
     showToast('Scope is view-only for your role.', 'info');
     return;
   }
-  Object.keys(COST_CENTRES).forEach(k => selectedCC.add(k));
+  Object.keys(getCostCentres()).forEach(k => selectedCC.add(k));
   buildCCGrid();
 }
 
@@ -15555,7 +16063,7 @@ function buildSidebarList() {
     div.innerHTML = `
       <div class="cc-check">${sel > 0 ? '✓' : ''}</div>
       <div class="cc-name">${ccName}</div>
-      <div class="cc-badge">${sel > 0 ? sel + ' sel' : COST_CENTRES[ccName].items.length}</div>
+      <div class="cc-badge">${sel > 0 ? sel + ' sel' : getCostCentres()[ccName].items.length}</div>
     `;
     list.appendChild(div);
   });
@@ -15569,7 +16077,13 @@ function filterSidebarList() {
 
 function getSelCountForCC(ccName) {
   if (!itemSelections[ccName]) return 0;
-  return Object.values(itemSelections[ccName]).filter(v => v.checked).length;
+  const ccData = getCostCentres()[ccName];
+  if (!ccData) return 0;
+  return Object.entries(itemSelections[ccName]).filter(([idx, v]) => {
+    if (!v.checked) return false;
+    const item = ccData.items[parseInt(idx)];
+    return !isItemSubheading(item);
+  }).length;
 }
 
 function loadCC(ccName) {
@@ -15586,12 +16100,12 @@ function loadCC(ccName) {
     return;
   }
   
-  if (!COST_CENTRES[ccName]) {
-    console.error('Cost centre not found in COST_CENTRES:', ccName);
+  if (!getCostCentres()[ccName]) {
+    console.error('Cost centre not found in catalogue:', ccName);
     return;
   }
   
-  var ccData = COST_CENTRES[ccName];
+  var ccData = getCostCentres()[ccName];
   if (titleEl) titleEl.textContent = ccName;
   if (subEl) {
     subEl.textContent = isScopeReadOnly()
@@ -15701,7 +16215,7 @@ function buildCategoryFilters(ccData) {
 
 function setCategory(category) {
   activeCategory = category;
-  const ccData = COST_CENTRES[activeCCName];
+  const ccData = getCostCentres()[activeCCName];
   buildCategoryFilters(ccData);
   renderItems(activeCCName, document.getElementById('itemSearch').value);
 }
@@ -15721,7 +16235,7 @@ function renderItems(ccName, query) {
     return;
   }
 
-  const ccData = COST_CENTRES[ccName];
+  const ccData = getCostCentres()[ccName];
   if (!ccData) {
     console.error('Cost centre not found:', ccName);
     return;
@@ -15738,6 +16252,17 @@ function renderItems(ccName, query) {
   items.forEach((item, idx) => {
     if (activeCategory && item.category !== activeCategory) return;
     if (query && !item.name.toLowerCase().includes(query.toLowerCase())) return;
+
+    if (isItemSubheading(item)) {
+      visibleCount++;
+      const header = document.createElement('div');
+      header.className = 'category-header';
+      header.style.marginTop = visibleCount > 1 ? '10px' : '0';
+      header.textContent = item.name;
+      body.appendChild(header);
+      return;
+    }
+
     visibleCount++;
 
     if (!activeCategory && ccData.categories && ccData.categories.length > 1 && item.category !== lastCategory) {
@@ -15748,24 +16273,88 @@ function renderItems(ccName, query) {
       body.appendChild(header);
     }
 
-    const sel = itemSelections[ccName][idx] || { checked: false, qty: '1', notes: '' };
+    const primaryKey = String(idx);
+    const selNorm = normaliseSelectionEntry(primaryKey, itemSelections[ccName][primaryKey]) || { baseIdx: idx, checked: false, qty: '1', notes: '', room: '' };
+    const sel = selNorm;
 
     const row = document.createElement('div');
     row.className = 'item-row' + (sel.checked ? ' checked' : '');
     row.dataset.idx = idx;
+    row.dataset.selkey = primaryKey;
     row.style.display = 'flex';
+    const ro = isScopeReadOnly();
 
-    const typeClass = 'type-' + (item.type || 'service').toLowerCase();
+    const typeClass = 'type-' + (item.type || 'service').toLowerCase().replace(/\s+/g, '-');
+    const projectRooms = getProjectRooms();
+    const selectedRoom = (sel.room || item.room || '').replace(/"/g, '&quot;');
+    const roomList = [...projectRooms];
+    if (selectedRoom && !roomList.includes(selectedRoom)) roomList.unshift(selectedRoom);
+    const roomOptions = ['<option value="">No room</option>']
+      .concat(roomList.map(room => `<option value="${room.replace(/"/g, '&quot;')}">${room}</option>`))
+      .join('');
 
     row.innerHTML = `
-      <div class="item-check" onclick="toggleItem('${ccName}', ${idx})">${sel.checked ? '✓' : ''}</div>
-      <div class="item-name" onclick="toggleItem('${ccName}', ${idx})">${item.name}${item.room ? ' <span>· ' + item.room + '</span>' : ''}</div>
+      <div class="item-check" onclick="toggleItem('${ccName}', '${primaryKey}')">${sel.checked ? '✓' : ''}</div>
+      <div class="item-name" onclick="toggleItem('${ccName}', '${primaryKey}')">${item.name}${getItemRoom(ccName, primaryKey) ? ' <span>· ' + getItemRoom(ccName, primaryKey) + '</span>' : ''}</div>
       <span class="item-type ${typeClass}">${item.type || 'Service'}</span>
-      <input class="item-qty" type="text" value="${sel.qty || '1'}" placeholder="Qty" title="Quantity" oninput="updateItemQty('${ccName}', ${idx}, this.value)">
-      <input class="item-notes" type="text" value="${sel.notes || ''}" placeholder="Notes..." title="Notes" oninput="updateItemNotes('${ccName}', ${idx}, this.value)">
+      <button type="button" class="btn-ghost" title="Add another room for this item" onclick="addItemInstance('${ccName}', ${idx})" style="padding: 6px 10px; border-radius: 8px; font-weight: 800; ${ro ? 'display:none;' : ''}">+</button>
+      <div style="position:relative;">
+        <button type="button" class="btn-ghost" title="Rooms" onclick="toggleItemRoomsMenu('${ccName}','${primaryKey}')" style="min-width:170px;display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 10px;color:var(--text);${ro ? 'pointer-events:none;opacity:0.65;' : ''}">
+          <span style="max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${getItemRoom(ccName, primaryKey) || 'Rooms…'}</span>
+          <span style="color:var(--text-muted);font-weight:700;">▾</span>
+        </button>
+        <div class="rooms-dd-menu" id="itemRoomsMenu_${primaryKey.replace(/[^a-z0-9_]/gi,'_')}" style="position:absolute;left:0;right:0;top:calc(100% + 6px);">
+          ${roomList.map(r => {
+            const safe = r.replace(/\"/g,'&quot;');
+            return `<div class=\"rooms-dd-item ${getItemRoomsArray(ccName, primaryKey).includes(r) ? 'is-checked' : ''}\" onclick=\"toggleItemRoomMulti('${ccName}','${primaryKey}','${safe}'); event.stopPropagation(); updateItemRoomsMenuLabel('${ccName}','${primaryKey}');\">\n              <span class=\"label\">${safe}</span>\n              <span class=\"tick\">✓</span>\n            </div>`;
+          }).join('')}
+        </div>
+      </div>
+      <input class="item-qty" type="text" value="${sel.qty || '1'}" placeholder="Qty" title="Quantity" oninput="updateItemQty('${ccName}', '${primaryKey}', this.value)" ${ro ? 'readonly' : ''}>
+      <input class="item-notes" type="text" value="${sel.notes || ''}" placeholder="Notes..." title="Notes" oninput="updateItemNotes('${ccName}', '${primaryKey}', this.value)" ${ro ? 'readonly' : ''}>
     `;
+    // no select; menu label updates dynamically
 
     body.appendChild(row);
+
+    // Render duplicate instances (same base item, different rooms)
+    const dups = iterSelectionsForCC(ccName)
+      .filter(x => x.entry.checked && x.entry.baseIdx === idx && x.key !== primaryKey);
+    dups.forEach(({ key, entry }) => {
+      const dupRow = document.createElement('div');
+      dupRow.className = 'item-row checked';
+      dupRow.dataset.idx = idx;
+      dupRow.dataset.selkey = key;
+      dupRow.style.display = 'flex';
+      const selectedRoom2 = (entry.room || item.room || '').replace(/\"/g, '&quot;');
+      const roomList2 = [...projectRooms];
+      if (selectedRoom2 && !roomList2.includes(selectedRoom2)) roomList2.unshift(selectedRoom2);
+      const roomOptions2 = ['<option value=\"\">No room</option>']
+        .concat(roomList2.map(room => `<option value=\"${room.replace(/\"/g, '&quot;')}\">${room}</option>`))
+        .join('');
+
+      dupRow.innerHTML = `
+        <div class="item-check" title="Duplicate instance" style="opacity:0.7;">↳</div>
+        <div class="item-name" style="opacity:0.95;">${item.name}${getItemRoom(ccName, key) ? ' <span>· ' + getItemRoom(ccName, key) + '</span>' : ''}</div>
+        <span class="item-type ${typeClass}" style="opacity:0.8;">${item.type || 'Service'}</span>
+        <button type="button" class="btn-ghost" title="Remove this duplicate" onclick="removeItemInstance('${ccName}', '${key}')" style="padding: 6px 10px; border-radius: 8px; font-weight: 800; background: rgba(239,68,68,0.16); border: 1px solid rgba(239,68,68,0.35); color: #fecaca; ${ro ? 'display:none;' : ''}">×</button>
+        <div style="position:relative;">
+          <button type="button" class="btn-ghost" title="Rooms" onclick="toggleItemRoomsMenu('${ccName}','${key}')" style="min-width:170px;display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 10px;color:var(--text);${ro ? 'pointer-events:none;opacity:0.65;' : ''}">
+            <span style="max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${getItemRoom(ccName, key) || 'Rooms…'}</span>
+            <span style="color:var(--text-muted);font-weight:700;">▾</span>
+          </button>
+          <div class="rooms-dd-menu" id="itemRoomsMenu_${String(key).replace(/[^a-z0-9_]/gi,'_')}" style="position:absolute;left:0;right:0;top:calc(100% + 6px);">
+            ${roomList2.map(r => {
+              const safe = r.replace(/\"/g,'&quot;');
+              return `<div class=\"rooms-dd-item ${getItemRoomsArray(ccName, key).includes(r) ? 'is-checked' : ''}\" onclick=\"toggleItemRoomMulti('${ccName}','${key}','${safe}'); event.stopPropagation(); updateItemRoomsMenuLabel('${ccName}','${key}');\">\n                <span class=\"label\">${safe}</span>\n                <span class=\"tick\">✓</span>\n              </div>`;
+            }).join('')}
+          </div>
+        </div>
+        <input class="item-qty" type="text" value="${entry.qty || '1'}" placeholder="Qty" title="Quantity" oninput="updateItemQty('${ccName}', '${key}', this.value)" ${ro ? 'readonly' : ''}>
+        <input class="item-notes" type="text" value="${entry.notes || ''}" placeholder="Notes..." title="Notes" oninput="updateItemNotes('${ccName}', '${key}', this.value)" ${ro ? 'readonly' : ''}>
+      `;
+      body.appendChild(dupRow);
+    });
   });
 
   if (visibleCount === 0) {
@@ -15782,32 +16371,99 @@ function filterItems() {
   addPriceButtonsToItems(activeCCName);
 }
 
-function toggleItem(ccName, idx) {
+function toggleItem(ccName, selKey) {
   if (isScopeReadOnly()) {
     showToast('Scope is view-only for your role.', 'info');
     return;
   }
+  const key = String(selKey);
+  const ccData = getCostCentres()[ccName];
+  const baseIdx = parseInt(key, 10);
+  const item = ccData && ccData.items[baseIdx];
+  if (isItemSubheading(item)) return;
   if (!itemSelections[ccName]) itemSelections[ccName] = {};
-  if (!itemSelections[ccName][idx]) itemSelections[ccName][idx] = { checked: false, qty: '1', notes: '' };
-  itemSelections[ccName][idx].checked = !itemSelections[ccName][idx].checked;
+  if (!itemSelections[ccName][key]) itemSelections[ccName][key] = { baseIdx: baseIdx, checked: false, qty: '1', notes: '', room: '' };
+  itemSelections[ccName][key].checked = !itemSelections[ccName][key].checked;
   renderItems(ccName, document.getElementById('itemSearch').value);
   addPriceButtonsToItems(ccName);
   buildItemsCCList();
   updateTotalItemsLabel();
 }
 
-function updateItemQty(ccName, idx, val) {
+function updateItemQty(ccName, selKey, val) {
   if (isScopeReadOnly()) return;
+  const key = String(selKey);
   if (!itemSelections[ccName]) itemSelections[ccName] = {};
-  if (!itemSelections[ccName][idx]) itemSelections[ccName][idx] = { checked: false, qty: '1', notes: '' };
-  itemSelections[ccName][idx].qty = val;
+  const baseIdx = parseInt(key, 10);
+  if (!itemSelections[ccName][key]) itemSelections[ccName][key] = { baseIdx: baseIdx, checked: true, qty: '1', notes: '', room: '' };
+  itemSelections[ccName][key].qty = val;
 }
 
-function updateItemNotes(ccName, idx, val) {
+function updateItemRoom(ccName, selKey, val) {
+  if (isScopeReadOnly()) return;
+  const key = String(selKey);
+  if (!itemSelections[ccName]) itemSelections[ccName] = {};
+  const baseIdx = parseInt(key, 10);
+  if (!itemSelections[ccName][key]) itemSelections[ccName][key] = { baseIdx: baseIdx, checked: true, qty: '1', notes: '', room: '', rooms: [] };
+  itemSelections[ccName][key].rooms = val ? [val] : [];
+  itemSelections[ccName][key].room = val || '';
+}
+
+function updateItemNotes(ccName, selKey, val) {
+  if (isScopeReadOnly()) return;
+  const key = String(selKey);
+  if (!itemSelections[ccName]) itemSelections[ccName] = {};
+  const baseIdx = parseInt(key, 10);
+  if (!itemSelections[ccName][key]) itemSelections[ccName][key] = { baseIdx: baseIdx, checked: true, qty: '1', notes: '', room: '' };
+  itemSelections[ccName][key].notes = val;
+}
+
+function updateItemRooms(ccName, selKey, rooms) {
+  if (isScopeReadOnly()) return;
+  const key = String(selKey);
+  if (!itemSelections[ccName]) itemSelections[ccName] = {};
+  const baseIdx = parseInt(key, 10);
+  if (!itemSelections[ccName][key]) itemSelections[ccName][key] = { baseIdx: baseIdx, checked: true, qty: '1', notes: '', room: '', rooms: [] };
+  const clean = (Array.isArray(rooms) ? rooms : []).map(s => (s || '').trim()).filter(Boolean);
+  itemSelections[ccName][key].rooms = clean;
+  itemSelections[ccName][key].room = clean[0] || '';
+}
+
+function toggleItemRoomMulti(ccName, selKey, room) {
+  if (isScopeReadOnly()) return;
+  const existing = new Set(getItemRoomsArray(ccName, selKey));
+  if (existing.has(room)) existing.delete(room);
+  else existing.add(room);
+  updateItemRooms(ccName, selKey, Array.from(existing));
+}
+
+function addItemInstance(ccName, baseIdx) {
   if (isScopeReadOnly()) return;
   if (!itemSelections[ccName]) itemSelections[ccName] = {};
-  if (!itemSelections[ccName][idx]) itemSelections[ccName][idx] = { checked: false, qty: '1', notes: '' };
-  itemSelections[ccName][idx].notes = val;
+  // Ensure primary is selected first
+  const primaryKey = String(baseIdx);
+  if (!itemSelections[ccName][primaryKey]) {
+    itemSelections[ccName][primaryKey] = { baseIdx: baseIdx, checked: true, qty: '1', notes: '', room: '' };
+  } else {
+    itemSelections[ccName][primaryKey].checked = true;
+  }
+  const dupKey = `${baseIdx}__dup__${Date.now()}__${Math.floor(Math.random() * 100000)}`;
+  itemSelections[ccName][dupKey] = { baseIdx: baseIdx, checked: true, qty: '1', notes: '', room: '' };
+  renderItems(ccName, document.getElementById('itemSearch').value);
+  addPriceButtonsToItems(ccName);
+  buildItemsCCList();
+  updateTotalItemsLabel();
+}
+
+function removeItemInstance(ccName, selKey) {
+  if (isScopeReadOnly()) return;
+  const key = String(selKey);
+  if (itemSelections[ccName]) delete itemSelections[ccName][key];
+  if (itemPricing[ccName]) delete itemPricing[ccName][key];
+  renderItems(ccName, document.getElementById('itemSearch').value);
+  addPriceButtonsToItems(ccName);
+  buildItemsCCList();
+  updateTotalItemsLabel();
 }
 
 function selectAllItems() {
@@ -15816,7 +16472,8 @@ function selectAllItems() {
     return;
   }
   if (!activeCCName) return;
-  COST_CENTRES[activeCCName].items.forEach((_, idx) => {
+  getCostCentres()[activeCCName].items.forEach((item, idx) => {
+    if (isItemSubheading(item)) return;
     if (!itemSelections[activeCCName]) itemSelections[activeCCName] = {};
     if (!itemSelections[activeCCName][idx]) itemSelections[activeCCName][idx] = { checked: false, qty: '1', notes: '' };
     itemSelections[activeCCName][idx].checked = true;
@@ -15845,9 +16502,14 @@ function clearAllItems() {
 
 function countTotalItems() {
   let total = 0;
-  Object.values(itemSelections).forEach(cc => {
-    Object.values(cc).forEach(v => {
-      if (v.checked) total++;
+  Object.entries(itemSelections).forEach(([ccName, cc]) => {
+    const ccData = getCostCentres()[ccName];
+    if (!ccData) return;
+    Object.entries(cc).forEach(([idx, v]) => {
+      if (!v.checked) return;
+      const item = ccData.items[parseInt(idx)];
+      if (isItemSubheading(item)) return;
+      total++;
     });
   });
   return total;
@@ -15873,6 +16535,7 @@ function setVal(id, value) {
 function buildReview() {
   const body = document.getElementById('reviewBody');
   body.innerHTML = '';
+  const selectedRooms = getProjectRooms();
 
   const proj = {
     client: getVal('projClient'),
@@ -15897,8 +16560,10 @@ function buildReview() {
       <div class="review-field"><label>Project</label><p>${proj.name || '—'}</p></div>
       <div class="review-field"><label>Location</label><p>${proj.location || '—'}</p></div>
       <div class="review-field"><label>Type</label><p>${proj.type || '—'}</p></div>
+      <div class="review-field"><label>Scope catalogue</label><p>${getProjectDataset() === 'dotx' ? 'New — Draft Scope of Work (Word template)' : 'Legacy — original in-app'}</p></div>
       <div class="review-field"><label>Finish Level</label><p>${proj.finishLevel || '—'}</p></div>
       <div class="review-field"><label>Design Characteristics</label><p>${proj.designChar || '—'}</p></div>
+      <div class="review-field"><label>Project Rooms</label><p>${selectedRooms.length ? selectedRooms.join(', ') : '—'}</p></div>
       <div class="review-field"><label>Date</label><p>${proj.date || '—'}</p></div>
       <div class="review-field"><label>Project Manager</label><p>${proj.pm || '—'}</p></div>
       <div class="review-field"><label>Project No.</label><p>${proj.num || '—'}</p></div>
@@ -15913,20 +16578,24 @@ function buildReview() {
     const ccSel = itemSelections[ccName];
     if (!ccSel) return;
     const checkedItems = Object.entries(ccSel).filter(([, v]) => v.checked);
-    if (checkedItems.length === 0) return;
+    const ccDataRv = getCostCentres()[ccName];
+    const lineItems = checkedItems.filter(([idx]) => !isItemSubheading(ccDataRv.items[parseInt(idx)]));
+    if (lineItems.length === 0) return;
     hasAny = true;
 
     const block = document.createElement('div');
     block.className = 'review-cc-block';
 
-    let rowsHTML = checkedItems.map(([idx, v], i) => {
-      const item = COST_CENTRES[ccName].items[parseInt(idx)];
-      const typeClass = 'type-' + (item.type || 'service').toLowerCase();
+    let rowsHTML = lineItems.map(([idx, v], i) => {
+      const item = ccDataRv.items[parseInt(idx)];
+      const typeClass = 'type-' + (item.type || 'service').toLowerCase().replace(/\s+/g, '-');
+      const room = (v.room || item.room || '');
       return `
         <div class="review-item-row">
           <span class="review-item-num">${i + 1}.</span>
           <span class="review-item-name">${item.name}</span>
           <span class="item-type ${typeClass}" style="font-size: 9px; padding: 2px 6px;">${item.type}</span>
+          ${room ? `<span class="item-type" style="font-size: 9px; padding: 2px 6px; background: rgba(96,165,250,0.18); color:#93c5fd;">${room}</span>` : ''}
           <span class="review-item-qty">×${v.qty || 1}</span>
           ${v.notes ? `<span class="review-item-note">${v.notes}</span>` : ''}
         </div>
@@ -15936,7 +16605,7 @@ function buildReview() {
     block.innerHTML = `
       <div class="review-cc-title">
         ${ccName}
-        <span style="color: var(--text-muted); font-size: 12px; font-weight: 400;">${checkedItems.length} item${checkedItems.length !== 1 ? 's' : ''}</span>
+        <span style="color: var(--text-muted); font-size: 12px; font-weight: 400;">${lineItems.length} item${lineItems.length !== 1 ? 's' : ''}</span>
       </div>
       ${rowsHTML}
     `;
@@ -16071,6 +16740,7 @@ function getScopeDocLetterhead() {
 }
 
 function generateScope() {
+  const selectedRooms = getProjectRooms();
   const proj = {
     client: getVal('projClient'),
     clientAddress: getVal('projClientAddress'),
@@ -16096,10 +16766,10 @@ function generateScope() {
     const ccSel = itemSelections[ccName];
     if (!ccSel) return;
     const checkedItems = Object.entries(ccSel).filter(([, v]) => v.checked);
-    if (checkedItems.length === 0) return;
+    const ccData = getCostCentres()[ccName];
+    const lineItemsDoc = checkedItems.filter(([idx]) => !isItemSubheading(ccData.items[parseInt(idx)]));
+    if (lineItemsDoc.length === 0) return;
 
-    const ccData = COST_CENTRES[ccName];
-    
     const ccDescription = getCostCentreDescription(ccName, projectCategory);
     const newBuildDesc = ccDescription.split('Renovation:')[0].replace('New Build – ', '').trim();
     const renoDesc = ccDescription.split('Renovation:')[1] || ccDescription;
@@ -16117,11 +16787,12 @@ function generateScope() {
         <div class="doc-assumptions">Assumptions: Scope items:</div>
         <table class="doc-item-table">
           <tbody>
-            ${checkedItems.map(([idx, v]) => {
+            ${lineItemsDoc.map(([idx, v]) => {
               const item = ccData.items[parseInt(idx)];
+              const room = (v.room || item.room || '');
               return `<tr>
                 <td class="item-num">${itemCounter++}</td>
-                <td class="item-name">${item.name}</td>
+                <td class="item-name">${item.name}${room ? ` <span style="color:#93c5fd;">(${room})</span>` : ''}</td>
                 <td class="item-qty">${v.qty || 1}</td>
               </tr>`;
             }).join('')}
@@ -16253,6 +16924,7 @@ function generateScope() {
             <div><strong>Project:</strong> ${proj.name || '—'}</div>
             <div><strong>Assumed Finish Level:</strong> ${proj.finishLevel || 'Medium–High'}</div>
             <div><strong>Design Characteristics (from plans):</strong> ${proj.designChar || '—'}</div>
+            <div><strong>Selected Rooms:</strong> ${selectedRooms.length ? selectedRooms.join(', ') : '—'}</div>
           </div>
         </div>
       </div>
@@ -16528,6 +17200,8 @@ function openPriceModal(ccName, idx) {
     showToast('Only Administrators and Managers can edit pricing.', 'info');
     return;
   }
+  const _ccP = getCostCentres()[ccName];
+  if (!_ccP || isItemSubheading(_ccP.items[idx])) return;
   priceModal_ccName = ccName;
   priceModal_idx = idx;
   
@@ -16544,9 +17218,10 @@ function openPriceModal(ccName, idx) {
   }
   priceModal_selectedPrices = existingPrices;
 
-  const item = COST_CENTRES[ccName].items[idx];
+  const item = getCostCentres()[ccName].items[idx];
   document.getElementById('priceModalTitle').textContent = item.name;
-  document.getElementById('priceModalSub').textContent = ccName + (item.type ? ' · ' + item.type : '');
+  const room = getItemRoom(ccName, idx);
+  document.getElementById('priceModalSub').textContent = ccName + (item.type ? ' · ' + item.type : '') + (room ? ' · ' + room : '');
 
   const body = document.getElementById('priceModalBody');
   body.innerHTML = '';
@@ -17058,7 +17733,7 @@ function addCustomProduct() {
   }
   
   // Get item info
-  const item = COST_CENTRES[priceModal_ccName].items[priceModal_idx];
+  const item = getCostCentres()[priceModal_ccName].items[priceModal_idx];
   const itemCategory = getItemCategory(item.name);
   const isProductType = (item.type || '').toLowerCase() === 'product';
   
@@ -17241,10 +17916,11 @@ function exportWithPricing() {
     if (!ccSel) return;
     const checked = Object.entries(ccSel).filter(([, v]) => v.checked);
     if (!checked.length) return;
-    const ccData = COST_CENTRES[ccName];
+    const ccData = getCostCentres()[ccName];
 
     checked.forEach(([idx, v]) => {
       const item = ccData.items[parseInt(idx)];
+      if (isItemSubheading(item)) return;
       const qty = parseFloat(v.qty) || 1;
       const pricing = itemPricing[ccName] && itemPricing[ccName][idx];
       
@@ -17308,8 +17984,11 @@ function exportWithPricing() {
     if (!ccSel) return;
     const checked = Object.entries(ccSel).filter(([, v]) => v.checked);
     if (!checked.length) return;
+    const ccDataS = getCostCentres()[ccName];
+    const lineOnly = checked.filter(([idx]) => !isItemSubheading(ccDataS.items[parseInt(idx)]));
+    if (!lineOnly.length) return;
     let ccTotal = 0, priced = 0;
-    checked.forEach(([idx, v]) => {
+    lineOnly.forEach(([idx, v]) => {
       const pricing = itemPricing[ccName] && itemPricing[ccName][idx];
       const qty = parseFloat(v.qty) || 1;
       if (pricing && Array.isArray(pricing) && pricing.length > 0) {
@@ -17322,7 +18001,7 @@ function exportWithPricing() {
         priced++;
       }
     });
-    sumData.push([ccName, checked.length, priced, ccTotal, ccTotal * 0.1, ccTotal * 1.1]);
+    sumData.push([ccName, lineOnly.length, priced, ccTotal, ccTotal * 0.1, ccTotal * 1.1]);
   });
   sumData.push([]);
   sumData.push(['TOTAL', '', '', grandTotal, grandTotal * 0.1, grandTotal * 1.1]);
@@ -17361,21 +18040,24 @@ function exportSimpleXL() {
     ['Selected Items']
   ];
   
-  wsData.push(['Cost Centre', 'Item', 'Type', 'Category', 'Quantity', 'Notes']);
+  wsData.push(['Cost Centre', 'Item', 'Type', 'Category', 'Room', 'Quantity', 'Notes']);
   
   [...selectedCC].forEach(ccName => {
     const ccSel = itemSelections[ccName];
     if (!ccSel) return;
     const checkedItems = Object.entries(ccSel).filter(([, v]) => v.checked);
-    const ccData = COST_CENTRES[ccName];
+    const ccData = getCostCentres()[ccName];
     
     checkedItems.forEach(([idx, v]) => {
       const item = ccData.items[parseInt(idx)];
+      if (isItemSubheading(item)) return;
+      const room = v.room || item.room || '';
       wsData.push([
         ccName,
         item.name,
         item.type || '',
         item.category || '',
+        room,
         v.qty || 1,
         v.notes || ''
       ]);
@@ -17419,10 +18101,11 @@ function exportFFS() {
     const ccSel = itemSelections[ccName];
     if (!ccSel) return;
     const checkedItems = Object.entries(ccSel).filter(([, v]) => v.checked);
-    const ccData = COST_CENTRES[ccName];
+    const ccData = getCostCentres()[ccName];
     
     checkedItems.forEach(([idx, v]) => {
       const item = ccData.items[parseInt(idx)];
+      if (isItemSubheading(item)) return;
       const qty = parseInt(v.qty) || 1;
       
       // Get pricing (supports array of prices)
@@ -17461,7 +18144,7 @@ function exportFFS() {
       wsData.push([
         itemType,                                    // Item Type
         '',                                          // Ref: eg Unit No.
-        item.room || '',                            // Room
+        v.room || item.room || '',                  // Room
         '',                                          // Ext Elevation
         supplierCode,                                // Supplier Item Code
         supplierTrade,                               // Supplier / Trade
@@ -17738,6 +18421,10 @@ function openAddCustomItem() {
     showToast('Please select a cost centre first', 'warning');
     return;
   }
+  if (getProjectDataset() === 'dotx') {
+    showToast('Custom line items are only available when using the Legacy catalogue.', 'info');
+    return;
+  }
   document.getElementById('customItemName').value = '';
   document.getElementById('customItemType').value = 'Product';
   document.getElementById('customItemCategory').value = 'Custom';
@@ -17930,11 +18617,11 @@ function loadDefaultTemplates() {
   }
   
   // Add defaults to current list
-  defaultExclusions.forEach(exc => {
+  getActiveDefaultExclusions().forEach(exc => {
     addExclusionInput(getDefaultExclusionText(exc));
   });
   
-  defaultNotes.forEach(note => {
+  getActiveDefaultNotes().forEach(note => {
     addNoteInput(note);
   });
   
@@ -17949,7 +18636,7 @@ function addAllDefaultExclusions() {
     return;
   }
   
-  defaultExclusions.forEach(exc => {
+  getActiveDefaultExclusions().forEach(exc => {
     addExclusionInput(getDefaultExclusionText(exc));
   });
 }
@@ -17962,7 +18649,7 @@ function addAllDefaultNotes() {
     return;
   }
   
-  defaultNotes.forEach(note => {
+  getActiveDefaultNotes().forEach(note => {
     addNoteInput(note);
   });
 }
@@ -17983,7 +18670,7 @@ function toggleExclusionDefaultsMenu() {
     const ccName = document.getElementById('exclusionCCSelect').value;
     const existing = new Set((ccExclusions[ccName] || []).map(s => (s || '').trim()));
 
-    defaultExclusions.forEach((exc) => {
+    getActiveDefaultExclusions().forEach((exc) => {
       const item = normaliseDefaultExclusion(exc);
       const text = (item.text || '').trim();
       if (!text) return;
@@ -18036,7 +18723,7 @@ function toggleNoteDefaultsMenu() {
   
   if (menu.style.display !== 'block') {
     list.innerHTML = '';
-    defaultNotes.forEach((note, idx) => {
+    getActiveDefaultNotes().forEach((note, idx) => {
       const btn = document.createElement('button');
       btn.style.cssText = 'background: var(--surface3); border: 1px solid var(--border); border-radius: 4px; padding: 4px 8px; font-size: 10px; color: var(--text); cursor: pointer; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;';
       btn.title = note;
@@ -18070,19 +18757,36 @@ function saveAsDefaultTemplates() {
   });
   
   if (newExclusions.length > 0) {
-    defaultExclusions = newExclusions.map(text => normaliseDefaultExclusion(text));
+    if (getProjectDataset() === 'dotx') {
+      defaultExclusionsDotx = newExclusions.map(text => normaliseDefaultExclusion(text));
+    } else {
+      defaultExclusions = newExclusions.map(text => normaliseDefaultExclusion(text));
+    }
   }
   if (newNotes.length > 0) {
-    defaultNotes = newNotes;
+    if (getProjectDataset() === 'dotx') {
+      defaultNotesDotx = newNotes;
+    } else {
+      defaultNotes = newNotes;
+    }
   }
   
   saveDefaultExclusionsNotes();
 }
 
 // Open manage defaults modal
+function onManageDefaultsDatasetChange() {
+  const which = document.getElementById('manageDefaultsDataset').value;
+  document.getElementById('manageDefaultExclusions').value = serialiseDefaultExclusionsForEditor(which);
+  document.getElementById('manageDefaultNotes').value = (which === 'dotx' ? defaultNotesDotx : defaultNotes).join('\n');
+}
+
 function openManageDefaultsModal() {
-  document.getElementById('manageDefaultExclusions').value = serialiseDefaultExclusionsForEditor();
-  document.getElementById('manageDefaultNotes').value = defaultNotes.join('\n');
+  const which = getProjectDataset() === 'dotx' ? 'dotx' : 'legacy';
+  const sel = document.getElementById('manageDefaultsDataset');
+  if (sel) sel.value = which;
+  document.getElementById('manageDefaultExclusions').value = serialiseDefaultExclusionsForEditor(which);
+  document.getElementById('manageDefaultNotes').value = (which === 'dotx' ? defaultNotesDotx : defaultNotes).join('\n');
   document.getElementById('manageDefaultsModal').classList.add('show');
 }
 
@@ -18093,9 +18797,15 @@ function closeManageDefaultsModal() {
 function saveManagedDefaults() {
   const excText = document.getElementById('manageDefaultExclusions').value;
   const notesText = document.getElementById('manageDefaultNotes').value;
+  const which = (document.getElementById('manageDefaultsDataset') || {}).value || 'legacy';
   
-  defaultExclusions = excText.split('\n').map(s => s.trim()).filter(s => s).map(text => normaliseDefaultExclusion(text));
-  defaultNotes = notesText.split('\n').map(s => s.trim()).filter(s => s);
+  if (which === 'dotx') {
+    defaultExclusionsDotx = excText.split('\n').map(s => s.trim()).filter(s => s).map(text => normaliseDefaultExclusion(text));
+    defaultNotesDotx = notesText.split('\n').map(s => s.trim()).filter(s => s);
+  } else {
+    defaultExclusions = excText.split('\n').map(s => s.trim()).filter(s => s).map(text => normaliseDefaultExclusion(text));
+    defaultNotes = notesText.split('\n').map(s => s.trim()).filter(s => s);
+  }
   
   saveDefaultExclusionsNotes();
   closeManageDefaultsModal();
@@ -18134,6 +18844,11 @@ function saveCustomItem() {
     return;
   }
 
+  if (getProjectDataset() === 'dotx') {
+    showToast('Custom line items are only available when using the Legacy catalogue.', 'info');
+    return;
+  }
+
   if (!customItems[activeCCName]) {
     customItems[activeCCName] = [];
   }
@@ -18147,7 +18862,7 @@ function saveCustomItem() {
     isCustom: true
   };
 
-  const ccData = COST_CENTRES[activeCCName];
+  const ccData = getCostCentres()[activeCCName];
   const newIdx = ccData.items.length;
   ccData.items.push(newItem);
   customItems[activeCCName].push(newIdx);
