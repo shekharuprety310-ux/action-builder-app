@@ -16107,17 +16107,26 @@ async function exportVariationPdf() {
   try {
     const docxBlob = await buildFilledVariationDocxBlob(data);
     container = document.createElement('div');
-    // Must stay fully opaque: html2canvas captures opacity:0 as blank. Keep off-screen instead.
-    container.style.position = 'fixed';
-    container.style.left = '-12000px';
-    container.style.top = '0';
-    container.style.width = '794px';
-    container.style.maxWidth = '794px';
-    container.style.background = '#ffffff';
-    container.style.padding = '0';
-    container.style.opacity = '1';
-    container.style.pointerEvents = 'none';
-    container.style.zIndex = '2147483646';
+    // Critical: body uses light text (--text). This div is white; without an explicit dark color,
+    // inherited color is near-white on white → html2canvas captures a "blank" page.
+    container.style.cssText = [
+      'position:fixed',
+      'left:0',
+      'top:0',
+      'width:794px',
+      'max-width:794px',
+      'box-sizing:border-box',
+      'margin:0',
+      'padding:0',
+      'background:#ffffff',
+      'color:#000000',
+      'color-scheme:light',
+      '-webkit-print-color-adjust:exact',
+      'print-color-adjust:exact',
+      'opacity:1',
+      'pointer-events:none',
+      'z-index:2147483646'
+    ].join(';');
     document.body.appendChild(container);
 
     await docxRenderer.renderAsync(docxBlob, container, undefined, {
@@ -16126,9 +16135,12 @@ async function exportVariationPdf() {
       ignoreHeight: false,
       breakPages: true
     });
+    if (document.fonts && document.fonts.ready) {
+      try { await document.fonts.ready; } catch (e) { /* ignore */ }
+    }
     // Layout + fonts/images (docx-preview paints async in some cases).
     await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-    await new Promise((resolve) => setTimeout(resolve, 250));
+    await new Promise((resolve) => setTimeout(resolve, 300));
 
     const renderedH = container.scrollHeight || container.offsetHeight;
     if (renderedH < 40) {
@@ -16142,7 +16154,19 @@ async function exportVariationPdf() {
       html2canvas: {
         scale: 2,
         useCORS: true,
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
+        onclone: function (clonedDoc, clonedEl) {
+          try {
+            if (clonedEl && clonedEl.style) {
+              clonedEl.style.color = '#000000';
+              clonedEl.style.backgroundColor = '#ffffff';
+            }
+            if (clonedDoc.body) {
+              clonedDoc.body.style.color = '#000000';
+              clonedDoc.body.style.backgroundColor = '#ffffff';
+            }
+          } catch (err) { /* ignore */ }
+        }
       },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
       pagebreak: { mode: ['css', 'legacy'] }
