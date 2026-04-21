@@ -15,6 +15,7 @@
 <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://unpkg.com/docx-preview@0.3.3/dist/docx-preview.min.js"></script>
 <script src="price_data.js"></script>
 <script src="cost_centres_dotx.js"></script>
 <style>
@@ -16022,94 +16023,66 @@ async function exportVariationDoc() {
     showToast('Please enter owner, site address, and at least one variation line', 'error');
     return;
   }
-  const html = buildVariationDocumentHtml(data);
-  const blob = new Blob(['\ufeff', html], { type: 'application/msword;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = `Variation_${(data.projectNumber || data.ownerName || 'Contract').replace(/[^a-z0-9]/gi, '_')}.doc`;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
-  showToast('Variation Word document generated', 'success');
+  try {
+    const blob = await buildFilledVariationDocxBlob(data);
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `Variation_${(data.projectNumber || data.ownerName || 'Contract').replace(/[^a-z0-9]/gi, '_')}.docx`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    showToast('Variation DOCX generated from your template', 'success');
+  } catch (e) {
+    showToast('Template DOCX generation failed: ' + e.message, 'error');
+  }
+}
+
+async function buildFilledVariationDocxBlob(data) {
+  if (typeof JSZip === 'undefined') {
+    throw new Error('JSZip is not loaded');
+  }
+  const buf = await getVariationTemplateBuffer();
+  const zip = await JSZip.loadAsync(buf);
+  const docFile = zip.file('word/document.xml');
+  if (!docFile) throw new Error('Template document.xml not found');
+  let xml = await docFile.async('string');
+
+  const detailText = data.lines.map(l => l.details).join('\n');
+  const addText = data.lines.map(l => (l.additionalCost ? '$' + l.additionalCost.toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2}) : '')).join('\n');
+  const creditText = data.lines.map(l => (l.creditDue ? '$' + l.creditDue.toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2}) : '')).join('\n');
+
+  const placeholders = [
+    data.date || '',
+    data.ownerName || '',
+    data.siteAddress || '',
+    data.ownerPhone || '',
+    data.ownerEmail || '',
+    data.reason || '',
+    detailText, addText, creditText,
+    '', '', '',
+    '$' + data.totals.subtotal.toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2}),
+    '$' + data.totals.gst.toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2}),
+    '$' + data.totals.total.toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2}),
+    'It is estimated the variation will extend the contract completion date by ' + data.extensionDays + ' Working Days',
+    data.paymentTerms || '',
+    data.ownerSignName || data.ownerName || '',
+    data.builderRep || '',
+    data.ownerDate || '',
+    data.builderDate || ''
+  ];
+  placeholders.forEach(v => { xml = replaceNextTemplatePlaceholder(xml, v); });
+  zip.file('word/document.xml', xml);
+  return await zip.generateAsync({ type: 'blob' });
 }
 
 function buildVariationDocumentHtml(data) {
-  const logoUrl = 'https://static.wixstatic.com/media/17474f_1ef59b72eee34841901a5ffde66d2c8c~mv2.png';
-  const linesHtml = data.lines.map(l => `
-    <tr>
-      <td style="border:1px solid #c9d2df;padding:8px;vertical-align:top;">${l.details}</td>
-      <td style="border:1px solid #c9d2df;padding:8px;text-align:right;">${l.additionalCost ? '$' + l.additionalCost.toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2}) : ''}</td>
-      <td style="border:1px solid #c9d2df;padding:8px;text-align:right;">${l.creditDue ? '$' + l.creditDue.toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2}) : ''}</td>
-    </tr>
-  `).join('');
-
-  return `
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Variation To Contract</title>
-  <style>
-    @page { size: A4; margin: 12mm; }
-    body { font-family: Arial, sans-serif; font-size: 11pt; color:#1b2b3a; margin:0; }
-    .doc-wrap { position: relative; min-height: 100%; }
-    .watermark { position: fixed; top: 25%; left: 15%; width: 70%; opacity: 0.07; z-index: 0; }
-    .content { position: relative; z-index: 2; }
-    .title { font-size: 20px; font-weight: 700; color: #1a3a5c; margin: 0 0 12px; }
-    .subhead { font-size: 11px; font-weight: 700; text-transform: uppercase; color:#1a3a5c; margin: 10px 0 4px; }
-    table { width: 100%; border-collapse: collapse; }
-    th { background: #eef3f8; color:#1a3a5c; font-size:10.5px; text-transform: uppercase; letter-spacing: 0.03em; }
-    th, td { border: 1px solid #c9d2df; padding: 7px; }
-    .tot { font-weight: 700; background: #f7f9fc; }
-    .footer { margin-top: 12px; font-size: 9.5pt; color:#4f6479; }
-  </style>
-</head>
-<body>
-  <div class="doc-wrap">
-    <img class="watermark" src="${logoUrl}" alt="Action Builders logo watermark">
-    <div class="content">
-      <div style="font-size:11pt;margin-bottom:8px;">Date ${data.date || ''}</div>
-      <div class="title">VARIATION TO CONTRACT</div>
-      <table style="margin-bottom:10px;">
-        <tr><th style="text-align:left;">Builder</th><th style="text-align:left;">Owner</th><th style="text-align:left;">Site Address</th></tr>
-        <tr>
-          <td style="vertical-align:top;">Action Builders Hobart<br>116a Sandy Bay Road Sandy Bay<br>info@actionbuilders.com.au<br>ABN: 17 063 265 707<br>LICENSE: CC7052</td>
-          <td style="vertical-align:top;">${data.ownerName}<br>${data.ownerEmail || ''}<br>${data.ownerPhone || ''}</td>
-          <td style="vertical-align:top;">${data.siteAddress}</td>
-        </tr>
-      </table>
-
-      <div class="subhead">Reason for Variation (if requested by the builder)</div>
-      <div style="border:1px solid #c9d2df;padding:8px;margin-bottom:10px;">${data.reason || ''}</div>
-
-      <table>
-        <tr><th style="text-align:left;">Details of Work</th><th style="text-align:left;">Additional Cost</th><th style="text-align:left;">Credit Due</th></tr>
-        ${linesHtml}
-        <tr><td class="tot">SUBTOTAL</td><td class="tot" colspan="2" style="text-align:right;">$${data.totals.subtotal.toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2})}</td></tr>
-        <tr><td class="tot">GST (10%)</td><td class="tot" colspan="2" style="text-align:right;">$${data.totals.gst.toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2})}</td></tr>
-        <tr><td class="tot">TOTAL</td><td class="tot" colspan="2" style="text-align:right;">$${data.totals.total.toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2})}</td></tr>
-      </table>
-
-      <div class="subhead">Extension of Time</div>
-      <div style="margin-bottom:8px;">It is estimated the variation will extend the contract completion date by ${data.extensionDays} Working Days.</div>
-      <div class="subhead">Payment Terms</div>
-      <div style="margin-bottom:10px;">${data.paymentTerms || ''}</div>
-
-      <div class="subhead">Signatures</div>
-      <div style="margin-bottom:8px;">This is to certify that the variation and extension of time detailed herein have this day been agreed/authorised by me/us:</div>
-      <table>
-        <tr><th style="text-align:left;">Owners Name</th><th style="text-align:left;">Builder Rep</th></tr>
-        <tr>
-          <td style="height:84px;vertical-align:top;">${data.ownerSignName || ''}<br><br>SIGN:<br><br>DATE: ${data.ownerDate || ''}</td>
-          <td style="height:84px;vertical-align:top;">${data.builderRep || ''}<br><br>SIGN:<br><br>DATE: ${data.builderDate || ''}</td>
-        </tr>
-      </table>
-      <div class="footer">Action Builders Hobart · Variation To Contract</div>
-    </div>
-  </div>
-</body>
-</html>`;
+  // kept for legacy/debug only; DOCX template is primary source.
+  const html = `
+<html><head><meta charset="utf-8"><title>Variation To Contract</title></head>
+<body>${data.ownerName || ''}</body></html>`;
+  return html;
 }
 
 async function exportVariationPdf() {
@@ -16122,16 +16095,29 @@ async function exportVariationPdf() {
     showToast('PDF engine not loaded. Please refresh and try again.', 'error');
     return;
   }
-  const html = buildVariationDocumentHtml(data);
-  const container = document.createElement('div');
-  container.style.position = 'fixed';
-  container.style.left = '-99999px';
-  container.style.top = '0';
-  container.style.width = '794px';
-  container.innerHTML = html;
-  document.body.appendChild(container);
-  const target = container.querySelector('.doc-wrap') || container;
+  if (typeof docx === 'undefined' || !docx.renderAsync) {
+    showToast('DOCX preview engine not loaded. Please refresh and try again.', 'error');
+    return;
+  }
+  let container = null;
   try {
+    const docxBlob = await buildFilledVariationDocxBlob(data);
+    container = document.createElement('div');
+    container.style.position = 'fixed';
+    container.style.left = '-99999px';
+    container.style.top = '0';
+    container.style.width = '794px';
+    container.style.background = '#fff';
+    container.style.padding = '0';
+    document.body.appendChild(container);
+
+    await docx.renderAsync(docxBlob, container, undefined, {
+      inWrapper: false,
+      ignoreWidth: false,
+      ignoreHeight: false,
+      breakPages: true
+    });
+
     await html2pdf().set({
       margin: [8, 8, 8, 8],
       filename: `Variation_${(data.projectNumber || data.ownerName || 'Contract').replace(/[^a-z0-9]/gi, '_')}.pdf`,
@@ -16139,12 +16125,13 @@ async function exportVariationPdf() {
       html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff' },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
       pagebreak: { mode: ['css', 'legacy'] }
-    }).from(target).save();
-    showToast('Variation PDF generated', 'success');
+    }).from(container).save();
+
+    showToast('Variation PDF generated from your template', 'success');
   } catch (e) {
-    showToast('Failed to generate PDF: ' + e.message, 'error');
+    showToast('Failed to generate template PDF: ' + e.message, 'error');
   } finally {
-    document.body.removeChild(container);
+    if (container && container.parentNode) container.parentNode.removeChild(container);
   }
 }
 
