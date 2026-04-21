@@ -13,6 +13,7 @@
 <title>Action Builders — Scope Builder</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 <script src="price_data.js"></script>
 <script src="cost_centres_dotx.js"></script>
 <style>
@@ -843,6 +844,8 @@ header {
   flex-direction: column;
   background: var(--bg);
   overflow: hidden;
+  min-height: 0;
+  height: 100%;
 }
 
 .cost-budgeting-panel {
@@ -851,12 +854,14 @@ header {
   flex-direction: column;
   padding: 20px;
   overflow: hidden;
+  min-height: 0;
 }
 
 .phase-2-header {
   margin-bottom: 20px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 .phase-2-header .section-title {
@@ -911,6 +916,7 @@ header {
   background: var(--surface);
   border-radius: 12px;
   padding: 16px;
+  min-height: 0;
 }
 
 .cost-summary-panel {
@@ -918,6 +924,7 @@ header {
   border-radius: 12px;
   padding: 20px;
   margin-top: 20px;
+  flex-shrink: 0;
 }
 
 .cost-summary-header {
@@ -4972,6 +4979,37 @@ header {
 }
 .cost-unpriced-banner.show { display: block; }
 
+.cost-control-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Price modal — filter long option lists */
+.price-modal-filter-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 12px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.price-modal-filter-input {
+  width: 100%;
+  background: var(--surface2);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+}
+.price-modal-filter-input:focus {
+  border-color: var(--primary);
+}
+
 /* ============================================
    PROJECT DASHBOARD STYLES
    ============================================ */
@@ -5020,6 +5058,209 @@ header {
   color: var(--text-muted);
 }
 
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.module-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+.module-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.module-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  background: var(--surface3);
+}
+
+.module-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.module-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.module-status {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--primary);
+}
+
+.dashboard-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin: 8px 0 12px;
+}
+
+.module-placeholder {
+  display: none;
+  max-width: 980px;
+  margin: 28px auto 0;
+  width: calc(100% - 40px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+}
+
+.module-placeholder.show {
+  display: block;
+}
+
+.module-placeholder h2 {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.module-placeholder p {
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+.variation-container {
+  display: none;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 20px;
+  background: var(--bg);
+}
+
+.variation-container.show {
+  display: block;
+}
+
+.variation-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.variation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.variation-grid .field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.variation-grid .field.wide {
+  grid-column: 1 / -1;
+}
+
+.variation-grid input,
+.variation-grid textarea,
+.variation-grid select {
+  width: 100%;
+  background: var(--surface2);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--text);
+}
+
+.variation-lines {
+  margin-top: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.variation-line-head,
+.variation-line-row {
+  display: grid;
+  grid-template-columns: 1fr 160px 160px 44px;
+  gap: 8px;
+  padding: 10px;
+  align-items: center;
+}
+
+.variation-line-head {
+  background: var(--surface3);
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.variation-line-row {
+  border-top: 1px solid var(--border);
+}
+
+.variation-line-row input {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  color: var(--text);
+}
+
+.variation-history {
+  margin-top: 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.variation-history-head {
+  background: var(--surface3);
+  padding: 10px 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.variation-history-list {
+  max-height: 180px;
+  overflow: auto;
+}
+
+.variation-history-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  border-top: 1px solid var(--border);
+}
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -5304,8 +5545,8 @@ header {
           </div>
           <div class="login-logo-text">Action <span>Builders</span></div>
         </div>
-        <h1 class="login-title">Scope Builder</h1>
-        <p class="login-subtitle">Sign in to access the project management system</p>
+        <h1 class="login-title">Action Builders Portal</h1>
+        <p class="login-subtitle">Sign in to access your modules</p>
       </div>
 
       <div class="login-error" id="loginError">
@@ -5352,11 +5593,36 @@ header {
   <div class="dashboard-body">
     <div class="dashboard-welcome">
       <h1>Welcome back, <span id="dashWelcomeName">Admin</span> 👋</h1>
-      <p>Manage your projects below</p>
+      <p>Select a portal module to continue</p>
     </div>
-    <div class="projects-grid" id="projectsGrid">
-      <!-- Projects will be rendered here -->
+
+    <div class="modules-grid">
+      <div class="module-card" onclick="openPortalModule('scope')">
+        <div class="module-icon">📋</div>
+        <div class="module-title">Scope Builder</div>
+        <div class="module-sub">Create and manage scope selections, exclusions, and notes.</div>
+        <div class="module-status">Ready</div>
+      </div>
+      <div class="module-card" onclick="openPortalModule('cost')">
+        <div class="module-icon">💰</div>
+        <div class="module-title">Cost &amp; Budgeting</div>
+        <div class="module-sub">Jump straight into pricing and budget controls for selected scope items.</div>
+        <div class="module-status">Ready</div>
+      </div>
+      <div class="module-card" onclick="openPortalModule('variation')">
+        <div class="module-icon">🧩</div>
+        <div class="module-title">Variation Builder</div>
+        <div class="module-sub">Manage post-scope changes and variation requests.</div>
+        <div class="module-status">Coming Soon</div>
+      </div>
+      <div class="module-card" onclick="openPortalModule('contract')">
+        <div class="module-icon">📄</div>
+        <div class="module-title">Contract Builder</div>
+        <div class="module-sub">Prepare and structure contract package outputs.</div>
+        <div class="module-status">Coming Soon</div>
+      </div>
     </div>
+    <div class="dashboard-section-title">Projects are available inside each module</div>
   </div>
 </div>
 
@@ -5389,7 +5655,7 @@ header {
     <img src="https://static.wixstatic.com/media/17474f_1ef59b72eee34841901a5ffde66d2c8c~mv2.png" alt="">
   </div>
   <header>
-    <button onclick="backToDashboard()" style="background:transparent;border:1px solid var(--primary);border-radius:6px;padding:6px 12px;font-size:12px;color:var(--primary);cursor:pointer;margin-right:12px;">← Projects</button>
+    <button onclick="backToDashboard()" style="background:transparent;border:1px solid var(--primary);border-radius:6px;padding:6px 12px;font-size:12px;color:var(--primary);cursor:pointer;margin-right:12px;">← Portal</button>
     <div class="logo">
       <div class="logo-icon">
         <img src="https://static.wixstatic.com/media/17474f_1ef59b72eee34841901a5ffde66d2c8c~mv2.png" alt="Action Builders">
@@ -5430,6 +5696,11 @@ header {
     <span>Only an <strong>Administrator</strong> can edit the scope. You can open each cost centre, use search and category filters, and open <strong>Exclusions / Notes</strong> to review full detail. Use <strong>Cost &amp; Budget</strong> after the scope is finalized.</span>
   </div>
   <div class="progress-bar" id="progressBar" style="display: none;"><div class="progress-fill" id="progressFill" style="width: 25%;"></div></div>
+  <div id="modulePlaceholder" class="module-placeholder">
+    <h2 id="modulePlaceholderTitle">Module</h2>
+    <p id="modulePlaceholderText"></p>
+    <button class="btn btn-secondary" onclick="backToDashboard()">← Back to Portal</button>
+  </div>
 
   <div class="app">
     <!-- Projects Sidebar -->
@@ -5908,6 +6179,22 @@ header {
               </div>
             </div>
           </div>
+          <div id="costControlPanel" class="cost-control-bar">
+            <div class="cost-control-bar-top">
+              <div>
+                <div class="cost-total-label">Estimated Total (EX GST)</div>
+                <div class="cost-total-value" id="ccGrandTotal">$0</div>
+                <div class="cost-total-gst" id="ccGstTotal"></div>
+              </div>
+              <div class="cost-control-actions">
+                <button type="button" class="btn btn-primary" onclick="exportWithPricing()">📊 Export with Pricing</button>
+                <button type="button" class="btn btn-secondary" onclick="exportPricingCSV()">📄 Export CSV</button>
+                <button type="button" class="btn btn-secondary" onclick="copyCostSummaryToClipboard()">📋 Copy summary</button>
+              </div>
+            </div>
+            <div class="cost-breakdown-grid" id="ccBreakdownGrid"></div>
+            <div class="cost-unpriced-banner" id="ccUnpricedBanner"></div>
+          </div>
           <div class="review-body" id="reviewBody"></div>
         </div>
       </div>
@@ -5995,6 +6282,67 @@ header {
         <div class="export-title">Export Word</div>
         <div class="export-desc">Word document with full details</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== VARIATION BUILDER ==================== -->
+<div id="variationContainer" class="variation-container">
+  <div class="variation-shell">
+    <div class="section-header">
+      <div>
+        <div class="section-title">Variation To Contract</div>
+        <div class="section-sub">Create a variation document matching your contract template.</div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn btn-secondary" onclick="prefillVariationFromProject()">Use current project details</button>
+        <button class="btn btn-secondary" onclick="addVariationLine()">+ Add line</button>
+        <button class="btn btn-secondary" onclick="addMultipleVariationLines(5)">+ Add 5 lines</button>
+        <button class="btn btn-secondary" onclick="saveCurrentVariation()">💾 Save variation</button>
+        <button class="btn btn-primary" onclick="exportVariationDoc()">Generate Variation Word</button>
+      </div>
+    </div>
+
+    <div class="variation-grid">
+      <div class="field"><label>Date</label><input type="date" id="varDate"></div>
+      <div class="field"><label>Project Number</label><input type="text" id="varProjectNumber" placeholder="e.g. 16 Cherokee"></div>
+      <div class="field"><label>Owner Name</label><input type="text" id="varOwnerName"></div>
+      <div class="field"><label>Site Address</label><input type="text" id="varSiteAddress"></div>
+      <div class="field"><label>Owner Email</label><input type="email" id="varOwnerEmail"></div>
+      <div class="field"><label>Owner Phone</label><input type="text" id="varOwnerPhone"></div>
+      <div class="field wide"><label>Reason For Variation</label><textarea id="varReason" rows="2" placeholder="e.g. Client requested polished concrete finish"></textarea></div>
+    </div>
+
+    <div class="variation-lines">
+      <div class="variation-line-head">
+        <div>Details of Work</div>
+        <div>Additional Cost</div>
+        <div>Credit Due</div>
+        <div></div>
+      </div>
+      <div id="variationLines"></div>
+    </div>
+
+    <div class="variation-grid" style="margin-top:14px;">
+      <div class="field"><label>Extension of Time (Working Days)</label><input type="number" id="varExtensionDays" min="0" step="1" value="0"></div>
+      <div class="field"><label>Payment Terms</label><input type="text" id="varPaymentTerms" value="The variation is payable on completion of the variation."></div>
+      <div class="field"><label>Builder Representative</label><input type="text" id="varBuilderRep" placeholder="e.g. Mike Harvey"></div>
+      <div class="field"><label>Builder Sign Date</label><input type="date" id="varBuilderDate"></div>
+      <div class="field"><label>Owner Sign Name</label><input type="text" id="varOwnerSignName"></div>
+      <div class="field"><label>Owner Sign Date</label><input type="date" id="varOwnerDate"></div>
+      <div class="field wide"><label>Automation Webhook URL (Power Automate)</label><input type="url" id="varAutomationWebhook" placeholder="https://prod-xx....logic.azure.com/..."></div>
+    </div>
+
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap;">
+      <input type="file" id="variationTemplateInput" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="display:none;">
+      <button class="btn btn-secondary" onclick="pickVariationTemplate()">📎 Select Template .docx</button>
+      <button class="btn btn-secondary" onclick="sendVariationToAutomation()">Send to DocuSign/SharePoint Flow</button>
+      <button class="btn btn-secondary" onclick="downloadVariationJSON()">Download JSON Payload</button>
+    </div>
+
+    <div class="variation-history">
+      <div class="variation-history-head">Saved variations for current project</div>
+      <div class="variation-history-list" id="variationHistoryList"></div>
     </div>
   </div>
 </div>
@@ -6253,13 +6601,7 @@ function login(username, password) {
     currentUser = username;
     currentUserRole = users[username].role;
     localStorage.setItem('scopeBuilderUser', username);
-    // Hide login, show app
-    document.getElementById('loginPage').style.display = 'none';
-    document.getElementById('projectDashboard').style.display = 'none';
-    document.getElementById('appContainer').classList.add('active');
-    document.getElementById('appContainer').style.removeProperty('display');
-    showScopeBuilderInterface();
-    syncProjectsSidebarForViewport();
+    showDashboard();
     return true;
   }
   return false;
@@ -6292,6 +6634,18 @@ function showApp() {
   document.getElementById('projectDashboard').style.display = 'none';
   document.getElementById('appContainer').classList.add('active');
   document.getElementById('appContainer').style.removeProperty('display');
+  const placeholder = document.getElementById('modulePlaceholder');
+  if (placeholder) placeholder.classList.remove('show');
+  const appBody = document.querySelector('.app');
+  if (appBody) appBody.style.display = 'flex';
+  const variationEl = document.getElementById('variationContainer');
+  if (variationEl) variationEl.classList.remove('show');
+  const phaseHeader = document.querySelector('.phase-tabs-header');
+  if (phaseHeader) phaseHeader.style.display = 'none';
+  const progressBar = document.getElementById('progressBar');
+  if (progressBar) progressBar.style.display = 'none';
+  const stepIndicator = document.getElementById('stepIndicator');
+  if (stepIndicator) stepIndicator.style.display = 'none';
   
   // Force show main content
   const mainEl = document.querySelector('.main');
@@ -6310,14 +6664,108 @@ function showApp() {
   populateProjectRoomsOptions();
   syncProjectsSidebarForViewport();
   
-  // Show scope builder interface
-  showScopeBuilderInterface();
+  if (activeModule === 'cost') {
+    showCostModuleInterface();
+  } else if (activeModule === 'variation') {
+    showVariationModuleInterface();
+  } else {
+    showScopeModuleInterface();
+  }
   
   // Initialize app
   const today = new Date().toISOString().split('T')[0];
   if (document.getElementById('projDate')) {
     document.getElementById('projDate').value = today;
   }
+}
+
+function showScopeModuleInterface() {
+  activeModule = 'scope';
+  const logoModule = document.getElementById('logoModule');
+  if (logoModule) logoModule.textContent = 'Scope Builder';
+  const phaseHeader = document.querySelector('.phase-tabs-header');
+  if (phaseHeader) phaseHeader.style.display = 'none';
+  const progressBar = document.getElementById('progressBar');
+  if (progressBar) progressBar.style.display = 'flex';
+  const stepIndicator = document.getElementById('stepIndicator');
+  if (stepIndicator) stepIndicator.style.display = 'flex';
+  currentPhase = 1;
+  showScopeBuilderInterface();
+}
+
+function showCostModuleInterface() {
+  activeModule = 'cost';
+  const logoModule = document.getElementById('logoModule');
+  if (logoModule) logoModule.textContent = 'Cost & Budgeting';
+  const phaseHeader = document.querySelector('.phase-tabs-header');
+  if (phaseHeader) phaseHeader.style.display = 'none';
+  const progressBar = document.getElementById('progressBar');
+  if (progressBar) progressBar.style.display = 'none';
+  const stepIndicator = document.getElementById('stepIndicator');
+  if (stepIndicator) stepIndicator.style.display = 'none';
+  currentPhase = 2;
+  showCostSection();
+}
+
+function showModulePlaceholder(title, message) {
+  document.getElementById('loginPage').style.display = 'none';
+  document.getElementById('projectDashboard').style.display = 'none';
+  document.getElementById('appContainer').classList.add('active');
+  document.getElementById('appContainer').style.removeProperty('display');
+  const logoModule = document.getElementById('logoModule');
+  if (logoModule) logoModule.textContent = title;
+  const placeholder = document.getElementById('modulePlaceholder');
+  const phTitle = document.getElementById('modulePlaceholderTitle');
+  const phText = document.getElementById('modulePlaceholderText');
+  const appBody = document.querySelector('.app');
+  if (appBody) appBody.style.display = 'none';
+  const phaseHeader = document.querySelector('.phase-tabs-header');
+  if (phaseHeader) phaseHeader.style.display = 'none';
+  const progressBar = document.getElementById('progressBar');
+  if (progressBar) progressBar.style.display = 'none';
+  const stepIndicator = document.getElementById('stepIndicator');
+  if (stepIndicator) stepIndicator.style.display = 'none';
+  if (phTitle) phTitle.textContent = title;
+  if (phText) phText.textContent = message;
+  if (placeholder) placeholder.classList.add('show');
+}
+
+function hideAllModulePanels() {
+  const appBody = document.querySelector('.app');
+  if (appBody) appBody.style.display = 'none';
+  const variationEl = document.getElementById('variationContainer');
+  if (variationEl) variationEl.classList.remove('show');
+  const placeholder = document.getElementById('modulePlaceholder');
+  if (placeholder) placeholder.classList.remove('show');
+}
+
+function showVariationModuleInterface() {
+  activeModule = 'variation';
+  document.getElementById('loginPage').style.display = 'none';
+  document.getElementById('projectDashboard').style.display = 'none';
+  document.getElementById('appContainer').classList.add('active');
+  document.getElementById('appContainer').style.removeProperty('display');
+  hideAllModulePanels();
+  const logoModule = document.getElementById('logoModule');
+  if (logoModule) logoModule.textContent = 'Variation Builder';
+  const phaseHeader = document.querySelector('.phase-tabs-header');
+  if (phaseHeader) phaseHeader.style.display = 'none';
+  const progressBar = document.getElementById('progressBar');
+  if (progressBar) progressBar.style.display = 'none';
+  const stepIndicator = document.getElementById('stepIndicator');
+  if (stepIndicator) stepIndicator.style.display = 'none';
+  const variationEl = document.getElementById('variationContainer');
+  if (variationEl) variationEl.classList.add('show');
+  initVariationBuilder();
+}
+
+function initVariationBuilder() {
+  const dateEl = document.getElementById('varDate');
+  if (dateEl && !dateEl.value) dateEl.value = new Date().toISOString().split('T')[0];
+  if (!document.getElementById('variationLines').children.length) {
+    addVariationLine('Variation line item', '', '');
+  }
+  renderVariationHistory();
 }
 
 function showRoleInterface() {
@@ -6980,6 +7428,7 @@ let activeCategory = null;
 let itemSelections = {};
 let currentProjectId = null;
 let suppressProjDatasetChange = false;
+let activeModule = 'scope'; // scope | cost | variation | contract
 
 // Phase system - 1: Scope Builder, 2: Cost & Budgeting, 3: Review & Finalise
 let currentPhase = 1; // 1, 2, or 3
@@ -7182,7 +7631,7 @@ function syncRoleAccessUI() {
   }
   const proceedBtn = document.getElementById('btnFinalizeScopeProceed');
   if (proceedBtn) {
-    proceedBtn.style.display = currentUserRole === 'admin' ? '' : 'none';
+    proceedBtn.style.display = 'none';
   }
   const dsEl = document.getElementById('projDataset');
   if (dsEl) {
@@ -7640,9 +8089,14 @@ function loadProject(projectId) {
   // Update exclusions/notes display
   updateExclusionsNotesDisplay();
   
-  // Update phase tabs and navigate to correct phase
+  // Update visible module interface after loading
   updatePhaseTabs();
-  switchPhase(currentPhase);
+  if (activeModule === 'cost') {
+    showCostModuleInterface();
+  } else {
+    showScopeModuleInterface();
+  }
+  renderProjectsList();
   
   showToast('Project loaded', 'success');
 }
@@ -7824,7 +8278,9 @@ function renderProjectsList() {
   const projects = getProjects();
   const canDeleteProjects = currentUserRole === 'admin';
   
-  let html = '<button class="btn-new-project" onclick="createNewProject()">+ New Project</button>';
+  let html = activeModule === 'scope'
+    ? '<button class="btn-new-project" onclick="createNewProject()">+ New Project</button>'
+    : '<div style="padding: 4px 2px 10px; color: var(--text-muted); font-size: 12px;">Load an existing project to continue budgeting.</div>';
   
   if (projects.length === 0) {
     list.innerHTML = html + '<div style="padding: 12px; color: var(--text-muted); font-size: 13px;">No saved projects yet</div>';
@@ -15088,8 +15544,32 @@ function showDashboard() {
   document.getElementById('projectDashboard').style.display = 'flex';
   document.getElementById('appContainer').classList.remove('active');
   document.getElementById('appContainer').style.removeProperty('display');
-  
-  renderDashboardProjects();
+  const users = getUsers();
+  const userData = users[currentUser] || {};
+  const displayName = userData.name || currentUser;
+  const initial = displayName.charAt(0).toUpperCase();
+  const dashName = document.getElementById('dashUserName');
+  const dashAvatar = document.getElementById('dashUserAvatar');
+  const dashWelcome = document.getElementById('dashWelcomeName');
+  if (dashName) dashName.textContent = displayName;
+  if (dashAvatar) dashAvatar.textContent = initial;
+  if (dashWelcome) dashWelcome.textContent = displayName;
+}
+
+function openPortalModule(moduleName) {
+  if (moduleName === 'variation') {
+    showVariationModuleInterface();
+    return;
+  }
+  if (moduleName === 'contract') {
+    showModulePlaceholder(
+      'Contract Builder',
+      'Contract Builder is ready for setup. Next we can add contract templates, clause assembly, and document generation.'
+    );
+    return;
+  }
+  activeModule = moduleName === 'cost' ? 'cost' : 'scope';
+  showApp();
 }
 
 function renderDashboardProjects() {
@@ -15162,6 +15642,7 @@ function renderDashboardProjects() {
 }
 
 function openProjectFromDashboard(projectId) {
+  activeModule = 'scope';
   // First show the app container so it's ready
   document.getElementById('projectDashboard').style.display = 'none';
   document.getElementById('appContainer').classList.add('active');
@@ -15275,10 +15756,368 @@ function deleteProjectFromDashboard(projectId) {
 
 function backToDashboard() {
   // Auto-save current project silently
-  saveCurrentProject();
+  if (currentProjectId) {
+    saveCurrentProject({ silent: true });
+  }
   document.getElementById('appContainer').classList.remove('active');
   document.getElementById('appContainer').style.removeProperty('display');
   showDashboard();
+}
+
+function addVariationLine(desc = '', addCost = '', credit = '') {
+  const wrap = document.getElementById('variationLines');
+  if (!wrap) return;
+  const row = document.createElement('div');
+  row.className = 'variation-line-row';
+  row.innerHTML = `
+    <input type="text" class="var-line-desc" value="${String(desc).replace(/"/g, '&quot;')}" placeholder="Describe variation work...">
+    <input type="number" class="var-line-add" step="0.01" value="${addCost}" placeholder="0.00">
+    <input type="number" class="var-line-credit" step="0.01" value="${credit}" placeholder="0.00">
+    <button type="button" class="btn btn-secondary" onclick="this.closest('.variation-line-row').remove()">✕</button>
+  `;
+  wrap.appendChild(row);
+  const descInput = row.querySelector('.var-line-desc');
+  if (descInput) {
+    descInput.addEventListener('keydown', function (e) {
+      if ((e.key === 'Enter' || e.key === 'Tab') && !e.shiftKey) {
+        const rows = wrap.querySelectorAll('.variation-line-row');
+        const isLast = rows.length && rows[rows.length - 1] === row;
+        if (isLast && this.value.trim() !== '') {
+          addVariationLine('', '', '');
+        }
+      }
+    });
+  }
+}
+
+function addMultipleVariationLines(count) {
+  const n = Math.max(1, parseInt(count, 10) || 1);
+  for (let i = 0; i < n; i++) addVariationLine('', '', '');
+}
+
+function getVariationPayload() {
+  const lines = [...document.querySelectorAll('#variationLines .variation-line-row')].map(row => ({
+    details: (row.querySelector('.var-line-desc')?.value || '').trim(),
+    additionalCost: parseFloat(row.querySelector('.var-line-add')?.value || '0') || 0,
+    creditDue: parseFloat(row.querySelector('.var-line-credit')?.value || '0') || 0
+  })).filter(l => l.details);
+
+  const subtotal = lines.reduce((s, l) => s + l.additionalCost - l.creditDue, 0);
+  const gst = subtotal * 0.1;
+  const total = subtotal + gst;
+
+  return {
+    id: 'var_' + Date.now(),
+    date: getVal('varDate'),
+    projectNumber: getVal('varProjectNumber'),
+    ownerName: getVal('varOwnerName'),
+    siteAddress: getVal('varSiteAddress'),
+    ownerEmail: getVal('varOwnerEmail'),
+    ownerPhone: getVal('varOwnerPhone'),
+    reason: getVal('varReason'),
+    extensionDays: parseInt(getVal('varExtensionDays') || '0', 10) || 0,
+    paymentTerms: getVal('varPaymentTerms'),
+    builderRep: getVal('varBuilderRep'),
+    builderDate: getVal('varBuilderDate'),
+    ownerSignName: getVal('varOwnerSignName'),
+    ownerDate: getVal('varOwnerDate'),
+    lines,
+    totals: { subtotal, gst, total }
+  };
+}
+
+function getVariationStore() {
+  try {
+    const raw = localStorage.getItem('variationBuilderEntries');
+    const parsed = raw ? JSON.parse(raw) : {};
+    return parsed && typeof parsed === 'object' ? parsed : {};
+  } catch (e) {
+    return {};
+  }
+}
+
+function setVariationStore(store) {
+  localStorage.setItem('variationBuilderEntries', JSON.stringify(store));
+}
+
+function getVariationProjectKey() {
+  return currentProjectId || '__no_project__';
+}
+
+function saveCurrentVariation() {
+  const payload = getVariationPayload();
+  if (!payload.ownerName || !payload.siteAddress || !payload.lines.length) {
+    showToast('Complete owner, site address, and at least one line before saving', 'error');
+    return;
+  }
+  const store = getVariationStore();
+  const key = getVariationProjectKey();
+  if (!Array.isArray(store[key])) store[key] = [];
+  store[key].unshift(payload);
+  setVariationStore(store);
+  renderVariationHistory();
+  showToast('Variation saved', 'success');
+}
+
+function renderVariationHistory() {
+  const list = document.getElementById('variationHistoryList');
+  if (!list) return;
+  const store = getVariationStore();
+  const key = getVariationProjectKey();
+  const rows = Array.isArray(store[key]) ? store[key] : [];
+  if (!rows.length) {
+    list.innerHTML = '<div style="padding:12px;color:var(--text-muted);font-size:12px;">No saved variations yet.</div>';
+    return;
+  }
+  list.innerHTML = rows.map(v => `
+    <div class="variation-history-item">
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);">${v.projectNumber || v.ownerName || 'Variation'}</div>
+        <div style="font-size:11px;color:var(--text-muted);">${v.date || ''} · Total $${Number(v.totals?.total || 0).toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2})}</div>
+      </div>
+      <div style="display:flex;gap:6px;">
+        <button class="btn btn-secondary" onclick="loadVariationEntry('${v.id}')">Load</button>
+        <button class="btn btn-secondary" onclick="deleteVariationEntry('${v.id}')">Delete</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function loadVariationEntry(id) {
+  const store = getVariationStore();
+  const key = getVariationProjectKey();
+  const rows = Array.isArray(store[key]) ? store[key] : [];
+  const v = rows.find(r => r.id === id);
+  if (!v) return;
+  setVal('varDate', v.date || '');
+  setVal('varProjectNumber', v.projectNumber || '');
+  setVal('varOwnerName', v.ownerName || '');
+  setVal('varSiteAddress', v.siteAddress || '');
+  setVal('varOwnerEmail', v.ownerEmail || '');
+  setVal('varOwnerPhone', v.ownerPhone || '');
+  setVal('varReason', v.reason || '');
+  setVal('varExtensionDays', v.extensionDays != null ? String(v.extensionDays) : '0');
+  setVal('varPaymentTerms', v.paymentTerms || '');
+  setVal('varBuilderRep', v.builderRep || '');
+  setVal('varBuilderDate', v.builderDate || '');
+  setVal('varOwnerSignName', v.ownerSignName || '');
+  setVal('varOwnerDate', v.ownerDate || '');
+  const wrap = document.getElementById('variationLines');
+  if (wrap) wrap.innerHTML = '';
+  (v.lines || []).forEach(l => addVariationLine(l.details || '', l.additionalCost || '', l.creditDue || ''));
+  if (!(v.lines || []).length) addVariationLine('Variation line item', '', '');
+  showToast('Variation loaded', 'success');
+}
+
+function deleteVariationEntry(id) {
+  const store = getVariationStore();
+  const key = getVariationProjectKey();
+  const rows = Array.isArray(store[key]) ? store[key] : [];
+  store[key] = rows.filter(r => r.id !== id);
+  setVariationStore(store);
+  renderVariationHistory();
+  showToast('Variation deleted', 'success');
+}
+
+function prefillVariationFromProject() {
+  setVal('varDate', new Date().toISOString().split('T')[0]);
+  setVal('varProjectNumber', getVal('projNum'));
+  setVal('varOwnerName', getVal('projClient'));
+  setVal('varSiteAddress', getVal('projLocation'));
+  setVal('varOwnerEmail', '');
+  setVal('varOwnerPhone', '');
+  if (!getVal('varReason')) {
+    setVal('varReason', 'Client requested variation.');
+  }
+  if (!getVal('varOwnerSignName')) {
+    setVal('varOwnerSignName', getVal('projClient'));
+  }
+  showToast('Variation form prefilled from project data', 'success');
+}
+
+function xmlEscape(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function toWordTextRuns(value) {
+  const text = String(value == null ? '' : value);
+  const lines = text.split('\n');
+  if (lines.length <= 1) return xmlEscape(text);
+  return lines.map(xmlEscape).join('</w:t><w:br/><w:t>');
+}
+
+function replaceNextTemplatePlaceholder(xml, value) {
+  const markerRegex = /<w:t[^>]*>\s*Click or tap here to enter text\.\s*<\/w:t>/;
+  const replacement = '<w:t>' + toWordTextRuns(value) + '</w:t>';
+  return xml.replace(markerRegex, replacement);
+}
+
+function arrayBufferToBase64(buffer) {
+  let binary = '';
+  const bytes = new Uint8Array(buffer);
+  const chunk = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunk) {
+    binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+  }
+  return btoa(binary);
+}
+
+function base64ToArrayBuffer(base64) {
+  const binary = atob(base64);
+  const len = binary.length;
+  const bytes = new Uint8Array(len);
+  for (let i = 0; i < len; i++) bytes[i] = binary.charCodeAt(i);
+  return bytes.buffer;
+}
+
+async function pickVariationTemplate() {
+  const input = document.getElementById('variationTemplateInput');
+  if (!input) return;
+  input.value = '';
+  await new Promise((resolve) => {
+    input.onchange = async () => {
+      const file = input.files && input.files[0];
+      if (!file) return resolve();
+      const buf = await file.arrayBuffer();
+      localStorage.setItem('variationTemplateBase64', arrayBufferToBase64(buf));
+      localStorage.setItem('variationTemplateName', file.name);
+      showToast('Variation template selected: ' + file.name, 'success');
+      resolve();
+    };
+    input.click();
+  });
+}
+
+async function getVariationTemplateBuffer() {
+  const cached = localStorage.getItem('variationTemplateBase64');
+  if (cached) return base64ToArrayBuffer(cached);
+  const paths = [
+    'project files/Variation_Template_PowerAutomate.docx',
+    'project%20files/Variation_Template_PowerAutomate.docx'
+  ];
+  for (const p of paths) {
+    try {
+      const r = await fetch(p);
+      if (r.ok) {
+        const b = await r.arrayBuffer();
+        localStorage.setItem('variationTemplateBase64', arrayBufferToBase64(b));
+        localStorage.setItem('variationTemplateName', 'Variation_Template_PowerAutomate.docx');
+        return b;
+      }
+    } catch (e) {
+      // keep trying
+    }
+  }
+  throw new Error('Template file not accessible. Click "Select Template .docx" first.');
+}
+
+async function exportVariationDoc() {
+  const data = getVariationPayload();
+  if (!data.ownerName || !data.siteAddress || !data.lines.length) {
+    showToast('Please enter owner, site address, and at least one variation line', 'error');
+    return;
+  }
+  if (typeof JSZip === 'undefined') {
+    showToast('Template engine not loaded. Please refresh and try again.', 'error');
+    return;
+  }
+  try {
+    const buf = await getVariationTemplateBuffer();
+    const zip = await JSZip.loadAsync(buf);
+    const docFile = zip.file('word/document.xml');
+    if (!docFile) throw new Error('Template document.xml not found');
+    let xml = await docFile.async('string');
+
+    const detailText = data.lines.map(l => l.details).join('\n');
+    const addText = data.lines.map(l => (l.additionalCost ? '$' + l.additionalCost.toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2}) : '')).join('\n');
+    const creditText = data.lines.map(l => (l.creditDue ? '$' + l.creditDue.toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2}) : '')).join('\n');
+
+    const placeholders = [
+      data.date || '',
+      data.ownerName || '',
+      data.siteAddress || '',
+      data.ownerPhone || '',
+      data.ownerEmail || '',
+      data.reason || '',
+      detailText, addText, creditText,
+      '', '', '',
+      '$' + data.totals.subtotal.toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2}),
+      '$' + data.totals.gst.toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2}),
+      '$' + data.totals.total.toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2}),
+      'It is estimated the variation will extend the contract completion date by ' + data.extensionDays + ' Working Days',
+      data.paymentTerms || '',
+      data.ownerSignName || data.ownerName || '',
+      data.builderRep || '',
+      data.ownerDate || '',
+      data.builderDate || ''
+    ];
+    placeholders.forEach(v => { xml = replaceNextTemplatePlaceholder(xml, v); });
+    zip.file('word/document.xml', xml);
+
+    const outBlob = await zip.generateAsync({ type: 'blob' });
+    const outUrl = URL.createObjectURL(outBlob);
+    const link = document.createElement('a');
+    link.href = outUrl;
+    link.download = `Variation_${(data.projectNumber || data.ownerName || 'Contract').replace(/[^a-z0-9]/gi, '_')}.docx`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(outUrl);
+    showToast('Variation DOCX generated from your exact template', 'success');
+    return;
+  } catch (err) {
+    showToast('Template generation failed: ' + err.message, 'error');
+  }
+}
+
+function downloadVariationJSON() {
+  const data = getVariationPayload();
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `variation_payload_${Date.now()}.json`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+  showToast('Variation payload downloaded', 'success');
+}
+
+async function sendVariationToAutomation() {
+  const webhook = getVal('varAutomationWebhook').trim();
+  if (!webhook) {
+    showToast('Enter your Power Automate webhook URL first', 'error');
+    return;
+  }
+  const payload = getVariationPayload();
+  try {
+    const res = await fetch(webhook, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        flowType: 'variation_to_contract',
+        sourceApp: 'Action Builders Portal',
+        docusign: {
+          ownerName: payload.ownerSignName || payload.ownerName,
+          ownerEmail: payload.ownerEmail,
+          builderRep: payload.builderRep
+        },
+        sharepoint: {
+          projectNumber: payload.projectNumber,
+          siteAddress: payload.siteAddress
+        },
+        variation: payload
+      })
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    showToast('Sent to automation flow (DocuSign/SharePoint)', 'success');
+  } catch (e) {
+    showToast('Failed to send automation payload: ' + e.message, 'error');
+  }
 }
 
 function openNewProjectModal() {
@@ -15405,6 +16244,7 @@ function showStepSection() {
 }
 
 function showCostSection() {
+  ensurePhaseContainersInMain();
   // Hide all step containers, show phase 2
   document.querySelectorAll('.step').forEach(s => {
     s.style.display = 'none';
@@ -15445,6 +16285,7 @@ function showCostSection() {
 }
 
 function showReviewSection() {
+  ensurePhaseContainersInMain();
   // Hide all step containers and phase 2, show phase 3
   document.querySelectorAll('.step').forEach(s => {
     s.style.display = 'none';
@@ -15463,6 +16304,15 @@ function showReviewSection() {
   
   // Build final review
   buildFinalReview();
+}
+
+function ensurePhaseContainersInMain() {
+  const mainEl = document.querySelector('.main');
+  if (!mainEl) return;
+  const phase2 = document.getElementById('phase2Container');
+  const phase3 = document.getElementById('phase3Container');
+  if (phase2 && phase2.parentElement !== mainEl) mainEl.appendChild(phase2);
+  if (phase3 && phase3.parentElement !== mainEl) mainEl.appendChild(phase3);
 }
 
 function updateHeaderLabel() {
@@ -15960,6 +16810,10 @@ function goToStep4() {
 
 // Finalize scope in Phase 1 and proceed to Phase 2
 function finalizeScopeAndProceed() {
+  if (activeModule !== 'scope') {
+    showToast('Scope finalization is only available inside Scope Builder.', 'info');
+    return;
+  }
   if (currentUserRole !== 'admin') {
     showToast('Only an Administrator can finalize the scope and unlock Cost & Budgeting.', 'error');
     return;
@@ -16522,18 +17376,9 @@ function updateTotalItemsLabel() {
 // ====================================================
 // STEP 4: Review
 // ====================================================
-function getVal(id) {
-  const el = document.getElementById(id);
-  return el ? el.value : '';
-}
-
-function setVal(id, value) {
-  const el = document.getElementById(id);
-  if (el) el.value = value;
-}
-
 function buildReview() {
   const body = document.getElementById('reviewBody');
+  if (!body) return;
   body.innerHTML = '';
   const selectedRooms = getProjectRooms();
 
@@ -17073,9 +17918,10 @@ function findRelevantProducts(ccName, itemName) {
   
   // If no direct match, try to find based on keywords in product descriptions
   if (relevantCategories.length === 0 && keywords.length > 0) {
-    const allProducts = Object.keys(PRICE_DATA.products || {});
+    const pd = typeof PRICE_DATA !== 'undefined' ? PRICE_DATA : { products: {} };
+    const allProducts = Object.keys(pd.products || {});
     for (const cat of allProducts) {
-      const products = PRICE_DATA.products[cat] || [];
+      const products = pd.products[cat] || [];
       for (const p of products) {
         if (keywords.some(k => (p.d || '').toLowerCase().includes(k))) {
           if (!relevantCategories.includes(cat)) {
@@ -17219,12 +18065,16 @@ function openPriceModal(ccName, idx) {
   priceModal_selectedPrices = existingPrices;
 
   const item = getCostCentres()[ccName].items[idx];
-  document.getElementById('priceModalTitle').textContent = item.name;
-  const room = getItemRoom(ccName, idx);
-  document.getElementById('priceModalSub').textContent = ccName + (item.type ? ' · ' + item.type : '') + (room ? ' · ' + room : '');
-
+  const titleEl = document.getElementById('priceModalTitle');
+  const subEl = document.getElementById('priceModalSub');
   const body = document.getElementById('priceModalBody');
+  if (!titleEl || !subEl || !body) return;
+  titleEl.textContent = item.name;
+  const room = getItemRoom(ccName, idx);
+  subEl.textContent = ccName + (item.type ? ' · ' + item.type : '') + (room ? ' · ' + room : '');
+
   body.innerHTML = '';
+  const priceData = typeof PRICE_DATA !== 'undefined' ? PRICE_DATA : { products: {}, trade: {} };
 
   // Get relevant product categories for this item
   const relevantCats = findRelevantProducts(ccName, item.name);
@@ -17263,8 +18113,21 @@ function openPriceModal(ccName, idx) {
           <div class="price-option-right" style="display:flex;align-items:center;gap:8px">
             <div class="price-option-price">$${Number(opt.p).toLocaleString('en-AU',{minimumFractionDigits:0,maximumFractionDigits:2})}</div>
             <div class="price-option-uom">${opt.u || 'ea'}</div>
-            <button onclick="editAndAddPrice(${JSON.stringify({price:opt.p,uom:opt.u||'ea',description:opt.d,supplier:opt.s||'',productCode:opt.c||'',model:opt.m||'',color:opt.l||'',_key:key}).replace(/"/g, '&quot;')})" style="background:var(--surface3);color:var(--text-muted);border:none;border-radius:4px;padding:4px 8px;font-size:10px;cursor:pointer">Edit</button>
+            <button type="button" class="price-modal-edit-btn" style="background:var(--surface3);color:var(--text-muted);border:none;border-radius:4px;padding:4px 8px;font-size:10px;cursor:pointer">Edit</button>
           </div>`;
+        row.querySelector('.price-modal-edit-btn').onclick = (e) => {
+          e.stopPropagation();
+          editAndAddPrice({
+            price: opt.p,
+            uom: opt.u || 'ea',
+            description: opt.d,
+            supplier: opt.s || '',
+            productCode: opt.c || '',
+            model: opt.m || '',
+            color: opt.l || '',
+            _key: key
+          });
+        };
         row.onclick = (e) => {
           if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
           const checkbox = row.querySelector('input');
@@ -17278,7 +18141,7 @@ function openPriceModal(ccName, idx) {
     
     // Show relevant product categories
     relevantCats.forEach(pKey => {
-      const opts = (PRICE_DATA.products[pKey] || []).filter(o => o.p !== null);
+      const opts = (priceData.products[pKey] || []).filter(o => o.p !== null);
       if (!opts.length) return;
       hasAny = true;
       const label = document.createElement('div');
@@ -17310,8 +18173,20 @@ function openPriceModal(ccName, idx) {
           <div class="price-option-right" style="display:flex;align-items:center;gap:8px">
             <div class="price-option-price">$${Number(opt.p).toLocaleString('en-AU',{minimumFractionDigits:0,maximumFractionDigits:2})}</div>
             <div class="price-option-uom">${opt.u || 'ea'}</div>
-            <button onclick="editAndAddPrice(${JSON.stringify({price:opt.p,uom:opt.u||'ea',description:opt.d,supplier:opt.s||'',productCode:opt.c||'',_key:pKey+'_'+oi,source:'product'}).replace(/"/g, '&quot;')})" style="background:var(--surface3);color:var(--text-muted);border:none;border-radius:4px;padding:4px 8px;font-size:10px;cursor:pointer">Edit</button>
+            <button type="button" class="price-modal-edit-btn" style="background:var(--surface3);color:var(--text-muted);border:none;border-radius:4px;padding:4px 8px;font-size:10px;cursor:pointer">Edit</button>
           </div>`;
+        row.querySelector('.price-modal-edit-btn').onclick = (e) => {
+          e.stopPropagation();
+          editAndAddPrice({
+            price: opt.p,
+            uom: opt.u || 'ea',
+            description: opt.d,
+            supplier: opt.s || '',
+            productCode: opt.c || '',
+            _key: pKey + '_' + oi,
+            source: 'product'
+          });
+        };
         row.onclick = (e) => {
           if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
           const checkbox = row.querySelector('input');
@@ -17329,7 +18204,7 @@ function openPriceModal(ccName, idx) {
     // Trade options - filtered by relevance
     // Note: customProds might show in "Saved" section below
     const tradeKey = CC_TO_TRADE_KEY[ccName];
-    const tradeItems = tradeKey ? (PRICE_DATA.trade[tradeKey] || []).filter(o => typeof o.p === 'number') : [];
+    const tradeItems = tradeKey ? (priceData.trade[tradeKey] || []).filter(o => typeof o.p === 'number') : [];
 
     // Filter by item name similarity
     const itemNameLower = item.name.toLowerCase();
@@ -17349,8 +18224,10 @@ function openPriceModal(ccName, idx) {
       label.textContent = (tradeKey || ccName) + ' — Trade Rates (EX GST)';
       body.appendChild(label);
 
-      filtered.forEach((opt, oi) => {
-        const isSelected = priceModal_selectedPrices.some(p => p._key === 'trade_' + oi);
+      filtered.forEach((opt) => {
+        const tradeIdx = tradeItems.indexOf(opt);
+        const tradeKeyId = 'trade_' + (tradeIdx >= 0 ? tradeIdx : 0);
+        const isSelected = priceModal_selectedPrices.some(p => p._key === tradeKeyId);
         const row = document.createElement('div');
         row.className = 'price-option' + (isSelected ? ' selected' : '');
         row.innerHTML = `
@@ -17362,15 +18239,27 @@ function openPriceModal(ccName, idx) {
           <div class="price-option-right" style="display:flex;align-items:center;gap:8px">
             <div class="price-option-price">$${Number(opt.p).toLocaleString('en-AU',{minimumFractionDigits:0,maximumFractionDigits:2})}</div>
             <div class="price-option-uom">${opt.u || 'ea'}</div>
-            <button onclick="editAndAddPrice(${JSON.stringify({price:opt.p,uom:opt.u||'ea',description:opt.d,supplier:opt.s||'',productCode:opt.c||'',_key:'trade_'+oi,source:'trade'}).replace(/"/g, '&quot;')})" style="background:var(--surface3);color:var(--text-muted);border:none;border-radius:4px;padding:4px 8px;font-size:10px;cursor:pointer">Edit</button>
+            <button type="button" class="price-modal-edit-btn" style="background:var(--surface3);color:var(--text-muted);border:none;border-radius:4px;padding:4px 8px;font-size:10px;cursor:pointer">Edit</button>
           </div>`;
+        row.querySelector('.price-modal-edit-btn').onclick = (e) => {
+          e.stopPropagation();
+          editAndAddPrice({
+            price: opt.p,
+            uom: opt.u || 'ea',
+            description: opt.d,
+            supplier: opt.s || '',
+            productCode: opt.c || '',
+            _key: tradeKeyId,
+            source: 'trade'
+          });
+        };
         row.onclick = (e) => {
           if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
           const checkbox = row.querySelector('input');
           checkbox.checked = !checkbox.checked;
-          togglePriceSelection(opt, 'trade_' + oi);
+          togglePriceSelection(opt, tradeKeyId);
         };
-        row.querySelector('input').onchange = (e) => togglePriceSelection(opt, 'trade_' + oi);
+        row.querySelector('input').onchange = (e) => togglePriceSelection(opt, tradeKeyId);
         body.appendChild(row);
       });
     }
@@ -17446,7 +18335,28 @@ function openPriceModal(ccName, idx) {
     });
   }
 
-  document.getElementById('priceModalOverlay').classList.add('show');
+  const filterWrap = document.createElement('div');
+  filterWrap.className = 'price-modal-filter-wrap';
+  filterWrap.innerHTML = '<input type="search" id="priceModalFilter" class="price-modal-filter-input" placeholder="Filter price options…" autocomplete="off">';
+  body.insertBefore(filterWrap, body.firstChild);
+  const filterInput = document.getElementById('priceModalFilter');
+  filterInput.addEventListener('input', function () {
+    const q = (this.value || '').trim().toLowerCase();
+    body.querySelectorAll('.price-option').forEach(function (row) {
+      const show = !q || (row.textContent || '').toLowerCase().indexOf(q) !== -1;
+      row.style.display = show ? '' : 'none';
+    });
+  });
+  filterInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      e.stopPropagation();
+      this.value = '';
+      this.dispatchEvent(new Event('input'));
+    }
+  });
+
+  const ovl = document.getElementById('priceModalOverlay');
+  if (ovl) ovl.classList.add('show');
 }
 
 // Helper to get item category from item name for custom product storage
@@ -17603,6 +18513,7 @@ function confirmUseCustomProduct(category, idx) {
 
 // Universal edit and add function for all price types
 function editAndAddPrice(opt) {
+  window.__priceEditBaseOpt = opt;
   const editDiv = document.createElement('div');
   editDiv.className = 'price-edit-overlay';
   editDiv.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px';
@@ -17611,35 +18522,50 @@ function editAndAddPrice(opt) {
       <div style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:16px">Edit Price & Add to Item</div>
       <div style="margin-bottom:12px">
         <label style="font-size:11px;color:var(--text-muted);display:block;margin-bottom:6px">Description</label>
-        <input type="text" id="editPriceDesc" value="${opt.description || ''}" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px;color:var(--text);font-size:14px">
+        <input type="text" id="editPriceDesc" value="" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px;color:var(--text);font-size:14px">
       </div>
       <div style="display:flex;gap:10px;margin-bottom:16px">
         <div style="flex:1">
           <label style="font-size:11px;color:var(--text-muted);display:block;margin-bottom:6px">Price ($)</label>
-          <input type="number" id="editPriceVal" value="${opt.price}" min="0" step="0.01" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px;color:var(--text);font-size:14px;font-family:'DM Mono',monospace">
+          <input type="number" id="editPriceVal" value="" min="0" step="0.01" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px;color:var(--text);font-size:14px;font-family:'DM Mono',monospace">
         </div>
         <div style="width:80px">
           <label style="font-size:11px;color:var(--text-muted);display:block;margin-bottom:6px">UOM</label>
-          <input type="text" id="editPriceUom" value="${opt.uom || 'ea'}" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px;color:var(--text);font-size:14px">
+          <input type="text" id="editPriceUom" value="" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px;color:var(--text);font-size:14px">
         </div>
       </div>
       <div style="margin-bottom:16px">
         <label style="font-size:11px;color:var(--text-muted);display:block;margin-bottom:6px">Supplier</label>
-        <input type="text" id="editPriceSupplier" value="${opt.supplier || ''}" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px;color:var(--text);font-size:14px">
+        <input type="text" id="editPriceSupplier" value="" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px;color:var(--text);font-size:14px">
       </div>
       <div style="display:flex;gap:10px;justify-content:flex-end">
-        <button onclick="this.closest('.price-edit-overlay').remove()" style="background:transparent;border:1px solid var(--border);border-radius:6px;padding:10px 16px;color:var(--text-muted);cursor:pointer">Cancel</button>
-        <button onclick="confirmEditAndAdd(${JSON.stringify(opt).replace(/"/g, '&quot;')})" style="background:var(--primary);color:white;border:none;border-radius:6px;padding:10px 16px;cursor:pointer">Add to Item</button>
+        <button type="button" onclick="this.closest('.price-edit-overlay').remove();window.__priceEditBaseOpt=null;" style="background:transparent;border:1px solid var(--border);border-radius:6px;padding:10px 16px;color:var(--text-muted);cursor:pointer">Cancel</button>
+        <button type="button" onclick="confirmEditAndAdd()" style="background:var(--primary);color:white;border:none;border-radius:6px;padding:10px 16px;cursor:pointer">Add to Item</button>
       </div>
     </div>`;
   document.body.appendChild(editDiv);
+  const descEl = document.getElementById('editPriceDesc');
+  if (descEl) descEl.value = opt.description || '';
+  const valEl = document.getElementById('editPriceVal');
+  if (valEl && opt.price != null && !isNaN(opt.price)) valEl.value = opt.price;
+  const uomEl = document.getElementById('editPriceUom');
+  if (uomEl) uomEl.value = opt.uom || 'ea';
+  const supEl = document.getElementById('editPriceSupplier');
+  if (supEl) supEl.value = opt.supplier || '';
 }
 
-function confirmEditAndAdd(opt) {
-  const desc = document.getElementById('editPriceDesc').value.trim();
-  const price = parseFloat(document.getElementById('editPriceVal').value);
-  const uom = document.getElementById('editPriceUom').value.trim() || 'ea';
-  const supplier = document.getElementById('editPriceSupplier').value.trim();
+function confirmEditAndAdd() {
+  const opt = window.__priceEditBaseOpt;
+  if (!opt) return;
+  const descEl = document.getElementById('editPriceDesc');
+  const valEl = document.getElementById('editPriceVal');
+  const uomEl = document.getElementById('editPriceUom');
+  const supEl = document.getElementById('editPriceSupplier');
+  if (!descEl || !valEl || !uomEl || !supEl) return;
+  const desc = descEl.value.trim();
+  const price = parseFloat(valEl.value);
+  const uom = uomEl.value.trim() || 'ea';
+  const supplier = supEl.value.trim();
   
   if (!desc || isNaN(price) || price <= 0) {
     showToast('Please enter valid description and price', 'error');
@@ -17676,8 +18602,10 @@ function confirmEditAndAdd(opt) {
     }
   }
   
+  window.__priceEditBaseOpt = null;
   // Close edit overlay
-  document.querySelector('.price-edit-overlay').remove();
+  const ov = document.querySelector('.price-edit-overlay');
+  if (ov) ov.remove();
   
   // Re-render to show selection
   openPriceModal(priceModal_ccName, priceModal_idx);
@@ -17785,7 +18713,8 @@ function addCustomProduct() {
 }
 
 function closePriceModal() {
-  document.getElementById('priceModalOverlay').classList.remove('show');
+  const ov = document.getElementById('priceModalOverlay');
+  if (ov) ov.classList.remove('show');
   priceModal_ccName = null;
   priceModal_idx = null;
   priceModal_selectedPrices = [];
@@ -17826,10 +18755,7 @@ function confirmPriceSelection() {
 // COST CONTROL PANEL
 // ====================================================
 
-function updateCostControl() {
-  const panel = document.getElementById('costControlPanel');
-  if (!panel) return;
-
+function getPricingRollup() {
   let grandTotal = 0;
   let unpriced = 0;
   const ccTotals = {};
@@ -17839,54 +18765,220 @@ function updateCostControl() {
     if (!ccSel) return;
     const checked = Object.entries(ccSel).filter(([, v]) => v.checked);
     if (!checked.length) return;
+    const ccData = getCostCentres()[ccName];
+    if (!ccData || !ccData.items) return;
     let ccTotal = 0;
+    let lineCount = 0;
     checked.forEach(([idx, v]) => {
+      const item = ccData.items[parseInt(idx, 10)];
+      if (isItemSubheading(item)) return;
+      lineCount++;
       const pricing = itemPricing[ccName] && itemPricing[ccName][idx];
       const qty = parseFloat(v.qty) || 1;
-      // Handle array of prices
       if (pricing && Array.isArray(pricing) && pricing.length > 0) {
         const itemTotal = pricing.reduce((sum, p) => sum + (p.price || 0), 0);
         ccTotal += itemTotal * qty;
       } else if (pricing && pricing.price && typeof pricing.price === 'number') {
-        // Legacy single price format
         ccTotal += pricing.price * qty;
       } else {
         unpriced++;
       }
     });
-    ccTotals[ccName] = { total: ccTotal, count: checked.length };
+    if (lineCount === 0) return;
+    ccTotals[ccName] = { total: ccTotal, count: lineCount };
     grandTotal += ccTotal;
   });
 
-  const gst = grandTotal * 0.1;
-  document.getElementById('ccGrandTotal').textContent = '$' + grandTotal.toLocaleString('en-AU', {minimumFractionDigits:0, maximumFractionDigits:0});
-  document.getElementById('ccGstTotal').textContent = '+ GST $' + gst.toLocaleString('en-AU', {minimumFractionDigits:0, maximumFractionDigits:0}) + '  =  $' + (grandTotal + gst).toLocaleString('en-AU', {minimumFractionDigits:0, maximumFractionDigits:0}) + ' inc. GST';
+  return {
+    grandTotal,
+    unpriced,
+    ccTotals,
+    gst: grandTotal * 0.1,
+    incGst: grandTotal * 1.1
+  };
+}
+
+function updateCostControl() {
+  const panel = document.getElementById('costControlPanel');
+  if (!panel) return;
+
+  const { grandTotal, unpriced, ccTotals, gst, incGst } = getPricingRollup();
+
+  const grandEl = document.getElementById('ccGrandTotal');
+  const gstEl = document.getElementById('ccGstTotal');
+  if (grandEl) grandEl.textContent = '$' + grandTotal.toLocaleString('en-AU', {minimumFractionDigits:0, maximumFractionDigits:0});
+  if (gstEl) gstEl.textContent = '+ GST $' + gst.toLocaleString('en-AU', {minimumFractionDigits:0, maximumFractionDigits:0}) + '  =  $' + incGst.toLocaleString('en-AU', {minimumFractionDigits:0, maximumFractionDigits:0}) + ' inc. GST';
 
   const grid = document.getElementById('ccBreakdownGrid');
-  grid.innerHTML = '';
-  Object.entries(ccTotals).forEach(([ccName, data]) => {
-    const chip = document.createElement('div');
-    chip.className = 'cost-cc-chip';
-    chip.innerHTML = `<div class="cost-cc-name">${ccName}</div>
+  if (grid) {
+    grid.innerHTML = '';
+    Object.entries(ccTotals).forEach(([ccName, data]) => {
+      const chip = document.createElement('div');
+      chip.className = 'cost-cc-chip';
+      chip.innerHTML = `<div class="cost-cc-name">${ccName}</div>
       <div class="cost-cc-amount">${data.total > 0 ? '$' + data.total.toLocaleString('en-AU',{minimumFractionDigits:0,maximumFractionDigits:0}) : '—'}</div>
       <div class="cost-cc-items">${data.count} item${data.count !== 1 ? 's' : ''}</div>`;
-    grid.appendChild(chip);
-  });
+      grid.appendChild(chip);
+    });
+  }
 
   const banner = document.getElementById('ccUnpricedBanner');
-  if (unpriced > 0) {
-    banner.textContent = `⚠ ${unpriced} item${unpriced !== 1 ? 's' : ''} not yet priced — totals are partial`;
-    banner.classList.add('show');
-  } else {
-    banner.classList.remove('show');
+  if (banner) {
+    if (unpriced > 0) {
+      banner.textContent = `⚠ ${unpriced} item${unpriced !== 1 ? 's' : ''} not yet priced — totals are partial`;
+      banner.classList.add('show');
+    } else {
+      banner.classList.remove('show');
+    }
   }
+}
+
+function csvEscapeCell(val) {
+  if (val === null || val === undefined) return '';
+  const s = String(val);
+  if (/[",\r\n]/.test(s)) return '"' + s.replace(/"/g, '""') + '"';
+  return s;
+}
+
+function copyCostSummaryToClipboard() {
+  const r = getPricingRollup();
+  const name = getVal('projName') || 'Project';
+  const lines = [
+    'Action Builders — Cost summary',
+    'Project: ' + name,
+    'Estimated EX GST: $' + r.grandTotal.toLocaleString('en-AU', { minimumFractionDigits: 0, maximumFractionDigits: 0 }),
+    'GST (10%): $' + r.gst.toLocaleString('en-AU', { minimumFractionDigits: 0, maximumFractionDigits: 0 }),
+    'Inc. GST: $' + r.incGst.toLocaleString('en-AU', { minimumFractionDigits: 0, maximumFractionDigits: 0 }),
+    ''
+  ];
+  Object.entries(r.ccTotals).forEach(function ([ccName, d]) {
+    lines.push('- ' + ccName + ': $' + d.total.toLocaleString('en-AU', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + ' (' + d.count + ' items)');
+  });
+  if (r.unpriced > 0) {
+    lines.push('', 'Note: ' + r.unpriced + ' selected line(s) not yet priced — totals are partial');
+  }
+  const text = lines.join('\n');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function () {
+      showToast('Summary copied to clipboard', 'success');
+    }).catch(function () {
+      showToast('Could not copy to clipboard', 'error');
+    });
+  } else {
+    showToast('Clipboard not available in this browser', 'error');
+  }
+}
+
+function exportPricingCSV() {
+  const proj = {
+    client: getVal('projClient'),
+    name: getVal('projName'),
+    location: getVal('projLocation'),
+    type: getVal('projType'),
+    date: getVal('projDate'),
+    num: getVal('projNum')
+  };
+
+  const rows = [];
+  rows.push(['Action Builders — Scope with Cost Control']);
+  rows.push(['Client', proj.client || '', 'Project', proj.name || '']);
+  rows.push(['Location', proj.location || '', 'Date', proj.date || '']);
+  rows.push(['Reference', proj.num || '', 'Type', proj.type || '']);
+  rows.push([]);
+  rows.push(['Cost Centre', 'Item', 'Type', 'Category', 'Qty', 'UOM', 'Unit Price (EX GST)', 'Line Total (EX GST)', 'GST', 'Total INC GST', 'Supplier', 'Product Code', 'Notes']);
+
+  let grandTotal = 0;
+  let unpriced = 0;
+
+  [...selectedCC].forEach(function (ccName) {
+    const ccSel = itemSelections[ccName];
+    if (!ccSel) return;
+    const checked = Object.entries(ccSel).filter(function (e) { return e[1].checked; });
+    if (!checked.length) return;
+    const ccData = getCostCentres()[ccName];
+
+    checked.forEach(function (entry) {
+      const idx = entry[0];
+      const v = entry[1];
+      const item = ccData.items[parseInt(idx, 10)];
+      if (isItemSubheading(item)) return;
+      const qty = parseFloat(v.qty) || 1;
+      const pricing = itemPricing[ccName] && itemPricing[ccName][idx];
+
+      var unitPrice = null;
+      var lineTotal = null;
+      if (pricing && Array.isArray(pricing) && pricing.length > 0) {
+        var totalItemPrice = pricing.reduce(function (sum, p) { return sum + (p.price || 0); }, 0);
+        unitPrice = totalItemPrice;
+        lineTotal = totalItemPrice * qty;
+      } else if (pricing && pricing.price && typeof pricing.price === 'number') {
+        unitPrice = pricing.price;
+        lineTotal = unitPrice * qty;
+      }
+
+      var gst = lineTotal !== null ? lineTotal * 0.1 : null;
+      var totalInc = lineTotal !== null ? lineTotal * 1.1 : null;
+
+      if (lineTotal !== null) grandTotal += lineTotal;
+      else unpriced++;
+
+      var uom = '';
+      if (pricing) {
+        uom = (pricing[0] && pricing[0].uom) || pricing.uom || '';
+      }
+
+      var sup = '';
+      var code = '';
+      if (pricing) {
+        sup = (pricing[0] && pricing[0].supplier) || pricing.supplier || '';
+        code = (pricing[0] && pricing[0].productCode) || pricing.productCode || '';
+      }
+
+      rows.push([
+        ccName,
+        item.name,
+        item.type || '',
+        item.category || '',
+        qty,
+        uom,
+        unitPrice !== null ? unitPrice : 'Not priced',
+        lineTotal !== null ? lineTotal : '',
+        gst !== null ? gst : '',
+        totalInc !== null ? totalInc : '',
+        sup,
+        code,
+        v.notes || ''
+      ]);
+    });
+  });
+
+  rows.push([]);
+  rows.push(['', '', '', '', '', '', 'SUBTOTAL (EX GST)', grandTotal, grandTotal * 0.1, grandTotal * 1.1, '', '', unpriced > 0 ? 'NOTE: ' + unpriced + ' items not priced' : '']);
+
+  const csv = rows.map(function (r) { return r.map(csvEscapeCell).join(','); }).join('\r\n');
+  const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = proj.name ? proj.name.replace(/[^a-z0-9]/gi, '_') + '_pricing.csv' : 'scope_pricing.csv';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  showToast('CSV exported', 'success');
 }
 
 // ====================================================
 // ENHANCED EXCEL EXPORT WITH PRICING
 // ====================================================
 
+function ensureXLSXLoaded() {
+  if (typeof XLSX === 'undefined') {
+    showToast('Excel export library failed to load. Check your connection and refresh the page.', 'error');
+    return false;
+  }
+  return true;
+}
+
 function exportWithPricing() {
+  if (!ensureXLSXLoaded()) return;
   const proj = {
     client: getVal('projClient'),
     name: getVal('projName'),
@@ -18018,6 +19110,7 @@ function exportWithPricing() {
 // EXPORT FUNCTIONS
 // ====================================================
 function exportSimpleXL() {
+  if (!ensureXLSXLoaded()) return;
   const proj = {
     client: getVal('projClient'),
     name: getVal('projName'),
@@ -18072,6 +19165,7 @@ function exportSimpleXL() {
 }
 
 function exportFFS() {
+  if (!ensureXLSXLoaded()) return;
   const proj = {
     client: getVal('projClient'),
     name: getVal('projName'),
@@ -18200,7 +19294,12 @@ function exportWordDoc() {
   generateScope();
 
   const projName = getVal('projName') || 'Scope of Work';
-  const scopeHtml = document.getElementById('scopeDocument').innerHTML;
+  const scopeEl = document.getElementById('scopeDocument');
+  if (!scopeEl) {
+    showToast('Could not build scope document.', 'error');
+    return;
+  }
+  const scopeHtml = scopeEl.innerHTML;
 
   const html = `
 <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
@@ -18883,17 +19982,41 @@ function saveCustomItem() {
 // ====================================================
 // UTILS
 // ====================================================
+(function initGlobalShortcuts() {
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      var pm = document.getElementById('priceModalOverlay');
+      if (pm && pm.classList.contains('show')) {
+        e.preventDefault();
+        closePriceModal();
+      }
+      return;
+    }
+    if (e.key === '/' && typeof currentStep !== 'undefined' && currentStep === 3 && currentPhase === 1) {
+      var t = e.target;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable)) return;
+      var search = document.getElementById('itemSearch');
+      if (search) {
+        e.preventDefault();
+        search.focus();
+        search.select();
+      }
+    }
+  });
+})();
+
 function showToast(msg, type) {
   const t = document.getElementById('toast');
+  if (!t) return;
   t.textContent = msg;
   t.className = 'toast show ' + type;
-  setTimeout(() => t.className = 'toast', 3000);
+  setTimeout(() => { t.className = 'toast'; }, 3000);
 }
 </script>
 
 <!-- Price Selector Modal -->
-<div class="price-modal-overlay" id="priceModalOverlay">
-  <div class="price-modal">
+<div class="price-modal-overlay" id="priceModalOverlay" onclick="if(event.target===this)closePriceModal()">
+  <div class="price-modal" onclick="event.stopPropagation()">
     <div class="price-modal-header">
       <div>
         <div class="price-modal-title" id="priceModalTitle">Select Price</div>
