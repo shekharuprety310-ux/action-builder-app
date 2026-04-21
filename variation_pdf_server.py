@@ -21,6 +21,7 @@ CORS(app)
 PAGE_W, PAGE_H = A4
 AB_BLUE = colors.HexColor("#31519D")
 GRID = colors.HexColor("#D0D0D0")
+TEXT = colors.HexColor("#000000")
 LEFT = 42.52
 RIGHT = 554.52
 WIDTH = RIGHT - LEFT
@@ -43,13 +44,13 @@ def _date(value: str) -> str:
 
 def _draw_text(c: canvas.Canvas, x: float, y: float, txt: str, size: int = 9, bold: bool = False) -> None:
     c.setFont("Helvetica-Bold" if bold else "Helvetica", size)
-    c.setFillColor(colors.black)
+    c.setFillColor(TEXT)
     c.drawString(x, y, txt or "")
 
 
 def _draw_wrapped(c: canvas.Canvas, x: float, y: float, width: float, txt: str, size: int = 9, leading: float = 11) -> float:
     c.setFont("Helvetica", size)
-    c.setFillColor(colors.black)
+    c.setFillColor(TEXT)
     words = (txt or "").split()
     line = []
     cursor_y = y
@@ -83,6 +84,12 @@ def _draw_rect_top(c: canvas.Canvas, x0: float, top: float, x1: float, bottom: f
         c.rect(x0, y, x1 - x0, h, stroke=stroke, fill=0)
 
 
+def _draw_money_right(c: canvas.Canvas, right_x: float, y: float, txt: str, size: int = 9, bold: bool = False, color=TEXT) -> None:
+    c.setFont("Helvetica-Bold" if bold else "Helvetica", size)
+    c.setFillColor(color)
+    c.drawRightString(right_x, y, txt or "")
+
+
 @app.get("/health")
 def health() -> dict:
     return {"ok": True}
@@ -106,13 +113,14 @@ def generate_variation_pdf():
         img = ImageReader(str(SAMPLE_HEADER_IMAGE))
         c.drawImage(img, 42.52, PAGE_H - 71.74, width=340.16, height=43.40, mask="auto")
 
-    # Date + title (calibrated near sample word coordinates).
+    # Date + title (section header style: blue background, white text).
     _draw_text(c, 45.4, _y(92.0), "Date", 9, True)
     _draw_text(c, 67.0, _y(92.0), _date(data.get("date", "")), 9, False)
-    c.setFillColor(AB_BLUE)
+    _draw_rect_top(c, LEFT, 107.72, RIGHT, 128.52, fill=AB_BLUE, stroke=1)
+    c.setFillColor(colors.white)
     c.setFont("Helvetica-Bold", 15)
-    c.drawString(44.9, _y(121.0), "VARIATION TO CONTRACT")
-    c.setFillColor(colors.black)
+    c.drawString(44.9, _y(115.0), "VARIATION TO CONTRACT")
+    c.setFillColor(TEXT)
 
     # Top 3-column block.
     c.setStrokeColor(GRID)
@@ -141,7 +149,7 @@ def generate_variation_pdf():
     _draw_rect_top(c, LEFT, 257.52, RIGHT, 275.17, fill=AB_BLUE, stroke=1)
     c.setFillColor(colors.white)
     _draw_text(c, 45.7, _y(264.6), "REASON FOR VARIATION (IF REQUESTED BY THE BUILDER)", 9, True)
-    c.setFillColor(colors.black)
+    c.setFillColor(TEXT)
     _draw_rect_top(c, LEFT, 275.17, RIGHT, 311.47, fill=None, stroke=1)
     _draw_wrapped(c, 45.7, _y(291.0), WIDTH - 8.0, data.get("reason", ""), 9, 11)
 
@@ -155,7 +163,7 @@ def generate_variation_pdf():
     _draw_text(c, 45.7, _y(329.8), "DETAILS OF WORK", 9, True)
     _draw_text(c, 373.7, _y(329.8), "ADDITIONAL COST", 9, True)
     _draw_text(c, 469.7, _y(329.8), "CREDIT DUE", 9, True)
-    c.setFillColor(colors.black)
+    c.setFillColor(TEXT)
 
     # Pin detail rows to sample bands for tighter visual match.
     detail_bands = [(340.37, 369.27), (369.27, 404.57)]
@@ -165,8 +173,8 @@ def generate_variation_pdf():
         c.line(466.52, _y(t), 466.52, _y(b))
         row = lines[idx] if idx < len(lines) else {}
         _draw_wrapped(c, 45.7, _y(t + 10.0), 320.0, str(row.get("details", "")), 9, 10)
-        _draw_text(c, 373.7, _y(t + 10.5), _money(row.get("additionalCost", 0)))
-        _draw_text(c, 469.7, _y(t + 10.5), _money(row.get("creditDue", 0)))
+        _draw_money_right(c, 462.5, _y(t + 10.5), _money(row.get("additionalCost", 0)), 9)
+        _draw_money_right(c, 550.5, _y(t + 10.5), _money(row.get("creditDue", 0)), 9)
 
     # Totals (exact-height blocks from sample).
     subtotal = float(data.get("totals", {}).get("subtotal", 0))
@@ -179,17 +187,23 @@ def generate_variation_pdf():
     ]
     for label, amt, t, b in total_rows:
         _draw_rect_top(c, LEFT, t, RIGHT, b, fill=AB_BLUE, stroke=1)
+        # Keep table structure visible: split into Details / Additional / Credit for totals rows too.
+        c.setStrokeColor(GRID)
+        c.setLineWidth(0.4)
+        c.line(370.52, _y(t), 370.52, _y(b))
+        c.line(466.52, _y(t), 466.52, _y(b))
         c.setFillColor(colors.white)
         _draw_text(c, 316.6, _y(t + 10.5), label, 9, True)
-        _draw_text(c, 469.7, _y(t + 10.5), _money(amt), 9, True)
-        c.setFillColor(colors.black)
+        # Totals must appear in Additional Cost column only.
+        _draw_money_right(c, 462.5, _y(t + 10.5), _money(amt), 9, True, colors.white)
+        c.setFillColor(TEXT)
 
     # Extension + payment header.
     _draw_rect_top(c, LEFT, 439.87, RIGHT, 457.52, fill=AB_BLUE, stroke=1)
     c.setFillColor(colors.white)
     _draw_text(c, 45.7, _y(447.8), "EXTENSION OF TIME", 9, True)
     _draw_text(c, 301.0, _y(447.8), "PAYMENT TERMS", 9, True)
-    c.setFillColor(colors.black)
+    c.setFillColor(TEXT)
     _draw_rect_top(c, LEFT, 457.52, RIGHT, 504.07, fill=None, stroke=1)
     c.line(298.52, _y(457.52), 298.52, _y(504.07))
     _draw_wrapped(
@@ -207,7 +221,7 @@ def generate_variation_pdf():
     _draw_rect_top(c, LEFT, 504.07, RIGHT, 521.72, fill=AB_BLUE, stroke=1)
     c.setFillColor(colors.white)
     _draw_text(c, 45.7, _y(511.8), "SIGNATURES", 9, True)
-    c.setFillColor(colors.black)
+    c.setFillColor(TEXT)
     _draw_rect_top(c, LEFT, 521.72, RIGHT, 539.37, fill=None, stroke=1)
     _draw_wrapped(
         c,
@@ -231,7 +245,7 @@ def generate_variation_pdf():
         c.setFillColor(colors.white)
         _draw_text(c, 45.7, _y(t + 10.5), l_head, 9, True)
         _draw_text(c, 301.0, _y(t + 10.5), r_head, 9, True)
-        c.setFillColor(colors.black)
+        c.setFillColor(TEXT)
 
     # Values in signature fields.
     _draw_text(c, 45.7, _y(567.0), data.get("ownerSignName") or owner_name)
@@ -243,9 +257,11 @@ def generate_variation_pdf():
     c.setStrokeColor(GRID)
     c.setLineWidth(0.4)
     c.line(LEFT, _y(726.5), RIGHT, _y(726.5))
-    _draw_text(c, 42.52, _y(734.0), "Action Builders Hobart", 8, False)
-    _draw_text(c, 272.0, _y(734.0), "Page 1/1", 8, False)
-    _draw_text(c, 460.0, _y(734.0), "Variation To Contract", 8, False)
+    c.setFont("Helvetica", 8)
+    c.setFillColor(TEXT)
+    c.drawString(42.52, _y(734.0), "Action Builders Hobart")
+    c.drawString(272.0, _y(734.0), "Page 1/1")
+    c.drawString(460.0, _y(734.0), "Variation To Contract")
 
     c.showPage()
     c.save()
