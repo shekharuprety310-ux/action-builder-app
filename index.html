@@ -16095,7 +16095,11 @@ async function exportVariationPdf() {
     showToast('PDF engine not loaded. Please refresh and try again.', 'error');
     return;
   }
-  if (typeof docx === 'undefined' || !docx.renderAsync) {
+  const docxRenderer =
+    (typeof docx !== 'undefined' && docx && typeof docx.renderAsync === 'function') ? docx :
+    (typeof docxPreview !== 'undefined' && docxPreview && typeof docxPreview.renderAsync === 'function') ? docxPreview :
+    null;
+  if (!docxRenderer) {
     showToast('DOCX preview engine not loaded. Please refresh and try again.', 'error');
     return;
   }
@@ -16103,26 +16107,43 @@ async function exportVariationPdf() {
   try {
     const docxBlob = await buildFilledVariationDocxBlob(data);
     container = document.createElement('div');
+    // Must stay fully opaque: html2canvas captures opacity:0 as blank. Keep off-screen instead.
     container.style.position = 'fixed';
-    container.style.left = '-99999px';
+    container.style.left = '-12000px';
     container.style.top = '0';
     container.style.width = '794px';
-    container.style.background = '#fff';
+    container.style.maxWidth = '794px';
+    container.style.background = '#ffffff';
     container.style.padding = '0';
+    container.style.opacity = '1';
+    container.style.pointerEvents = 'none';
+    container.style.zIndex = '2147483646';
     document.body.appendChild(container);
 
-    await docx.renderAsync(docxBlob, container, undefined, {
-      inWrapper: false,
+    await docxRenderer.renderAsync(docxBlob, container, undefined, {
+      inWrapper: true,
       ignoreWidth: false,
       ignoreHeight: false,
       breakPages: true
     });
+    // Layout + fonts/images (docx-preview paints async in some cases).
+    await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    await new Promise((resolve) => setTimeout(resolve, 250));
+
+    const renderedH = container.scrollHeight || container.offsetHeight;
+    if (renderedH < 40) {
+      throw new Error('Document preview rendered empty — try refreshing or re-selecting the template .docx');
+    }
 
     await html2pdf().set({
       margin: [8, 8, 8, 8],
       filename: `Variation_${(data.projectNumber || data.ownerName || 'Contract').replace(/[^a-z0-9]/gi, '_')}.pdf`,
       image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff' },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#ffffff'
+      },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
       pagebreak: { mode: ['css', 'legacy'] }
     }).from(container).save();
