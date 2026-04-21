@@ -6303,6 +6303,7 @@ header {
         <button class="btn btn-secondary" onclick="saveCurrentVariation()">💾 Save variation</button>
         <button class="btn btn-primary" onclick="exportVariationDoc()">Generate Variation Word</button>
         <button class="btn btn-secondary" onclick="exportVariationPdf()">Generate Variation PDF</button>
+        <button class="btn btn-secondary" onclick="exportVariationPdfDirect()">Print/Save PDF (Direct)</button>
       </div>
     </div>
 
@@ -16177,6 +16178,70 @@ async function exportVariationPdf() {
     showToast('Failed to generate template PDF: ' + e.message, 'error');
   } finally {
     if (container && container.parentNode) container.parentNode.removeChild(container);
+  }
+}
+
+async function exportVariationPdfDirect() {
+  const data = getVariationPayload();
+  if (!data.ownerName || !data.siteAddress || !data.lines.length) {
+    showToast('Please enter owner, site address, and at least one variation line', 'error');
+    return;
+  }
+  const docxRenderer =
+    (typeof docx !== 'undefined' && docx && typeof docx.renderAsync === 'function') ? docx :
+    (typeof docxPreview !== 'undefined' && docxPreview && typeof docxPreview.renderAsync === 'function') ? docxPreview :
+    null;
+  if (!docxRenderer) {
+    showToast('DOCX preview engine not loaded. Please refresh and try again.', 'error');
+    return;
+  }
+  try {
+    const docxBlob = await buildFilledVariationDocxBlob(data);
+    const printWin = window.open('', '_blank');
+    if (!printWin) {
+      showToast('Pop-up blocked. Please allow pop-ups, then try again.', 'error');
+      return;
+    }
+    printWin.document.write(`
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Variation PDF Print</title>
+  <style>
+    html, body { margin: 0; padding: 0; background: #fff; color: #000; }
+    body { font-family: Calibri, Arial, sans-serif; }
+    #docxPrintRoot { width: 210mm; min-height: 297mm; margin: 0 auto; }
+    @page { size: A4 portrait; margin: 8mm; }
+    @media print {
+      html, body { background: #fff !important; }
+      #docxPrintRoot { width: auto; min-height: auto; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="docxPrintRoot"></div>
+</body>
+</html>`);
+    printWin.document.close();
+
+    const root = printWin.document.getElementById('docxPrintRoot');
+    if (!root) throw new Error('Print preview root not found');
+    await docxRenderer.renderAsync(docxBlob, root, printWin.document.head, {
+      inWrapper: true,
+      ignoreWidth: false,
+      ignoreHeight: false,
+      breakPages: true
+    });
+    if (printWin.document.fonts && printWin.document.fonts.ready) {
+      try { await printWin.document.fonts.ready; } catch (e) { /* ignore */ }
+    }
+    await new Promise((resolve) => setTimeout(resolve, 350));
+    printWin.focus();
+    printWin.print();
+    showToast('Print dialog opened. Choose "Save as PDF" to download.', 'success');
+  } catch (e) {
+    showToast('Direct PDF print failed: ' + e.message, 'error');
   }
 }
 
