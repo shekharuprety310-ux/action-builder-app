@@ -157,72 +157,62 @@ def generate_variation_pdf():
     _draw_text(c, 469.7, _y(329.8), "CREDIT DUE", 9, True)
     c.setFillColor(colors.black)
 
-    # Variable item rows in the space before totals.
-    top_cursor = 340.37
-    totals_header_top = 439.87
-    details_limit = max(1, min(len(lines), 8))
-    dynamic_height = max(14.0, (totals_header_top - top_cursor) / details_limit)
-    for row in lines[:details_limit]:
-        row_bottom = top_cursor + dynamic_height
-        _draw_rect_top(c, LEFT, top_cursor, RIGHT, row_bottom, fill=None, stroke=1)
-        c.line(370.52, _y(top_cursor), 370.52, _y(row_bottom))
-        c.line(466.52, _y(top_cursor), 466.52, _y(row_bottom))
-        _draw_wrapped(c, 45.7, _y(top_cursor + 10.0), 320.0, str(row.get("details", "")), 9, 10)
-        _draw_text(c, 373.7, _y(top_cursor + 10.5), _money(row.get("additionalCost", 0)))
-        _draw_text(c, 469.7, _y(top_cursor + 10.5), _money(row.get("creditDue", 0)))
-        top_cursor = row_bottom
-
-    # Fill remaining space if fewer rows.
-    if top_cursor < totals_header_top:
-        _draw_rect_top(c, LEFT, top_cursor, RIGHT, totals_header_top, fill=None, stroke=1)
-        c.line(370.52, _y(top_cursor), 370.52, _y(totals_header_top))
-        c.line(466.52, _y(top_cursor), 466.52, _y(totals_header_top))
+    # Pin detail rows to sample bands for tighter visual match.
+    detail_bands = [(340.37, 369.27), (369.27, 404.57)]
+    for idx, (t, b) in enumerate(detail_bands):
+        _draw_rect_top(c, LEFT, t, RIGHT, b, fill=None, stroke=1)
+        c.line(370.52, _y(t), 370.52, _y(b))
+        c.line(466.52, _y(t), 466.52, _y(b))
+        row = lines[idx] if idx < len(lines) else {}
+        _draw_wrapped(c, 45.7, _y(t + 10.0), 320.0, str(row.get("details", "")), 9, 10)
+        _draw_text(c, 373.7, _y(t + 10.5), _money(row.get("additionalCost", 0)))
+        _draw_text(c, 469.7, _y(t + 10.5), _money(row.get("creditDue", 0)))
 
     # Totals (exact-height blocks from sample).
     subtotal = float(data.get("totals", {}).get("subtotal", 0))
     gst = float(data.get("totals", {}).get("gst", 0))
     total = float(data.get("totals", {}).get("total", 0))
     total_rows = [
-        ("SUBTOTAL", subtotal, 439.87, 457.52),
-        ("GST", gst, 457.52, 486.42),
-        ("TOTAL", total, 486.42, 504.07),
+        ("SUBTOTAL", subtotal, 369.27, 386.92),
+        ("GST", gst, 386.92, 404.57),
+        ("TOTAL", total, 404.57, 422.22),
     ]
     for label, amt, t, b in total_rows:
         _draw_rect_top(c, LEFT, t, RIGHT, b, fill=AB_BLUE, stroke=1)
         c.setFillColor(colors.white)
-        _draw_text(c, 414.0, _y(t + 10.5), label, 9, True)
+        _draw_text(c, 316.6, _y(t + 10.5), label, 9, True)
         _draw_text(c, 469.7, _y(t + 10.5), _money(amt), 9, True)
         c.setFillColor(colors.black)
 
     # Extension + payment header.
-    _draw_rect_top(c, LEFT, 504.07, RIGHT, 521.72, fill=AB_BLUE, stroke=1)
+    _draw_rect_top(c, LEFT, 439.87, RIGHT, 457.52, fill=AB_BLUE, stroke=1)
     c.setFillColor(colors.white)
-    _draw_text(c, 45.7, _y(511.6), "EXTENSION OF TIME", 9, True)
-    _draw_text(c, 301.0, _y(511.6), "PAYMENT TERMS", 9, True)
+    _draw_text(c, 45.7, _y(447.8), "EXTENSION OF TIME", 9, True)
+    _draw_text(c, 301.0, _y(447.8), "PAYMENT TERMS", 9, True)
     c.setFillColor(colors.black)
-    _draw_rect_top(c, LEFT, 521.72, RIGHT, 539.37, fill=None, stroke=1)
-    c.line(298.52, _y(521.72), 298.52, _y(539.37))
+    _draw_rect_top(c, LEFT, 457.52, RIGHT, 504.07, fill=None, stroke=1)
+    c.line(298.52, _y(457.52), 298.52, _y(504.07))
     _draw_wrapped(
         c,
         45.7,
-        _y(529.8),
+        _y(466.8),
         246.0,
         f"It is estimated the variation will extend the contract completion date by {int(data.get('extensionDays', 0))} Working Days",
         9,
         11,
     )
-    _draw_wrapped(c, 301.0, _y(529.8), 246.0, data.get("paymentTerms", ""), 9, 11)
+    _draw_wrapped(c, 301.0, _y(466.8), 246.0, data.get("paymentTerms", ""), 9, 11)
 
     # Signatures title and note.
-    _draw_rect_top(c, LEFT, 539.37, RIGHT, 557.02, fill=AB_BLUE, stroke=1)
+    _draw_rect_top(c, LEFT, 504.07, RIGHT, 521.72, fill=AB_BLUE, stroke=1)
     c.setFillColor(colors.white)
-    _draw_text(c, 45.7, _y(546.8), "SIGNATURES", 9, True)
+    _draw_text(c, 45.7, _y(511.8), "SIGNATURES", 9, True)
     c.setFillColor(colors.black)
-    _draw_rect_top(c, LEFT, 557.02, RIGHT, 579.37, fill=None, stroke=1)
+    _draw_rect_top(c, LEFT, 521.72, RIGHT, 539.37, fill=None, stroke=1)
     _draw_wrapped(
         c,
         45.7,
-        _y(566.8),
+        _y(528.8),
         WIDTH - 10,
         "This is to certify that the variation and extension of time detailed herein have this day been agreed/authorised by me/us:",
         8.5,
@@ -231,9 +221,9 @@ def generate_variation_pdf():
 
     # Signature grid rows exactly as sampled.
     sig_rows = [
-        (579.37, 619.37, "OWNERS NAME", "BUILDER REP"),
-        (619.37, 659.37, "SIGN:", "SIGN:"),
-        (659.37, 699.37, "DATE:", "DATE:"),
+        (539.37, 579.37, "OWNERS NAME", "BUILDER REP"),
+        (579.37, 619.37, "SIGN:", "SIGN:"),
+        (619.37, 659.37, "DATE:", "DATE:"),
     ]
     for t, b, l_head, r_head in sig_rows:
         _draw_rect_top(c, LEFT, t, 298.52, b, fill=AB_BLUE, stroke=1)
@@ -244,10 +234,10 @@ def generate_variation_pdf():
         c.setFillColor(colors.black)
 
     # Values in signature fields.
-    _draw_text(c, 45.7, _y(607.0), data.get("ownerSignName") or owner_name)
-    _draw_text(c, 301.0, _y(607.0), data.get("builderRep", ""))
-    _draw_text(c, 45.7, _y(687.0), _date(data.get("ownerDate", "")))
-    _draw_text(c, 301.0, _y(687.0), _date(data.get("builderDate", "")))
+    _draw_text(c, 45.7, _y(567.0), data.get("ownerSignName") or owner_name)
+    _draw_text(c, 301.0, _y(567.0), data.get("builderRep", ""))
+    _draw_text(c, 45.7, _y(647.0), _date(data.get("ownerDate", "")))
+    _draw_text(c, 301.0, _y(647.0), _date(data.get("builderDate", "")))
 
     # Footer line + labels.
     c.setStrokeColor(GRID)
