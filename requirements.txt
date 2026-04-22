@@ -1,1 +1,4 @@
--r requirements-variation-pdf.txt
+Flask>=3.0.0
+Flask-Cors>=4.0.0
+reportlab>=4.0.0
+gunicorn>=22.0.0
