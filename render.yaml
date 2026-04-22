@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: action-builders-pdf-server
+    env: python
+    plan: starter
+    buildCommand: pip install -r requirements-variation-pdf.txt
+    startCommand: gunicorn variation_pdf_server:app --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120
+    healthCheckPath: /health
+    autoDeploy: true
