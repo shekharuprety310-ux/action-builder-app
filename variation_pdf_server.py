@@ -297,6 +297,7 @@ def _draw_blue_bar_title_wrapped(
 
 
 @app.get("/health")
+@app.get("/api/health")
 def health() -> dict:
     sync = (os.environ.get("AB_VARIATION_SYNC_DIR") or "").strip()
     d = Path(sync).expanduser() if sync else None
