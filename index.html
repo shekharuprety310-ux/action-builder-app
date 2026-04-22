@@ -6331,14 +6331,17 @@ header {
       <div class="field"><label>Owner Sign Name</label><input type="text" id="varOwnerSignName"></div>
       <div class="field"><label>Owner Sign Date</label><input type="date" id="varOwnerDate"></div>
       <div class="field"><label>PDF Server URL</label><input type="url" id="varPdfServerUrl" value="http://127.0.0.1:8787" placeholder="http://127.0.0.1:8787"></div>
-      <div class="field wide"><label>Automation Webhook URL (Power Automate)</label><input type="url" id="varAutomationWebhook" placeholder="https://prod-xx....logic.azure.com/..."></div>
+      <div class="field wide"><label>Automation Webhook URL (Power Automate)</label><input type="text" id="varAutomationWebhook" spellcheck="false" placeholder="Paste the full POST URL from the HTTP trigger"></div>
+      <div class="field wide"><label>Optional: Bearer token (only if Microsoft returns 401)</label><input type="password" id="varAutomationBearer" spellcheck="false" placeholder="Leave blank unless IT gave you a Flow access token"></div>
+      <div class="field wide" style="font-size:12px;color:var(--text-muted);line-height:1.45;">If the cloud flow keeps failing, set environment variable <code style="font-size:11px;">AB_VARIATION_SYNC_DIR</code> on this Mac to the path of a folder synced with SharePoint (OneDrive sync). Then every <strong>Generate Final PDF</strong> copy is saved there automatically—no Power Automate required.</div>
     </div>
 
     <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap;">
       <input type="file" id="variationTemplateInput" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="display:none;">
       <button class="btn btn-secondary" onclick="pickVariationTemplate()">📎 Select Template .docx</button>
       <button class="btn btn-secondary" onclick="generateVariationPdfServer()">Generate Final PDF (Server)</button>
-      <button class="btn btn-secondary" onclick="sendVariationToAutomation()">Send to DocuSign/SharePoint Flow</button>
+      <button class="btn btn-secondary" onclick="sendVariationPdfToSharePointFlow()">Generate PDF → SharePoint (Power Automate)</button>
+      <button class="btn btn-secondary" onclick="sendVariationToAutomation()">Send JSON only (DocuSign/SharePoint Flow)</button>
       <button class="btn btn-secondary" onclick="downloadVariationJSON()">Download JSON Payload</button>
     </div>
 
@@ -16147,34 +16150,107 @@ function downloadVariationJSON() {
   showToast('Variation payload downloaded', 'success');
 }
 
+/** Sends payload to Power Automate via local PDF server (avoids CORS; shows upstream errors). */
+async function postAutomationViaProxy(baseUrl, webhookUrl, payloadObj) {
+  var proxy = baseUrl.replace(/\/+$/, '') + '/api/variation/proxy-automation';
+  var bearer = (document.getElementById('varAutomationBearer') && getVal('varAutomationBearer').trim()) || '';
+  var res = await fetch(proxy, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ webhookUrl: webhookUrl, bearerToken: bearer, payload: payloadObj })
+  });
+  var text = await res.text();
+  var j = null;
+  try {
+    j = JSON.parse(text);
+  } catch (x) {}
+  if (!res.ok) {
+    var err =
+      (j && j.hint) ||
+      (j && j.detail) ||
+      (j && j.error) ||
+      (j && j.message) ||
+      (text && text.slice(0, 400)) ||
+      'HTTP ' + res.status;
+    throw new Error(err);
+  }
+  return j;
+}
+
+async function sendVariationPdfToSharePointFlow() {
+  var webhook = getVal('varAutomationWebhook').trim();
+  if (!webhook) {
+    showToast('Enter your Power Automate webhook URL first', 'error');
+    return;
+  }
+  var payload = getVariationPayload();
+  if (!payload.ownerName || !payload.siteAddress || !payload.lines.length) {
+    showToast('Please enter owner, site address, and at least one variation line', 'error');
+    return;
+  }
+  var baseUrl = getVal('varPdfServerUrl').trim() || 'http://127.0.0.1:8787';
+  var flowUrl = baseUrl.replace(/\/+$/, '') + '/api/variation/pdf-and-flow';
+  var bearer = getVal('varAutomationBearer').trim();
+  try {
+    showToast('Building PDF and sending to Power Automate…', 'warning');
+    var body = Object.assign({}, payload, { webhookUrl: webhook, bearerToken: bearer });
+    var res = await fetch(flowUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    var text = await res.text();
+    var j = null;
+    try {
+      j = JSON.parse(text);
+    } catch (x) {}
+    if (!res.ok) {
+      if (j && j.partialSuccess && j.pdfSavedTo) {
+        showToast(
+          'Microsoft blocked Power Automate, but the PDF was saved to your sync folder: ' + j.pdfSavedTo,
+          'warning'
+        );
+        return;
+      }
+      var parts = [
+        (j && j.hint) || '',
+        (j && j.detail) || '',
+        (j && j.error) || '',
+        (j && j.message) || ''
+      ].filter(Boolean);
+      throw new Error(parts.join(' — ') || text.slice(0, 500) || 'HTTP ' + res.status);
+    }
+    var extra = j && j.pdfSavedTo ? ' Also saved locally: ' + j.pdfSavedTo : '';
+    showToast('Power Automate accepted the PDF.' + extra + ' Check SharePoint / flow run history.', 'success');
+  } catch (e) {
+    showToast('SharePoint automation failed: ' + e.message, 'error');
+  }
+}
+
 async function sendVariationToAutomation() {
   const webhook = getVal('varAutomationWebhook').trim();
   if (!webhook) {
     showToast('Enter your Power Automate webhook URL first', 'error');
     return;
   }
+  const baseUrl = getVal('varPdfServerUrl').trim() || 'http://127.0.0.1:8787';
   const payload = getVariationPayload();
   try {
-    const res = await fetch(webhook, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        flowType: 'variation_to_contract',
-        sourceApp: 'Action Builders Portal',
-        docusign: {
-          ownerName: payload.ownerSignName || payload.ownerName,
-          ownerEmail: payload.ownerEmail,
-          builderRep: payload.builderRep
-        },
-        sharepoint: {
-          projectNumber: payload.projectNumber,
-          siteAddress: payload.siteAddress
-        },
-        variation: payload
-      })
+    await postAutomationViaProxy(baseUrl, webhook, {
+      flowType: 'variation_to_contract',
+      sourceApp: 'Action Builders Portal',
+      docusign: {
+        ownerName: payload.ownerSignName || payload.ownerName,
+        ownerEmail: payload.ownerEmail,
+        builderRep: payload.builderRep
+      },
+      sharepoint: {
+        projectNumber: payload.projectNumber,
+        siteAddress: payload.siteAddress
+      },
+      variation: payload
     });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    showToast('Sent to automation flow (DocuSign/SharePoint)', 'success');
+    showToast('Sent JSON to automation flow (no PDF attachment)', 'success');
   } catch (e) {
     showToast('Failed to send automation payload: ' + e.message, 'error');
   }
