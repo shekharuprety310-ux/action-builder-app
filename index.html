@@ -6330,7 +6330,7 @@ header {
       <div class="field"><label>Builder Sign Date</label><input type="date" id="varBuilderDate"></div>
       <div class="field"><label>Owner Sign Name</label><input type="text" id="varOwnerSignName"></div>
       <div class="field"><label>Owner Sign Date</label><input type="date" id="varOwnerDate"></div>
-      <div class="field"><label>PDF Server URL</label><input type="url" id="varPdfServerUrl" value="http://127.0.0.1:8787" placeholder="http://127.0.0.1:8787"></div>
+      <div class="field"><label>PDF Server URL</label><input type="url" id="varPdfServerUrl" value="" placeholder="Leave blank on Vercel (uses same site), or set http://127.0.0.1:8787 for local dev"></div>
       <div class="field wide"><label>Automation Webhook URL (Power Automate)</label><input type="text" id="varAutomationWebhook" spellcheck="false" placeholder="Paste the full POST URL from the HTTP trigger"></div>
       <div class="field wide"><label>Optional: Bearer token (only if Microsoft returns 401)</label><input type="password" id="varAutomationBearer" spellcheck="false" placeholder="Leave blank unless IT gave you a Flow access token"></div>
       <div class="field wide" style="font-size:12px;color:var(--text-muted);line-height:1.45;">If the cloud flow keeps failing, set environment variable <code style="font-size:11px;">AB_VARIATION_SYNC_DIR</code> on this Mac to the path of a folder synced with SharePoint (OneDrive sync). Then every <strong>Generate Final PDF</strong> copy is saved there automatically—no Power Automate required.</div>
@@ -16109,7 +16109,7 @@ async function generateVariationPdfServer() {
     showToast('Please enter owner, site address, and at least one variation line', 'error');
     return;
   }
-  const baseUrl = getVal('varPdfServerUrl').trim() || 'http://127.0.0.1:8787';
+  const baseUrl = resolvePdfServerBaseUrl();
   const endpoint = baseUrl.replace(/\/+$/, '') + '/api/variation/pdf';
   try {
     const res = await fetch(endpoint, {
@@ -16134,6 +16134,15 @@ async function generateVariationPdfServer() {
   } catch (e) {
     showToast('Server PDF generation failed: ' + e.message, 'error');
   }
+}
+
+function resolvePdfServerBaseUrl() {
+  const explicit = getVal('varPdfServerUrl').trim();
+  if (explicit) return explicit;
+  if (typeof window !== 'undefined' && /^https?:$/i.test(window.location.protocol)) {
+    return window.location.origin;
+  }
+  return 'http://127.0.0.1:8787';
 }
 
 function downloadVariationJSON() {
@@ -16188,7 +16197,7 @@ async function sendVariationPdfToSharePointFlow() {
     showToast('Please enter owner, site address, and at least one variation line', 'error');
     return;
   }
-  var baseUrl = getVal('varPdfServerUrl').trim() || 'http://127.0.0.1:8787';
+  var baseUrl = resolvePdfServerBaseUrl();
   var flowUrl = baseUrl.replace(/\/+$/, '') + '/api/variation/pdf-and-flow';
   var bearer = getVal('varAutomationBearer').trim();
   try {
@@ -16233,7 +16242,7 @@ async function sendVariationToAutomation() {
     showToast('Enter your Power Automate webhook URL first', 'error');
     return;
   }
-  const baseUrl = getVal('varPdfServerUrl').trim() || 'http://127.0.0.1:8787';
+  const baseUrl = resolvePdfServerBaseUrl();
   const payload = getVariationPayload();
   try {
     await postAutomationViaProxy(baseUrl, webhook, {

@@ -1,9 +1,28 @@
-# Backend Deployment (for Vercel frontend)
+# Deployment for Vercel (Free Path)
 
-This app's PDF generation and SharePoint relay use `variation_pdf_server.py`.
-If your frontend is on Vercel, host this Python backend separately and paste its URL into **PDF Server URL** in the app.
+This app now supports running both frontend and Python API on Vercel using:
+- `api/index.py` (Flask WSGI entrypoint)
+- `vercel.json` rewrite for `/api/*`
+- `requirements.txt` for Python deps
 
-## Option A: Render (recommended)
+For Vercel deployment, leave **PDF Server URL** blank in the app UI.
+It will automatically call same-origin `/api/...`.
+
+## Option A: Vercel-only (recommended free setup)
+
+1. Push to GitHub.
+2. Import repo in Vercel.
+3. Deploy (Vercel detects static frontend + Python function).
+4. Open:
+   - `https://<your-vercel-app>/api/health`
+   - Expect JSON with `"ok": true`.
+5. In the app UI:
+   - Leave **PDF Server URL** empty.
+6. Test:
+   - **Generate Final PDF (Server)**
+   - **Generate PDF -> SharePoint (Power Automate)**
+
+## Option B: Render (paid/starter)
 
 1. Push this repo to GitHub (already done).
 2. In Render, click **New +** -> **Blueprint**.
@@ -19,7 +38,7 @@ If your frontend is on Vercel, host this Python backend separately and paste its
    - **Generate Final PDF (Server)**
    - **Generate PDF -> SharePoint (Power Automate)**
 
-## Option B: Railway
+## Option C: Railway
 
 1. Create a new project from this GitHub repo.
 2. Set service to use:
