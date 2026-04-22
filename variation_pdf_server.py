@@ -6,6 +6,7 @@ import json
 import os
 import ssl
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import datetime
 from pathlib import Path
@@ -315,7 +316,9 @@ def _pa_auth_hint(status: int) -> str:
             "AB_VARIATION_SYNC_DIR set to a Mac folder that syncs to SharePoint (OneDrive). "
             "Then use Generate Final PDF — files appear in SharePoint after sync. "
             "Alternatives: ask IT for a Flow URL that includes sig=, or a Bearer token (scope "
-            "https://service.flow.microsoft.com/.default)."
+            "https://service.flow.microsoft.com/.default). "
+            "For hosted use, set Vercel env vars POWER_AUTOMATE_TENANT_ID, POWER_AUTOMATE_CLIENT_ID, "
+            "POWER_AUTOMATE_CLIENT_SECRET so the backend auto-fetches a token."
         )
     return ""
 
@@ -340,10 +343,48 @@ def _extract_microsoft_error_json(detail: str) -> str:
 def _resolve_bearer_token(explicit: str | None) -> str:
     raw = (explicit or os.environ.get("POWER_AUTOMATE_BEARER") or "").strip()
     if not raw:
-        return ""
+        token = _fetch_flow_access_token_from_env()
+        return f"Bearer {token}" if token else ""
     if raw.lower().startswith("bearer "):
         return raw
     return f"Bearer {raw}"
+
+
+def _fetch_flow_access_token_from_env() -> str:
+    """
+    If app credentials are configured, fetch a Microsoft Entra access token for Power Automate.
+    Required env vars:
+      - POWER_AUTOMATE_TENANT_ID
+      - POWER_AUTOMATE_CLIENT_ID
+      - POWER_AUTOMATE_CLIENT_SECRET
+    """
+    tenant = (os.environ.get("POWER_AUTOMATE_TENANT_ID") or "").strip()
+    client_id = (os.environ.get("POWER_AUTOMATE_CLIENT_ID") or "").strip()
+    client_secret = (os.environ.get("POWER_AUTOMATE_CLIENT_SECRET") or "").strip()
+    if not tenant or not client_id or not client_secret:
+        return ""
+    token_url = f"https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token"
+    form = urllib.parse.urlencode(
+        {
+            "client_id": client_id,
+            "client_secret": client_secret,
+            "grant_type": "client_credentials",
+            "scope": "https://service.flow.microsoft.com/.default",
+        }
+    ).encode("utf-8")
+    req = urllib.request.Request(
+        token_url,
+        data=form,
+        method="POST",
+        headers={"Content-Type": "application/x-www-form-urlencoded"},
+    )
+    ctx = ssl.create_default_context()
+    try:
+        with urllib.request.urlopen(req, timeout=30, context=ctx) as resp:
+            body = json.loads(resp.read().decode("utf-8", errors="replace"))
+            return str(body.get("access_token") or "")
+    except Exception:
+        return ""
 
 
 def _post_power_automate_webhook(webhook: str, payload: dict, bearer_token: str = "") -> tuple[bool, dict]:
