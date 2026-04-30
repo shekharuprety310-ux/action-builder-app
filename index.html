@@ -6057,6 +6057,10 @@ header {
                   <button type="button" class="btn-ghost" onclick="selectAllProjectRooms()">Select all rooms</button>
                   <button type="button" class="btn-ghost" onclick="clearProjectRooms()">Clear rooms</button>
                 </div>
+                <div style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap; align-items:center;">
+                  <input type="text" id="projCustomRoomInput" placeholder="Add custom room (e.g. Mud Room)" onkeydown="if(event.key==='Enter'){event.preventDefault();addCustomProjectRoom();}" style="min-width:260px; flex: 1 1 260px;">
+                  <button type="button" class="btn-ghost" onclick="addCustomProjectRoom()">+ Add Room</button>
+                </div>
                 <div id="projRoomsSummary" style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">No rooms selected. You can still assign rooms item-by-item later.</div>
               </div>
               <div class="form-row">
@@ -7655,6 +7659,7 @@ function clearScopeSelectionsForDatasetChange() {
   ccExclusions = {};
   ccNotes = {};
   ccSectionPhotos = {};
+  projectCustomRooms = [];
   activeCCName = null;
   activeCategory = null;
   scopeVersion = (scopeVersion || 0) + 1;
@@ -7737,6 +7742,48 @@ const PROJECT_ROOM_OPTIONS = [
   'Study', 'Study Nook', 'Throughout', 'Toy Room', 'Walk In Robe'
 ];
 
+let projectCustomRooms = [];
+
+function _normaliseRoomName(room) {
+  return String(room || '').trim().replace(/\s+/g, ' ');
+}
+
+function getAvailableProjectRooms() {
+  const map = new Map();
+  PROJECT_ROOM_OPTIONS.forEach((r) => {
+    const n = _normaliseRoomName(r);
+    if (n) map.set(n.toLowerCase(), n);
+  });
+  (projectCustomRooms || []).forEach((r) => {
+    const n = _normaliseRoomName(r);
+    if (n) map.set(n.toLowerCase(), n);
+  });
+  return Array.from(map.values());
+}
+
+function addCustomProjectRoom() {
+  if (isScopeReadOnly()) return;
+  const input = document.getElementById('projCustomRoomInput');
+  if (!input) return;
+  const room = _normaliseRoomName(input.value);
+  if (!room) {
+    showToast('Enter a room name first', 'error');
+    return;
+  }
+  const current = new Set(getAvailableProjectRooms().map((r) => r.toLowerCase()));
+  if (current.has(room.toLowerCase())) {
+    showToast('Room already exists', 'info');
+    input.value = '';
+    return;
+  }
+  projectCustomRooms.push(room);
+  populateProjectRoomsOptions();
+  setProjectRooms([...getProjectRooms(), room]);
+  input.value = '';
+  updateRoomsSelectionSummary();
+  showToast('Custom room added', 'success');
+}
+
 function getProjectRooms() {
   const container = document.getElementById('projRooms');
   if (!container) return [];
@@ -7746,7 +7793,16 @@ function getProjectRooms() {
 function setProjectRooms(rooms) {
   const container = document.getElementById('projRooms');
   if (!container) return;
-  const selected = new Set(Array.isArray(rooms) ? rooms : []);
+  const selectedRooms = Array.isArray(rooms) ? rooms.map(_normaliseRoomName).filter(Boolean) : [];
+  const known = new Set(getAvailableProjectRooms().map((r) => r.toLowerCase()));
+  selectedRooms.forEach((r) => {
+    if (!known.has(r.toLowerCase())) {
+      projectCustomRooms.push(r);
+      known.add(r.toLowerCase());
+    }
+  });
+  populateProjectRoomsOptions();
+  const selected = new Set(selectedRooms);
   Array.from(container.querySelectorAll('input[name="projRoomsCheck"]')).forEach(cb => {
     cb.checked = selected.has(cb.value);
     cb.closest('.room-chip')?.classList.toggle('is-checked', cb.checked);
@@ -7759,10 +7815,9 @@ function populateProjectRoomsOptions() {
   if (!container) return;
   const menu = document.getElementById('projRoomsMenu');
   if (!menu) return;
-  if (menu.querySelector('input[name="projRoomsCheck"]')) return;
   menu.innerHTML = '';
 
-  PROJECT_ROOM_OPTIONS.forEach(room => {
+  getAvailableProjectRooms().forEach(room => {
     const row = document.createElement('div');
     row.className = 'rooms-dd-item';
     row.innerHTML = `
@@ -7954,11 +8009,13 @@ function getProjectFields() {
     archDrawings: getVal('projArchDrawings'),
     structDrawings: getVal('projStructDrawings'),
     rooms: getProjectRooms(),
+    customRooms: [...projectCustomRooms],
     dataset: getVal('projDataset') || 'legacy'
   };
 }
 
 function setProjectFields(proj) {
+  projectCustomRooms = Array.isArray(proj.customRooms) ? proj.customRooms.map(_normaliseRoomName).filter(Boolean) : [];
   populateProjectRoomsOptions();
   setVal('projClient', proj.client || '');
   setVal('projClientAddress', proj.clientAddress || '');
