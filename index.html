@@ -6591,6 +6591,66 @@ function getUserRole(username) {
 
 let currentUser = null;
 let currentUserRole = null;
+let __autoSaveBound = false;
+let __autoSaveProjectTimer = null;
+let __autoSaveVariationTimer = null;
+
+function scheduleAutoSaveProject() {
+  if (!currentProjectId) return;
+  clearTimeout(__autoSaveProjectTimer);
+  __autoSaveProjectTimer = setTimeout(() => {
+    saveCurrentProject({ silent: true });
+  }, 800);
+}
+
+function scheduleAutoSaveVariationDraft() {
+  if (!currentProjectId && activeModule !== 'variation') return;
+  clearTimeout(__autoSaveVariationTimer);
+  __autoSaveVariationTimer = setTimeout(() => {
+    saveVariationDraft();
+  }, 500);
+}
+
+function bindAutoSaveHandlers() {
+  if (__autoSaveBound) return;
+  __autoSaveBound = true;
+  const root = document.getElementById('appContainer');
+  if (!root) return;
+  const projectInputIds = new Set([
+    'projClient', 'projClientAddress', 'projName', 'projLocation', 'projType', 'projFinishLevel',
+    'projDesignChar', 'projDate', 'projPM', 'projNum', 'projNotes', 'projArchDrawings', 'projStructDrawings',
+    'projDataset', 'projCustomRoomInput'
+  ]);
+  const variationInputIds = new Set([
+    'varDate', 'varProjectNumber', 'varOwnerName', 'varSiteAddress', 'varOwnerEmail', 'varOwnerPhone',
+    'varReason', 'varExtensionDays', 'varPaymentTerms', 'varBuilderRep', 'varBuilderDate',
+    'varOwnerSignName', 'varOwnerDate'
+  ]);
+
+  root.addEventListener('input', function (e) {
+    const t = e.target;
+    if (!(t instanceof HTMLElement)) return;
+    if (t.classList.contains('var-line-desc') || t.classList.contains('var-line-add') || t.classList.contains('var-line-credit') || variationInputIds.has(t.id)) {
+      scheduleAutoSaveVariationDraft();
+      return;
+    }
+    if (projectInputIds.has(t.id) || t.getAttribute('name') === 'projRoomsCheck') {
+      scheduleAutoSaveProject();
+    }
+  });
+
+  root.addEventListener('change', function (e) {
+    const t = e.target;
+    if (!(t instanceof HTMLElement)) return;
+    if (t.classList.contains('var-line-desc') || t.classList.contains('var-line-add') || t.classList.contains('var-line-credit') || variationInputIds.has(t.id)) {
+      scheduleAutoSaveVariationDraft();
+      return;
+    }
+    if (projectInputIds.has(t.id) || t.getAttribute('name') === 'projRoomsCheck') {
+      scheduleAutoSaveProject();
+    }
+  });
+}
 
 function checkAuth() {
   const savedUser = localStorage.getItem('scopeBuilderUser');
@@ -6671,6 +6731,7 @@ function showApp() {
   loadCustomProducts();
   loadDefaultExclusionsNotes();
   populateProjectRoomsOptions();
+  bindAutoSaveHandlers();
   syncProjectsSidebarForViewport();
   
   if (activeModule === 'cost') {
@@ -6771,6 +6832,7 @@ function showVariationModuleInterface() {
 function initVariationBuilder() {
   const dateEl = document.getElementById('varDate');
   if (dateEl && !dateEl.value) dateEl.value = new Date().toISOString().split('T')[0];
+  loadVariationDraft();
   if (!document.getElementById('variationLines').children.length) {
     addVariationLine('Variation line item', '', '');
   }
@@ -15838,6 +15900,7 @@ function addVariationLine(desc = '', addCost = '', credit = '') {
     <button type="button" class="btn btn-secondary" onclick="this.closest('.variation-line-row').remove()">✕</button>
   `;
   wrap.appendChild(row);
+  scheduleAutoSaveVariationDraft();
   const descInput = row.querySelector('.var-line-desc');
   if (descInput) {
     descInput.addEventListener('keydown', function (e) {
@@ -15906,6 +15969,54 @@ function getVariationProjectKey() {
   return currentProjectId || '__no_project__';
 }
 
+function getVariationDraftStore() {
+  try {
+    const raw = localStorage.getItem('variationBuilderDrafts');
+    const parsed = raw ? JSON.parse(raw) : {};
+    return parsed && typeof parsed === 'object' ? parsed : {};
+  } catch (e) {
+    return {};
+  }
+}
+
+function setVariationDraftStore(store) {
+  localStorage.setItem('variationBuilderDrafts', JSON.stringify(store));
+}
+
+function saveVariationDraft() {
+  const payload = getVariationPayload();
+  const key = getVariationProjectKey();
+  const drafts = getVariationDraftStore();
+  drafts[key] = {
+    ...payload,
+    __savedAt: new Date().toISOString()
+  };
+  setVariationDraftStore(drafts);
+}
+
+function loadVariationDraft() {
+  const key = getVariationProjectKey();
+  const drafts = getVariationDraftStore();
+  const v = drafts[key];
+  if (!v || typeof v !== 'object') return;
+  setVal('varDate', v.date || '');
+  setVal('varProjectNumber', v.projectNumber || '');
+  setVal('varOwnerName', v.ownerName || '');
+  setVal('varSiteAddress', v.siteAddress || '');
+  setVal('varOwnerEmail', v.ownerEmail || '');
+  setVal('varOwnerPhone', v.ownerPhone || '');
+  setVal('varReason', v.reason || '');
+  setVal('varExtensionDays', v.extensionDays != null ? String(v.extensionDays) : '0');
+  setVal('varPaymentTerms', v.paymentTerms || '');
+  setVal('varBuilderRep', v.builderRep || '');
+  setVal('varBuilderDate', v.builderDate || '');
+  setVal('varOwnerSignName', v.ownerSignName || '');
+  setVal('varOwnerDate', v.ownerDate || '');
+  const wrap = document.getElementById('variationLines');
+  if (wrap) wrap.innerHTML = '';
+  (v.lines || []).forEach(l => addVariationLine(l.details || '', l.additionalCost || '', l.creditDue || ''));
+}
+
 function saveCurrentVariation() {
   const payload = getVariationPayload();
   if (!payload.ownerName || !payload.siteAddress || !payload.lines.length) {
@@ -15917,6 +16028,9 @@ function saveCurrentVariation() {
   if (!Array.isArray(store[key])) store[key] = [];
   store[key].unshift(payload);
   setVariationStore(store);
+  const drafts = getVariationDraftStore();
+  delete drafts[key];
+  setVariationDraftStore(drafts);
   renderVariationHistory();
   showToast('Variation saved', 'success');
 }
