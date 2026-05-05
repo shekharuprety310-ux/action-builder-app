@@ -7873,9 +7873,13 @@ function addCustomProjectRoom() {
     input.value = '';
     return;
   }
+  // Capture which rooms are currently ticked BEFORE rebuilding the menu DOM,
+  // otherwise populateProjectRoomsOptions() wipes the checked state and we
+  // lose the user's previous selections.
+  const previouslySelected = getProjectRooms();
   projectCustomRooms.push(room);
   populateProjectRoomsOptions();
-  setProjectRooms([...getProjectRooms(), room]);
+  setProjectRooms([...previouslySelected, room]);
   input.value = '';
   updateRoomsSelectionSummary();
   showToast('Custom room added', 'success');
@@ -17514,7 +17518,11 @@ function renderItems(ccName, query) {
     const typeClass = 'type-' + (item.type || 'service').toLowerCase().replace(/\s+/g, '-');
     const projectRooms = getProjectRooms();
     const selectedRoom = (sel.room || item.room || '').replace(/"/g, '&quot;');
+    const itemRoomsForDropdown = getItemRoomsArray(ccName, primaryKey) || [];
     const roomList = [...projectRooms];
+    itemRoomsForDropdown.forEach(function (r) {
+      if (r && !roomList.includes(r)) roomList.unshift(r);
+    });
     if (selectedRoom && !roomList.includes(selectedRoom)) roomList.unshift(selectedRoom);
     const roomOptions = ['<option value="">No room</option>']
       .concat(roomList.map(room => `<option value="${room.replace(/"/g, '&quot;')}">${room}</option>`))
@@ -17554,7 +17562,11 @@ function renderItems(ccName, query) {
       dupRow.dataset.selkey = key;
       dupRow.style.display = 'flex';
       const selectedRoom2 = (entry.room || item.room || '').replace(/\"/g, '&quot;');
+      const dupRoomsForDropdown = getItemRoomsArray(ccName, key) || [];
       const roomList2 = [...projectRooms];
+      dupRoomsForDropdown.forEach(function (r) {
+        if (r && !roomList2.includes(r)) roomList2.unshift(r);
+      });
       if (selectedRoom2 && !roomList2.includes(selectedRoom2)) roomList2.unshift(selectedRoom2);
       const roomOptions2 = ['<option value=\"\">No room</option>']
         .concat(roomList2.map(room => `<option value=\"${room.replace(/\"/g, '&quot;')}\">${room}</option>`))
@@ -18344,12 +18356,23 @@ function buildScopeDocxPayload() {
   [...selectedCC].forEach(function (ccName) {
     const ccSel = itemSelections[ccName];
     if (!ccSel) return;
-    const checked = Object.entries(ccSel).filter(function (x) { return x[1].checked; });
     const ccData = getCostCentres()[ccName];
     if (!ccData) return;
-    const selectedRows = checked
-      .map(function (x) { return [parseInt(x[0], 10), x[1]]; })
-      .sort(function (a, b) { return a[0] - b[0]; });
+    const selectedRows = Object.entries(ccSel)
+      .filter(function (x) { return x[1] && x[1].checked; })
+      .map(function (x) {
+        const key = x[0];
+        const entry = x[1];
+        const baseIdx = (entry && entry.baseIdx !== undefined && entry.baseIdx !== null)
+          ? parseInt(entry.baseIdx, 10)
+          : parseInt(key, 10);
+        return { key: String(key), idx: baseIdx, entry: entry };
+      })
+      .filter(function (r) { return !isNaN(r.idx); })
+      .sort(function (a, b) {
+        if (a.idx !== b.idx) return a.idx - b.idx;
+        return String(a.key).localeCompare(String(b.key));
+      });
     if (!selectedRows.length) return;
     const desc = getCostCentreDescription(ccName, projectCategory);
     const parsed = parseBuildDescriptions(desc);
@@ -18358,8 +18381,9 @@ function buildScopeDocxPayload() {
     const items = [];
     let currentSubheading = '';
     selectedRows.forEach(function (row) {
-      const idx = row[0];
-      const v = row[1];
+      const idx = row.idx;
+      const selKey = row.key;
+      const v = row.entry;
       const item = ccData.items[idx];
       // Find nearest preceding subheading in this cost centre.
       let nearestSub = '';
@@ -18391,9 +18415,24 @@ function buildScopeDocxPayload() {
           return d;
         }).filter(Boolean).join('; ');
       }
-      const roomsArr = (typeof getItemRoomsArray === 'function') ? (getItemRoomsArray(ccName, idx) || []) : [];
-      const singleRoom = v.room || item.room || '';
-      const roomsCombined = (roomsArr && roomsArr.length) ? roomsArr.slice() : (singleRoom ? [singleRoom] : []);
+      let roomsArr = [];
+      if (typeof getItemRoomsArray === 'function') {
+        roomsArr = (getItemRoomsArray(ccName, selKey) || []).slice();
+      }
+      if (!roomsArr.length && Array.isArray(v && v.rooms)) {
+        roomsArr = v.rooms.map(function (r) { return String(r || '').trim(); }).filter(Boolean);
+      }
+      if (!roomsArr.length) {
+        const singleRoom = (v && v.room) || (item && item.room) || '';
+        if (singleRoom) roomsArr = [singleRoom];
+      }
+      const seenRooms = new Set();
+      const roomsCombined = roomsArr.filter(function (r) {
+        const key = String(r || '').trim().toLowerCase();
+        if (!key || seenRooms.has(key)) return false;
+        seenRooms.add(key);
+        return true;
+      });
       items.push({
         name: item.name,
         type: item.type || '',
