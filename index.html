@@ -6065,6 +6065,10 @@ header {
               </div>
               <div class="form-row">
                 <div class="field">
+                  <label>Project Date</label>
+                  <input type="date" id="projDate">
+                </div>
+                <div class="field">
                   <label>Project Manager</label>
                   <input type="text" id="projPM" placeholder="Your name">
                 </div>
@@ -6085,6 +6089,30 @@ header {
                 <div class="field" style="flex: 1;">
                   <label>Structural Drawings</label>
                   <input type="text" id="projStructDrawings" placeholder="Plans supplied by / Dated">
+                </div>
+              </div>
+              <div class="form-row" style="background: var(--surface2); padding: 16px; border-radius: 12px; margin-top: 12px;">
+                <div class="field" style="flex: 1;">
+                  <label>Project Info Page Form (optional image)</label>
+                  <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                    <input type="file" id="projStartFormInput" accept="image/*" style="display:none;" onchange="onProjectStartFormSelected()">
+                    <input type="file" id="projStartFormCameraInput" accept="image/*" capture="environment" style="display:none;" onchange="onProjectStartFormCameraSelected()">
+                    <button type="button" class="btn-ghost" onclick="pickProjectStartForm()">📎 Select Image</button>
+                    <button type="button" class="btn-ghost" onclick="captureProjectStartForm()">📷 Take Photo</button>
+                    <button type="button" class="btn-ghost" onclick="clearProjectStartForm()">Clear</button>
+                  </div>
+                  <div id="projStartFormPreview" style="font-size:11px; color: var(--text-muted); margin-top:6px;">No file selected</div>
+                </div>
+                <div class="field" style="flex: 1;">
+                  <label>Reference Documents Page Form (optional image)</label>
+                  <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                    <input type="file" id="projRefFormInput" accept="image/*" style="display:none;" onchange="onProjectReferenceFormSelected()">
+                    <input type="file" id="projRefFormCameraInput" accept="image/*" capture="environment" style="display:none;" onchange="onProjectReferenceFormCameraSelected()">
+                    <button type="button" class="btn-ghost" onclick="pickProjectReferenceForm()">📎 Select Image</button>
+                    <button type="button" class="btn-ghost" onclick="captureProjectReferenceForm()">📷 Take Photo</button>
+                    <button type="button" class="btn-ghost" onclick="clearProjectReferenceForm()">Clear</button>
+                  </div>
+                  <div id="projRefFormPreview" style="font-size:11px; color: var(--text-muted); margin-top:6px;">No file selected</div>
                 </div>
               </div>
             </div>
@@ -6275,6 +6303,11 @@ header {
         <div class="export-icon">📄</div>
         <div class="export-title">Generate Scope Document</div>
         <div class="export-desc">Export full scope with items, exclusions, notes</div>
+      </div>
+      <div class="export-card" onclick="exportScopeDocxFromServer()">
+        <div class="export-icon">📘</div>
+        <div class="export-title">Download Scope (DOCX)</div>
+        <div class="export-desc">Editable Word output using New Project — Draft Scope of Work v1.dotx template</div>
       </div>
       <div class="export-card" onclick="exportFFS()">
         <div class="export-icon">📊</div>
@@ -6503,6 +6536,7 @@ header {
     <div class="scope-modal-footer">
       <button class="btn-close-modal" onclick="closeScopeModal()">Close</button>
       <button class="btn-camera" onclick="openProjectPhotoCamera()">📷 Add Photo</button>
+      <button class="btn-print" onclick="exportScopeDocxFromServer()">📘 Download Scope (DOCX)</button>
       <button class="btn-print btn-export-ffs" onclick="exportFFS()">📊 Export FFS Format</button>
       <button class="btn-print btn-export-xls" onclick="exportSimpleXL()">📋 Export Excel</button>
       <button class="btn-print" onclick="exportWordDoc()">📝 Export Word</button>
@@ -6729,6 +6763,7 @@ function showApp() {
   
   renderProjectsList();
   loadCustomProducts();
+  tryLoadPricingCatalog();
   loadDefaultExclusionsNotes();
   populateProjectRoomsOptions();
   bindAutoSaveHandlers();
@@ -8122,6 +8157,8 @@ function saveCurrentProject(options) {
     ccNotes: ccNotes,
     ccSectionPhotos: ccSectionPhotos,
     projectPhotoData: projectPhotoData,
+    projectStartFormImageData: projectStartFormImageData,
+    projectReferenceFormImageData: projectReferenceFormImageData,
     currentPhase: currentPhase,
     phaseLocked: phaseLocked,
     scopeVersion: scopeVersion,
@@ -8188,6 +8225,10 @@ function loadProject(projectId) {
     if (_validCC.has(k)) ccSectionPhotos[k] = v;
   });
   projectPhotoData = project.projectPhotoData || null;
+  projectStartFormImageData = project.projectStartFormImageData || null;
+  projectReferenceFormImageData = project.projectReferenceFormImageData || null;
+  _setFormPreview('projStartFormPreview', projectStartFormImageData ? 'Selected: project-start-form' : 'No file selected');
+  _setFormPreview('projRefFormPreview', projectReferenceFormImageData ? 'Selected: reference-form' : 'No file selected');
   
   // Restore phase state
   currentPhase = project.currentPhase || 1;
@@ -8256,6 +8297,10 @@ function createNewProject() {
   ccNotes = {};
   ccSectionPhotos = {};
   projectPhotoData = null;
+  projectStartFormImageData = null;
+  projectReferenceFormImageData = null;
+  _setFormPreview('projStartFormPreview', 'No file selected');
+  _setFormPreview('projRefFormPreview', 'No file selected');
   activeCCName = null;
   
   // Reset phase state
@@ -15799,6 +15844,11 @@ function createProjectFromDashboard() {
   ccExclusions = {};
   ccNotes = {};
   ccSectionPhotos = {};
+  projectPhotoData = null;
+  projectStartFormImageData = null;
+  projectReferenceFormImageData = null;
+  _setFormPreview('projStartFormPreview', 'No file selected');
+  _setFormPreview('projRefFormPreview', 'No file selected');
   activeCCName = null;
   currentPhase = 1;
   phaseLocked = true;
@@ -16308,10 +16358,17 @@ async function generateVariationPdfServer() {
 }
 
 function resolvePdfServerBaseUrl() {
-  const explicit = getVal('varPdfServerUrl').trim();
-  if (explicit) return explicit;
+  const explicit = getVal('varPdfServerUrl').trim().replace(/\/api\/?$/i, '');
+  if (explicit) return explicit.replace(/\/+$/, '');
   if (typeof window !== 'undefined' && /^https?:$/i.test(window.location.protocol)) {
-    return window.location.origin;
+    const h = window.location.hostname;
+    const p = window.location.port;
+    // Static site on localhost (e.g. python -m http.server 8080) — API still runs on Flask port 8787
+    if (h === 'localhost' || h === '127.0.0.1') {
+      if (p && p !== '8787') return 'http://127.0.0.1:8787';
+    }
+    var o = window.location.origin.replace(/\/api\/?$/i, '').replace(/\/+$/, '');
+    return o;
   }
   return 'http://127.0.0.1:8787';
 }
@@ -17811,9 +17868,104 @@ function buildReview() {
 // SCOPE DOCUMENT GENERATION
 // ====================================================
 let projectPhotoData = null;
+let projectStartFormImageData = null;
+let projectReferenceFormImageData = null;
 let ccSectionPhotos = {};
 let photoCaptureContext = { type: 'project', ccName: null };
 let capturedPhotoData = null;
+
+function pickProjectStartForm() {
+  const el = document.getElementById('projStartFormInput');
+  if (el) el.click();
+}
+
+function captureProjectStartForm() {
+  const el = document.getElementById('projStartFormCameraInput');
+  if (el) el.click();
+}
+
+function pickProjectReferenceForm() {
+  const el = document.getElementById('projRefFormInput');
+  if (el) el.click();
+}
+
+function captureProjectReferenceForm() {
+  const el = document.getElementById('projRefFormCameraInput');
+  if (el) el.click();
+}
+
+function _readImageInputToDataUrl(inputEl, cb) {
+  if (!inputEl || !inputEl.files || !inputEl.files[0]) return;
+  const f = inputEl.files[0];
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    cb((e && e.target && e.target.result) ? String(e.target.result) : null, f.name);
+  };
+  reader.readAsDataURL(f);
+}
+
+function _setFormPreview(id, msg) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = msg;
+}
+
+function onProjectStartFormSelected() {
+  const input = document.getElementById('projStartFormInput');
+  _readImageInputToDataUrl(input, function (dataUrl, fileName) {
+    if (!dataUrl) return;
+    projectStartFormImageData = dataUrl;
+    _setFormPreview('projStartFormPreview', 'Selected: ' + (fileName || 'image'));
+    showToast('Project info form image added', 'success');
+  });
+}
+
+function onProjectStartFormCameraSelected() {
+  const input = document.getElementById('projStartFormCameraInput');
+  _readImageInputToDataUrl(input, function (dataUrl, fileName) {
+    if (!dataUrl) return;
+    projectStartFormImageData = dataUrl;
+    _setFormPreview('projStartFormPreview', 'Captured: ' + (fileName || 'camera image'));
+    showToast('Project info form photo added', 'success');
+  });
+}
+
+function onProjectReferenceFormSelected() {
+  const input = document.getElementById('projRefFormInput');
+  _readImageInputToDataUrl(input, function (dataUrl, fileName) {
+    if (!dataUrl) return;
+    projectReferenceFormImageData = dataUrl;
+    _setFormPreview('projRefFormPreview', 'Selected: ' + (fileName || 'image'));
+    showToast('Reference form image added', 'success');
+  });
+}
+
+function onProjectReferenceFormCameraSelected() {
+  const input = document.getElementById('projRefFormCameraInput');
+  _readImageInputToDataUrl(input, function (dataUrl, fileName) {
+    if (!dataUrl) return;
+    projectReferenceFormImageData = dataUrl;
+    _setFormPreview('projRefFormPreview', 'Captured: ' + (fileName || 'camera image'));
+    showToast('Reference form photo added', 'success');
+  });
+}
+
+function clearProjectStartForm() {
+  projectStartFormImageData = null;
+  const input = document.getElementById('projStartFormInput');
+  if (input) input.value = '';
+  const cam = document.getElementById('projStartFormCameraInput');
+  if (cam) cam.value = '';
+  _setFormPreview('projStartFormPreview', 'No file selected');
+}
+
+function clearProjectReferenceForm() {
+  projectReferenceFormImageData = null;
+  const input = document.getElementById('projRefFormInput');
+  if (input) input.value = '';
+  const cam = document.getElementById('projRefFormCameraInput');
+  if (cam) cam.value = '';
+  _setFormPreview('projRefFormPreview', 'No file selected');
+}
 
 function openProjectPhotoCamera() {
   if (currentUserRole !== 'admin' && currentPhase === 1) {
@@ -18129,6 +18281,211 @@ function generateScopePDFFromReview() {
 
   generateScope();
   showToast('Document preview opened — use Print / Save as PDF when you are ready.', 'success');
+}
+
+/** Merge Deep Dive pricing catalog from Flask when the PDF/scope server is running or on Vercel. */
+async function tryLoadPricingCatalog() {
+  try {
+    const base = resolvePdfServerBaseUrl().replace(/\/+$/, '');
+    const r = await fetch(base + '/api/pricing/catalog');
+    if (!r.ok) return;
+    const data = await r.json();
+    if (typeof PRICE_DATA !== 'undefined') {
+      if (data.trade && typeof data.trade === 'object') {
+        PRICE_DATA.trade = Object.assign({}, PRICE_DATA.trade, data.trade);
+      }
+      if (data.products && typeof data.products === 'object') {
+        PRICE_DATA.products = Object.assign({}, PRICE_DATA.products, data.products);
+      }
+    }
+    if (data.cost_centre_trade_map && typeof data.cost_centre_trade_map === 'object') {
+      Object.entries(data.cost_centre_trade_map).forEach(function (entry) {
+        if (entry[1]) CC_TO_TRADE_KEY[entry[0]] = entry[1];
+      });
+    }
+  } catch (e) {
+    /* file:// or server offline — keep bundled price_data.js */
+  }
+}
+
+function buildScopeDocxPayload() {
+  function parseBuildDescriptions(raw) {
+    const txt = String(raw || '').trim();
+    if (!txt) return { newBuild: '', renovation: '' };
+    const nbMatch = txt.match(/New Build\s*[–:-]?\s*([\s\S]*?)(?=Renovation\s*[–:-]?|$)/i);
+    const renMatch = txt.match(/Renovation\s*[–:-]?\s*([\s\S]*?)$/i);
+    const nb = nbMatch ? nbMatch[1].trim() : '';
+    const rn = renMatch ? renMatch[1].trim() : '';
+    if (nb || rn) return { newBuild: nb, renovation: rn };
+    // fallback for legacy copy that doesn't label both
+    return { newBuild: txt, renovation: txt };
+  }
+
+  const proj = {
+    client: getVal('projClient'),
+    clientAddress: getVal('projClientAddress'),
+    name: getVal('projName'),
+    location: getVal('projLocation'),
+    type: getVal('projType'),
+    finishLevel: getVal('projFinishLevel'),
+    designChar: getVal('projDesignChar'),
+    date: getVal('projDate'),
+    num: getVal('projNum'),
+    archDrawings: getVal('projArchDrawings'),
+    structDrawings: getVal('projStructDrawings'),
+    selectedRooms: getProjectRooms(),
+    projectPhoto: projectPhotoData || null,
+    startFormImage: projectStartFormImageData || null,
+    referenceFormImage: projectReferenceFormImageData || null
+  };
+  const isNewBuild = proj.type && proj.type.toLowerCase().includes('new build');
+  const projectCategory = isNewBuild ? 'New Build' : 'Renovation';
+  const costCentres = [];
+  [...selectedCC].forEach(function (ccName) {
+    const ccSel = itemSelections[ccName];
+    if (!ccSel) return;
+    const checked = Object.entries(ccSel).filter(function (x) { return x[1].checked; });
+    const ccData = getCostCentres()[ccName];
+    if (!ccData) return;
+    const selectedRows = checked
+      .map(function (x) { return [parseInt(x[0], 10), x[1]]; })
+      .sort(function (a, b) { return a[0] - b[0]; });
+    if (!selectedRows.length) return;
+    const desc = getCostCentreDescription(ccName, projectCategory);
+    const parsed = parseBuildDescriptions(desc);
+    const newBuildDesc = parsed.newBuild;
+    const renoDesc = parsed.renovation;
+    const items = [];
+    let currentSubheading = '';
+    selectedRows.forEach(function (row) {
+      const idx = row[0];
+      const v = row[1];
+      const item = ccData.items[idx];
+      // Find nearest preceding subheading in this cost centre.
+      let nearestSub = '';
+      for (let j = idx; j >= 0; j--) {
+        const probe = ccData.items[j];
+        if (probe && isItemSubheading(probe)) {
+          nearestSub = probe.name || '';
+          break;
+        }
+      }
+      if (nearestSub && nearestSub !== currentSubheading) {
+        currentSubheading = nearestSub;
+        items.push({
+          name: nearestSub,
+          type: 'Subheading',
+          qty: '',
+          room: '',
+          productLine: ''
+        });
+      }
+      if (item && isItemSubheading(item)) return;
+      const pricing = itemPricing[ccName] && itemPricing[ccName][idx];
+      let productLine = '';
+      if (pricing) {
+        const pr = Array.isArray(pricing) ? pricing : [pricing];
+        productLine = pr.map(function (p) {
+          var d = p.description || '';
+          if (p.price != null) d += (d ? ' · ' : '') + '$' + p.price;
+          return d;
+        }).filter(Boolean).join('; ');
+      }
+      const roomsArr = (typeof getItemRoomsArray === 'function') ? (getItemRoomsArray(ccName, idx) || []) : [];
+      const singleRoom = v.room || item.room || '';
+      const roomsCombined = (roomsArr && roomsArr.length) ? roomsArr.slice() : (singleRoom ? [singleRoom] : []);
+      items.push({
+        name: item.name,
+        type: item.type || '',
+        qty: v.qty || 1,
+        room: roomsCombined.join(', '),
+        rooms: roomsCombined,
+        productLine: productLine
+      });
+    });
+    costCentres.push({
+      name: ccName,
+      projectCategory: projectCategory,
+      descriptionNewBuild: newBuildDesc,
+      descriptionRenovation: renoDesc,
+      items: items,
+      exclusions: ccExclusions[ccName] || [],
+      notes: ccNotes[ccName] || []
+    });
+  });
+  // Keep document stable and professional: always export cost centres alphabetically.
+  costCentres.sort(function (a, b) {
+    return String(a.name || '').localeCompare(String(b.name || ''), 'en', { sensitivity: 'base' });
+  });
+  return { project: proj, costCentres: costCentres };
+}
+
+async function exportScopeDocxFromServer() {
+  const total = countTotalItems();
+  if (total === 0) {
+    showToast('Please select at least one scope item first', 'error');
+    return;
+  }
+  const payload = buildScopeDocxPayload();
+  try {
+    const base = resolvePdfServerBaseUrl().replace(/\/+$/, '');
+    const r = await fetch(base + '/api/scope/docx', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!r.ok) {
+      const t = await r.text();
+      throw new Error(t.slice(0, 400) || String(r.status));
+    }
+    const blob = await r.blob();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    var pn = (payload.project && payload.project.name) ? payload.project.name.replace(/[^a-z0-9]/gi, '_') : 'Scope';
+    link.download = pn + '_Scope.docx';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    showToast('Scope .docx downloaded (company template)', 'success');
+  } catch (e) {
+    showToast('Scope server export failed: ' + e.message, 'error');
+  }
+}
+
+async function exportScopePdfFromServer() {
+  const total = countTotalItems();
+  if (total === 0) {
+    showToast('Please select at least one scope item first', 'error');
+    return;
+  }
+  const payload = buildScopeDocxPayload();
+  try {
+    const base = resolvePdfServerBaseUrl().replace(/\/+$/, '');
+    const r = await fetch(base + '/api/scope/pdf', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!r.ok) {
+      const t = await r.text();
+      throw new Error(t.slice(0, 400) || String(r.status));
+    }
+    const blob = await r.blob();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    var pn = (payload.project && payload.project.name) ? payload.project.name.replace(/[^a-z0-9]/gi, '_') : 'Scope';
+    link.download = pn + '_Scope.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    showToast('Scope PDF downloaded (template layout)', 'success');
+  } catch (e) {
+    showToast('Scope PDF export failed: ' + e.message, 'error');
+  }
 }
 
 // ====================================================

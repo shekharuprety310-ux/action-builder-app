@@ -20,8 +20,13 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
 
+from scope_docx_builder import build_scope_docx
+from scope_pdf_reportlab import build_scope_pdf
+
 
 APP_ROOT = Path(__file__).resolve().parent
+SCOPE_DOTX_TEMPLATE = APP_ROOT / "project files" / "New Project - Draft Scope of Work v1.dotx"
+PRICING_CATALOG_JSON = APP_ROOT / "pricing_catalog.json"
 SAMPLE_HEADER_IMAGE = APP_ROOT / "project files" / "variation_assets" / "image_0.jpg"
 
 # Inter gives noticeably sharper, more professional PDF text than built-in Helvetica (Type 1).
@@ -297,6 +302,77 @@ def _draw_blue_bar_title_wrapped(
     return band_bottom
 
 
+@app.get("/")
+def api_root():
+    """Avoid bare 404 — lists working URLs (helps local + Vercel debugging)."""
+    return jsonify(
+        {
+            "ok": True,
+            "service": "Action Builders Scope Builder API",
+            "try": [
+                "GET /api/health",
+                "GET /api/pricing/catalog",
+                "POST /api/scope/pdf (JSON body)",
+                "POST /api/scope/docx (JSON body)",
+                "POST /api/variation/pdf (JSON body)",
+            ],
+            "note": "On some hosts PATH_INFO omits /api — duplicate routes without /api are also registered.",
+        }
+    )
+
+
+@app.get("/pricing/catalog")
+@app.get("/api/pricing/catalog")
+def api_pricing_catalog():
+    """Latest pricing + cost-centre → trade hints (from Deep Dive export)."""
+    if not PRICING_CATALOG_JSON.is_file():
+        return jsonify({"error": "pricing_catalog.json not found — run build_price_data_from_deep_dive.py"}), 404
+    with open(PRICING_CATALOG_JSON, encoding="utf-8") as f:
+        return jsonify(json.load(f))
+
+
+@app.post("/scope/pdf")
+@app.post("/api/scope/pdf")
+def api_scope_pdf():
+    """Scope of work PDF — ReportLab layout matched to New Project - Draft Scope of Work v1.dotx."""
+    data = request.get_json(silent=True) or {}
+    try:
+        out_bytes = build_scope_pdf(data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    proj = data.get("project") or {}
+    fname = (proj.get("name") or "Scope").strip()
+    safe = "".join(ch if ch.isalnum() else "_" for ch in fname)[:80] or "Scope"
+    return send_file(
+        io.BytesIO(out_bytes),
+        mimetype="application/pdf",
+        as_attachment=True,
+        download_name=f"{safe}_Scope.pdf",
+    )
+
+
+@app.post("/scope/docx")
+@app.post("/api/scope/docx")
+def api_scope_docx():
+    """Build scope Word document from official .dotx template (server-side, preserves styles)."""
+    if not SCOPE_DOTX_TEMPLATE.is_file():
+        return jsonify({"error": "Template dotx missing"}), 500
+    data = request.get_json(silent=True) or {}
+    try:
+        out_bytes = build_scope_docx(SCOPE_DOTX_TEMPLATE, data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    proj = data.get("project") or {}
+    fname = (proj.get("name") or "Scope").strip()
+    safe = "".join(ch if ch.isalnum() else "_" for ch in fname)[:80] or "Scope"
+    return send_file(
+        io.BytesIO(out_bytes),
+        mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        as_attachment=True,
+        download_name=f"{safe}_Scope.docx",
+    )
+
+
 @app.get("/health")
 @app.get("/api/health")
 def health() -> dict:
@@ -443,6 +519,7 @@ def _maybe_save_to_sync_folder(pdf_bytes: bytes, data: dict) -> str | None:
         return None
 
 
+@app.post("/variation/proxy-automation")
 @app.post("/api/variation/proxy-automation")
 def proxy_automation():
     """POST JSON to Power Automate from the server (avoids browser CORS to powerplatform.com)."""
@@ -459,6 +536,7 @@ def proxy_automation():
     return jsonify(body), status
 
 
+@app.post("/variation/pdf-and-flow")
 @app.post("/api/variation/pdf-and-flow")
 def pdf_and_flow():
     """
@@ -521,6 +599,7 @@ def pdf_and_flow():
     return jsonify(body), (200 if ok else 502)
 
 
+@app.post("/variation/pdf")
 @app.post("/api/variation/pdf")
 def generate_variation_pdf():
     data = request.get_json(silent=True) or {}
