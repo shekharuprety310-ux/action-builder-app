@@ -17819,13 +17819,18 @@ function buildReview() {
     let rowsHTML = lineItems.map(([idx, v], i) => {
       const item = ccDataRv.items[parseInt(idx)];
       const typeClass = 'type-' + (item.type || 'service').toLowerCase().replace(/\s+/g, '-');
-      const room = (v.room || item.room || '');
+      const roomsArr = (getItemRoomsArray(ccName, idx) || []).filter(Boolean);
+      const fallbackRoom = (v.room || item.room || '');
+      const allRooms = roomsArr.length ? roomsArr : (fallbackRoom ? [fallbackRoom] : []);
+      const roomChips = allRooms
+        .map(r => `<span class="item-type" style="font-size: 9px; padding: 2px 6px; background: rgba(96,165,250,0.18); color:#93c5fd;">${r}</span>`)
+        .join(' ');
       return `
         <div class="review-item-row">
           <span class="review-item-num">${i + 1}.</span>
           <span class="review-item-name">${item.name}</span>
           <span class="item-type ${typeClass}" style="font-size: 9px; padding: 2px 6px;">${item.type}</span>
-          ${room ? `<span class="item-type" style="font-size: 9px; padding: 2px 6px; background: rgba(96,165,250,0.18); color:#93c5fd;">${room}</span>` : ''}
+          ${roomChips}
           <span class="review-item-qty">×${v.qty || 1}</span>
           ${v.notes ? `<span class="review-item-note">${v.notes}</span>` : ''}
         </div>
@@ -18114,10 +18119,13 @@ function generateScope() {
           <tbody>
             ${lineItemsDoc.map(([idx, v]) => {
               const item = ccData.items[parseInt(idx)];
-              const room = (v.room || item.room || '');
+              const roomsArr = (getItemRoomsArray(ccName, idx) || []).filter(Boolean);
+              const fallbackRoom = (v.room || item.room || '');
+              const allRooms = roomsArr.length ? roomsArr : (fallbackRoom ? [fallbackRoom] : []);
+              const roomLabel = allRooms.join(', ');
               return `<tr>
                 <td class="item-num">${itemCounter++}</td>
-                <td class="item-name">${item.name}${room ? ` <span style="color:#93c5fd;">(${room})</span>` : ''}</td>
+                <td class="item-name">${item.name}${roomLabel ? ` <span style="color:#93c5fd;">(${roomLabel})</span>` : ''}</td>
                 <td class="item-qty">${v.qty || 1}</td>
               </tr>`;
             }).join('')}
@@ -19856,7 +19864,8 @@ function exportSimpleXL() {
     checkedItems.forEach(([idx, v]) => {
       const item = ccData.items[parseInt(idx)];
       if (isItemSubheading(item)) return;
-      const room = v.room || item.room || '';
+      const roomsArr = (getItemRoomsArray(ccName, idx) || []).filter(Boolean);
+      const room = roomsArr.length ? roomsArr.join(', ') : (v.room || item.room || '');
       wsData.push([
         ccName,
         item.name,
@@ -19947,10 +19956,12 @@ function exportFFS() {
       if (itemType.toLowerCase() === 'fee') itemType = 'Fee';
       if (itemType.toLowerCase() === 'spec') itemType = 'Specification';
       
+      const ffsRoomsArr = (getItemRoomsArray(ccName, idx) || []).filter(Boolean);
+      const ffsRoom = ffsRoomsArr.length ? ffsRoomsArr.join(', ') : (v.room || item.room || '');
       wsData.push([
         itemType,                                    // Item Type
         '',                                          // Ref: eg Unit No.
-        v.room || item.room || '',                  // Room
+        ffsRoom,                                     // Room
         '',                                          // Ext Elevation
         supplierCode,                                // Supplier Item Code
         supplierTrade,                               // Supplier / Trade
